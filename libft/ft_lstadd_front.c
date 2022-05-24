@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/24 09:18:57 by ayassin          ###   ########.fr       */
+/*   Created: 2021/11/17 16:41:42 by ayassin           #+#    #+#             */
+/*   Updated: 2021/12/26 10:57:59 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-#endif
+/* Add node "wen" to the fron of "lst"*/
+void	ft_lstadd_front(t_list **lst, t_list *wen)
+{
+	wen -> next = *lst;
+	*lst = wen;
+}

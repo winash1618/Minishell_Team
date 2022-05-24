@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/24 09:18:57 by ayassin          ###   ########.fr       */
+/*   Created: 2021/11/14 20:34:30 by ayassin           #+#    #+#             */
+/*   Updated: 2021/12/26 20:19:27 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-#endif
+/* Apply function "f" to each char of string "s"*/
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	int	pos;
+
+	pos = 0;
+	if (s)
+	{
+		while (s[pos])
+		{
+			f(pos, &(s[pos]));
+			pos++;
+		}
+	}
+}

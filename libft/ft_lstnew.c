@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/24 09:18:57 by ayassin          ###   ########.fr       */
+/*   Created: 2021/11/17 16:39:55 by ayassin           #+#    #+#             */
+/*   Updated: 2021/12/26 12:11:19 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-#endif
+/*  Return a new node which points to "content"
+**malloc DANGER**/
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*temp;
+
+	temp = (t_list *)malloc(sizeof(*temp));
+	if (!temp)
+		return (0);
+	temp -> content = content;
+	temp -> next = 0;
+	return (temp);
+}

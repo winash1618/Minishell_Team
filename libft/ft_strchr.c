@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/24 09:18:57 by ayassin          ###   ########.fr       */
+/*   Created: 2021/11/14 19:33:09 by ayassin           #+#    #+#             */
+/*   Updated: 2021/12/26 18:40:41 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-#endif
+/* Returns the first occurenc of char "c" in string "s" (null inclusive).
+Returns NULL otherwise
+**NOT PROTECTED VS NULL INPUT**/
+char	*ft_strchr(const char *s, int c)
+{
+	int	pos;
+
+	pos = 0;
+	c = (unsigned char) c;
+	while (s[pos])
+	{
+		if (s[pos] == c)
+			return ((char *)&(s[pos]));
+		pos++;
+	}
+	if (s[pos] == c)
+		return ((char *)&(s[pos]));
+	return (0);
+}
