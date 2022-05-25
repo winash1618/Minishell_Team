@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/24 09:24:49 by ayassin          ###   ########.fr        #
+#    Updated: 2022/05/25 14:58:29 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 Headers = minishell.h
 
-SRC = minishell.c
+SRC = minishell.c pipex.c
 
 SUBDIRS = libft ft_printf
 
