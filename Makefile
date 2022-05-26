@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/24 09:24:49 by ayassin          ###   ########.fr        #
+#    Updated: 2022/05/26 15:40:54 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,17 @@ Headers = minishell.h
 
 SRC = minishell.c
 
+PARSE = parser.c
+
 SUBDIRS = libft ft_printf
 
+PDIR = parsing
+
+PNAME = parser
+
 OBJS = $(SRC:.c=.o)
+
+POBJS = $(addprefix $(PDIR)/, $(PARSE:%c=%o))
 
 CC = gcc
 
@@ -26,6 +34,9 @@ CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
+$(PDIR)/%.o : $(PDIR)/%.c
+			@mkdir -p $(PDIR)
+			@$(CC) $(CFLAGS) -Ilibft -Ift_printf  -c $< -o $@
 .c.o:
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
@@ -33,12 +44,14 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -Ilibft -Ift_printf -c $^ -o $@
 
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(POBJS)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
 	$(CC) $(CFALGS) $(SRC) -Llibft -lft \
 	 -Lft_printf -lftprintf -o $(NAME)
+	$(CC) $(CFALGS) $(PDIR)/$(PARSE) -Llibft -lft \
+	 -Lft_printf -lftprintf -o $(PNAME)
 
 $(SUBDIRS):
 	for dir in $(SUBDIRS); do \
