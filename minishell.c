@@ -6,13 +6,24 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/25 08:37:50 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/26 10:22:39 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+int	main(int argv, char **argc, char **env)
 {
-	ft_printf("The car is %d %s \n", ft_atoi("18"), ft_itoa(10));
+	t_new	*lst;
+
+	(void)argv;
+	(void)argc;
+	lst = NULL;
+	excute (lst, env);
+	// while (*env)
+	// {
+	// 	if(ft_strnstr(*env, "LOGNAME", ft_strlen("LOGNAME")))
+	// 		ft_printf("%s\n", *env);
+	// 	++env;
+	// }
 }

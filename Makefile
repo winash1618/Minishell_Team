@@ -6,7 +6,7 @@
 #    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/26 15:40:54 by mkaruvan         ###   ########.fr        #
+#    Updated: 2022/05/25 14:58:29 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 Headers = minishell.h
 
-SRC = minishell.c
+SRC = minishell.c pipex.c
 
 PARSE = parser.c
 
