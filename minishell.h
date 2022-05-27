@@ -6,13 +6,15 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/25 14:59:24 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/27 15:51:49 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <sys/wait.h>
+# include <unistd.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
