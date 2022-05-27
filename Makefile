@@ -6,7 +6,7 @@
 #    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/27 06:29:38 by mkaruvan         ###   ########.fr        #
+#    Updated: 2022/05/27 16:33:39 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ Headers = minishell.h
 
 SRC = minishell.c pipex.c
 
-PARSE = parser.c
+PARSE = parser.c p_assign_1.c p_assign_2.c p_dollar.c \
+		p_expand.c p_list_assign.c p_list_normal.c \
+		p_normal.c p_quote.c p_utils_1.c p_utils_2.c \
+		prompt.c
 
 SUBDIRS = libft ft_printf
 
@@ -28,9 +31,11 @@ OBJS = $(SRC:.c=.o)
 
 POBJS = $(addprefix $(PDIR)/, $(PARSE:%c=%o))
 
+PSRC = $(addprefix $(PDIR)/, $(PARSE))
+
 CC = gcc
 
-CFLAGS = -g3 -Wall -Werror -Wextra
+CFLAGS = -g3 -Wall -Werror -Wextra 
 
 all: $(NAME)
 
@@ -50,8 +55,8 @@ $(NAME): $(OBJS) $(POBJS)
     done
 	$(CC) $(CFALGS) $(SRC) -Llibft -lft \
 	 -Lft_printf -lftprintf -o $(NAME)
-	$(CC) $(CFALGS) $(PDIR)/$(PARSE) -Llibft -lft \
-	 -Lft_printf -lftprintf -o $(PNAME)
+	$(CC) $(CFALGS) $(PSRC) -Llibft -lft \
+	 -Lft_printf -lftprintf -ltermcap -lreadline -o $(PNAME)
 
 $(SUBDIRS):
 	for dir in $(SUBDIRS); do \
