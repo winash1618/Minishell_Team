@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/27 15:47:40 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:50:26 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf);//string join meh
 char *get_dollar_path(char *str, char **env);//  if success returns the matching env variable part after the equal sign.
 char *get_str(char *str);// It returns normal string until dollar sign.
 char *get_expanded_string(char *str, char **env);// It returns entire string with expansion
+void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//

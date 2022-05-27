@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 15:41:48 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:52:21 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int ac, char **av, char **env)
 {
 	ac++;
 	(void)av;
-	(void)env;
+	// (void)env;
 	char *buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
 	t_info *info;
 	info = malloc(sizeof(t_info));
@@ -66,7 +66,7 @@ int main(int ac, char **av, char **env)
 			{
 				normal_lexer(&cmd, info, line);
 				find_dollar_presence(cmd);
-				// dollar_expansion(cmd, env);
+				dollar_expansion(cmd, env);
 				lst_print(cmd);
 			}
 		}

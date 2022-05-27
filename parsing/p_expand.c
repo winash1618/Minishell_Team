@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:27:21 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 14:32:01 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:08:39 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,9 @@ char *get_dollar_path(char *str, char **env)
 	s = NULL;
 	if (len)
 		s = ft_substr(str, 0, len);
-	// printf("%d\n", len);
-	// printf("%s\n", s);
-	// (void)env;
 	s1 = NULL;
 	while(env[i] && len)
 	{
-		// printf("%s \n", env[i]);
 		s1 = ft_strnstr(env[i], s, len);
 		if (s1)
 		{
@@ -44,12 +40,8 @@ char *get_dollar_path(char *str, char **env)
 		}
 		i++;
 	}
-	// printf("%s", s1);
 	if (!s1)
 		s1= "";
-	// if (!s1)
-	// 	return (NULL);
-	// return ("Hi");
 	return (s1);
 }
 
@@ -69,7 +61,6 @@ char *get_str(char *str)
 		i++;
 	}
 	s[i] = '\0';
-	// printf("----%s----", s);
 	return (s);
 }
 
@@ -79,10 +70,11 @@ char *get_expanded_string(char *str, char **env)
 	char *s;
 	t_list *lst;
 	t_list *tmp;
-
 	s = "";
+	return (NULL);
 	while(str[i])
 	{
+		
 		if (str[i] == '$')
 		{
 			if (!lst)
@@ -93,7 +85,7 @@ char *get_expanded_string(char *str, char **env)
 				ft_lstadd_back(&lst, tmp);
 			}
 			i = i + get_strlen(str + i + 1) + 1;
-			// printf ("===%c===", str[i]);
+			
 		}
 		else
 		{
@@ -108,22 +100,12 @@ char *get_expanded_string(char *str, char **env)
 				i++;
 		}
 	}
+	
 	while (lst)
 	{
 		ft_strjoin_ps(&s, (char *)lst->content, 0);
 		lst = lst->next;
 	}
 	printf("%s \n", s);
-	// i = 0;
-	// while(str[i])
-	// {
-	// 	if (str[i] == '$')
-	// 	{
-	// 		i = i + get_strlen(str + i + 1) + 1;
-	// 	}
-	// 	i++;
-	// }
-	// if (!s)
-	// 	return (NULL);
-	return ("sf");
+	return (s);
 }
