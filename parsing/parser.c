@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
+/*   Updated: 2022/05/27 09:57:45 by mkaruvan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../minishell.h"
 
 int is_meta(char c)
@@ -9,28 +21,6 @@ int is_meta(char c)
 	return (0);
 }
 
-char	*ft_strnstr1(const char *haystack, const char *needle, size_t len)
-{
-	size_t	pos;
-	size_t	i;
-
-	pos = 0;
-	i = 0;
-	if (*needle == 0)
-		return ((char *)haystack);
-	while (haystack[pos] && pos < len)
-	{
-		while (haystack[pos + i] == needle[i] && (pos + i) < len)
-		{
-			i++;
-			if (!needle[i])
-				return ((char *)&(haystack[pos]));
-		}
-		i = 0;
-		pos++;
-	}
-	return (0);
-}
 int get_strlen(char *str)
 {
 	int i = 0;
@@ -39,6 +29,33 @@ int get_strlen(char *str)
 		i++;
 	} 
 	return (i);
+}
+
+int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf)
+{
+	int		i1;
+	int		i2;
+	char	*fullstr;
+
+	i1 = 0;
+	i2 = 0;
+	fullstr = (char *)malloc(ft_strlen(*prestr) + ft_strlen(sufstr) + 1);
+	if (fullstr == NULL)
+		return (0);
+	while (*prestr && (*prestr)[i1])
+	{
+		fullstr[i1] = (*prestr)[i1];
+		++i1;
+	}
+	while (sufstr && sufstr[i2])
+		fullstr[i1++] = sufstr[i2++];
+	fullstr[i1] = 0;
+	// if (*prestr)
+	// 	free (*prestr);
+	if (freesuf)
+		free (sufstr);
+	*prestr = fullstr;
+	return (1);
 }
 
 char *get_dollar_path(char *str, char **env)
@@ -54,13 +71,13 @@ char *get_dollar_path(char *str, char **env)
 	s = NULL;
 	if (len)
 		s = ft_substr(str, 0, len);
-	printf("%d\n", len);
-	printf("%s\n", s);
+	// printf("%d\n", len);
+	// printf("%s\n", s);
 	// (void)env;
 	s1 = NULL;
 	while(env[i] && len)
 	{
-		printf("%s \n", env[i]);
+		// printf("%s \n", env[i]);
 		s1 = ft_strnstr(env[i], s, len);
 		if (s1)
 		{
@@ -73,7 +90,7 @@ char *get_dollar_path(char *str, char **env)
 		}
 		i++;
 	}
-	printf("%s", s1);
+	// printf("%s", s1);
 	if (!s1)
 		s1= "";
 	// if (!s1)
@@ -82,42 +99,88 @@ char *get_dollar_path(char *str, char **env)
 	return (s1);
 }
 
-// char *get_expanded_string(char *str, char **env)
-// {
-// 	int i = 0;
-// 	char *s;
+char *get_str(char *str)
+{
+	int i;
+	char *s;
+	
+	i = 0;
+	while (str[i] && str[i] != '$')
+		i++;
+	s = (char *)malloc(sizeof(char) * (i + 1));
+	i = 0;
+	while (str[i] && str[i] != '$')
+	{
+		s[i] = str[i];
+		i++;
+	}
+	s[i] = '\0';
+	// printf("----%s----", s);
+	return (s);
+}
 
-// 	s = NULL;
-// 	while(str[i])
-// 	{
-// 		if (str[i] == '$')
-// 		{
-// 			s = get_dollar_path(str + i + 1, env);
-// 			i = i + get_strlen(str + i + 1) + 1;
-// 		}
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while(str[i])
-// 	{
-// 		if (str[i] == '$')
-// 		{
-// 			i = i + get_strlen(str + i + 1) + 1;
-// 		}
-// 		i++;
-// 	}
-// 	if (!s)
-// 		return (NULL);
-// 	return (s);
-// }
+char *get_expanded_string(char *str, char **env)
+{
+	int i = 0;
+	char *s;
+	t_list *lst;
+	t_list *tmp;
+
+	s = "";
+	while(str[i])
+	{
+		if (str[i] == '$')
+		{
+			if (!lst)
+				lst = ft_lstnew((void *)get_dollar_path(str + i + 1, env));
+			else
+			{
+				tmp = ft_lstnew((void *)get_dollar_path(str + i + 1, env));
+				ft_lstadd_back(&lst, tmp);
+			}
+			i = i + get_strlen(str + i + 1) + 1;
+			// printf ("===%c===", str[i]);
+		}
+		else
+		{
+			if (!lst)
+				lst = ft_lstnew((void *)get_str(str + i));
+			else
+			{
+				tmp = ft_lstnew((void *)get_str(str + i));
+				ft_lstadd_back(&lst, tmp);
+			}
+			while (str[i] && str[i] != '$')
+				i++;
+		}
+	}
+	while (lst)
+	{
+		ft_strjoin_ps(&s, (char *)lst->content, 0);
+		lst = lst->next;
+	}
+	printf("%s \n", s);
+	// i = 0;
+	// while(str[i])
+	// {
+	// 	if (str[i] == '$')
+	// 	{
+	// 		i = i + get_strlen(str + i + 1) + 1;
+	// 	}
+	// 	i++;
+	// }
+	// if (!s)
+	// 	return (NULL);
+	return ("sf");
+}
 
 
 int main(int ac, char **argv, char **env)
 {
 	ac++;
 	(void)argv;
-	// char *s = get_expanded_string("a($PATH&$PATH&|a", env);
-	char *s = get_dollar_path("SECURITYSESSION", env);
+	char *s = get_expanded_string("a($PATH&$PATH&|a$PATHfsd", env);
+	// char *s = get_dollar_path("fsd", env);
 	// int s = get_strlen("aPATH&$PATH&|a");
 	ft_printf("hi %s\n", s);
 	// printf("hi");
