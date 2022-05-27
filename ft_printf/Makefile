@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 09:20:21 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/16 11:17:41 by ayassin          ###   ########.fr        #
+#    Updated: 2022/05/27 06:32:17 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ DIRS = ../libft_beta
 
 CC = gcc
 
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -g3 -Werror -Wall -Wextra
 
 
 OBJS = $(SRC:.c=.o)

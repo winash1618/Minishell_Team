@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 18:41:50 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/10 14:53:55 by ayassin          ###   ########.fr        #
+#    Updated: 2022/05/27 06:32:03 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ BONUS = ft_lstadd_front.c ft_lstadd_back.c ft_lstclear.c ft_lstclear.c\
 
 CC = gcc
 
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -g3 -Werror -Wall -Wextra
 
 OBJS = $(SRC:.c=.o)
 

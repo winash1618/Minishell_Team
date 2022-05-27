@@ -6,7 +6,7 @@
 #    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/25 14:58:29 by ayassin          ###   ########.fr        #
+#    Updated: 2022/05/27 06:29:38 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ POBJS = $(addprefix $(PDIR)/, $(PARSE:%c=%o))
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g3 -Wall -Werror -Wextra
 
 all: $(NAME)
 
@@ -60,12 +60,14 @@ $(SUBDIRS):
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(PDIR)/*.o
 	for dir in $(SUBDIRS); do \
         $(MAKE) clean -C $$dir; \
     done
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(PNAME)
 	for dir in $(SUBDIRS); do \
         $(MAKE) fclean -C $$dir; \
     done
