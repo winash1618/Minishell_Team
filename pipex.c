@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/26 11:54:00 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/27 15:12:42 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	excute(t_new *lst, char **env)
 		ft_printf("%s\n", path[i]);
 		++i;
 	}
+	// clear ing the split
 	clear_str_sep(path);
 	return (0);
 }
