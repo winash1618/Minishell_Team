@@ -6,32 +6,25 @@
 #    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/27 16:33:39 by mkaruvan         ###   ########.fr        #
+#    Updated: 2022/05/28 06:36:34 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
+PNAME = parser
+
 Headers = minishell.h
 
 SRC = minishell.c pipex.c
 
-PARSE = parser.c p_assign_1.c p_assign_2.c p_dollar.c \
-		p_expand.c p_list_assign.c p_list_normal.c \
-		p_normal.c p_quote.c p_utils_1.c p_utils_2.c \
-		prompt.c
+SRCP = parser.c
 
-SUBDIRS = libft ft_printf
-
-PDIR = parsing
-
-PNAME = parser
+SUBDIRS = libft ft_printf parsing
 
 OBJS = $(SRC:.c=.o)
 
-POBJS = $(addprefix $(PDIR)/, $(PARSE:%c=%o))
-
-PSRC = $(addprefix $(PDIR)/, $(PARSE))
+OBJSP = $(SRCP:.c=.o)
 
 CC = gcc
 
@@ -39,23 +32,21 @@ CFLAGS = -g3 -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(PDIR)/%.o : $(PDIR)/%.c
-			@mkdir -p $(PDIR)
-			@$(CC) $(CFLAGS) -Ilibft -Ift_printf  -c $< -o $@
 .c.o:
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFLAGS) -Ilibft -Ift_printf -c $^ -o $@
+	$(CC) $(CFLAGS) -Ilibft -Ift_printf -Iparsing -c $^ -o $@
 
 
-$(NAME): $(OBJS) $(POBJS)
+$(NAME): $(OBJS) $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
 	$(CC) $(CFALGS) $(SRC) -Llibft -lft \
 	 -Lft_printf -lftprintf -o $(NAME)
-	$(CC) $(CFALGS) $(PSRC) -Llibft -lft \
+	$(CC) $(CFALGS) $(SRCP) -Llibft -lft \
+	 parsing/parsing.a \
 	 -Lft_printf -lftprintf -ltermcap -lreadline -o $(PNAME)
 
 $(SUBDIRS):
@@ -65,7 +56,7 @@ $(SUBDIRS):
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(PDIR)/*.o
+	rm -f $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) clean -C $$dir; \
     done

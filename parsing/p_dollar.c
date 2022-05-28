@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:36:54 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 16:49:16 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 06:22:05 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "parser.h"
 
 void find_dollar_presence(t_new *cmd)
 {
@@ -24,6 +24,7 @@ void find_dollar_presence(t_new *cmd)
 				cmd->d_flag = 1;
 			i++;
 		}
+		
 		cmd = cmd->next;
 	}
 }
@@ -33,7 +34,10 @@ void dollar_expansion(t_new *cmd, char **env)
 	while (cmd != NULL)
 	{
 		if (cmd->d_flag)
+		{
+			printf("%s \n", cmd->token);
 			cmd->es = get_expanded_string(cmd->token, env);
+		}
 		cmd = cmd->next;
 	}
 }

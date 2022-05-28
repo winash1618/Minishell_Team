@@ -6,12 +6,12 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:58:25 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 15:15:38 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 06:22:48 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // For handling the quotes
-#include "../minishell.h"
+#include "parser.h"
 
 void quote_counter(char *line, t_info *info)
 {

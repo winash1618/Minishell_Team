@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:55:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 14:55:25 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 07:04:25 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "parser.h"
 
 char *ft_readline(void)
 {
@@ -25,6 +25,6 @@ void ft_clearscreen(void)
 
 	tgetent(buf, getenv("TERM"));
 	str = tgetstr("cl", NULL);
-	printf("%s", str);
-	printf("");
+	// printf("%s", str);
+	// printf("");
 }

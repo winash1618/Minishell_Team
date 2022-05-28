@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:35:46 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 15:36:26 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 06:21:57 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "parser.h"
 
 void var_lexer (t_var **var, char *line)
 {

@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 15:34:58 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 06:22:30 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "parser.h"
 
 // this is for getting words
 void lst_add_new(t_new **pars, char *str, t_info *info)

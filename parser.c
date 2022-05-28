@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 16:52:21 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 07:04:06 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 // int main(int ac, char **argv, char **env)
 // {
@@ -36,11 +36,12 @@ int main(int ac, char **av, char **env)
 	info->e_flag = 0;
 	t_var *var;
 	char *str;
+	str = NULL;
 	tgetent(buf, getenv("TERM"));
 	str = tgetstr("cl", NULL);
 	free(buf);
 	// printf("%s", str);
-	// printf("");
+	// printf(" ");
 	char *line;
 	while (1)
 	{

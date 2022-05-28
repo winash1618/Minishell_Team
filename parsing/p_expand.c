@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:27:21 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 17:08:39 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 06:22:14 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "parser.h"
 
 char *get_dollar_path(char *str, char **env)
 {
@@ -69,23 +69,23 @@ char *get_expanded_string(char *str, char **env)
 	int i = 0;
 	char *s;
 	t_list *lst;
+	lst = NULL;
 	t_list *tmp;
 	s = "";
-	return (NULL);
 	while(str[i])
 	{
-		
 		if (str[i] == '$')
 		{
+			ft_printf("hi");
 			if (!lst)
 				lst = ft_lstnew((void *)get_dollar_path(str + i + 1, env));
 			else
 			{
 				tmp = ft_lstnew((void *)get_dollar_path(str + i + 1, env));
 				ft_lstadd_back(&lst, tmp);
+				
 			}
 			i = i + get_strlen(str + i + 1) + 1;
-			
 		}
 		else
 		{

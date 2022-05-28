@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:16:26 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/27 15:48:24 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 06:22:41 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "parser.h"
 // handling words without quotes
 int get_word_len(char *line)
 {
