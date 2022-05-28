@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 07:02:12 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:43:15 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,46 @@ int	ft_strjoin_minishell(char **prestr, char *sufstr)
 	return (lineflag);
 }
 
+int	child1(t_new *lst, char **path, char **env)
+{
+	int		i;
+	char	*limits;
+	int		arg_count;
+	t_new	*temp;
+	char	**args;
+
+	limits = "<>|";
+	arg_count = 0;
+	temp = lst;
+	while (temp && !ft_strchr(limits, *(temp->token))) // check flags (and free)
+	{
+		++arg_count;
+		temp = temp->next;
+	}
+	args = (char **)malloc(sizeof(*args) * (arg_count + 1));
+	i = 0;
+	temp = lst;
+	while (i < arg_count)
+	{
+		args[i++] = temp->token;
+		temp = temp->next;
+	}
+	args[i] = NULL;
+	i = 0;
+	while (path[i])
+	{
+		ft_strjoin_minishell(&(path[i]), "/");
+		ft_strjoin_minishell(&(path[i]), lst->token);
+		// char * args[] = {path[i], "Makefile", NULL};
+		//ft_printf("%s\n", path[i]);
+		execve(path[i], args, env);
+		++i;
+	}
+	return (1);
+}
+
 int	excute(t_new *lst, char **env)
 {
-	//int	pipes_num;
 	char	**path;
 	int		i;
 	int		id;
@@ -72,27 +109,17 @@ int	excute(t_new *lst, char **env)
 	while (env[i] && !ft_strnstr(env[i], "PATH=", 5))
 		++i;
 	env[i] = ft_strnstr(env[i], "PATH=", 5);
-
 	//Check if path is ther
 	if (env[i] == NULL)
 		return (0);
-	
 	// split path
-	ft_printf("%s\n", env[i]);
-	
+	//ft_printf("%s\n", env[i]);
 	path = ft_split(env[i] + 5, ':');
 	i = 0;
 	id = fork();
 	if (id == 0)
 	{
-		while (path[i])
-		{
-			ft_strjoin_minishell(&(path[i]), "/cat");
-			char * args[] = {path[i], "green.txt", NULL};
-			ft_printf("%s\n", path[i]);
-			execve(path[i], args, env);
-			++i;
-		}
+		child1 (lst, path, env);
 	}
 	// clear ing the split
 	if (id != 0)

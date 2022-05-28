@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/28 10:25:35 by mkaruvan         ###   ########.fr        #
+#    Updated: 2022/05/28 12:59:43 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 PNAME = parser
 
-SRC = minishell.c pipex.c
+SRC = minishell.c pipex.c temp_list.c
 
 SRCP = parser.c
 
@@ -42,7 +42,7 @@ $(NAME): $(OBJS) $(OBJSP)
         $(MAKE) all -C $$dir; \
     done
 	$(CC) $(CFALGS) $(SRC)  \
-	 -Lft_printf -lftprintf -Llibft -lft -o $(NAME)
+	 -Lft_printf -lftprintf -Llibft -lft parsing/parsing.a -o $(NAME)
 	$(CC) $(CFALGS) $(SRCP)  \
 	 parsing/parsing.a \
 	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o $(PNAME)

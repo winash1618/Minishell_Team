@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 06:20:49 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 12:58:53 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 # include "ft_printf/ft_printf.h"
 # include "parsing/parser.h"
 
-int	excute(t_new *lst, char **env);
+int		excute(t_new *lst, char **env);
+void	temp_lstadd_back(t_new **lst, t_new *node);
+t_new	*temp_lst_newnode(char *str);
 
 
 #endif

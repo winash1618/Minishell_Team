@@ -6,13 +6,45 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:54:24 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 11:11:29 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/28 14:48:10 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
 
-// t_new temp_lst_newnode(char *str)
-// {
-// 	t_new cd
-// }
+t_new	*temp_lst_newnode(char *str)
+{
+	t_new	*lst;
+
+	lst = (t_new *)malloc(sizeof(*lst));
+	lst->es = NULL;
+	lst->lst = NULL;
+	lst->next = NULL;
+	lst->prev = NULL;
+	lst->token = str;
+	lst->d_flag = 0;
+	return (lst);
+}
+
+void	temp_lstadd_back(t_new **lst, t_new *node)
+{
+	t_new	*back;
+
+	if (!lst || !node)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = node;
+		node->next = NULL;
+		node->prev = NULL;
+		return ;
+	}
+	back = *lst;
+	while (back->next)
+	{
+		back = back->next;
+	}
+	node->next = NULL;
+	node->prev = back;
+	back->next = node;
+}
