@@ -62,8 +62,11 @@ int	excute(t_new *lst, char **env)
 	//int	pipes_num;
 	char	**path;
 	int		i;
+	int		id;
+	int		status;
 
 	i = 0;
+	status = 0;
 	(void)lst;
 	//Find Path
 	while (env[i] && !ft_strnstr(env[i], "PATH=", 5))
@@ -79,13 +82,23 @@ int	excute(t_new *lst, char **env)
 	
 	path = ft_split(env[i] + 5, ':');
 	i = 0;
-	while (path[i])
+	id = fork();
+	if (id == 0)
 	{
-		ft_strjoin_minishell(&(path[i]), "/ls");
-		char * args[] = {path[i], "-la", NULL};
-		execve(path[i], args, env);
-		ft_printf("%s\n", path[i]);
-		++i;
+		while (path[i])
+		{
+			ft_strjoin_minishell(&(path[i]), "/cat");
+			char * args[] = {path[i], "green.txt", NULL};
+			ft_printf("%s\n", path[i]);
+			execve(path[i], args, env);
+			++i;
+		}
+	}
+	// clear ing the split
+	if (id != 0)
+	{
+		waitpid(id, &status, 0);
+		ft_printf("The parent is alive\n");
 	}
 	clear_str_sep(path);
 	return (0);

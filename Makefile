@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
+#    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
 #    Updated: 2022/05/28 10:25:35 by mkaruvan         ###   ########.fr        #
@@ -46,6 +46,7 @@ $(NAME): $(OBJS) $(OBJSP)
 	$(CC) $(CFALGS) $(SRCP)  \
 	 parsing/parsing.a \
 	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o $(PNAME)
+
 
 $(SUBDIRS):
 	for dir in $(SUBDIRS); do \

@@ -12,6 +12,10 @@
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+
+# include <sys/wait.h>
+# include <unistd.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 # include "parsing/parser.h"
