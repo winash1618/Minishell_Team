@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 09:20:21 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/16 11:17:41 by ayassin          ###   ########.fr        #
+#    Updated: 2022/05/27 18:31:42 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC = ft_printfhelper.c ft_printf.c
 BNS_SRC = ft_printfhelper1_bonus.c ft_printfhelper2_bonus.c\
 		 ft_printfhelper3_bonus.c ft_printf_bonus.c
 
-DIRS = ../libft_beta
+DIRS = ../libft
 
 CC = gcc
 
@@ -32,7 +32,7 @@ BNS_OBJS = $(BNS_SRC:.c=.o)
 all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -I../libft_beta -c $^ -o $@
+	$(CC) $(CFLAGS) -I../libft -c $^ -o $@
 
 $(NAME): $(SUBDIRS) $(OBJS)
 	ar cr  $(NAME) $(OBJS)
