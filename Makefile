@@ -6,15 +6,13 @@
 #    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/28 06:36:34 by mkaruvan         ###   ########.fr        #
+#    Updated: 2022/05/28 10:25:35 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 PNAME = parser
-
-Headers = minishell.h
 
 SRC = minishell.c pipex.c
 
@@ -28,7 +26,7 @@ OBJSP = $(SRCP:.c=.o)
 
 CC = gcc
 
-CFLAGS = -g3 -Wall -Werror -Wextra 
+CFLAGS = -ggdb -Wall -Werror -Wextra 
 
 all: $(NAME)
 
@@ -43,11 +41,11 @@ $(NAME): $(OBJS) $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFALGS) $(SRC) -Llibft -lft \
-	 -Lft_printf -lftprintf -o $(NAME)
-	$(CC) $(CFALGS) $(SRCP) -Llibft -lft \
+	$(CC) $(CFALGS) $(SRC)  \
+	 -Lft_printf -lftprintf -Llibft -lft -o $(NAME)
+	$(CC) $(CFALGS) $(SRCP)  \
 	 parsing/parsing.a \
-	 -Lft_printf -lftprintf -ltermcap -lreadline -o $(PNAME)
+	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o $(PNAME)
 
 $(SUBDIRS):
 	for dir in $(SUBDIRS); do \

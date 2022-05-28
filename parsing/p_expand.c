@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:27:21 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:22:14 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 10:09:23 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,13 @@ char *get_str(char *str)
 	return (s);
 }
 
-char *get_expanded_string(char *str, char **env)
+t_list *get_expanded_list(char *str, char **env)
 {
 	int i = 0;
-	char *s;
+	
 	t_list *lst;
 	lst = NULL;
 	t_list *tmp;
-	s = "";
 	while(str[i])
 	{
 		if (str[i] == '$')
@@ -100,7 +99,15 @@ char *get_expanded_string(char *str, char **env)
 				i++;
 		}
 	}
-	
+	return (lst);
+}
+
+char *get_expanded_string(char *str, char **env)
+{
+	char *s;
+	s = "";
+	t_list *lst = get_expanded_list(str, env);
+
 	while (lst)
 	{
 		ft_strjoin_ps(&s, (char *)lst->content, 0);

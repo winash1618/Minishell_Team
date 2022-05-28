@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:36:54 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:22:05 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 10:08:49 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void dollar_expansion(t_new *cmd, char **env)
 	{
 		if (cmd->d_flag)
 		{
-			printf("%s \n", cmd->token);
-			cmd->es = get_expanded_string(cmd->token, env);
+			if (cmd->flag == 1 || cmd->flag == 2)
+				cmd->es = get_expanded_string(cmd->token, env);
+			else
+				cmd->lst = get_expanded_list(cmd->token, env);
 		}
 		cmd = cmd->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:22:30 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 10:39:10 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ void lst_add_new(t_new **pars, char *str, t_info *info)
 	(*pars)->token = str;
 	(*pars)->next = NULL;
 	(*pars)->prev = NULL;
-	if (info->w_flag == 1)
-		(*pars)->flag = 1;
-	else if (info->w_flag == 3)
-		(*pars)->flag = 3;
+	if (info)
+	{
+		if (info->w_flag == 1)
+			(*pars)->flag = 1;
+		else if (info->w_flag == 3)
+			(*pars)->flag = 3;
+	}
+	
 }
 void lst_add_back(t_new **pars, char *str, t_info *info)
 {
@@ -34,10 +38,13 @@ void lst_add_back(t_new **pars, char *str, t_info *info)
 	}
 	temp = malloc(sizeof(t_new));
 	temp->token = str;
-	if (info->w_flag == 1)
+	if (info)
+	{
+		if (info->w_flag == 1)
 		temp->flag = 1;
-	else if (info->w_flag == 3)
-		(temp)->flag = 3;
+		else if (info->w_flag == 3)
+			(temp)->flag = 3;
+	}
 	(*pars)->next = temp;
 	temp->next = NULL;
 	temp->prev = (*pars);

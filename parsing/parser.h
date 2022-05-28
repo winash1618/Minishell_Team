@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 06:18:39 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 10:11:50 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct list
 {
 	char	*token;
 	int	flag;
+	t_list *lst;
 	char *es; // expanded string.
 	int d_flag; // indicate presence of dollar sign in the string.
 	struct list	*next;
@@ -88,6 +89,7 @@ char *get_key(char *line);
 char *get_value(char *line);
 void var_lexer (t_var **var, char *line);
 // ----------------Handling dollar----------------------
+
 void find_dollar_presence(t_new *cmd);// Find the presence of dollar
 int is_meta(char c);// check if the character meta or not returns one if true.
 int get_strlen(char *str);// get string length for dollar expansion
@@ -96,6 +98,7 @@ char *get_dollar_path(char *str, char **env);//  if success returns the matching
 char *get_str(char *str);// It returns normal string until dollar sign.
 char *get_expanded_string(char *str, char **env);// It returns entire string with expansion
 void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
+t_list *get_expanded_list(char *str, char **env);
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
