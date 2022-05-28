@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/12/13 09:20:21 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/28 06:52:02 by mkaruvan         ###   ########.fr        #
+#    Created: 2022/05/28 06:09:35 by mkaruvan          #+#    #+#              #
+#    Updated: 2022/05/28 06:13:49 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = parsing.a
 
-SRC = ft_printfhelper.c ft_printf.c
-
-BNS_SRC = ft_printfhelper1_bonus.c ft_printfhelper2_bonus.c\
-		 ft_printfhelper3_bonus.c ft_printf_bonus.c
+SRC = 	p_assign_1.c p_assign_2.c p_dollar.c \
+		p_expand.c p_list_assign.c p_list_normal.c \
+		p_normal.c p_quote.c p_utils_1.c p_utils_2.c \
+		prompt.c
 
 DIRS = ../libft
 
@@ -26,22 +26,17 @@ CFLAGS = -g3 -Werror -Wall -Wextra
 
 OBJS = $(SRC:.c=.o)
 
-BNS_OBJS = $(BNS_SRC:.c=.o)
-
 
 all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -I../libft -c $^ -o $@
+	$(CC) $(CFLAGS) -I../libft -I../ft_printf -c $^ -o $@
 
-$(NAME): $(SUBDIRS) $(OBJS)
+$(NAME): $(OBJS)
 	ar cr  $(NAME) $(OBJS)
 
-bonus: $(BNS_OBJS)
-	ar cr $(NAME) $(BNS_OBJS)
-
 clean:
-	rm -f $(OBJS) $(BNS_OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)

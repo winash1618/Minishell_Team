@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   p_assign_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 06:20:49 by mkaruvan         ###   ########.fr       */
+/*   Created: 2022/05/27 15:35:46 by mkaruvan          #+#    #+#             */
+/*   Updated: 2022/05/28 06:21:57 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "parser.h"
 
+void var_lexer (t_var **var, char *line)
+{
+	
+	static int wc;
 
-# include <sys/wait.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-# include "parsing/parser.h"
-
-int	excute(t_new *lst, char **env);
-
-
-#endif
+	while (*line && ft_isspace(*line))
+		line++;
+	if (!wc)
+	{
+		lst_add_newvar(var, line);
+		wc++;
+	}
+	else
+	{
+		lst_add_backvar(var, line);
+		wc++;
+	}
+}

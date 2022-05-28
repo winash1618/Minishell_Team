@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 06:20:49 by mkaruvan         ###   ########.fr       */
+/*   Created: 2022/05/27 14:55:02 by mkaruvan          #+#    #+#             */
+/*   Updated: 2022/05/28 10:19:37 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "parser.h"
 
+char *ft_readline(void)
+{
+	char *line= readline(">Enter a string: ");
+	return (line);
+}
 
-# include <sys/wait.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-# include "parsing/parser.h"
+void ft_clearscreen(void)
+{
+	char buf[1024];
+	char *str;
 
-int	excute(t_new *lst, char **env);
-
-
-#endif
+	tgetent(buf, getenv("TERM"));
+	str = tgetstr("cl", NULL);
+	printf("%s", str);
+	// printf("");
+}

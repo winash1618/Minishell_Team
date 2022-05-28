@@ -6,13 +6,13 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:57:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/26 10:54:06 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/27 06:49:12 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* Retun a string scince the first occurnce of string "needle" 
+/* Retun a string since the first occurnce of string "needle" 
 in the string "haystack" within "len" chars of "haystack"*/
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

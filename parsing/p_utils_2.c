@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   p_utils_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 06:20:49 by mkaruvan         ###   ########.fr       */
+/*   Created: 2022/05/27 14:53:57 by mkaruvan          #+#    #+#             */
+/*   Updated: 2022/05/28 06:23:04 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+// Normal utilities
+#include "parser.h"
+// to check for spaces
+int ft_isspace(char c)
+{
+	if (c == '\n' || c == ' ' || c == '	')
+		return (1);
+	return (0);
+}
 
-
-# include <sys/wait.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-# include "parsing/parser.h"
-
-int	excute(t_new *lst, char **env);
-
-
-#endif
+// to check for quotes
+int is_quote(char c)
+{
+	if (c == '"' || c == 39)
+		return (0);
+	return (1);
+} 
