@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/27 18:45:10 by ayassin          ###   ########.fr        #
+#    Updated: 2022/05/28 08:41:41 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,8 @@ $(NAME): $(OBJS) $(POBJS)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFALGS) $(SRC) -L./libft -lft \
-	-L./ft_printf -lftprintf -o $(NAME)
+	$(CC) $(CFALGS) $(SRC) \
+	-L./ft_printf -lftprintf -L./libft -lft -o $(NAME)
 	$(CC) $(CFALGS) $(PDIR)/$(PARSE) -Llibft -lft \
 	 -Lft_printf -lftprintf -o $(PNAME)
 
