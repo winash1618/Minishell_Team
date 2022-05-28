@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/27 18:47:05 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/28 09:37:59 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ int	excute(t_new *lst, char **env)
 	// clear ing the split
 	if (id != 0)
 	{
-		waitpid(id, &status, 0);		
-		ft_printf("The pareent is alive\n");
+		waitpid(id, &status, 0);
+		ft_printf("The parent is alive\n");
 	}
 	clear_str_sep(path);
 	return (0);
