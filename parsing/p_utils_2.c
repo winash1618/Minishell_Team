@@ -6,12 +6,13 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:53:57 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:23:04 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:28:44 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Normal utilities
-#include "parser.h"
+#include "../minishell.h"
+
 // to check for spaces
 int ft_isspace(char c)
 {

@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_assign_2.c                                       :+:      :+:    :+:   */
+/*   p_redirection.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 15:35:46 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 17:28:44 by mkaruvan         ###   ########.fr       */
+/*   Created: 2022/05/28 10:49:39 by mkaruvan          #+#    #+#             */
+/*   Updated: 2022/05/28 17:28:10 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void var_lexer (t_var **var, char *line)
+void find_redirection_presence(t_new *cmd)
 {
-	
-	static int wc;
-
-	while (*line && ft_isspace(*line))
-		line++;
-	if (!wc)
+	while(cmd != NULL)
 	{
-		lst_add_newvar(var, line);
-		wc++;
-	}
-	else
-	{
-		lst_add_backvar(var, line);
-		wc++;
+		cmd->d_flag = 0;
+		int i = 0;
+		while(cmd->token[i])
+		{
+			if (cmd->token[i] == '>')
+			{
+				if (cmd->token[i + 1] == '>' )
+					cmd->r2_flag = 1;
+				else
+					cmd->r_flag = 1;
+			}
+			else if (cmd->token[i] == '<')
+			{
+				if (cmd->token[i + 1] == '<')
+					cmd->l2_flag = 1;
+				else
+					cmd->l_flag = 1;
+			}
+			i++;
+		}
+		cmd = cmd->next;
 	}
 }

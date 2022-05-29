@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:27:21 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 10:09:23 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 07:27:31 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 char *get_dollar_path(char *str, char **env)
 {
@@ -24,7 +24,11 @@ char *get_dollar_path(char *str, char **env)
 	i = 0;
 	s = NULL;
 	if (len)
+	{
 		s = ft_substr(str, 0, len);
+		t_list *tmp = ft_lstnew((void *)(s));
+		ft_lstadd_back(&g_m, tmp);
+	}
 	s1 = NULL;
 	while(env[i] && len)
 	{
@@ -54,6 +58,8 @@ char *get_str(char *str)
 	while (str[i] && str[i] != '$')
 		i++;
 	s = (char *)malloc(sizeof(char) * (i + 1));
+	t_list *tmp = ft_lstnew((void *)(s));
+		ft_lstadd_back(&g_m, tmp);
 	i = 0;
 	while (str[i] && str[i] != '$')
 	{
@@ -70,30 +76,40 @@ t_list *get_expanded_list(char *str, char **env)
 	
 	t_list *lst;
 	lst = NULL;
-	t_list *tmp;
+	t_list *temp;
 	while(str[i])
 	{
 		if (str[i] == '$')
 		{
-			ft_printf("hi");
 			if (!lst)
+			{
 				lst = ft_lstnew((void *)get_dollar_path(str + i + 1, env));
+				t_list *tmp = ft_lstnew((void *)(lst));
+				ft_lstadd_back(&g_m, tmp);
+			}
 			else
 			{
-				tmp = ft_lstnew((void *)get_dollar_path(str + i + 1, env));
-				ft_lstadd_back(&lst, tmp);
-				
+				temp = ft_lstnew((void *)get_dollar_path(str + i + 1, env));
+				ft_lstadd_back(&lst, temp);
+				t_list *tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
 			}
 			i = i + get_strlen(str + i + 1) + 1;
 		}
 		else
 		{
 			if (!lst)
+			{
 				lst = ft_lstnew((void *)get_str(str + i));
+				t_list *tmp = ft_lstnew((void *)(lst));
+				ft_lstadd_back(&g_m, tmp);
+			}
 			else
 			{
-				tmp = ft_lstnew((void *)get_str(str + i));
-				ft_lstadd_back(&lst, tmp);
+				temp = ft_lstnew((void *)get_str(str + i));
+				ft_lstadd_back(&lst, temp);
+				t_list *tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
 			}
 			while (str[i] && str[i] != '$')
 				i++;
