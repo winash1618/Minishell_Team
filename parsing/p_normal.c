@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:16:26 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 17:28:44 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 07:05:09 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char *normal_word(char *line)
 	char *word;
 	int len = get_word_len(line);
 	word = malloc(sizeof(char) * (len + 1));
+	t_list *tmp = ft_lstnew((void *)(word));
+	ft_lstadd_back(&g_m, tmp);
 	int i = 0;
 	while (line[i] && is_quote(line[i]))
 	{
@@ -96,7 +98,8 @@ void normal_lexer (t_new **pars, t_info *info, char *str)
 		if (!wc && *str && temp1)
 		{
 			(*pars) = malloc(sizeof(t_new));
-			g_m.lst = (*pars);
+			t_list *tmp = ft_lstnew((void *)(*pars));
+			ft_lstadd_back(&g_m, tmp);
 			lst_add_new(pars, temp1, info);
 			wc++;
 		}

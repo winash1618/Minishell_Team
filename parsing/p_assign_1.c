@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:32:04 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 17:28:36 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 07:22:35 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,12 @@ char *get_key(char *line)
 	
 	len = get_vars(line);
 	if(len)
+	{
 		temp = malloc(sizeof(char) * (len + 1));
+		t_list *tmp = ft_lstnew((void *)(temp));
+		ft_lstadd_back(&g_m, tmp);
+	}
+		
 	int i = 0;
 	while (line[i] != '=' && line[i])
 	{
@@ -88,7 +93,11 @@ char *get_value(char *line)
 	len = 0;
 	len = get_len(line);
 	if(len)
+	{
 		temp = malloc(sizeof(char) * (len + 1));
+		t_list *tmp = ft_lstnew((void *)(temp));
+		ft_lstadd_back(&g_m, tmp);
+	}
 	int i = 0;
 	while (line[i])
 	{

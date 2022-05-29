@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 08:25:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 17:33:49 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 07:06:12 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf)
 	i1 = 0;
 	i2 = 0;
 	fullstr = (char *)malloc(ft_strlen(*prestr) + ft_strlen(sufstr) + 1);
+	t_list *tmp = ft_lstnew((void *)(fullstr));
+	ft_lstadd_back(&g_m, tmp);
 	if (fullstr == NULL)
 		return (0);
 	while (*prestr && (*prestr)[i1])

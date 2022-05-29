@@ -6,14 +6,12 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 17:31:29 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 06:51:03 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-
 # include <sys/wait.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -27,12 +25,11 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-
 // for saving local variable
 typedef struct var 
 {
-	char *key;
-	char *value;
+	char *key; // consider "x = y" then x is key
+	char *value; // y is value
 	struct var *next;
 	struct var *prev;
 }	t_var;
@@ -40,15 +37,15 @@ typedef struct var
 // for saving commands
 typedef struct list
 {
-	char	*token;
-	int	flag;
-	t_list *lst;
+	char	*token; // contains splited string 
+	int	flag; // returns 1 if double quote is present, returns 2 if single quote, 3 if normal word.
+	t_list *lst;// used for expansion of word without quote
 	char *es; // expanded string.
 	int d_flag; // indicate presence of dollar sign in the string.
-	int l_flag;
-	int l2_flag;
-	int r_flag;
-	int r2_flag;
+	int l_flag; // true if < is present and l2_flag is false
+	int l2_flag; // true if << is present 
+	int r_flag; // true if > is present and r2_flag is false
+	int r2_flag; // true if >> is present 
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
@@ -63,17 +60,20 @@ typedef struct info
 	int dq_flag; // presence of $ then " or '
 } t_info;
 
+// // Global structure variable
+// typedef struct free_list
+// {
+// 	char *s1;
+// 	t_var *vars;
+// 	t_new *new;
+// 	t_info *inf;
+// 	t_list *lst;
+// 	g_list *next;
+// 	g_list *prev;
+// } g_list;
 
-
-typedef struct free_list
-{
-	char *s1;
-	t_var *vars;
-	t_new *lst;
-	t_info *inf;
-} g_list;
-
-extern g_list g_m;
+// Global variable declaration
+extern t_list *g_m;
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
@@ -85,21 +85,21 @@ char *ft_readline(void);// Display a prompt and wait for input
 int ft_strlen_ch(char *line, char c);// find length of word until quote.
 void quote_counter(char *line, t_info *info);//count the number single and double quotes saperately if there is odd number return false
 char *quoted_word(char *line, char ch);//get the quoted word without quotes
-char *go_past_quotes(char *s, char ch);
+char *go_past_quotes(char *s, char ch); // move pointer after the closing quote
 // ----------handling normal-------------------
 int get_word_len(char *line); //find the word length for normal part in a string
-char *normal_word(char *line);
+char *normal_word(char *line); //get the normal word
 void normal_lexer (t_new **pars, t_info *info, char *str);//normal part
-char *get_word(t_info *info, char *line);
+char *get_word(t_info *info, char *line); 
 int check_word_for_parsing(char *line);
 // ---------List operations for words--------------------
-void lst_add_new(t_new **pars, char *str, t_info *info);
-void lst_add_back(t_new **pars, char *str, t_info *info);
-void lst_print(t_new *pars);
+void lst_add_new(t_new **pars, char *str, t_info *info); // adds new node to the pars structure
+void lst_add_back(t_new **pars, char *str, t_info *info); // adds new node at back side of pars structure
+void lst_print(t_new *pars); //prints contents of structure var
 //----------List operations for variable assignment-----
-void lst_add_newvar(t_var **var, char *line);
-void lst_add_backvar(t_var **var, char *line);
-void lst_print_vars(t_var *vars);
+void lst_add_newvar(t_var **var, char *line); // adds new node to the var structure
+void lst_add_backvar(t_var **var, char *line); // adds new node at back side of var structure
+void lst_print_vars(t_var *vars); // print structure var
 //----------variable assignment-------------------------
 int check_var(char *line, t_info *info);
 int get_vars(char *line);

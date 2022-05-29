@@ -6,13 +6,13 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 16:55:07 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 07:18:06 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-g_list g_m;
+t_list *g_m;
 // int main(int ac, char **argv, char **env)
 // {
 // 	ac++;
@@ -24,14 +24,22 @@ g_list g_m;
 // 	// printf("hi");
 // }
 
+void delete_content(void *content)
+{
+	if (content)
+		free(content);
+}
+
 int main(int ac, char **av, char **env)
 {
 	ac++;
 	(void)av;
+	g_m = NULL;
 	// (void)env;
 	// char *buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
 	t_info *info;
 	info = malloc(sizeof(t_info));
+	g_m = ft_lstnew((void *)info);
 	t_new *cmd;
 	info->flag = 1;
 	info->e_flag = 0;
@@ -75,6 +83,6 @@ int main(int ac, char **av, char **env)
 		}
 		free (line);
 	}
-	free(g_m.lst);
+	ft_lstclear(&g_m, &delete_content);
 	return(0);
 }
