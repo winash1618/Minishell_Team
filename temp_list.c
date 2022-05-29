@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   temp_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:54:24 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 14:48:10 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/29 08:51:18 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
-
 t_new	*temp_lst_newnode(char *str)
 {
 	t_new	*lst;

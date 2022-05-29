@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/28 12:59:43 by ayassin          ###   ########.fr        #
+#    Updated: 2022/05/29 08:47:04 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,16 +42,11 @@ $(NAME): $(OBJS) $(OBJSP)
         $(MAKE) all -C $$dir; \
     done
 	$(CC) $(CFALGS) $(SRC)  \
-	 -Lft_printf -lftprintf -Llibft -lft parsing/parsing.a -o $(NAME)
+	-Lft_printf -lftprintf parsing/parsing.a -Llibft -lft -o $(NAME)
 	$(CC) $(CFALGS) $(SRCP)  \
 	 parsing/parsing.a \
 	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o $(PNAME)
 
-
-$(SUBDIRS):
-	for dir in $(SUBDIRS); do \
-        $(MAKE) all -C $$dir; \
-    done
 
 clean:
 	rm -f $(OBJS)
