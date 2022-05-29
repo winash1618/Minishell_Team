@@ -6,12 +6,12 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:58:25 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:22:48 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 07:05:34 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // For handling the quotes
-#include "parser.h"
+#include "../minishell.h"
 
 void quote_counter(char *line, t_info *info)
 {
@@ -60,6 +60,8 @@ char *quoted_word(char *line, char ch)
 	if (len > 0)
 	{
 		char *s = malloc(sizeof(char) * (len + 1));
+		t_list *tmp = ft_lstnew((void *)(s));
+		ft_lstadd_back(&g_m, tmp);
 		while(line[i] && line[i]!=ch)
 		{
 			s[i] = line[i];

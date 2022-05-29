@@ -6,15 +6,17 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:34:28 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:22:22 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 07:02:50 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 void lst_add_newvar(t_var **var, char *line)
 {
 	(*var) = malloc(sizeof(t_var));
+	t_list *tmp = ft_lstnew((void *)(*var));
+	ft_lstadd_back(&g_m, tmp);
 		(*var)->key = get_key(line);
 		while (*line != '=' && *line)
 			line++;
@@ -31,6 +33,8 @@ void lst_add_backvar(t_var **var, char *line)
 		t_var *t;
 		tem = *var;
 		t = malloc(sizeof(t_var));
+		t_list *tmp = ft_lstnew((void *)(t));
+		ft_lstadd_back(&g_m, tmp);
 		while ((*var)->next)
 			*var = (*var)->next;
 		t->key = get_key(line);

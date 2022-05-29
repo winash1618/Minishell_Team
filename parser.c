@@ -6,12 +6,13 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 10:26:23 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 07:18:06 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+t_list *g_m;
 // int main(int ac, char **argv, char **env)
 // {
 // 	ac++;
@@ -23,27 +24,36 @@
 // 	// printf("hi");
 // }
 
+void delete_content(void *content)
+{
+	if (content)
+		free(content);
+}
+
 int main(int ac, char **av, char **env)
 {
 	ac++;
 	(void)av;
+	g_m = NULL;
 	// (void)env;
-	char *buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
+	// char *buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
 	t_info *info;
 	info = malloc(sizeof(t_info));
+	g_m = ft_lstnew((void *)info);
 	t_new *cmd;
 	info->flag = 1;
 	info->e_flag = 0;
 	t_var *var;
-	char *str;
-	str = NULL;
-	tgetent(buf, getenv("TERM"));
-	str = tgetstr("cl", NULL);
-	free(buf);
+	// char *str;
+	// str = NULL;
+	// tgetent(buf, getenv("TERM"));
+	// str = tgetstr("cl", NULL);
+	// free(buf);
 	// printf("%s", str);
 	// printf(" ");
 	char *line;
-	while (1)
+	int i = 0;
+	while (++i < 5)
 	{
 		info->e_flag = 0;
 		info->q_flag = 0;
@@ -73,5 +83,6 @@ int main(int ac, char **av, char **env)
 		}
 		free (line);
 	}
+	ft_lstclear(&g_m, &delete_content);
 	return(0);
 }

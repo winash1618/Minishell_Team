@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:55:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 10:19:37 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:28:44 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 char *ft_readline(void)
 {
