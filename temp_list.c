@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   temp_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:54:24 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/29 08:51:18 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 11:51:10 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,35 @@ void	temp_lstadd_back(t_new **lst, t_new *node)
 	node->next = NULL;
 	node->prev = back;
 	back->next = node;
+}
+
+void	temp_list_clear(t_new **lst)
+{
+	t_new	*temp;
+	t_new	*tempnext;
+
+	if (lst)
+	{
+		temp = *lst;
+		while (temp != 0)
+		{
+			tempnext = temp -> next;
+			free(temp);
+			temp = tempnext;
+		}
+		*lst = 0;
+	}
+}
+
+int	list_has_pipes(t_new *lst)
+{
+	if (lst == NULL)
+		return (0);
+	while (lst)
+	{
+		if (*(lst->token) == '|')
+			return (1);
+		lst = lst->next;
+	}
+	return (0);
 }
