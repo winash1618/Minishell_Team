@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/29 06:51:03 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 08:27:12 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,6 @@ t_list *get_expanded_list(char *str, char **env);
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
-
-
-
 int	excute(t_new *lst, char **env);
 int	ft_strjoin_minishell(char **prestr, char *sufstr);
 void	temp_lstadd_back(t_new **lst, t_new *node);
