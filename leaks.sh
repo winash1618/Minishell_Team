@@ -1,0 +1,1 @@
+valgrind -s --track-fds=yes --leak-check=full --show-leak-kinds=all --suppressions=.ignore_readline ./parser

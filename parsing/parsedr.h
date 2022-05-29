@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ../minishell.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/28 10:11:50 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:08:34 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
+# include "../minishell.h"
 
 // for saving local variable
 typedef struct var 
@@ -41,6 +42,10 @@ typedef struct list
 	t_list *lst;
 	char *es; // expanded string.
 	int d_flag; // indicate presence of dollar sign in the string.
+	int l_flag;
+	int l2_flag;
+	int r_flag;
+	int r2_flag;
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
@@ -54,6 +59,16 @@ typedef struct info
 	int q_flag; // exist when count either of the quotes is odd
 	int dq_flag; // presence of $ then " or '
 } t_info;
+
+
+
+typedef struct free_list
+{
+	char *s1;
+	t_var *vars;
+	t_new *lst;
+	t_info *inf;
+} g_list;
 
 //---------------------------------------------//
 //--------------Parsing Functions--------------//

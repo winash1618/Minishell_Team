@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:32:04 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:21:48 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:28:36 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 // Functions below is used for variable assignment.
 int check_var(char *line, t_info *info)

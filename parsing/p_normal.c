@@ -6,11 +6,12 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:16:26 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:22:41 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:28:44 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
+
 // handling words without quotes
 int get_word_len(char *line)
 {
@@ -95,6 +96,7 @@ void normal_lexer (t_new **pars, t_info *info, char *str)
 		if (!wc && *str && temp1)
 		{
 			(*pars) = malloc(sizeof(t_new));
+			g_m.lst = (*pars);
 			lst_add_new(pars, temp1, info);
 			wc++;
 		}

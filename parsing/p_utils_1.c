@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 08:25:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 06:22:55 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:33:49 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 // utils for dollar expansion.
 
@@ -58,4 +58,35 @@ int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf)
 		free (sufstr);
 	*prestr = fullstr;
 	return (1);
+}
+
+/*Appends suffex string "sufstr" to the prefix string "prestr" 
+up until "sufstr" char 0 or new line. 
+Return 1 if sufstr has new lone, -1 if Memory allocation failed, 0 otherwise
+**malloc DANGER**/
+int	ft_strjoin_minishell(char **prestr, char *sufstr)
+{
+	int		i1;
+	int		i2;
+	int		lineflag;
+	char	*fullstr;
+
+	i1 = 0;
+	i2 = 0;
+	lineflag = 0;
+	fullstr = (char *)malloc(ft_strlen(*prestr) + ft_strlen(sufstr) + 1);
+	if (fullstr == NULL)
+		return (-10);
+	while (*prestr && (*prestr)[i1])
+	{
+		fullstr[i1] = (*prestr)[i1];
+		++i1;
+	}
+	while (sufstr[i2] && sufstr[i2] != '\n')
+		fullstr[i1++] = sufstr[i2++];
+	fullstr[i1] = 0;
+	if (*prestr)
+		free (*prestr);
+	*prestr = fullstr;
+	return (lineflag);
 }

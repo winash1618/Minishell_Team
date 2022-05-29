@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/28 10:39:10 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:28:44 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 // this is for getting words
 void lst_add_new(t_new **pars, char *str, t_info *info)
@@ -57,7 +57,15 @@ void lst_print(t_new *pars)
 {
 	while(pars != NULL)
 	{
-		printf("<token: %s> <flag: %d> <d_flag: %d", pars->token, pars->flag, pars->d_flag);
+		printf("<token: %s> <flag: %d> <d_flag: %d> ", pars->token, pars->flag, pars->d_flag);
+		t_list *tmp;
+		tmp = pars->lst;
+		while (tmp)
+		{
+			printf("%s ", (char *)tmp->content);
+			tmp =tmp->next;
+		}
+		printf("\n");
 		pars= pars->next;
 	}
 }
