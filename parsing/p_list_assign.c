@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:34:28 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 07:02:50 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 10:31:39 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void lst_add_newvar(t_var **var, char *line)
 	(*var) = malloc(sizeof(t_var));
 	t_list *tmp = ft_lstnew((void *)(*var));
 	ft_lstadd_back(&g_m, tmp);
-		(*var)->key = get_key(line);
-		while (*line != '=' && *line)
-			line++;
+	(*var)->key = get_key(line);
+	while (*line != '=' && *line)
 		line++;
-		(*var)->value = get_value(line);
-		(*var)->prev = NULL;
-		(*var)->next = NULL;
+	line++;
+	(*var)->value = get_value(line);
+	(*var)->prev = NULL;
+	(*var)->next = NULL;
 
 }
 

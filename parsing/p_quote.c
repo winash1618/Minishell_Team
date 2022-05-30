@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:58:25 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 07:05:34 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/30 06:34:00 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,49 @@ void quote_counter(char *line, t_info *info)
 	c = 0;
 	char *temp; 
 	temp = line;
-	while (*line)
+	int d;
+
+	d = 0;
+	char *temp2 = ft_strdup(temp);
+
+	int i = 0;
+	while (temp2[i])
 	{
-		if (*line == '"')
-			c++;
-		line++;
+		if (temp2[i] == '"')
+		{
+			i++;
+			while (temp2[i] != '"' && temp2[i]) 
+			{
+				temp2[i] = 'a';
+				i++;
+			}
+			if (temp2[i])
+				i++;
+		}
+		else if (temp2[i] == 39)
+		{
+			i++;
+			while (temp2[i] != 39 && temp2[i]) 
+			{
+				temp2[i] = 'a';
+				i++;
+			}
+			if (temp2[i])
+				i++;
+		}
+		else
+			i++;
 	}
-	if (c % 2)
-		info->q_flag = 1;
-	c = 0;
-	while (*temp)
+	i = 0;
+	while (temp2[i])
 	{
-		if (*temp == '"')
+		if (temp2[i] == '"')
 			c++;
-		temp++;
+		else if (temp2[i] == 39)
+			d++;
+		i++;
 	}
-	if (c % 2)
+	if (c % 2 || d % 2)
 		info->q_flag = 1;
 }
 

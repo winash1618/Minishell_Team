@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   p_expand.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 14:27:21 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 11:18:44 by mkaruvan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "minishell.h"
 
-#include "../minishell.h"
-
+t_list *g_m;
 char *get_dollar_path(char *str, char **env)
 {
 	int i;
@@ -55,13 +44,34 @@ char *get_str(char *str)
 	char *s;
 	
 	i = 0;
-	while (str[i] && str[i] != '$')
+	while (str[i] && !is_meta(str[i]))
 		i++;
 	s = (char *)malloc(sizeof(char) * (i + 1));
 	t_list *tmp = ft_lstnew((void *)(s));
 	ft_lstadd_back(&g_m, tmp);
 	i = 0;
-	while (str[i] && str[i] != '$')
+	while (str[i] && !is_meta(str[i]))
+	{
+		s[i] = str[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
+
+char *get_meta(char *str)
+{
+	int i;
+	char *s;
+	
+	i = 0;
+	while (str[i] && is_no_dollar_meta(str[i]))
+		i++;
+	s = (char *)malloc(sizeof(char) * (i + 1));
+	t_list *tmp = ft_lstnew((void *)(s));
+	ft_lstadd_back(&g_m, tmp);
+	i = 0;
+	while (str[i] && is_no_dollar_meta(str[i]))
 	{
 		s[i] = str[i];
 		i++;
@@ -73,13 +83,30 @@ char *get_str(char *str)
 t_list *get_expanded_list(char *str, char **env)
 {
 	int i = 0;
-	
+	errno = 0;
 	t_list *lst;
 	lst = NULL;
 	t_list *temp;
 	while(str[i])
 	{
-		if (str[i] == '$')
+		if (str[i] == '$' && str[i + 1] == '?')
+		{
+			if (!lst)
+			{
+				lst = ft_lstnew((void *)ft_itoa(errno));
+				t_list *tmp = ft_lstnew((void *)(lst));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			else
+			{
+				temp = ft_lstnew((void *)ft_itoa(errno));// errno is 
+				ft_lstadd_back(&lst, temp);
+				t_list *tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			i = i + 2;
+		}
+		else if (str[i] == '$')
 		{
 			if (!lst)
 			{
@@ -96,7 +123,25 @@ t_list *get_expanded_list(char *str, char **env)
 			}
 			i = i + get_strlen(str + i + 1) + 1;
 		}
-		else
+		else if (is_no_dollar_meta(str[i]))
+		{
+			if (!lst)
+			{
+				lst = ft_lstnew((void *)get_meta(str + i));
+				t_list *tmp = ft_lstnew((void *)(lst));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			else
+			{
+				temp = ft_lstnew((void *)get_meta(str + i));
+				ft_lstadd_back(&lst, temp);
+				t_list *tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			while (str[i] && is_no_dollar_meta(str[i]))
+				i++;
+		}
+		else 
 		{
 			if (!lst)
 			{
@@ -111,7 +156,7 @@ t_list *get_expanded_list(char *str, char **env)
 				t_list *tmp = ft_lstnew((void *)(temp));
 				ft_lstadd_back(&g_m, tmp);
 			}
-			while (str[i] && str[i] != '$')
+			while (str[i] && !is_meta(str[i]))
 				i++;
 		}
 	}
@@ -126,9 +171,22 @@ char *get_expanded_string(char *str, char **env)
 
 	while (lst)
 	{
+		printf("%s \n",(char *)lst->content);
 		ft_strjoin_ps(&s, (char *)lst->content, 0);
 		lst = lst->next;
 	}
-	printf("%s \n", s);
+	// printf("%s \n", s);
 	return (s);
+}
+
+int main(int ac, char **argv, char **env)
+{
+	ac++;
+	(void)argv;
+	char *s = get_expanded_string("a(>$PATH&>$PATH&|a$PATHfsd$?", env);
+	// char *s = get_dollar_path("fsd", env);
+	// int s = get_strlen("aPATH&$PATH&|a");
+	// char *s = get_meta(">>>fsd");
+	// ft_printf("hi %s\n", s);
+	// printf("hi");
 }
