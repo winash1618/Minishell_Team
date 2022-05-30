@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/30 21:28:00 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/30 21:51:29 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ int	parent_forking(t_new *lst, char **path, char **env)
 			ft_printf("I am sending a child\n");
 			child1 (lst, path, env, fd);
 			exit(-1);
+			
 		}
 		else
 		{
