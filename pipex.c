@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/29 08:51:10 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 12:15:43 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,15 +115,24 @@ int	excute(t_new *lst, char **env)
 	//ft_printf("%s\n", env[i]);
 	path = ft_split(env[i] + 5, ':');
 	i = 0;
-	id = fork();
-	if (id == 0)
+	id = 0;
+	while (id == 0 && lst)
 	{
-		child1 (lst, path, env);
+		id = fork();
+		if (id != 0)
+			child1 (lst, path, env);
+		else
+		{
+			while (lst && *(lst->token) != '|') //use flag
+				lst = lst->next;
+			if (lst && *(lst->token) == '|') //use flag
+				lst = lst->next;
+			waitpid(id, &status, 0);
+		}
 	}
 	// clear ing the split
 	if (id != 0)
 	{
-		waitpid(id, &status, 0);
 		ft_printf("The parent is alive\n");
 	}
 	clear_str_sep(path);
