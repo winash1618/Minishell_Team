@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:32:04 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 07:22:35 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/29 13:29:49 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int get_len(char *line)
 	}
 	return (len);
 }
+
 char *get_key(char *line)
 {
 	int len;

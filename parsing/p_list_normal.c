@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 07:03:41 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:09:33 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void lst_print(t_new *pars)
 	{
 		printf("<token: %s> <flag: %d> <d_flag: %d> ", pars->token, pars->flag, pars->d_flag);
 		t_list *tmp;
+		tmp = NULL;
 		tmp = pars->lst;
 		while (tmp)
 		{
@@ -76,3 +77,5 @@ void lst_print(t_new *pars)
 		pars= pars->next;
 	}
 }
+
+// control - v then enter, gives ^M 
