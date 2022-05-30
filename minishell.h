@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/29 10:26:50 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/30 17:30:24 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,6 @@ int		ft_strjoin_minishell(char **prestr, char *sufstr);
 void	temp_lstadd_back(t_new **lst, t_new *node);
 t_new	*temp_lst_newnode(char *str);
 void	temp_list_clear(t_new **lst);
+int		list_has_pipes(t_new *lst);
+void	print_strarr(char **args);
 #endif

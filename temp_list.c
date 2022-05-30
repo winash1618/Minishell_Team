@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:54:24 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/29 11:51:10 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/05/30 17:30:11 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,13 @@ int	list_has_pipes(t_new *lst)
 		lst = lst->next;
 	}
 	return (0);
+}
+
+void	print_strarr(char **args)
+{
+	int i = 0;
+
+	while (args[i])
+		ft_printf("\"%s\" ", args[i++]);
+	ft_printf("\n");
 }
