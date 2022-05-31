@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:49:39 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 16:38:08 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/31 06:46:58 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void make_others_zero(t_new *cmd)
 		cmd->l2_flag = 0;
 	if (cmd->l_flag != 1)
 		cmd->l_flag = 0;
+	if (cmd->p_flag != 1)
+		cmd->p_flag = 0;
 }
 
 void make_all_zero(t_new *cmd)
@@ -32,6 +34,7 @@ void make_all_zero(t_new *cmd)
 		cmd->r_flag = 0;
 		cmd->l2_flag = 0;
 		cmd->l_flag = 0;
+		cmd->p_flag = 0;
 		// printf("%d %d %d %d \n", cmd->r2_flag, cmd->r_flag, cmd->l2_flag, cmd->l_flag);
 		cmd = cmd->next;
 	}
@@ -65,13 +68,22 @@ void find_redirection_presence(t_new *cmd)
 				}
 				i++;
 			}
+			i = 0;
+			while(cmd->token[i])
+			{
+				if (cmd ->token[i] == '|')
+				{
+					cmd->p_flag = 1;
+				}
+				i++;
+			}
 		}
 		else
 		{
 			break;
 		}
 		make_others_zero(cmd);
-		printf("%d %d %d %d \n", cmd->r2_flag, cmd->r_flag, cmd->l2_flag, cmd->l_flag);
+		printf("%d %d %d %d %d\n", cmd->r2_flag, cmd->r_flag, cmd->l2_flag, cmd->l_flag, cmd->p_flag);
 		cmd = cmd->next;
 	}
 }
