@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/30 13:59:18 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/31 06:17:27 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef struct list
 	int l2_flag; // true if << is present 
 	int r_flag; // true if > is present and r2_flag is false
 	int r2_flag; // true if >> is present 
-	int err_flag;
+	int p_flag; // indicate presence of pipe in a token
+	int err_flag;// true an error is present
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
@@ -100,20 +101,20 @@ char *get_key(char *line);
 char *get_value(char *line);
 void var_lexer (t_var **var, char *line);
 // ----------------Handling dollar----------------------
-void make_all_zero(t_new *cmd);
-void find_redirection_presence(t_new *cmd);
+void make_all_zero(t_new *cmd);// utility for find redirection presence
+void find_redirection_presence(t_new *cmd); //handle the flags for redirection >>, >, <<, <
 void find_dollar_presence(t_new *cmd);// Find the presence of dollar
 int is_meta(char c);// check if the character meta or not returns one if true.
-int is_no_dollar_meta(char c);
-int is_no_dollar_meta1(char c);
-int is_meta_special(char c);
+int is_no_dollar_meta(char c);// contains |, <, >
+int is_no_dollar_meta1(char c);// space, tab, new line, &, ;, ()
+int is_meta_special(char c);// contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~
 int get_strlen(char *str);// get string length for dollar expansion
 int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf);//string join mehdy version
 char *get_dollar_path(char *str, char **env);//  if success returns the matching env variable part after the equal sign.
 char *get_str(char *str);// It returns normal string until dollar sign.
 char *get_expanded_string(char *str, char **env);// It returns entire string with expansion
 void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
-t_list *get_expanded_list(char *str, char **env);
+t_list *get_expanded_list(char *str, char **env);//It returns a list of expanded string
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//

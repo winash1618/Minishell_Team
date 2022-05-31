@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 08:25:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/30 13:59:02 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/31 09:30:12 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int is_meta(char c)
 
 int is_no_dollar_meta(char c)
 {
-	if (ft_strchr("|<>", c))
+	if (ft_strchr("<>", c))
 	{
 		return (1);
 	}
