@@ -1,6 +1,7 @@
 #include "minishell.h"
 
 t_list *g_m;
+
 char *get_dollar_path(char *str, char **env)
 {
 	int i;
@@ -63,7 +64,7 @@ char *get_meta(char *str)
 {
 	int i;
 	char *s;
-	
+
 	i = 0;
 	while (str[i] && is_no_dollar_meta(str[i]))
 		i++;
@@ -72,6 +73,27 @@ char *get_meta(char *str)
 	ft_lstadd_back(&g_m, tmp);
 	i = 0;
 	while (str[i] && is_no_dollar_meta(str[i]))
+	{
+		s[i] = str[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
+
+char *get_meta1(char *str)
+{
+	int i;
+	char *s;
+	
+	i = 0;
+	while (str[i] && is_no_dollar_meta1(str[i]))
+		i++;
+	s = (char *)malloc(sizeof(char) * (i + 1));
+	t_list *tmp = ft_lstnew((void *)(s));
+	ft_lstadd_back(&g_m, tmp);
+	i = 0;
+	while (str[i] && is_no_dollar_meta1(str[i]))
 	{
 		s[i] = str[i];
 		i++;
@@ -93,21 +115,40 @@ t_list *get_expanded_list(char *str, char **env)
 		{
 			if (!lst)
 			{
-				lst = ft_lstnew((void *)ft_itoa(errno));
+				lst = ft_lstnew((void *)ft_strdup("$?"));
 				t_list *tmp = ft_lstnew((void *)(lst));
 				ft_lstadd_back(&g_m, tmp);
 			}
 			else
 			{
-				temp = ft_lstnew((void *)ft_itoa(errno));// errno is 
+				temp = ft_lstnew((void *)ft_strdup("$?"));// errno is 
 				ft_lstadd_back(&lst, temp);
 				t_list *tmp = ft_lstnew((void *)(temp));
 				ft_lstadd_back(&g_m, tmp);
 			}
 			i = i + 2;
 		}
+		else if(str[i] == '$' && !str[i + 1])
+		{
+			
+			if (!lst)
+			{
+				lst = ft_lstnew((void *)ft_strdup("$"));
+				t_list *tmp = ft_lstnew((void *)(lst));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			else
+			{
+				temp = ft_lstnew((void *)ft_strdup("$"));// errno is 
+				ft_lstadd_back(&lst, temp);
+				t_list *tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			break;
+		}
 		else if (str[i] == '$')
 		{
+			
 			if (!lst)
 			{
 				lst = ft_lstnew((void *)get_dollar_path(str + i + 1, env));
@@ -125,6 +166,7 @@ t_list *get_expanded_list(char *str, char **env)
 		}
 		else if (is_no_dollar_meta(str[i]))
 		{
+			
 			if (!lst)
 			{
 				lst = ft_lstnew((void *)get_meta(str + i));
@@ -139,6 +181,25 @@ t_list *get_expanded_list(char *str, char **env)
 				ft_lstadd_back(&g_m, tmp);
 			}
 			while (str[i] && is_no_dollar_meta(str[i]))
+				i++;
+		}
+		else if (is_no_dollar_meta1(str[i]))
+		{
+			
+			if (!lst)
+			{
+				lst = ft_lstnew((void *)get_meta1(str + i));
+				t_list *tmp = ft_lstnew((void *)(lst));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			else
+			{
+				temp = ft_lstnew((void *)get_meta1(str + i));
+				ft_lstadd_back(&lst, temp);
+				t_list *tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			while (str[i] && is_no_dollar_meta1(str[i]))
 				i++;
 		}
 		else 
@@ -183,7 +244,7 @@ int main(int ac, char **argv, char **env)
 {
 	ac++;
 	(void)argv;
-	char *s = get_expanded_string("a(>$PATH&>$PATH&|a$PATHfsd$?", env);
+	char *s = get_expanded_string("a(>$PATH:+&>$PATH&|a$PATHfsd$?", env);
 	// char *s = get_dollar_path("fsd", env);
 	// int s = get_strlen("aPATH&$PATH&|a");
 	// char *s = get_meta(">>>fsd");

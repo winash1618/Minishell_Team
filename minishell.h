@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/30 11:19:08 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:59:18 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ void find_redirection_presence(t_new *cmd);
 void find_dollar_presence(t_new *cmd);// Find the presence of dollar
 int is_meta(char c);// check if the character meta or not returns one if true.
 int is_no_dollar_meta(char c);
+int is_no_dollar_meta1(char c);
+int is_meta_special(char c);
 int get_strlen(char *str);// get string length for dollar expansion
 int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf);//string join mehdy version
 char *get_dollar_path(char *str, char **env);//  if success returns the matching env variable part after the equal sign.
