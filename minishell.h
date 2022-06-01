@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/30 17:30:24 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/01 10:01:25 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include <curses.h>
 # include <term.h>
 # include <stdlib.h>
