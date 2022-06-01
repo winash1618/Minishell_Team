@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/31 06:17:27 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:23:15 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include <curses.h>
 # include <term.h>
 # include <stdlib.h>
@@ -123,4 +124,6 @@ int		ft_strjoin_minishell(char **prestr, char *sufstr);
 void	temp_lstadd_back(t_new **lst, t_new *node);
 t_new	*temp_lst_newnode(char *str);
 void	temp_list_clear(t_new **lst);
+int		list_has_pipes(t_new *lst);
+void	print_strarr(char **args);
 #endif
