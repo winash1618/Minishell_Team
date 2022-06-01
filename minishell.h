@@ -6,12 +6,13 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/01 10:01:25 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/01 18:23:15 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+# include <errno.h>
 # include <sys/wait.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -31,6 +32,7 @@ typedef struct var
 {
 	char *key; // consider "x = y" then x is key
 	char *value; // y is value
+	int err_flag;
 	struct var *next;
 	struct var *prev;
 }	t_var;
@@ -47,6 +49,8 @@ typedef struct list
 	int l2_flag; // true if << is present 
 	int r_flag; // true if > is present and r2_flag is false
 	int r2_flag; // true if >> is present 
+	int p_flag; // indicate presence of pipe in a token
+	int err_flag;// true an error is present
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
@@ -59,19 +63,8 @@ typedef struct info
 	int e_flag; // if the string starts with an equal sign it's an error;
 	int q_flag; // exist when count either of the quotes is odd
 	int dq_flag; // presence of $ then " or '
+	int err_flag;
 } t_info;
-
-// // Global structure variable
-// typedef struct free_list
-// {
-// 	char *s1;
-// 	t_var *vars;
-// 	t_new *new;
-// 	t_info *inf;
-// 	t_list *lst;
-// 	g_list *next;
-// 	g_list *prev;
-// } g_list;
 
 // Global variable declaration
 extern t_list *g_m;
@@ -109,16 +102,20 @@ char *get_key(char *line);
 char *get_value(char *line);
 void var_lexer (t_var **var, char *line);
 // ----------------Handling dollar----------------------
-
+void make_all_zero(t_new *cmd);// utility for find redirection presence
+void find_redirection_presence(t_new *cmd); //handle the flags for redirection >>, >, <<, <
 void find_dollar_presence(t_new *cmd);// Find the presence of dollar
 int is_meta(char c);// check if the character meta or not returns one if true.
+int is_no_dollar_meta(char c);// contains |, <, >
+int is_no_dollar_meta1(char c);// space, tab, new line, &, ;, ()
+int is_meta_special(char c);// contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~
 int get_strlen(char *str);// get string length for dollar expansion
 int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf);//string join mehdy version
 char *get_dollar_path(char *str, char **env);//  if success returns the matching env variable part after the equal sign.
 char *get_str(char *str);// It returns normal string until dollar sign.
 char *get_expanded_string(char *str, char **env);// It returns entire string with expansion
 void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
-t_list *get_expanded_list(char *str, char **env);
+t_list *get_expanded_list(char *str, char **env);//It returns a list of expanded string
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//

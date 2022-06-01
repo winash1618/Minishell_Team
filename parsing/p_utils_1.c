@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 08:25:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 07:06:12 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/31 09:30:12 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,36 @@ int is_meta(char c)
 	return (0);
 }
 
+int is_no_dollar_meta(char c)
+{
+	if (ft_strchr("<>", c))
+	{
+		return (1);
+	}
+	return (0);
+}
+int is_no_dollar_meta1(char c)
+{
+	if (ft_strchr("	 \n&;()", c))
+	{
+		return (1);
+	}
+	return (0);
+}
+
+int is_meta_special(char c)
+{
+	if (ft_strchr("	 \n|&;()<>:?+-=!@#$^{}[]|%*,.~", c))
+	{
+		return (1);
+	}
+	return (0);
+}
+
 int get_strlen(char *str)
 {
 	int i = 0;
-	while (str[i] && !is_meta(str[i]))
+	while (str[i] && !is_meta_special(str[i]))
 	{
 		i++;
 	} 

@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 07:03:41 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:10:50 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void lst_add_new(t_new **pars, char *str, t_info *info)
 	(*pars)->token = str;
 	(*pars)->next = NULL;
 	(*pars)->prev = NULL;
+	(*pars)->lst = NULL;
+	(*pars)->es =NULL;
 	if (info)
 	{
 		if (info->w_flag == 1)
@@ -43,6 +45,8 @@ void lst_add_back(t_new **pars, char *str, t_info *info)
 	t_list *tmp = ft_lstnew((void *)(temp));
 	ft_lstadd_back(&g_m, tmp);
 	temp->token = str;
+	temp->es = NULL;
+	temp->lst = NULL;
 	if (info)
 	{
 		if (info->w_flag == 1)
@@ -66,13 +70,17 @@ void lst_print(t_new *pars)
 	{
 		printf("<token: %s> <flag: %d> <d_flag: %d> ", pars->token, pars->flag, pars->d_flag);
 		t_list *tmp;
+		tmp = NULL;
 		tmp = pars->lst;
 		while (tmp)
 		{
-			printf("%s ", (char *)tmp->content);
+			if (tmp->content)
+				printf(" \n %s \n", (char *)tmp->content);
 			tmp =tmp->next;
 		}
 		printf("\n");
 		pars= pars->next;
 	}
 }
+
+// control - v then enter, gives ^M 

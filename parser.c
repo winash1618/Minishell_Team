@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 07:18:06 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/05/31 06:35:44 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int main(int ac, char **av, char **env)
 	ac++;
 	(void)av;
 	g_m = NULL;
+	// t_list *hist;
+	// hist = NULL;
 	// (void)env;
 	// char *buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
 	t_info *info;
@@ -52,13 +54,22 @@ int main(int ac, char **av, char **env)
 	// printf("%s", str);
 	// printf(" ");
 	char *line;
-	int i = 0;
-	while (++i < 5)
+	// int i = 0;
+	while (1)
 	{
 		info->e_flag = 0;
 		info->q_flag = 0;
-
+		
 		line = ft_readline();
+		if (line)
+			add_history(line);
+		// if (line && !hist)
+		// 	hist = ft_lstnew((void *)line);
+		// else if (line)
+		// {
+		// 	t_list *tmp = ft_lstnew((void *)line);
+		// 	ft_lstadd_front(&hist, tmp);
+		// }
 		quote_counter(line, info);
 		if (!line || !strcmp(line, "exit"))
 			return (0);
@@ -77,7 +88,9 @@ int main(int ac, char **av, char **env)
 			{
 				normal_lexer(&cmd, info, line);
 				find_dollar_presence(cmd);
+				find_redirection_presence(cmd);
 				dollar_expansion(cmd, env);
+				make_all_zero(cmd);
 				lst_print(cmd);
 			}
 		}
