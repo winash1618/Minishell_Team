@@ -7,10 +7,10 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -72,16 +72,15 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
-ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
+ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -ggdb -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c minishell.c -o minishell.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
@@ -127,6 +126,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
@@ -144,12 +144,14 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
-ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
+ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -ggdb -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c pipex.c -o pipex.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
@@ -185,11 +187,9 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
- 
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
@@ -199,6 +199,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
@@ -216,9 +217,11 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
-ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
+ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -ggdb -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c temp_list.c -o temp_list.o
+ 
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
@@ -284,10 +287,10 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
-ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
+ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -ggdb -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parser.c -o parser.o
 for dir in libft ft_printf parsing; do \
@@ -328,6 +331,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
+ 
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
@@ -357,7 +361,8 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
-ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
+ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc  minishell.c pipex.c temp_list.c  \
 	-Lft_printf -lftprintf parsing/parsing.a -Llibft -lft -o minishell

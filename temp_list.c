@@ -6,11 +6,12 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:54:24 by ayassin           #+#    #+#             */
-/*   Updated: 2022/05/30 17:30:11 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/02 09:04:36 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
+
 t_new	*temp_lst_newnode(char *str)
 {
 	t_new	*lst;
@@ -81,9 +82,26 @@ int	list_has_pipes(t_new *lst)
 
 void	print_strarr(char **args)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	while (args[i])
 		ft_printf("\"%s\" ", args[i++]);
 	ft_printf("\n");
+}
+
+int	number_of_pipes(t_new *lst)
+{
+	int	count;
+
+	count = 0;
+	if (lst == NULL)
+		return (0);
+	while (lst)
+	{
+		if (*(lst->token) == '|')
+			++count;
+		lst = lst->next;
+	}
+	return (count);
 }
