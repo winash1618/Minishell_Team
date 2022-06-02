@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon May 30 19:18:33 2022
+# Make data base, printed on Thu Jun  2 17:44:30 2022
 
 # Variables
 
@@ -47,15 +47,15 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 23)
 OBJS = $(SRC:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbym0032zn/T/vscode-ipc-08592398-87c5-4794-87f6-9b0ffd2ab75a.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbym0032zn/T/vscode-ipc-ec853aa0-eb64-4f32-b61d-23850d495a1d.sock
 # environment
 VSCODE_CWD = /
 # environment
-PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/ayassin/Desktop/42-ValgrindContainer
+PATH = /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 # makefile (from `Makefile', line 15)
 PNAME = parser
 # environment
-LaunchInstanceID = 5CDD56B7-A92A-439F-B703-A68A181BC980
+LaunchInstanceID = B7967C96-B654-42A5-83E8-DBBA83EFB2AA
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -63,7 +63,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.UE4QtfzBVp/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.JFVMaGiUDs/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -125,9 +125,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-MAIL = ayassin@student.42abudhabi.ae
-# environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000006.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -143,7 +141,7 @@ MAKEFILES :=
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a8
+SECURITYSESSIONID = 186bd
 # automatic
 ^F = $(notdir $^)
 # default
@@ -157,9 +155,9 @@ SUBDIRS = libft ft_printf parsing
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3204
+VSCODE_PID = 23657
 # variable set hash-table stats:
-# Load=73/1024=7%, Rehash=0, Collisions=4/103=4%
+# Load=72/1024=7%, Rehash=0, Collisions=4/102=4%
 
 # Pattern-specific Variable Values
 
@@ -167,9 +165,9 @@ VSCODE_PID = 3204
 
 # Directories
 
-# . (device 16777225, inode 1847004): 24 files, no impossibilities.
+# . (device 16777225, inode 1847004): 27 files, no impossibilities.
 
-# 24 files, no impossibilities in 1 directories.
+# 27 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -201,7 +199,7 @@ all: minishell
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-29 12:09:46
+#  Last modified 2022-05-30 21:50:24
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -209,7 +207,7 @@ Makefile:
 
 minishell: minishell.o pipex.o temp_list.o parser.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-30 17:45:19
+#  Last modified 2022-06-02 10:02:38
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -228,7 +226,7 @@ minishell: minishell.o pipex.o temp_list.o parser.o
 # Not a target:
 minishell.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 17:45:18
+#  Last modified 2022-06-02 10:02:24
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -237,7 +235,7 @@ minishell.o:
 # Not a target:
 temp_list.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 17:32:05
+#  Last modified 2022-06-02 10:02:30
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -270,7 +268,7 @@ fclean: clean
 # Not a target:
 parser.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 10:20:25
+#  Last modified 2022-06-02 10:02:33
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -304,7 +302,7 @@ clean:
 # Not a target:
 pipex.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 17:43:49
+#  Last modified 2022-06-02 10:02:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -323,6 +321,6 @@ pipex.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon May 30 19:18:33 2022
+# Finished Make data base on Thu Jun  2 17:44:30 2022
 
  

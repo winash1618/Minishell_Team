@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/01 18:18:50 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/02 18:19:29 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,9 @@ int	child1(t_new *lst, char **path, char **env)
 	t_new	*temp;
 	char	**args;
 
-	limits = "<>|";
+	limits = "<>|"; // use flags
 	arg_count = 0;
 	temp = lst;
-	//printf("I am a child\n");
 	while (temp && !ft_strchr(limits, *(temp->token))) // check flags (and free)
 	{
 		++arg_count;
@@ -82,104 +81,64 @@ int	child1(t_new *lst, char **path, char **env)
 		temp = temp->next;
 	}
 	args[i] = NULL;
-	//print_strarr(args);
 	i = 0;
-	// dup2(fd[0], STDIN_FILENO);
-	// if (list_has_pipes(lst))
-	// {
-	//  	printf("SWITCHING stdout\n");
-	// 	// lst_print(lst);
-	// 	// dup2(fd[0], STDIN_FILENO);
-	// 	dup2(fd[1], STDOUT_FILENO);
-	// }
-	// close(fd[0]);
-	// close(fd[1]);
 	while (path[i])
 	{
 		ft_strjoin_minishell(&(path[i]), "/");
 		ft_strjoin_minishell(&(path[i]), lst->token);
-		//args[0] = path[i];
-		// char * args[] = {path[i], "Makefile", NULL};
-		// ft_printf("The path is: %s\n", path[i]);
 		execve(path[i], args, env);
 		++i;
 	}
-	free(env);
 	free(args);
 	return (1);
 }
 
-int	parent_forking(t_new *lst, char **path, char **env) // works for miltiple pipes eith a single wc
+t_new	**set_pipes(t_list **lst, int in_file, int out_file)
 {
-	int		id;
-	int		status;
-	int		fd[2];
+	char	*in_file_name;
+	char	*out_file_name;
+	t_new	*temp;
 
-	id = 1;
-	status = 0;
-	if (pipe(fd) == -1)
-		return (-1);
-	while (lst)
+	in_file_name = NULL;
+	out_file_name = NULL;
+	temp = *lst;
+	if (*(temp->token) != '|') // use flag
+		ft_printf("DUCK");
+	while (temp && temp->next && *(temp->token) != '|') //use flag
 	{
-		id = fork();
-		if (id == 0)
+		if (*(temp->token) == '<' && *((temp->token) + 1) != '<') // use flag
 		{
-			ft_printf("I am a child pid = %d with parent %d\n", getpid(), getppid());
-			dup2(fd[0], STDIN_FILENO);
-			if (list_has_pipes(lst))
+			if (*((temp->token) + 1) != '\0')
+				in_file_name = (temp->token) + 1;
+			else if (temp->next)
 			{
-	 			printf("SWITCHING stdout\n");
-				// lst_print(lst);
-				// dup2(fd[0], STDIN_FILENO);
-				dup2(fd[1], STDOUT_FILENO);
+				in_file_name = temp->token;
+				skip_node(temp);
+				temp = temp->next;
 			}
-			close(fd[0]);
-			close(fd[1]);
-			child1 (lst, path, env);
-			exit(-1);
+			else
+				ft_printf("parse error near \n");
+			skip_node(temp);
 		}
-		else
-		{
-			//Hello I was restored2\n
-			//close(fd[0]);
-			//close(fd[1]);
-			ft_printf("A Parent is alive pid = %d with child= %d\n", getpid(), id);
-			while (lst && *(lst->token) != '|') //use flag
-				lst = lst->next;
-			if (lst && *(lst->token) == '|') //use flag
-				lst = lst->next;
-			(void)status;
-			//close(fd[0]);
-			//close(fd[1]);
-			//waitpid(id, &status, 0);
-			//pipe(fd);
-			//close(fd[0]);
-			//wait(&status);
-		}
+		temp = temp->next;
 	}
-	if (id != 0)
-	{
-		//wait(&status);
-		close(fd[0]);
-		close(fd[1]);
-		waitpid(id, &status, 0);
-		ft_printf("The parent is alive\n");
-	}
-	return (0);
+	temp->next = NULL; // remeber to free the list
+	temp = lst;
 }
 
 int	parent_forking5(t_new *lst, char **path, char **env)
 {
 	int		id;
 	int		status;
-	//int		fd[3][2];
-	int (*fd)[2];
-	int		no_of_pipes = ;
+	int		i;
+	int		(*fd)[2];
+	int		no_of_pipes;
 
 	id = 1;
 	status = 0;
+	no_of_pipes = number_of_pipes(lst);
 	fd = malloc(sizeof(*fd) * (no_of_pipes));
-	int i = 0;
+	i = 0;
 	while (i < no_of_pipes)
 	{
 		if (pipe(fd[i]) == -1)
@@ -192,14 +151,10 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 		id = fork();
 		if (id == 0)
 		{
-			//ft_printf("I am a child pid = %d with parent %d\n", getpid(), getppid());
 			if (i > 0)
 				dup2(fd[i - 1][0], STDIN_FILENO);
 			if (list_has_pipes(lst))
-			{
-	 			//ft_printf("SWITCHING stdout\n");
-				// lst_print(lst);
-				//dup2(fd[0], STDIN_FILENO);	
+			{	
 				dup2(fd[i][1], STDOUT_FILENO);
 			}
 			for(int j = 0; j < no_of_pipes; ++j)
@@ -208,44 +163,29 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 				close (fd[j][1]);
 			}
 			child1 (lst, path, env);
-			exit(-1);
+			exit(-1); // temp sol
 		}
 		else
 		{
-			//Hello I was restored2\n
-			//close(fd[0]);
-			//close(fd[1]);
-			//ft_printf("A Parent is alive pid = %d with child= %d\n", getpid(), id);
-			//lst_print(lst);
 			while (lst && *(lst->token) != '|') //use flag
 				lst = lst->next;
 			if (lst && *(lst->token) == '|') //use flag
 				lst = lst->next;
-			//if(lst == NULL)
-				//ft_printf("GEEE\n");
 			(void)status;
-			// close(fd[0]);
-			// close(fd[1]);
-			//waitpid(id, &status, 0);
-			//pipe(fd);
-			//close(fd[0]);
-			//wait(&status);
 		}
 		++i;
 	}
 	if (id != 0)
 	{
-		//wait(&status);
-		//close(fd[0]);
-		//close(fd[1]);
 		for(int j = 0; j < no_of_pipes; ++j)
 		{
-				close (fd[j][0]);
-				close (fd[j][1]);
+			close (fd[j][0]);
+			close (fd[j][1]);
 		}
 		waitpid(id, &status, 0);
 		ft_printf("The parent is alive\n");
 	}
+	free(fd);
 	return (0);
 }
 
@@ -270,3 +210,62 @@ int	excute(t_new *lst, char **env)
 	clear_str_sep(path);
 	return (0);
 }
+
+// int	parent_forking(t_new *lst, char **path, char **env) // works for miltiple pipes eith a single wc
+// {
+// 	int		id;
+// 	int		status;
+// 	int		fd[2];
+
+// 	id = 1;
+// 	status = 0;
+// 	if (pipe(fd) == -1)
+// 		return (-1);
+// 	while (lst)
+// 	{
+// 		id = fork();
+// 		if (id == 0)
+// 		{
+// 			ft_printf("I am a child pid = %d with parent %d\n", getpid(), getppid());
+// 			dup2(fd[0], STDIN_FILENO);
+// 			if (list_has_pipes(lst))
+// 			{
+// 	 			printf("SWITCHING stdout\n");
+// 				// lst_print(lst);
+// 				// dup2(fd[0], STDIN_FILENO);
+// 				dup2(fd[1], STDOUT_FILENO);
+// 			}
+// 			close(fd[0]);
+// 			close(fd[1]);
+// 			child1 (lst, path, env);
+// 			exit(-1);
+// 		}
+// 		else
+// 		{
+// 			//Hello I was restored2\n
+// 			//close(fd[0]);
+// 			//close(fd[1]);
+// 			ft_printf("A Parent is alive pid = %d with child= %d\n", getpid(), id);
+// 			while (lst && *(lst->token) != '|') //use flag
+// 				lst = lst->next;
+// 			if (lst && *(lst->token) == '|') //use flag
+// 				lst = lst->next;
+// 			(void)status;
+// 			//close(fd[0]);
+// 			//close(fd[1]);
+// 			//waitpid(id, &status, 0);
+// 			//pipe(fd);
+// 			//close(fd[0]);
+// 			//wait(&status);
+// 		}
+// 	}
+// 	if (id != 0)
+// 	{
+// 		//wait(&status);
+// 		close(fd[0]);
+// 		close(fd[1]);
+// 		waitpid(id, &status, 0);
+// 		ft_printf("The parent is alive\n");
+// 	}
+// 	return (0);
+// }

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/01 18:17:18 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/02 09:13:39 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(int argv, char **argc, char **env)
 {
 	t_new	*lst;
 	//char	*str[] = {"cat", "green.txt", "|" ,"grep", "typedef", "|", "wc", "-l", NULL};
-	char	*str[] = {"ls", "|", "cat", "green.txt", "|", "tail", "|", "wc", "-l", "|", "curl" ,"wttr.in/dubai", "|", "wc",  NULL};
+	char	*str[] = {"ls", "|", "cat", "green.txt", "|", "tail",
+			 "|", "wc", "-l", "|", "curl" ,"wttr.in/dubai", "|", "wc",  NULL};
 
 	(void)argv;
 	(void)argc;
