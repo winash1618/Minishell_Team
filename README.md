@@ -9,6 +9,7 @@
 - https://www.ibm.com/docs/en/rdfi/9.6.0?topic=errors-checking-errno-value
 - https://github.com/simon-ameye/42-minishell_bash_tester_2022
 - https://www.ibm.com/docs/en/rdfi/9.6.0?topic=errors-checking-errno-value
+- https://medium.com/swlh/understanding-pipes-in-unix-with-a-sample-implementation-9fe110d36412
 
 
 ## for help
