@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/02 18:19:29 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/03 23:02:06 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,37 +93,85 @@ int	child1(t_new *lst, char **path, char **env)
 	return (1);
 }
 
-t_new	**set_pipes(t_list **lst, int in_file, int out_file)
+void	skip_node(t_new **lst, int *skip_flag)
+{
+	if(!(lst && *lst))
+	{
+		ft_printf("what are you doing");
+		exit(-1);
+	}
+	if ((*lst)->prev == NULL)
+	{
+		(*lst)->prev = NULL;
+	}
+	else
+	{
+		(*lst)->prev->next = (*lst)->next;
+		(*lst)->next->prev = (*lst)->prev;
+	}
+	*lst = (*lst)->next;
+	*skip_flag = 1;
+}
+
+t_new	**set_pipes(t_new **lst, int in_file, int out_file)
 {
 	char	*in_file_name;
 	char	*out_file_name;
+	int		append_flag;
+	int		skip_flag;
 	t_new	*temp;
 
 	in_file_name = NULL;
 	out_file_name = NULL;
+	append_flag = 0;
+	skip_flag = 0;
 	temp = *lst;
 	if (*(temp->token) != '|') // use flag
 		ft_printf("DUCK");
 	while (temp && temp->next && *(temp->token) != '|') //use flag
 	{
+		// input redirection
 		if (*(temp->token) == '<' && *((temp->token) + 1) != '<') // use flag
 		{
 			if (*((temp->token) + 1) != '\0')
 				in_file_name = (temp->token) + 1;
 			else if (temp->next)
 			{
-				in_file_name = temp->token;
-				skip_node(temp);
-				temp = temp->next;
+				in_file_name = temp->next->token;
+				skip_node(&temp, &skip_flag);
 			}
 			else
 				ft_printf("parse error near \n");
-			skip_node(temp);
+			skip_node(&temp, &skip_flag);
 		}
-		temp = temp->next;
+		// output redirection
+		if (*(temp->token) == '>') // use flag
+		{
+			if (*((temp->token) + 1) != '>')
+				append_flag = 1;
+			if (*((temp->token) + 1 + append_flag) != '\0')
+				out_file_name = (temp->token) + 1 + append_flag;
+			else if (temp->next)
+			{
+				out_file_name = temp->next->token;
+				skip_node(&temp, &skip_flag);
+			}
+			else
+				ft_printf("parse error near \n");
+			skip_node(&temp, &skip_flag);
+		}
+		if (skip_flag == 1)
+			skip_flag = 0;
+		else
+			temp = temp->next;
 	}
-	temp->next = NULL; // remeber to free the list
-	temp = lst;
+	temp->next = NULL; // remeber to free the list for the child
+	while (*lst && !ft_strchr("<>", *((*lst)->token))) // check flags (and free)
+	{
+		*lst = (*lst)->next;
+	}
+	temp = *lst;
+	return (lst);
 }
 
 int	parent_forking5(t_new *lst, char **path, char **env)
