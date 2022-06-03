@@ -1,1 +1,16 @@
-hello       2       5      23
+Makefile
+README.md
+blue.txt
+fid.c
+ft_printf
+get_expanded_string_test.c
+green.txt
+leaks.sh
+libft
+minishell.c
+minishell.h
+parser.c
+parsing
+pipex.c
+temp_list.c
+test.c
