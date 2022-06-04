@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 # include "minishell.h"
+
 t_new	*temp_lst_newnode(char *str)
 {
 	t_new	*lst;
@@ -77,4 +78,30 @@ int	list_has_pipes(t_new *lst)
 		lst = lst->next;
 	}
 	return (0);
+}
+
+void	print_strarr(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i])
+		ft_printf("\"%s\" ", args[i++]);
+	ft_printf("\n");
+}
+
+int	number_of_pipes(t_new *lst)
+{
+	int	count;
+
+	count = 0;
+	if (lst == NULL)
+		return (0);
+	while (lst)
+	{
+		if (*(lst->token) == '|')
+			++count;
+		lst = lst->next;
+	}
+	return (count);
 }
