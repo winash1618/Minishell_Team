@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/02 09:05:39 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/04 11:20:20 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int check_word_for_parsing(char *line);
 void lst_add_new(t_new **pars, char *str, t_info *info); // adds new node to the pars structure
 void lst_add_back(t_new **pars, char *str, t_info *info); // adds new node at back side of pars structure
 void lst_print(t_new *pars); //prints contents of structure var
+void lst_rev_print(t_new *pars);
 //----------List operations for variable assignment-----
 void lst_add_newvar(t_var **var, char *line); // adds new node to the var structure
 void lst_add_backvar(t_var **var, char *line); // adds new node at back side of var structure
@@ -101,6 +102,13 @@ int get_len(char *line);
 char *get_key(char *line);
 char *get_value(char *line);
 void var_lexer (t_var **var, char *line);
+////////////////////////////////////////////
+void lst_add_front(t_new **cmd, t_list *lst);
+void lst_big_new(t_new **cmd, t_list *lst);
+void lst_add(t_new **cmd, t_list *lst);
+void lst_skip_node(t_new **cmd);
+void make_big_list(t_new **cmd);
+////////////////////////////////////////////
 // ----------------Handling dollar----------------------
 void make_all_zero(t_new *cmd);// utility for find redirection presence
 void find_redirection_presence(t_new *cmd); //handle the flags for redirection >>, >, <<, <
