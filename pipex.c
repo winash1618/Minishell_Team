@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/03 23:02:06 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/04 16:15:00 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,27 +90,23 @@ int	child1(t_new *lst, char **path, char **env)
 		++i;
 	}
 	free(args);
+	free(env);
 	return (1);
 }
 
 void	skip_node(t_new **lst, int *skip_flag)
 {
-	if(!(lst && *lst))
+	*skip_flag = 1;
+	if (!(lst && *lst))
 	{
 		ft_printf("what are you doing");
 		exit(-1);
 	}
-	if ((*lst)->prev == NULL)
-	{
-		(*lst)->prev = NULL;
-	}
-	else
-	{
+	if ((*lst)->prev != NULL)
 		(*lst)->prev->next = (*lst)->next;
+	if ((*lst)->next != NULL)
 		(*lst)->next->prev = (*lst)->prev;
-	}
 	*lst = (*lst)->next;
-	*skip_flag = 1;
 }
 
 t_new	**set_pipes(t_new **lst, int in_file, int out_file)
@@ -126,12 +122,14 @@ t_new	**set_pipes(t_new **lst, int in_file, int out_file)
 	append_flag = 0;
 	skip_flag = 0;
 	temp = *lst;
-	if (*(temp->token) != '|') // use flag
+	if (*(temp->token) == '|') // use flag
 		ft_printf("DUCK");
-	while (temp && temp->next && *(temp->token) != '|') //use flag
+	// ft_printf("_____________GREEN_________\n");
+	// lst_print(*lst);
+	while (temp && *(temp->token) != '|') //use flag
 	{
 		// input redirection
-		if (*(temp->token) == '<' && *((temp->token) + 1) != '<') // use flag
+		if (temp && *(temp->token) == '<' && *((temp->token) + 1) != '<') // use flag
 		{
 			if (*((temp->token) + 1) != '\0')
 				in_file_name = (temp->token) + 1;
@@ -142,13 +140,19 @@ t_new	**set_pipes(t_new **lst, int in_file, int out_file)
 			}
 			else
 				ft_printf("parse error near \n");
+			// ft_printf("The file is %s\n", in_file_name);
 			skip_node(&temp, &skip_flag);
 		}
 		// output redirection
-		if (*(temp->token) == '>') // use flag
+		if (temp && *(temp->token) == '>') // use flag
 		{
-			if (*((temp->token) + 1) != '>')
+			if (*((temp->token) + 1) == '>') // use flag
 				append_flag = 1;
+			else
+			{
+				append_flag = 0;
+				//empty_file(); // remove a file
+			}
 			if (*((temp->token) + 1 + append_flag) != '\0')
 				out_file_name = (temp->token) + 1 + append_flag;
 			else if (temp->next)
@@ -165,12 +169,28 @@ t_new	**set_pipes(t_new **lst, int in_file, int out_file)
 		else
 			temp = temp->next;
 	}
-	temp->next = NULL; // remeber to free the list for the child
-	while (*lst && !ft_strchr("<>", *((*lst)->token))) // check flags (and free)
+	if(temp != NULL)
+		temp->next = NULL; // remeber to free the list for the child
+	while (*lst && ft_strchr("<>", *((*lst)->token))) // check flags (and free)
 	{
 		*lst = (*lst)->next;
 	}
 	temp = *lst;
+	// ft_printf("_____________PURPLE_________\n");
+	// lst_print(*lst);
+	// Redirection
+	append_flag = (O_APPEND * (append_flag)) | (O_TRUNC * (!append_flag));
+	if (in_file_name != NULL)
+		in_file = open(in_file_name, O_RDONLY);
+	if (out_file_name != NULL)
+		out_file = open(out_file_name, O_WRONLY | O_CREAT | append_flag);
+	dup2(in_file, STDIN_FILENO);
+	if (list_has_pipes(*lst) || out_file_name != NULL) // or redirection
+	{	
+		dup2(out_file, STDOUT_FILENO);
+	}
+	(void)in_file;
+	(void)out_file;
 	return (lst);
 }
 
@@ -199,17 +219,25 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 		id = fork();
 		if (id == 0)
 		{
+			// ft_printf("_____________GREEN %d/%d_________\n", i, no_of_pipes);
+			// lst_print(lst);
 			if (i > 0)
-				dup2(fd[i - 1][0], STDIN_FILENO);
-			if (list_has_pipes(lst))
-			{	
-				dup2(fd[i][1], STDOUT_FILENO);
-			}
+				set_pipes(&lst, fd[i - 1][0], fd[i][1]);
+			else
+				set_pipes(&lst, STDIN_FILENO, fd[i][1]);
+			// if (i > 0)
+			// 	dup2(fd[i - 1][0], STDIN_FILENO);
+			// if (list_has_pipes(lst))
+			// {	
+			// 	dup2(fd[i][1], STDOUT_FILENO);
+			// }
 			for(int j = 0; j < no_of_pipes; ++j)
 			{
 				close (fd[j][0]);
 				close (fd[j][1]);
 			}
+			// ft_printf("_____________GREEN %d/%d_________\n", i, no_of_pipes);
+			// lst_print(lst);
 			child1 (lst, path, env);
 			exit(-1); // temp sol
 		}
