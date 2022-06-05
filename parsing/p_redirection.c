@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:49:39 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/31 06:46:58 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:37:54 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void find_redirection_presence(t_new *cmd)
 {
 	while(cmd != NULL)
 	{
-		cmd->d_flag = 0;
 		int i = 0;
 		if (cmd->flag == 3)
 		{

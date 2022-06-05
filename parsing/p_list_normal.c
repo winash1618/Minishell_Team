@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/30 18:10:50 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:18:19 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,41 @@ void lst_print(t_new *pars)
 	while(pars != NULL)
 	{
 		printf("<token: %s> <flag: %d> <d_flag: %d> ", pars->token, pars->flag, pars->d_flag);
-		t_list *tmp;
-		tmp = NULL;
-		tmp = pars->lst;
-		while (tmp)
-		{
-			if (tmp->content)
-				printf(" \n %s \n", (char *)tmp->content);
-			tmp =tmp->next;
-		}
+		// t_list *tmp;
+		// tmp = NULL;
+		// tmp = pars->lst;
+		// while (tmp)
+		// {
+		// 	if (tmp->content)
+		// 		printf(" \n %s \n", (char *)tmp->content);
+		// 	tmp =tmp->next;
+		// }
 		printf("\n");
 		pars= pars->next;
 	}
 }
 
+void lst_rev_print(t_new *pars)
+{
+	while(pars && pars->next != NULL)
+	{
+		pars = pars->next;
+	}
+	while(pars != NULL)
+	{
+		printf("<token: %s> <flag: %d> <d_flag: %d> ", pars->token, pars->flag, pars->d_flag);
+		// t_list *tmp;
+		// tmp = NULL;
+		// tmp = pars->lst;
+		// while (tmp)
+		// {
+		// 	if (tmp->content)
+		// 		printf(" \n %s \n", (char *)tmp->content);
+		// 	tmp =tmp->next;
+		// }
+		printf("\n");
+		pars= pars->prev;
+	}
+	
+}
 // control - v then enter, gives ^M 
