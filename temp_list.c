@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:54:24 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/02 09:04:36 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/05 16:34:06 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,6 @@ void	temp_list_clear(t_new **lst)
 	}
 }
 
-int	list_has_pipes(t_new *lst)
-{
-	if (lst == NULL)
-		return (0);
-	while (lst)
-	{
-		if (*(lst->token) == '|')
-			return (1);
-		lst = lst->next;
-	}
-	return (0);
-}
-
 void	print_strarr(char **args)
 {
 	int	i;
@@ -90,18 +77,3 @@ void	print_strarr(char **args)
 	ft_printf("\n");
 }
 
-int	number_of_pipes(t_new *lst)
-{
-	int	count;
-
-	count = 0;
-	if (lst == NULL)
-		return (0);
-	while (lst)
-	{
-		if (*(lst->token) == '|')
-			++count;
-		lst = lst->next;
-	}
-	return (count);
-}

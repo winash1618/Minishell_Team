@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/02 09:05:39 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/05 18:56:04 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,34 @@ t_list *get_expanded_list(char *str, char **env);//It returns a list of expanded
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
 int		excute(t_new *lst, char **env);
+
+//pipex_utils.c
 int		ft_strjoin_minishell(char **prestr, char *sufstr);
-void	temp_lstadd_back(t_new **lst, t_new *node);
+void	clear_str_sep(char **str_sep);
+void	close_pipes(int (*fd)[2], int no_of_pipes);
+int		number_of_pipes(t_new *lst);
+int		list_has_pipes(t_new *lst);
+
+//child.c
+char	**args_array(t_new *lst);
+int		child_execute(t_new *lst, char **path, char **env);
+
+//redirection.c
+void	skip_node(t_new **lst, int *skip_flag);
+char	*redirect_input(t_new **lst, int *skip_flag);
+int		empty_file(char *file_name);
+char	*redirect_output(t_new **lst, int *skip_flag , int *append_flag);
+
+//redirection2.c
+int		hijack_stdin(int in_file, char *in_file_name); //handel errors
+int		hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag); //handle errors
+int		redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int *append_flag);
+t_new	**set_pipes(t_new **lst, int in_file, int out_file);
+
+
+//temp_list.c
 t_new	*temp_lst_newnode(char *str);
 void	temp_list_clear(t_new **lst);
-int		list_has_pipes(t_new *lst);
 void	print_strarr(char **args);
-int		number_of_pipes(t_new *lst);
+void	temp_lstadd_back(t_new **lst, t_new *node);
 #endif

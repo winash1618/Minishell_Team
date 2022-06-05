@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/05/29 12:09:46 by ayassin          ###   ########.fr        #
+#    Updated: 2022/06/05 18:54:52 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = minishell
 
 PNAME = parser
 
-SRC = minishell.c pipex.c temp_list.c
+SRC = minishell.c pipex.c pipex_utils.c child.c redirection.c redirection2.c \
+		temp_list.c
 
 SRCP = parser.c
 
