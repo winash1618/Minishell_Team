@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/04 16:16:03 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/05 18:52:29 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_new	*temp_makelist(char **str)
 int	main(int argv, char **argc, char **env)
 {
 	t_new	*lst;
-	//char	*str[] = {"cat", "green.txt", "|" ,"grep", "typedef", "|", "wc", "-l", NULL};
-	char	*str[] = {"cat", "<green.txt", "<blue.txt", ">>hi.txt", NULL};
+	//char	*str[] = {"cat", "green.txt", "|" ,"grep", "high", "|", "wc", NULL};
+	char	*str[] = {">abc.txt", "ls", "-la", ">hi.txt", NULL};
 	//char	*str[] = {"ls", "|", "cat", "green.txt", "|", "tail",
 	//		 "|", "wc", "-l", "|", "ls", "|", "wc", ">green.txt", NULL};
 
