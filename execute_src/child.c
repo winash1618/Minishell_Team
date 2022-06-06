@@ -6,11 +6,11 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/05 16:30:59 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/06 16:32:47 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 char	**args_array(t_new *lst)
 {
@@ -53,6 +53,8 @@ int	child_execute(t_new *lst, char **path, char **env)
 		++i;
 	}
 	free(args);
-	free (env); // temp sol;
+	ft_printf("THIS IS NOT GREAT");
+	exit (2);
+	//free (env); // temp sol;
 	return (1);
 }
