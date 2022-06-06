@@ -3,6 +3,7 @@
 	"files.associations": {
 		"parser.h": "c",
 		"stdio.h": "c",
-		"locale": "c"
+		"locale": "c",
+		"minishell.h": "c"
 	}
 }
