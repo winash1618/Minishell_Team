@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/04 16:19:01 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/05 13:13:32 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int main(int ac, char **av, char **env)
 	t_new *cmd;
 	info->flag = 1;
 	info->e_flag = 0;
-	t_var *var;
+	// 
+	// t_var *var;
 	// char *str;
 	// str = NULL;
 	// tgetent(buf, getenv("TERM"));
@@ -79,13 +80,13 @@ int main(int ac, char **av, char **env)
 			ft_clearscreen();
 		else if (!info->q_flag)
 		{
-			if(*line && check_var(line, info))
-			{
-				var_lexer(&var, line);
-				lst_print_vars(var);
-			}
-			else
-			{
+			// if(*line && check_var(line, info))
+			// {
+			// 	var_lexer(&var, line);
+			// 	lst_print_vars(var);
+			// }
+			// else
+			// {
 				normal_lexer(&cmd, info, line);
 				find_dollar_presence(cmd);
 				find_redirection_presence(cmd);
@@ -94,7 +95,7 @@ int main(int ac, char **av, char **env)
 				make_big_list(&cmd);
 				find_redirection_presence(cmd);
 				lst_print(cmd);
-			}
+			// }
 		}
 		free (line);
 	}
