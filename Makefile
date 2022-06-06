@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/06/05 18:54:52 by ayassin          ###   ########.fr        #
+#    Updated: 2022/06/06 16:56:14 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,16 @@ NAME = minishell
 
 PNAME = parser
 
-SRC = minishell.c pipex.c pipex_utils.c child.c redirection.c redirection2.c \
-		temp_list.c
+SRC = minishell.c $(EXECUTE_SRC_INDIR)
+ 
+EXECUTE_SRC = pipex.c pipex_utils.c child.c redirection.c redirection2.c \
+				temp_list.c
+
+EXECUTE_SRC_DIR = execute_src
+				
+EXECUTE_SRC_INDIR = $(addprefix $(EXECUTE_SRC_DIR)/,$(EXECUTE_SRC))
+
+EXECUTE_OBJ_DIR =  execute_objs
 
 SRCP = parser.c
 
@@ -31,7 +39,7 @@ CFLAGS = -ggdb -Wall -Werror -Wextra
 
 all: $(NAME)
 
-.c.o:
+%.o : %.c
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
@@ -42,7 +50,7 @@ $(NAME): $(OBJS) $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFALGS) $(SRC)  \
+	$(CC) $(CFALGS) $(SRC)  -lreadline \
 	-Lft_printf -lftprintf parsing/parsing.a -Llibft -lft -o $(NAME)
 	$(CC) $(CFALGS) $(SRCP)  \
 	 parsing/parsing.a \

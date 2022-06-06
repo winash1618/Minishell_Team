@@ -6,11 +6,11 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:13:31 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/05 16:34:22 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/06 16:33:00 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /* free the output of ft_split after we are done with it*/
 void	clear_str_sep(char **str_sep)
@@ -48,7 +48,7 @@ int	ft_strjoin_minishell(char **prestr, char *sufstr)
 		fullstr[i1] = (*prestr)[i1];
 		++i1;
 	}
-	while (sufstr[i2] && sufstr[i2] != '\n')
+	while (sufstr[i2])
 		fullstr[i1++] = sufstr[i2++];
 	fullstr[i1] = 0;
 	if (*prestr)

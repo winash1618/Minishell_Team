@@ -6,11 +6,54 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/05 18:19:57 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/06 17:56:59 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
+
+/* Retun a string since the first occurnce of string "needle" 
+in the string "haystack" within "len" chars of "haystack"*/
+
+/* Compare the first "n" chars from strings "s1" & "s2".
+Return the diffrence in the first char or 0 if no diffrence is found
+**NOT PROTECTED VS NULL INPUT**/
+int	ft_strncmp_protected(const char *s1, const char *s2, size_t n)
+{
+	size_t	pos;
+
+	pos = 0;
+	if (!n || !s1 || !s2)
+		return (0);
+	while (pos < (n - 1) && s1[pos] && s2[pos] && (unsigned char)s1[pos]
+		== (unsigned char)s2[pos])
+		pos++;
+	return ((unsigned char)s1[pos] - (unsigned char)s2[pos]);
+}
+
+char	*line_input(char *delimiter)
+{
+	char	*line;
+	char	*one_line;
+
+	line = NULL;
+	one_line = NULL;
+	while (1)
+	{
+		one_line = readline("> ");
+		if (ft_strncmp_protected(one_line, delimiter \
+			, ft_strlen(delimiter) + 1) != 0)
+		{
+			ft_strjoin_minishell(&line, one_line);
+			ft_strjoin_minishell(&line, "\n");
+			free(one_line);
+		}
+		else
+			break ;
+	}
+	free(one_line);
+	return (line);
+}
 
 void	skip_node(t_new **lst, int *skip_flag)
 {
@@ -44,7 +87,7 @@ char	*redirect_input(t_new **lst, int *skip_flag)
 			skip_node(&temp, skip_flag);
 		}
 		else
-			ft_printf("parse error near \n");
+			ft_printf("parse error near \\n");
 		skip_node(&temp, skip_flag);
 	}
 	*lst = temp;
@@ -73,7 +116,7 @@ int	empty_file(char *file_name)
 	return (0);
 }
 
-char	*redirect_output(t_new **lst, int *skip_flag , int *append_flag)
+char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag)
 {
 	char	*out_file_name;
 	t_new	*temp;

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/05 18:56:04 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/06 14:12:48 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	clear_str_sep(char **str_sep);
 void	close_pipes(int (*fd)[2], int no_of_pipes);
 int		number_of_pipes(t_new *lst);
 int		list_has_pipes(t_new *lst);
+int		ft_strncmp_protected(const char *s1, const char *s2, size_t n); // in redirction for the moment
 
 //child.c
 char	**args_array(t_new *lst);
@@ -145,6 +146,7 @@ void	skip_node(t_new **lst, int *skip_flag);
 char	*redirect_input(t_new **lst, int *skip_flag);
 int		empty_file(char *file_name);
 char	*redirect_output(t_new **lst, int *skip_flag , int *append_flag);
+char	*line_input(char *delimiter);
 
 //redirection2.c
 int		hijack_stdin(int in_file, char *in_file_name); //handel errors

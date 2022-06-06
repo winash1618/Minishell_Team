@@ -6,11 +6,11 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/05 18:56:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/06 17:07:30 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_new	*nxt_cmd(t_new *lst)
 {
@@ -71,19 +71,19 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 {
 	int		id;
 	int		status;
-	int		i;
 	int		(*fd)[2];
 	int		no_of_pipes;
 
 	no_of_pipes = number_of_pipes(lst);
 	fd = create_pipes(no_of_pipes);
-	i = 0;
 	id = loopy_parent(lst, path, env, fd);
 	if (id != 0)
 	{
 		close_pipes(fd, no_of_pipes);
 		waitpid(id, &status, 0);
-		ft_printf("The parent is alive\n");
+		if (status == -1)
+			ft_printf("THE CHILD HAD A PROBLEM");
+		ft_printf("The parent is alive %d\n", WEXITSTATUS(status));
 	}
 	free(fd);
 	return (0);
@@ -97,14 +97,14 @@ int	excute(t_new *lst, char **env)
 	i = 0;
 	(void)lst;
 	//Find Path
-	while (env[i] && !ft_strnstr(env[i], "PATH=", 5))
+	if (!env)
+		return 0;
+	while (env[i] && ft_strncmp_protected(env[i], "PATH=", 5) != 0)
 		++i;
-	env[i] = ft_strnstr(env[i], "PATH=", 5);
-	//Check if path is ther
 	if (env[i] == NULL)
 		return (0);
+	//env[i] = ft_strnstr(env[i], "PATH=", 5);
 	// split path
-	
 	path = ft_split(env[i] + 5, ':');
 	parent_forking5(lst, path, env);
 	clear_str_sep(path);
