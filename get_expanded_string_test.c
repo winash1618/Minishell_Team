@@ -294,7 +294,7 @@ int main(int ac, char **argv, char **env)
 {
 	ac++;
 	(void)argv;
-	char *s = get_expanded_string(">>fsd", env);
+	char *s = get_expanded_string("$PWD'", env);
 	// char *s = get_expanded_string(">|", env);
 	// char *s = get_dollar_path("fsd", env);
 	// int s = get_strlen("aPATH&$PATH&|a");

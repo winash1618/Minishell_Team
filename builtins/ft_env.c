@@ -6,7 +6,20 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:25:32 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/05 17:25:33 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:17:02 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../minishell.h"
+
+void ft_env(char **env, int fd)
+{
+	int i;
+
+	i = 0;
+	while (env[i])
+	{
+		ft_putstr_fd(env[i], fd);
+		i++;
+	}
+}

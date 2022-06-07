@@ -6,7 +6,13 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:25:39 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/05 17:25:40 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/06 16:53:44 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../minishell.h"
+
+char **ft_export(char **env, char *str)
+{
+	mk
+}

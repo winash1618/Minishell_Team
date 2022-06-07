@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:49:39 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/01 13:37:54 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:26:36 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void make_all_zero(t_new *cmd)
 		cmd->l2_flag = 0;
 		cmd->l_flag = 0;
 		cmd->p_flag = 0;
-		// printf("%d %d %d %d \n", cmd->r2_flag, cmd->r_flag, cmd->l2_flag, cmd->l_flag);
+		printf("%d %d %d %d \n", cmd->r2_flag, cmd->r_flag, cmd->l2_flag, cmd->l_flag);
 		cmd = cmd->next;
 	}
 }
@@ -82,7 +82,7 @@ void find_redirection_presence(t_new *cmd)
 			break;
 		}
 		make_others_zero(cmd);
-		printf("%d %d %d %d %d\n", cmd->r2_flag, cmd->r_flag, cmd->l2_flag, cmd->l_flag, cmd->p_flag);
+		// printf("%d %d %d %d %d\n", cmd->r2_flag, cmd->r_flag, cmd->l2_flag, cmd->l_flag, cmd->p_flag);
 		cmd = cmd->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:16:26 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 07:05:09 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:15:53 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ int check_word_for_parsing(char *line)
 	if (*(line) == '"')
 		return (1);
 	else if (*(line) == 39)
+	{
 		return (2);
+	}
 	else
 		return (3);
 }
