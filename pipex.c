@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/05 18:56:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:02:43 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,11 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 {
 	int		id;
 	int		status;
-	int		i;
 	int		(*fd)[2];
 	int		no_of_pipes;
 
 	no_of_pipes = number_of_pipes(lst);
 	fd = create_pipes(no_of_pipes);
-	i = 0;
 	id = loopy_parent(lst, path, env, fd);
 	if (id != 0)
 	{

@@ -6,7 +6,7 @@
 #    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/28 06:09:35 by mkaruvan          #+#    #+#              #
-#    Updated: 2022/06/04 10:51:37 by mkaruvan         ###   ########.fr        #
+#    Updated: 2022/06/06 14:14:53 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ NAME = parsing.a
 SRC = 	p_assign_1.c p_assign_2.c p_dollar.c \
 		p_expand.c p_list_assign.c p_list_normal.c \
 		p_normal.c p_quote.c p_utils_1.c p_utils_2.c \
-		prompt.c p_redirection.c big_list.c
+		prompt.c p_redirection.c big_list.c \
+		../child.c ../pipex_utils.c ../pipex.c ../redirection.c \
+		../redirection2.c ../temp_list.c
+		
 
 DIRS = ../libft
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/05 18:54:26 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:03:14 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,11 @@ t_new	**set_pipes(t_new **lst, int in_file, int out_file)
 	char	*in_file_name;
 	char	*out_file_name;
 	int		append_flag;
-	int		skip_flag;
 	t_new	*temp;
 
 	in_file_name = NULL;
 	out_file_name = NULL;
 	append_flag = 0;
-	skip_flag = 0;
 	temp = *lst;
 	if (*(temp->token) == '|') // use flag
 		ft_printf("DUCK");
