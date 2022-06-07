@@ -6,11 +6,11 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 15:03:14 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/07 08:49:15 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	hijack_stdin(int in_file, char *in_file_name) //handel errors
 {
@@ -24,7 +24,7 @@ int	hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag) 
 {
 	append_flag = (O_APPEND * (append_flag)) | (O_TRUNC * (!append_flag));
 	if (out_file_name != NULL)
-		out_file = open(out_file_name, O_WRONLY | O_CREAT | append_flag);
+		out_file = open(out_file_name, O_WRONLY | append_flag);
 	if (flag || out_file_name != NULL) 
 		dup2(out_file, STDOUT_FILENO);
 	return (0);

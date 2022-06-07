@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/05 18:52:29 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/06 17:58:07 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	main(int argv, char **argc, char **env)
 {
 	t_new	*lst;
 	//char	*str[] = {"cat", "green.txt", "|" ,"grep", "high", "|", "wc", NULL};
-	char	*str[] = {">abc.txt", "ls", "-la", ">hi.txt", NULL};
-	//char	*str[] = {"ls", "|", "cat", "green.txt", "|", "tail",
-	//		 "|", "wc", "-l", "|", "ls", "|", "wc", ">green.txt", NULL};
+	//char	*str[] = {"<abc.txt", "ls", "-la", "<hi.txt", NULL};
+	char	*str[] = {"ls", "|", "cat", "green.txt", "|", "tail",
+			 "|", "wc", "-l", "|", "curl", "wttr.in/abudhabi", "|", "wc", ">green.txt", NULL};
 
 	(void)argv;
 	(void)argc;
@@ -42,6 +42,11 @@ int	main(int argv, char **argc, char **env)
 	lst = temp_makelist(str);
 	//lst_print(lst);
 	excute (lst, env);
+	// if (argv == 2)
+	// {
+	// 	char *line = line_input(argc[1]);
+	// 	free(line);
+	// }
 	ft_printf("%s green\n%s" , "\033[0;31m", "\033[0m");
 	temp_list_clear(&lst);
 	// while (*env)
