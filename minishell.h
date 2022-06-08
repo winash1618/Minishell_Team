@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 14:12:48 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/07 12:43:23 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ int		child_execute(t_new *lst, char **path, char **env);
 
 //redirection.c
 void	skip_node(t_new **lst, int *skip_flag);
-char	*redirect_input(t_new **lst, int *skip_flag);
+char	*redirect_input(t_new **lst, int *skip_flag, char **user_input);
 int		empty_file(char *file_name);
 char	*redirect_output(t_new **lst, int *skip_flag , int *append_flag);
 char	*line_input(char *delimiter);

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 17:56:59 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/07 12:51:06 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,21 @@ void	skip_node(t_new **lst, int *skip_flag)
 	*lst = (*lst)->next;
 }
 
-char	*redirect_input(t_new **lst, int *skip_flag)
+char	*redirect_input(t_new **lst, int *skip_flag, char **user_input)
 {
-	char	*in_file_name;
+	char	*in_file_name; //not an accurate name
+	int		user_input_flag;
 	t_new	*temp;
 
 	in_file_name = NULL;
 	temp = *lst;
-	if (temp && *(temp->token) == '<' && *((temp->token) + 1) != '<') // use flag
+	user_input_flag = 0;
+	if (temp && *((temp->token) + 1) == '<')
+		user_input_flag = 1;
+	if (temp)
 	{
-		if (*((temp->token) + 1) != '\0')
-			in_file_name = (temp->token) + 1;
+		if (*((temp->token) + 1 + user_input_flag) != '\0')
+			in_file_name = (temp->token) + 1 + user_input_flag;
 		else if (temp->next)
 		{
 			in_file_name = temp->next->token;
@@ -89,6 +93,16 @@ char	*redirect_input(t_new **lst, int *skip_flag)
 		else
 			ft_printf("parse error near \\n");
 		skip_node(&temp, skip_flag);
+	}
+	if (*user_input)
+	{
+		free(*user_input);
+		*user_input = NULL;
+	}
+	if (user_input_flag)
+	{
+		*user_input = line_input(in_file_name);
+		in_file_name = NULL;
 	}
 	*lst = temp;
 	return (in_file_name);
@@ -142,3 +156,53 @@ char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag)
 		empty_file(out_file_name); //handel error
 	return (out_file_name);
 }
+
+// char	*redirect_input(t_new **lst, int *skip_flag, char **user_input)
+// {
+// 	char	*in_file_name;
+// 	int		user_input_flag;
+// 	t_new	*temp;
+
+// 	in_file_name = NULL;
+// 	temp = *lst;
+// 	user_input_flag = 0;
+// 	if (temp && *((temp->token) + 1) == '<')
+// 		user_input_flag = 1;
+// 	// {
+// 	// 	if (*user_input)
+// 	// 	{
+// 	// 		free(*user_input);
+// 	// 		*user_input == NULL;
+// 	// 	}
+// 	// 	if (*((temp->token) + 2) != '\0')
+// 	// 		delimiter = (temp->token) + 2;
+// 	// 	else
+// 	// 		delimiter = temp->next->token;
+// 	// 	*user_input = *line_input(delimiter);
+// 	// }
+// 	if (temp)
+// 	{
+// 		if (*((temp->token) + 1 + user_input_flag) != '\0')
+// 			in_file_name = (temp->token) + 1;
+// 		else if (temp->next)
+// 		{
+// 			in_file_name = temp->next->token;
+// 			skip_node(&temp, skip_flag);
+// 		}
+// 		else
+// 			ft_printf("parse error near \\n");
+// 		skip_node(&temp, skip_flag);
+// 	}
+// 	if (*user_input)
+// 	{
+// 		free(*user_input);
+// 		*user_input == NULL;
+// 	}
+// 	if (user_input_flag)
+// 	{
+// 		*user_input = *line_input(in_file_name);
+// 		in_file_name = NULL;
+// 	} 
+// 	*lst = temp;
+// 	return (in_file_name);
+// }

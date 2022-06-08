@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 17:07:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/08 14:39:46 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 		id = fork();
 		if (id == 0)
 		{
+			//child_manger(lst, fd, i);
 			if (i > 0)
 				set_pipes(&lst, fd[i - 1][0], fd[i][1]);
 			else
