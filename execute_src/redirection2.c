@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/08 14:08:40 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/11 14:54:49 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,24 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 	return (0);
 }
 
+void	adopted_child(int in_file, char *here_doc)
+{
+	int	fd[2];
+	int	id;
+
+	pipe(fd);
+	id = fork();
+	if (id == 0)
+		ft_putstr_fd(here_doc, fd[1]);
+	else
+	{
+		hijack_stdin(fd[0], NULL);
+		close(in_file);
+	}
+	close(fd[1]);
+	close(fd[0]);
+}
+
 t_new	**set_pipes(t_new **lst, int in_file, int out_file)
 {
 	char	*in_file_name;
@@ -82,27 +100,28 @@ t_new	**set_pipes(t_new **lst, int in_file, int out_file)
 		hijack_stdin(in_file, in_file_name);
 	else
 	{
-		char buff[1] = {'0'};
-		while (ft_isprint(buff[0]))
-		{
-			buff[0] = 0;	
-			if (read(in_file, buff, 1) <= 0)
-				break ;
-			write(1, buff, 1);
-			//ft_printf("this is not real\n");
-		}
-		ft_printf("this is not real\n");
-		hijack_stdin(in_file, NULL);
-		//char buff[1000];// = "1";
-		//while (buff[1])
-			//read(in_file, buff, 1000);
-		ft_putstr_fd(in_file_name, in_file + 1);
-		write(in_file + 1,"\0",1);
-		ft_printf("this is not real\n");
-		//ft_putstr_fd(in_file_name, 1);
-		free(in_file_name);
-		close(in_file);
-		ft_printf("this is not real\n");
+		adopted_child(in_file, in_file_name);
+		// char buff[1] = {'0'};
+		// while (ft_isprint(buff[0]))
+		// {
+		// 	buff[0] = 0;	
+		// 	if (read(in_file, buff, 1) <= 0)
+		// 		break ;
+		// 	write(1, buff, 1);
+		// 	//ft_printf("this is not real\n");
+		// }
+		// ft_printf("this is not real\n");
+		// hijack_stdin(in_file, NULL);
+		// //char buff[1000];// = "1";
+		// //while (buff[1])
+		// 	//read(in_file, buff, 1000);
+		// ft_putstr_fd(in_file_name, in_file + 1);
+		// write(in_file + 1,"\0",1);
+		// ft_printf("this is not real\n");
+		// //ft_putstr_fd(in_file_name, 1);
+		// free(in_file_name);
+		// close(in_file);
+		// ft_printf("this is not real\n");
 	}
 	hijack_stdout(out_file, out_file_name, *append_or_input_flag, list_has_pipes(*lst));
 	return (lst);
