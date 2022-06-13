@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/11 14:54:49 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/13 12:12:03 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,21 @@
 int	hijack_stdin(int in_file, char *in_file_name) //handel errors
 {
 	if (in_file_name != NULL)
+	{
+		if (access(in_file_name, F_OK) == -1 || access(in_file_name, R_OK) == -1)
+			return (-1);
 		in_file = open(in_file_name, O_RDONLY);
-	dup2(in_file, STDIN_FILENO);
+		if (in_file == -1)
+			return (-1);
+	}
+	if (in_file == STDIN_FILENO)
+		return (0);
+	if (dup2(in_file, STDIN_FILENO) == -1)
+	{
+		if (in_file_name != NULL)
+			close (in_file);
+		return (-1);
+	}
 	return (0);
 }
 
@@ -24,9 +37,27 @@ int	hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag) 
 {
 	append_flag = (O_APPEND * (append_flag)) | (O_TRUNC * (!append_flag));
 	if (out_file_name != NULL)
-		out_file = open(out_file_name, O_WRONLY | append_flag);
-	if (flag || out_file_name != NULL) 
-		dup2(out_file, STDOUT_FILENO);
+	{
+		if (access(out_file_name, F_OK) == -1)
+			out_file = open(out_file_name, O_CREAT, 0644);
+		else if (access(out_file_name, W_OK) == -1)
+			return (-1);
+		else
+			out_file = open(out_file_name, O_WRONLY | append_flag);
+		if (out_file == -1)
+			return (-1);
+	}
+	if (flag || out_file_name != NULL)
+	{
+		if (out_file == STDIN_FILENO)
+			return (0);
+		if (dup2(out_file, STDOUT_FILENO))
+		{
+			if (out_file_name != NULL)
+				close (out_file);
+			return (-1);
+		}
+	}
 	return (0);
 }
 
@@ -65,20 +96,15 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 
 void	adopted_child(int in_file, char *here_doc)
 {
-	int	fd[2];
-	int	id;
+	int	*fd;
 
+	fd = (int *)malloc(sizeof(*fd) * 2); // add to big list
 	pipe(fd);
-	id = fork();
-	if (id == 0)
-		ft_putstr_fd(here_doc, fd[1]);
-	else
-	{
-		hijack_stdin(fd[0], NULL);
-		close(in_file);
-	}
-	close(fd[1]);
+	ft_putstr_fd(here_doc, fd[1]);
+	hijack_stdin(fd[0], NULL);
 	close(fd[0]);
+	close(in_file);
+	close(fd[1]);
 }
 
 t_new	**set_pipes(t_new **lst, int in_file, int out_file)
@@ -96,33 +122,10 @@ t_new	**set_pipes(t_new **lst, int in_file, int out_file)
 	if (*(temp->token) == '|') // use flag
 		ft_printf("DUCK");
 	redirection_loop(lst, &in_file_name, &out_file_name, append_or_input_flag);
+	hijack_stdout(out_file, out_file_name, *append_or_input_flag, list_has_pipes(*lst));
 	if (append_or_input_flag[1] == 0)
 		hijack_stdin(in_file, in_file_name);
 	else
-	{
 		adopted_child(in_file, in_file_name);
-		// char buff[1] = {'0'};
-		// while (ft_isprint(buff[0]))
-		// {
-		// 	buff[0] = 0;	
-		// 	if (read(in_file, buff, 1) <= 0)
-		// 		break ;
-		// 	write(1, buff, 1);
-		// 	//ft_printf("this is not real\n");
-		// }
-		// ft_printf("this is not real\n");
-		// hijack_stdin(in_file, NULL);
-		// //char buff[1000];// = "1";
-		// //while (buff[1])
-		// 	//read(in_file, buff, 1000);
-		// ft_putstr_fd(in_file_name, in_file + 1);
-		// write(in_file + 1,"\0",1);
-		// ft_printf("this is not real\n");
-		// //ft_putstr_fd(in_file_name, 1);
-		// free(in_file_name);
-		// close(in_file);
-		// ft_printf("this is not real\n");
-	}
-	hijack_stdout(out_file, out_file_name, *append_or_input_flag, list_has_pipes(*lst));
 	return (lst);
 }

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/07 12:51:06 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/12 17:48:35 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,13 @@ char	*line_input(char *delimiter)
 		if (ft_strncmp_protected(one_line, delimiter \
 			, ft_strlen(delimiter) + 1) != 0)
 		{
-			ft_strjoin_minishell(&line, one_line);
-			ft_strjoin_minishell(&line, "\n");
+			if (ft_strjoin_minishell(&line, one_line) < 0
+				|| ft_strjoin_minishell(&line, "\n"))
+			{
+				free(one_line);
+				free(line);
+				return (NULL);
+			}
 			free(one_line);
 		}
 		else
@@ -120,17 +125,19 @@ int	empty_file(char *file_name)
 			close(fd);
 		}
 		else
-			return (-1); // this is an error you should handel
+			return (-1);
 	}
 	else
 	{
-		fd = open(file_name, O_CREAT | O_TRUNC, 0644);
+		fd = open(file_name, O_CREAT, 0644);
+		if (fd == -1)
+			return (-1);
 		close (fd);
 	}
 	return (0);
 }
 
-char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag)
+char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag) //error
 {
 	char	*out_file_name;
 	t_new	*temp;
@@ -156,53 +163,3 @@ char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag)
 		empty_file(out_file_name); //handel error
 	return (out_file_name);
 }
-
-// char	*redirect_input(t_new **lst, int *skip_flag, char **user_input)
-// {
-// 	char	*in_file_name;
-// 	int		user_input_flag;
-// 	t_new	*temp;
-
-// 	in_file_name = NULL;
-// 	temp = *lst;
-// 	user_input_flag = 0;
-// 	if (temp && *((temp->token) + 1) == '<')
-// 		user_input_flag = 1;
-// 	// {
-// 	// 	if (*user_input)
-// 	// 	{
-// 	// 		free(*user_input);
-// 	// 		*user_input == NULL;
-// 	// 	}
-// 	// 	if (*((temp->token) + 2) != '\0')
-// 	// 		delimiter = (temp->token) + 2;
-// 	// 	else
-// 	// 		delimiter = temp->next->token;
-// 	// 	*user_input = *line_input(delimiter);
-// 	// }
-// 	if (temp)
-// 	{
-// 		if (*((temp->token) + 1 + user_input_flag) != '\0')
-// 			in_file_name = (temp->token) + 1;
-// 		else if (temp->next)
-// 		{
-// 			in_file_name = temp->next->token;
-// 			skip_node(&temp, skip_flag);
-// 		}
-// 		else
-// 			ft_printf("parse error near \\n");
-// 		skip_node(&temp, skip_flag);
-// 	}
-// 	if (*user_input)
-// 	{
-// 		free(*user_input);
-// 		*user_input == NULL;
-// 	}
-// 	if (user_input_flag)
-// 	{
-// 		*user_input = *line_input(in_file_name);
-// 		in_file_name = NULL;
-// 	} 
-// 	*lst = temp;
-// 	return (in_file_name);
-// }

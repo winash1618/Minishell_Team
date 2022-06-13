@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/08 14:39:46 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/13 17:42:35 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	(*create_pipes(int no_of_pipes))[2]
 	int	i;
 
 	fd = malloc(sizeof(*fd) * (no_of_pipes));
+	if (fd == NULL)
+		return (NULL);
 	i = 0;
 	while (i < no_of_pipes)
 	{
@@ -40,29 +42,52 @@ int	(*create_pipes(int no_of_pipes))[2]
 	return (fd);
 }
 
-int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
+int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2]) // errors
 {
 	int	i;
 	int	id;
+	int	status;
+	int	prev_id;
 	int	no_of_pipes;
 
 	i = 0;
+	status = 0;
+	prev_id = 0;
 	no_of_pipes = number_of_pipes(lst);
 	while (lst)
 	{
 		id = fork();
 		if (id == 0)
 		{
-			//child_manger(lst, fd, i);
-			if (i > 0)
+			// child_manger(lst, fd, i);
+			if (prev_id != 0)
+			{
+				waitpid(prev_id, &status, 0);
+				//ft_printf("the previous kids status %d\n", WEXITSTATUS(status));
+			}
+			if (no_of_pipes == 0)
+				set_pipes(&lst, STDIN_FILENO, STDOUT_FILENO);
+			else if (i > 0)
+			{
+				ft_printf("GREETINGS %d\n", i);
 				set_pipes(&lst, fd[i - 1][0], fd[i][1]);
+			}
 			else
-				set_pipes(&lst, STDIN_FILENO, fd[i][1]);
+				set_pipes(&lst, STDIN_FILENO, STDOUT_FILENO);
 			close_pipes(fd, no_of_pipes);
 			child_execute (lst, path, env);
+			break ;
 		}
 		else
+		{
+			// ft_printf("______The list is _______\n");
+			// lst_print(lst);
+			// ft_printf("_________________________\n");
+			// sleep(1);
 			lst = nxt_cmd(lst);
+			(void)fd;
+			prev_id = id;
+		}
 		++i;
 	}
 	return (id);
@@ -77,6 +102,8 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 
 	no_of_pipes = number_of_pipes(lst);
 	fd = create_pipes(no_of_pipes);
+	if (fd == NULL)
+		return (-1);
 	id = loopy_parent(lst, path, env, fd);
 	if (id != 0)
 	{
@@ -87,6 +114,8 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 		ft_printf("The parent is alive %d\n", WEXITSTATUS(status));
 	}
 	free(fd);
+	if (id == 0)
+		return (-1);
 	return (0);
 }
 
@@ -97,9 +126,8 @@ int	excute(t_new *lst, char **env)
 
 	i = 0;
 	(void)lst;
-	//Find Path
 	if (!env)
-		return 0;
+		return (0);
 	while (env[i] && ft_strncmp_protected(env[i], "PATH=", 5) != 0)
 		++i;
 	if (env[i] == NULL)
@@ -107,7 +135,14 @@ int	excute(t_new *lst, char **env)
 	//env[i] = ft_strnstr(env[i], "PATH=", 5);
 	// split path
 	path = ft_split(env[i] + 5, ':');
-	parent_forking5(lst, path, env);
+	if (path == NULL)
+		return (-1);
+	if (parent_forking5(lst, path, env) == -1)
+	{
+		clear_str_sep(path);
+		// clear list
+		exit(-1);
+	}
 	clear_str_sep(path);
 	return (0);
 }

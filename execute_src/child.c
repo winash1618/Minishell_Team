@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 16:32:47 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/13 17:53:13 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,17 @@ int	child_execute(t_new *lst, char **path, char **env)
 	{
 		ft_strjoin_minishell(&(path[i]), "/");
 		ft_strjoin_minishell(&(path[i]), lst->token);
+		args[0] = path[i];
+		// ft_printf("______The array is _______\n");
+		// print_strarr(args);
+		// // lst_print(lst);
+		// ft_printf("_________________________\n");
 		execve(path[i], args, env);
 		++i;
 	}
 	free(args);
-	ft_printf("THIS IS NOT GREAT");
-	exit (2);
+	//ft_printf("THIS IS NOT GREAT");
+	//exit (-1);
 	//free (env); // temp sol;
-	return (1);
+	return (-1);
 }
