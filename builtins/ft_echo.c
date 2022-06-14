@@ -6,13 +6,13 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:25:24 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/06 10:14:04 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/08 10:13:29 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void ft_echo(char *str, int fd)
+void ft_echo(char *str, int fd, int flag)
 {
 	ft_putstr_fd(str, fd);
 }

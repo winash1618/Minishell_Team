@@ -1,1 +1,2 @@
       40     562    8836
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/mkaruvan/Desktop/42-ValgrindContainer:/Users/mkaruvan/goinfre/flutter/bin:/Users/mkaruvan/Desktop/42-ValgrindContainer:/Users/mkaruvan/goinfre/flutter/bin :

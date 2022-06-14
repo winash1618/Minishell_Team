@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/07 08:48:18 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/14 11:36:22 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ int main(int ac, char **av, char **env)
 	// printf("%s", str);
 	// printf(" ");
 	char *line;
-	// int i = 0;
+	int i = 0;
 	while (1)
 	{
+		i++;
 		info->e_flag = 0;
 		info->q_flag = 0;
 		
@@ -100,10 +101,11 @@ int main(int ac, char **av, char **env)
 				dollar_expansion(cmd, env);
 				make_all_zero(cmd);
 				if (cmd)
-				{make_big_list(&cmd);
-				find_redirection_presence(cmd);
-				// lst_print(cmd);
-				excute (cmd, env);
+				{
+					make_big_list(&cmd);
+					find_redirection_presence(cmd);
+					// lst_print(cmd);
+					excute (cmd, env);
 				}
 			// }
 		}

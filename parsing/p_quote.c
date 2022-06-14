@@ -6,25 +6,15 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:58:25 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/30 06:34:00 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:38:38 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // For handling the quotes
 #include "../minishell.h"
 
-void quote_counter(char *line, t_info *info)
+char *quote_count_help(char *temp2)
 {
-	int c;
-
-	c = 0;
-	char *temp; 
-	temp = line;
-	int d;
-
-	d = 0;
-	char *temp2 = ft_strdup(temp);
-
 	int i = 0;
 	while (temp2[i])
 	{
@@ -53,6 +43,51 @@ void quote_counter(char *line, t_info *info)
 		else
 			i++;
 	}
+	return (temp2);
+}
+
+void quote_counter(char *line, t_info *info)
+{
+	int c;
+
+	c = 0;
+	char *temp; 
+	temp = line;
+	int d;
+
+	d = 0;
+	char *temp2 = ft_strdup(temp);
+	t_list *tmp = ft_lstnew((void *)(temp2));
+	ft_lstadd_back(&g_m, tmp);
+	temp2 = quote_count_help(temp2);
+	int i = 0;
+	// while (temp2[i])
+	// {
+	// 	if (temp2[i] == '"')
+	// 	{
+	// 		i++;
+	// 		while (temp2[i] != '"' && temp2[i]) 
+	// 		{
+	// 			temp2[i] = 'a';
+	// 			i++;
+	// 		}
+	// 		if (temp2[i])
+	// 			i++;
+	// 	}
+	// 	else if (temp2[i] == 39)
+	// 	{
+	// 		i++;
+	// 		while (temp2[i] != 39 && temp2[i]) 
+	// 		{
+	// 			temp2[i] = 'a';
+	// 			i++;
+	// 		}
+	// 		if (temp2[i])
+	// 			i++;
+	// 	}
+	// 	else
+	// 		i++;
+	// }
 	i = 0;
 	while (temp2[i])
 	{
