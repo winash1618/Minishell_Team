@@ -8,11 +8,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon Jun 13 16:39:14 2022
+# Make data base, printed on Tue Jun 14 17:41:45 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -50,7 +49,7 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 32)
 OBJS = $(SRC:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbym0032zn/T/vscode-ipc-ba3e2708-da1c-43e4-b7c9-e6d5b9ca7d90.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbym0032zn/T/vscode-ipc-8881ce49-f3c2-49b2-a7fc-6612b1c94175.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -58,7 +57,7 @@ PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/ayas
 # makefile (from `Makefile', line 15)
 PNAME = parser
 # environment
-LaunchInstanceID = 2ACF4078-10B2-4817-A0D1-41561C76A41F
+LaunchInstanceID = A20402D1-56CB-4A24-9240-44CEF06AD2F1
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -66,9 +65,9 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # makefile (from `Makefile', line 19)
-EXECUTE_SRC = pipex.c pipex_utils.c child.c redirection.c redirection2.c temp_list.c
+EXECUTE_SRC = pipex.c pipex_utils.c child.c redirection.c redirection2.c temp_list.c here_doc.c
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.y1OwK4H9tB/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.0BZGhaUw5w/Listeners
 # makefile (from `Makefile', line 24)
 EXECUTE_SRC_INDIR = $(addprefix $(EXECUTE_SRC_DIR)/,$(EXECUTE_SRC))
 # automatic
@@ -134,7 +133,7 @@ MFLAGS = -Rrqp
 # environment
 MAIL = ayassin@student.42abudhabi.ae
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x1000000c.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 26)
@@ -152,7 +151,7 @@ MAKEFILES :=
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a8
+SECURITYSESSIONID = 186d0
 # automatic
 ^F = $(notdir $^)
 # default
@@ -166,7 +165,7 @@ SUBDIRS = libft ft_printf parsing
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1067
+VSCODE_PID = 21052
 # variable set hash-table stats:
 # Load=77/1024=8%, Rehash=0, Collisions=4/110=4%
 
@@ -176,10 +175,10 @@ VSCODE_PID = 1067
 
 # Directories
 
-# execute_src (device 16777225, inode 2174630): 14 files, no impossibilities so far.
-# . (device 16777225, inode 1847004): 30 files, no impossibilities.
+# execute_src (device 16777225, inode 2174630): 16 files, no impossibilities so far.
+# . (device 16777225, inode 1847004): 31 files, no impossibilities.
 
-# 44 files, no impossibilities in 2 directories.
+# 47 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -198,7 +197,7 @@ VSCODE_PID = 1067
 execute_src/pipex_utils.o: execute_src/pipex_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex_utils'
-#  Last modified 2022-06-13 14:19:11
+#  Last modified 2022-06-14 08:37:48
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -228,7 +227,7 @@ all: minishell
 execute_src/redirection.o: execute_src/redirection.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/redirection'
-#  Last modified 2022-06-13 14:19:11
+#  Last modified 2022-06-14 10:56:03
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -241,6 +240,15 @@ execute_src/redirection.o: execute_src/redirection.c
 	
 
 # Not a target:
+execute_src/here_doc.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-14 11:00:36
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
 .SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -249,7 +257,7 @@ execute_src/redirection.o: execute_src/redirection.c
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-06 18:01:41
+#  Last modified 2022-06-14 08:28:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -258,7 +266,7 @@ Makefile:
 execute_src/child.o: execute_src/child.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/child'
-#  Last modified 2022-06-13 14:19:11
+#  Last modified 2022-06-14 08:51:30
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -282,7 +290,7 @@ execute_src/pipex_utils.c:
 execute_src/pipex.o: execute_src/pipex.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex'
-#  Last modified 2022-06-13 15:39:06
+#  Last modified 2022-06-14 10:55:21
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -294,16 +302,16 @@ execute_src/pipex.o: execute_src/pipex.c
 	$(CC) $(CFLAGS) -Ilibft -Ift_printf -Iparsing -c $^ -o $@
 	
 
-minishell: minishell.o execute_src/pipex.o execute_src/pipex_utils.o execute_src/child.o execute_src/redirection.o execute_src/redirection2.o execute_src/temp_list.o parser.o
+ 
+minishell: minishell.o execute_src/pipex.o execute_src/pipex_utils.o execute_src/child.o execute_src/redirection.o execute_src/redirection2.o execute_src/temp_list.o execute_src/here_doc.o parser.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-13 15:39:07
+#  Last modified 2022-06-14 11:02:07
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 50):
 	for dir in $(SUBDIRS); do \
- 
 	$(MAKE) all -C $$dir; \
 	done
 	$(CC) $(CFALGS) $(SRC)  -lreadline \
@@ -316,7 +324,7 @@ minishell: minishell.o execute_src/pipex.o execute_src/pipex_utils.o execute_src
 minishell.o: minishell.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `minishell'
-#  Last modified 2022-06-13 14:58:04
+#  Last modified 2022-06-14 11:02:06
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -344,7 +352,7 @@ fclean: clean
 # Not a target:
 execute_src/redirection.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 17:48:35
+#  Last modified 2022-06-14 10:51:27
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -353,7 +361,7 @@ execute_src/redirection.c:
 parser.o: parser.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parser'
-#  Last modified 2022-06-13 14:19:12
+#  Last modified 2022-06-14 08:37:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -368,7 +376,7 @@ parser.o: parser.c
 execute_src/redirection2.o: execute_src/redirection2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/redirection2'
-#  Last modified 2022-06-13 14:19:11
+#  Last modified 2022-06-14 10:56:03
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -389,7 +397,7 @@ execute_src/redirection2.o: execute_src/redirection2.c
 execute_src/temp_list.o: execute_src/temp_list.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/temp_list'
-#  Last modified 2022-06-13 14:19:12
+#  Last modified 2022-06-14 08:37:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -410,7 +418,7 @@ re: fclean all
 # Not a target:
 execute_src/child.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-13 11:52:23
+#  Last modified 2022-06-14 08:49:41
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -432,7 +440,7 @@ clean:
 # Not a target:
 execute_src/pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-13 15:39:02
+#  Last modified 2022-06-14 08:56:24
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -441,11 +449,26 @@ execute_src/pipex.c:
 # Not a target:
 minishell.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-13 14:58:02
+#  Last modified 2022-06-14 11:02:05
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+execute_src/here_doc.o: execute_src/here_doc.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `execute_src/here_doc'
+#  Last modified 2022-06-14 11:00:38
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 43):
+	for dir in $(SUBDIRS); do \
+	$(MAKE) all -C $$dir; \
+	done
+	$(CC) $(CFLAGS) -Ilibft -Ift_printf -Iparsing -c $^ -o $@
+	
 
 # Not a target:
 parser.c:
@@ -459,7 +482,7 @@ parser.c:
 # Not a target:
 execute_src/redirection2.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-13 12:12:03
+#  Last modified 2022-06-14 10:54:13
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -475,7 +498,7 @@ execute_src/temp_list.c:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=25/1024=2%, Rehash=0, Collisions=0/78=0%
+# Load=27/1024=3%, Rehash=0, Collisions=0/84=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -487,6 +510,6 @@ execute_src/temp_list.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jun 13 16:39:14 2022
+# Finished Make data base on Tue Jun 14 17:41:45 2022
 
  

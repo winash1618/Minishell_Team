@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/13 17:42:35 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/14 08:56:24 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	{
 		close_pipes(fd, no_of_pipes);
 		waitpid(id, &status, 0);
-		if (status == -1)
-			ft_printf("THE CHILD HAD A PROBLEM");
+		if (WEXITSTATUS(status))
+			ft_printf("THE CHILD HAD A PROBLEM\n");
 		ft_printf("The parent is alive %d\n", WEXITSTATUS(status));
 	}
 	free(fd);
@@ -126,6 +126,8 @@ int	excute(t_new *lst, char **env)
 
 	i = 0;
 	(void)lst;
+	if (here_doc_input(lst))
+		exit(-1); //change code based on error
 	if (!env)
 		return (0);
 	while (env[i] && ft_strncmp_protected(env[i], "PATH=", 5) != 0)
@@ -141,7 +143,7 @@ int	excute(t_new *lst, char **env)
 	{
 		clear_str_sep(path);
 		// clear list
-		exit(-1);
+		exit(50);
 	}
 	clear_str_sep(path);
 	return (0);

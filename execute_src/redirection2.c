@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/13 12:12:03 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/14 18:32:52 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	hijack_stdin(int in_file, char *in_file_name) //handel errors
 			return (-1);
 		in_file = open(in_file_name, O_RDONLY);
 		if (in_file == -1)
+		{
+			print_error(in_file_name ,"No such file or directory");
 			return (-1);
+		}
 	}
 	if (in_file == STDIN_FILENO)
 		return (0);
@@ -65,15 +68,15 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 {
 	t_new	*temp;
 	int		skip_flag;
-	char	*user_input;
+	// char	*user_input;
 
 	temp = *lst;
 	skip_flag = 0;
-	user_input = NULL;
+	// user_input = NULL;
 	while (temp && *(temp->token) != '|') //use flag
 	{
 		if (temp && *(temp->token) == '<') // and flag
-			*in_file_name = redirect_input(&temp, &skip_flag, &user_input);
+			*in_file_name = redirect_input(&temp, &skip_flag, &(append_flag[1]));
 		if (temp && *(temp->token) == '>') // and flag
 			*out_file_name = redirect_output(&temp, &skip_flag, append_flag);
 		if (skip_flag == 1)
@@ -81,12 +84,12 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 		else
 			temp = temp->next;
 	}
-	if (user_input != NULL)
-	{
-		*in_file_name = NULL;
-		*in_file_name = user_input;
-		append_flag[1] = 1;
-	}
+	// if (user_input != NULL)
+	// {
+	// 	*in_file_name = NULL;
+	// 	*in_file_name = user_input;
+	// 	append_flag[1] = 1;
+	// }
 	if (temp != NULL)
 		temp->next = NULL; // remeber to free the list for the child
 	while (*lst && ft_strchr("<>", *((*lst)->token))) // check flags (and free)

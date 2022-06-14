@@ -6,59 +6,11 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/12 17:48:35 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/14 10:51:27 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/* Retun a string since the first occurnce of string "needle" 
-in the string "haystack" within "len" chars of "haystack"*/
-
-/* Compare the first "n" chars from strings "s1" & "s2".
-Return the diffrence in the first char or 0 if no diffrence is found
-**NOT PROTECTED VS NULL INPUT**/
-int	ft_strncmp_protected(const char *s1, const char *s2, size_t n)
-{
-	size_t	pos;
-
-	pos = 0;
-	if (!n || !s1 || !s2)
-		return (0);
-	while (pos < (n - 1) && s1[pos] && s2[pos] && (unsigned char)s1[pos]
-		== (unsigned char)s2[pos])
-		pos++;
-	return ((unsigned char)s1[pos] - (unsigned char)s2[pos]);
-}
-
-char	*line_input(char *delimiter)
-{
-	char	*line;
-	char	*one_line;
-
-	line = NULL;
-	one_line = NULL;
-	while (1)
-	{
-		one_line = readline("> ");
-		if (ft_strncmp_protected(one_line, delimiter \
-			, ft_strlen(delimiter) + 1) != 0)
-		{
-			if (ft_strjoin_minishell(&line, one_line) < 0
-				|| ft_strjoin_minishell(&line, "\n"))
-			{
-				free(one_line);
-				free(line);
-				return (NULL);
-			}
-			free(one_line);
-		}
-		else
-			break ;
-	}
-	free(one_line);
-	return (line);
-}
 
 void	skip_node(t_new **lst, int *skip_flag)
 {
@@ -75,7 +27,7 @@ void	skip_node(t_new **lst, int *skip_flag)
 	*lst = (*lst)->next;
 }
 
-char	*redirect_input(t_new **lst, int *skip_flag, char **user_input)
+char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
 {
 	char	*in_file_name; //not an accurate name
 	int		user_input_flag;
@@ -99,16 +51,7 @@ char	*redirect_input(t_new **lst, int *skip_flag, char **user_input)
 			ft_printf("parse error near \\n");
 		skip_node(&temp, skip_flag);
 	}
-	if (*user_input)
-	{
-		free(*user_input);
-		*user_input = NULL;
-	}
-	if (user_input_flag)
-	{
-		*user_input = line_input(in_file_name);
-		in_file_name = NULL;
-	}
+	*input_flag = user_input_flag;
 	*lst = temp;
 	return (in_file_name);
 }

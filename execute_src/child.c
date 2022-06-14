@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/13 17:53:13 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/14 18:32:48 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ int	child_execute(t_new *lst, char **path, char **env)
 		execve(path[i], args, env);
 		++i;
 	}
+	print_error(ft_strrchr(args[0], '/') + 1, ": command not found");
 	free(args);
-	//ft_printf("THIS IS NOT GREAT");
-	//exit (-1);
-	//free (env); // temp sol;
 	return (-1);
 }
