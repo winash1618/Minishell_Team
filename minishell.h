@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/14 18:25:55 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/15 17:58:20 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	clear_str_sep(char **str_sep);
 void	close_pipes(int (*fd)[2], int no_of_pipes);
 int		number_of_pipes(t_new *lst);
 int		list_has_pipes(t_new *lst);
-void	print_error(char *problem, char *msg);
+int		print_error(char *problem, char *msg);
 
 //child.c
 char	**args_array(t_new *lst);
@@ -152,7 +152,7 @@ char	*line_input(char *delimiter);
 int		hijack_stdin(int in_file, char *in_file_name); //handel errors
 int		hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag); //handle errors
 int		redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int *append_flag);
-t_new	**set_pipes(t_new **lst, int in_file, int out_file);
+int		set_pipes(t_new **lst, int in_file, int out_file);
 
 //here_doc.c
 int		ft_strncmp_protected(const char *s1, const char *s2, size_t n);

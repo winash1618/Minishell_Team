@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/14 10:51:27 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/15 16:53:42 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	skip_node(t_new **lst, int *skip_flag)
 	*skip_flag = 1;
 	if (!(lst && *lst))
 	{
-		ft_printf("what are you doing");
+		ft_putstr_fd("What are you doing, there is no list\n", 2);
 		exit(-1);
 	}
 	if ((*lst)->prev != NULL)
@@ -25,6 +25,32 @@ void	skip_node(t_new **lst, int *skip_flag)
 	if ((*lst)->next != NULL)
 		(*lst)->next->prev = (*lst)->prev;
 	*lst = (*lst)->next;
+}
+
+int	input_file_check(char *file_name)
+{
+	int	fd;
+
+	if (access(file_name, F_OK) == 0)
+	{
+		if (access(file_name, R_OK) == 0)
+		{
+			fd = open(file_name, O_RDONLY);
+			if (fd == -1)
+				return (print_error(file_name, ": Failed to open"));
+			else if (read(fd, file_name, 0) == -1)
+			{
+				close (fd);
+				return (print_error(file_name, ": Is a directory"));
+			}
+			close(fd);
+		}
+		else
+			return (print_error(file_name, ": Permission denied"));
+	}
+	else
+		return (print_error(file_name, ": No such file or directory"));
+	return (0);
 }
 
 char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
@@ -48,33 +74,43 @@ char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
 			skip_node(&temp, skip_flag);
 		}
 		else
-			ft_printf("parse error near \\n");
+			print_error("syntax error near unexpected token ", temp->token);
 		skip_node(&temp, skip_flag);
 	}
 	*input_flag = user_input_flag;
+	if (input_file_check(in_file_name) == -1)
+		return (NULL);
 	*lst = temp;
 	return (in_file_name);
 }
 
-int	empty_file(char *file_name)
+int	output_file_check(char *file_name, int trunc)
 {
 	int	fd;
 
+	trunc = (trunc != 0) * O_TRUNC;
 	if (access(file_name, F_OK) == 0)
 	{
 		if (access(file_name, W_OK) == 0)
 		{
-			fd = open(file_name, O_TRUNC);
+			fd = open(file_name, O_WRONLY | trunc);
+			if (fd == -1)
+				return (print_error(file_name, ": Is a directory"));
+			// if (read(fd, file_name, 0) == -1)
+			// {
+			// 	close (fd);
+			// 	return (print_error(file_name, ": Is a directory"));
+			// }
 			close(fd);
 		}
 		else
-			return (-1);
+			return (print_error(file_name, ": Permission denied"));
 	}
 	else
 	{
 		fd = open(file_name, O_CREAT, 0644);
 		if (fd == -1)
-			return (-1);
+			return (print_error(file_name, ": File failed to creat"));
 		close (fd);
 	}
 	return (0);
@@ -99,10 +135,10 @@ char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag) //error
 		skip_node(&temp, skip_flag);
 	}
 	else
-		ft_printf("parse error near \n");
+		print_error("syntax error near unexpected token ", temp->token);
 	skip_node(&temp, skip_flag);
 	*lst = temp;
-	if (*append_flag == 0 || access(out_file_name, F_OK) == -1)
-		empty_file(out_file_name); //handel error
+	if (output_file_check(out_file_name, (*append_flag == 0)) == -1)
+		return (NULL);
 	return (out_file_name);
 }

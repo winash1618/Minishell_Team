@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/14 08:56:24 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/15 18:06:24 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,17 @@ int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2]) // errors
 				//ft_printf("the previous kids status %d\n", WEXITSTATUS(status));
 			}
 			if (no_of_pipes == 0)
-				set_pipes(&lst, STDIN_FILENO, STDOUT_FILENO);
+				status = set_pipes(&lst, STDIN_FILENO, STDOUT_FILENO);
 			else if (i > 0)
 			{
 				ft_printf("GREETINGS %d\n", i);
-				set_pipes(&lst, fd[i - 1][0], fd[i][1]);
+				status = set_pipes(&lst, fd[i - 1][0], fd[i][1]);
 			}
 			else
-				set_pipes(&lst, STDIN_FILENO, STDOUT_FILENO);
+				status = set_pipes(&lst, STDIN_FILENO, fd[i][1]);
 			close_pipes(fd, no_of_pipes);
-			child_execute (lst, path, env);
+			if (status == 0)
+				child_execute (lst, path, env);
 			break ;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/14 18:32:48 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/15 16:50:06 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	child_execute(t_new *lst, char **path, char **env)
 
 	i = 0;
 	args = args_array(lst);
+	if (lst->token && *(lst->token) == '/')
+		execve(lst->token, args, env);
 	while (path[i])
 	{
 		ft_strjoin_minishell(&(path[i]), "/");

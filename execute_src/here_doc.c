@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/14 19:10:50 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/15 16:13:28 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ char	*line_input(char *delimiter)
 			break ;
 	}
 	free(one_line);
+	if (line == NULL)
+		line = ft_strdup("");
 	return (line);
 }
 
@@ -78,6 +80,8 @@ int	here_doc_input(t_new *lst)
 				// //free(lst->token); // to be added for when inegrating
 				lst->token = ft_strdup("<<");
 				ft_strjoin_minishell(&(lst->token), line_input(delimiter));
+				if (*((lst->token) + 2) == '\0')
+					print_error(lst->token, ": Parsing error\n");
 			}
 		}
 		lst = lst->next;
