@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:36:54 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/30 17:39:32 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:45:47 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ void dollar_expansion(t_new *cmd, char **env)
 	{
 		// if (cmd->d_flag)
 		// {
-			if (cmd->flag == 1)
+			if (cmd->flag != 2)
+			{
 				cmd->es = get_expanded_string(cmd->token, env);
-			else if (cmd->flag == 3)
 				cmd->lst = get_expanded_list(cmd->token, env);
+				
+			}
 		// }
 		cmd = cmd->next;
 	}

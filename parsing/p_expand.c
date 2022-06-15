@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:27:21 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/05 13:19:03 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/06 13:35:32 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,36 @@ char *get_dollar_path(char *str, char **env)
 	if (!s1)
 		s1= "";
 	return (s1);
+}
+
+int is_meta_pipe(char c)
+{
+	if (ft_strchr("|", c))
+	{
+		return (1);
+	}
+	return (0);
+}
+
+char *get_meta_pipe(char *str)
+{
+	int i;
+	char *s;
+
+	i = 0;
+	while (str[i] && is_meta_pipe(str[i]))
+		i++;
+	s = (char *)malloc(sizeof(char) * (i + 1));
+	t_list *tmp = ft_lstnew((void *)(s));
+	ft_lstadd_back(&g_m, tmp);
+	i = 0;
+	while (str[i] && is_meta_pipe(str[i]))
+	{
+		s[i] = str[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
 }
 
 char *get_str(char *str)
@@ -214,6 +244,23 @@ void ft_expand6(t_list **lst, t_list *temp, char *str)
 	}
 }
 
+void ft_expand7(t_list **lst, t_list *temp, char *str)
+{
+	if (!*lst)
+	{
+		*lst = ft_lstnew((void *)get_meta_pipe(str));
+		t_list *tmp = ft_lstnew((void *)(*lst));
+		ft_lstadd_back(&g_m, tmp);
+	}
+	else
+	{
+		temp = ft_lstnew((void *)get_meta_pipe(str));
+		ft_lstadd_back(lst, temp);
+		t_list *tmp = ft_lstnew((void *)(temp));
+		ft_lstadd_back(&g_m, tmp);
+	}
+}
+
 t_list *get_expanded_list(char *str, char **env)
 {
 	int i = 0;
@@ -295,6 +342,26 @@ t_list *get_expanded_list(char *str, char **env)
 			// 	ft_lstadd_back(&g_m, tmp);
 			// }
 			while (str[i] && is_no_dollar_meta(str[i]))
+			
+				i++;
+		}
+		else if (is_meta_pipe(str[i]))
+		{
+			ft_expand7(&lst, temp, str + i);
+			// if (!lst)
+			// {
+			// 	lst = ft_lstnew((void *)get_meta_pipe(str + i));
+			// 	t_list *tmp = ft_lstnew((void *)(lst));
+			// 	ft_lstadd_back(&g_m, tmp);
+			// }
+			// else
+			// {
+			// 	temp = ft_lstnew((void *)get_meta_pipe(str + i));
+			// 	ft_lstadd_back(&lst, temp);
+			// 	t_list *tmp = ft_lstnew((void *)(temp));
+			// 	ft_lstadd_back(&g_m, tmp);
+			// }
+			while (str[i] && is_meta_pipe(str[i]))
 				i++;
 		}
 		else if (is_no_dollar_meta1(str[i]))
@@ -314,7 +381,10 @@ t_list *get_expanded_list(char *str, char **env)
 			// 	ft_lstadd_back(&g_m, tmp);
 			// }
 			while (str[i] && is_no_dollar_meta1(str[i]))
+			{
+				printf("%d\n", i);
 				i++;
+			}
 		}
 		else 
 		{

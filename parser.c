@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/06 16:37:40 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/07 08:48:18 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,24 @@ t_list *g_m;
 // 	ft_printf("hi %s\n", s);
 // 	// printf("hi");
 // }
-
-void delete_content(void *content)
+t_new	*temp_makelist(char **str)
 {
-	if (content)
-		free(content);
-}
+	t_new	*commands;
+	int i = 0;
 
+	commands = NULL;
+	while (str[i])
+	{
+		temp_lstadd_back(&commands, temp_lst_newnode(str[i]));
+		++i;
+	}
+	return (commands);
+}
 int main(int ac, char **av, char **env)
 {
 	ac++;
 	(void)av;
+	// count_size(env);
 	g_m = NULL;
 	// t_list *hist;
 	// hist = NULL;
@@ -92,13 +99,16 @@ int main(int ac, char **av, char **env)
 				find_redirection_presence(cmd);
 				dollar_expansion(cmd, env);
 				make_all_zero(cmd);
-				make_big_list(&cmd);
+				if (cmd)
+				{make_big_list(&cmd);
 				find_redirection_presence(cmd);
-				lst_print(cmd);
+				// lst_print(cmd);
+				excute (cmd, env);
+				}
 			// }
 		}
 		free (line);
 	}
-	ft_lstclear(&g_m, &delete_content);
+	ft_lstclear(&g_m, free);
 	return(0);
 }
