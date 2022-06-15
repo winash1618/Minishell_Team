@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:13:31 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 16:33:00 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/15 10:30:51 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_strjoin_minishell(char **prestr, char *sufstr)
 		fullstr[i1] = (*prestr)[i1];
 		++i1;
 	}
-	while (sufstr[i2])
+	while (sufstr && sufstr[i2])
 		fullstr[i1++] = sufstr[i2++];
 	fullstr[i1] = 0;
 	if (*prestr)
@@ -97,4 +97,13 @@ void	close_pipes(int (*fd)[2], int no_of_pipes)
 		close (fd[i][1]);
 		++i;
 	}
+}
+
+int	print_error(char *problem, char *msg)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(problem, 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
+	return (-1);
 }
