@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 14:12:48 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/14 17:48:15 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ char *get_str(char *str);// It returns normal string until dollar sign.
 char *get_expanded_string(char *str, char **env);// It returns entire string with expansion
 void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
 t_list *get_expanded_list(char *str, char **env);//It returns a list of expanded string
+int syntax_error(t_new *cmd);
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//

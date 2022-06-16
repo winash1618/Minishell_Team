@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:49:39 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/10 16:22:56 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:47:17 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void make_all_zero(t_new *cmd)
 		cmd = cmd->next;
 	}
 }
+
 
 void redirection_help(t_new *cmd)
 {
@@ -98,3 +99,120 @@ void find_redirection_presence(t_new *cmd)
 		cmd = cmd->next;
 	}
 }
+
+//------------------------------------------------------------------
+//----------------------------Error Handling------------------------
+//------------------------------------------------------------------
+
+int find_lderror(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '>' && str[i + 1] == '>')
+		{
+			if (str[i + 2] == '|')
+			{
+				ft_putstr_fd("Wrong syntax", 2);
+				return (1);
+			}
+			else if (str[i + 2] == '<' || str[i + 2] == '>')
+			{
+				ft_putstr_fd("Wrong syntax", 2);
+				return (1);
+			}
+		}
+		else if (str[i] == '>' && str[i + 1] == '<')
+		{
+			ft_putstr_fd("Wrong syntax", 2);
+			return (1);
+		}
+		else if (str[i] == '>' && str[i + 1] == '|')
+		{
+			ft_putstr_fd("Wrong syntax", 2);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int find_rderror(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '<' && str[i + 1] == '<')
+		{
+			if (str[i + 2] == '|')
+			{
+				ft_putstr_fd("Wrong syntax", 2);
+				return (1);
+			}
+			else if (str[i + 2] == '<' || str[i + 2] == '>')
+			{
+				ft_putstr_fd("Wrong syntax", 2);
+				return (1);
+			}
+		}
+		else if (str[i] == '<' && str[i + 1] == '>')
+		{
+			ft_putstr_fd("Wrong syntax", 2);
+			return (1);
+		}
+		else if (str[i] == '<' && str[i + 1] == '|')
+			exit(0);
+		i++;
+	}
+	return (0);
+}
+
+int find_perror(char *str)
+{
+	int i;
+	
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '|' )
+		{
+			if (str[i + 1] == '|')
+			{
+				ft_putstr_fd("Wrong syntax", 2);
+				return (1);
+			}
+			else if (str[i + 1] == '<' || str[i + 1] == '>')
+			{
+				ft_putstr_fd("Wrong syntax", 2);
+				return (1);
+			}
+		}
+		i++;
+	}
+	return (0);
+}
+
+int syntax_error(t_new *cmd)
+{
+	int i;
+	int flag;
+
+	i = 0;
+	flag = 0;
+	while(cmd != NULL)
+	{
+		if (cmd->flag == 3)
+		{
+			flag = find_rderror(cmd->token);
+			flag = find_lderror(cmd->token);
+			flag = find_perror(cmd->token);
+		}
+		cmd = cmd->next;
+	}
+	return (flag);
+}
+
