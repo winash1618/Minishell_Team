@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/06/14 08:28:46 by ayassin          ###   ########.fr        #
+#    Updated: 2022/06/16 14:54:59 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ OBJSP = $(SRCP:.c=.o)
 
 CC = gcc
 
-CFLAGS = -ggdb -Wall -Werror -Wextra 
+CFLAGS = -g3 -Wall -Werror -Wextra 
 
 all: $(NAME)
 

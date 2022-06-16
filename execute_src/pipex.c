@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/15 18:06:24 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 17:25:41 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,50 @@ t_new	*nxt_cmd(t_new *lst)
 	return (lst);
 }
 
-//int	**create_pipes(int no_of_pipes)
+int	**create_pipes2(int no_of_pipes)
+{
+	int	**fd;
+	int	i;
+
+	if (no_of_pipes < 1)
+		return (NULL);
+	fd = (int **)malloc(sizeof(*fd) * no_of_pipes);
+	if (fd == NULL)
+		return (NULL);
+	i = 0;
+	while (i < no_of_pipes)
+	{
+		fd[i] = (int *)malloc(sizeof(**fd) * 2);
+		if (pipe(fd[i++]) == -1)
+		{
+			free(fd);
+			return (NULL);
+		}
+	}
+	return (fd);
+}
+
+int	**free_fds(int no_of_pipes, int **fd)
+{
+	int	i;
+
+	if (fd == NULL)
+		return (0);
+	i = 0;
+	while (i < no_of_pipes && fd[i])
+		free (fd[i++]);
+	free (fd);
+	fd = NULL;
+	return (0);
+}
+
 int	(*create_pipes(int no_of_pipes))[2]
 {
 	int	(*fd)[2];
 	int	i;
 
+	// if (no_of_pipes == 0)
+	// 	reutrn(NULL);
 	fd = malloc(sizeof(*fd) * (no_of_pipes));
 	if (fd == NULL)
 		return (NULL);
@@ -42,38 +80,44 @@ int	(*create_pipes(int no_of_pipes))[2]
 	return (fd);
 }
 
+// int	loopy_parent(t_new *lst, char **path, char **env, int **fd)
 int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2]) // errors
 {
 	int	i;
 	int	id;
 	int	status;
-	int	prev_id;
+	// int	prev_id;
 	int	no_of_pipes;
 
 	i = 0;
 	status = 0;
-	prev_id = 0;
+	// prev_id = 0;
 	no_of_pipes = number_of_pipes(lst);
+	//close(fd[0][0]);
+	ft_printf("no of pipes is %d\n", no_of_pipes);
 	while (lst)
 	{
 		id = fork();
 		if (id == 0)
 		{
 			// child_manger(lst, fd, i);
-			if (prev_id != 0)
-			{
-				waitpid(prev_id, &status, 0);
-				//ft_printf("the previous kids status %d\n", WEXITSTATUS(status));
-			}
+			// if (prev_id != 0)
+			// {
+			// 	//sleep(1);
+			// 	waitpid(prev_id, &status, 0);
+			// 	//ft_printf("the previous kids status %d\n", WEXITSTATUS(status));
+			// }
 			if (no_of_pipes == 0)
 				status = set_pipes(&lst, STDIN_FILENO, STDOUT_FILENO);
-			else if (i > 0)
+			else if (i > 0 && i < no_of_pipes)
 			{
 				ft_printf("GREETINGS %d\n", i);
 				status = set_pipes(&lst, fd[i - 1][0], fd[i][1]);
 			}
-			else
+			else if (i == 0)
 				status = set_pipes(&lst, STDIN_FILENO, fd[i][1]);
+			else
+				status = set_pipes(&lst, fd[i - 1][0], STDOUT_FILENO);
 			close_pipes(fd, no_of_pipes);
 			if (status == 0)
 				child_execute (lst, path, env);
@@ -81,13 +125,62 @@ int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2]) // errors
 		}
 		else
 		{
-			// ft_printf("______The list is _______\n");
-			// lst_print(lst);
-			// ft_printf("_________________________\n");
-			// sleep(1);
+			//close_some_pipes(fd, i);
 			lst = nxt_cmd(lst);
-			(void)fd;
-			prev_id = id;
+			// (void)fd;
+			// prev_id = id;
+		}
+		++i;
+	}
+	return (id);
+}
+
+int	loopy_parent2(t_new *lst, char **path, char **env, int (*fd)[2]) // errors
+{
+	int	i;
+	int	id;
+	int	status;
+	// int	prev_id;
+	int	no_of_pipes;
+
+	i = 0;
+	status = 0;
+	// prev_id = 0;
+	no_of_pipes = 2;
+	ft_printf("no of pipes is %d\n", no_of_pipes);
+	while (lst)
+	{
+		id = fork();
+		if (id == 0)
+		{
+			// if (prev_id != 0)
+			// {
+			// 	waitpid(prev_id, &status, 0);
+			// }
+			ft_printf("gsadgasjdja\n");
+			if (i == 0)
+			{
+				dup2(fd[0][1], STDOUT_FILENO); 
+			}
+			else if (i == 1)
+			{
+				dup2(fd[1][1], STDOUT_FILENO);
+				dup2(fd[0][0], STDIN_FILENO);
+			}
+			else if (i == 2)
+				dup2(fd[1][0], STDIN_FILENO);
+			// close(fd[0][0]);
+			// close(fd[0][1]);
+			// close(fd[1][0]);
+			// close(fd[1][1]);
+			if (status == 0)
+				child_execute (lst, path, env);
+			break ;
+		}
+		else
+		{
+			lst = nxt_cmd(lst);
+			// prev_id = id;
 		}
 		++i;
 	}
@@ -99,8 +192,10 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	int		id;
 	int		status;
 	int		(*fd)[2];
+	//int		**fd;
 	int		no_of_pipes;
 
+	status = 0;
 	no_of_pipes = number_of_pipes(lst);
 	fd = create_pipes(no_of_pipes);
 	if (fd == NULL)
@@ -109,12 +204,15 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	if (id != 0)
 	{
 		close_pipes(fd, no_of_pipes);
-		waitpid(id, &status, 0);
+		//waitpid(id, &status, 0);
+		while(wait(NULL) > 0)
+		;
 		if (WEXITSTATUS(status))
 			ft_printf("THE CHILD HAD A PROBLEM\n");
 		ft_printf("The parent is alive %d\n", WEXITSTATUS(status));
 	}
 	free(fd);
+	// free_fds(no_of_pipes, fd);
 	if (id == 0)
 		return (-1);
 	return (0);

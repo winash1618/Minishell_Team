@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/15 16:53:42 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 16:49:39 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
 		skip_node(&temp, skip_flag);
 	}
 	*input_flag = user_input_flag;
-	if (input_file_check(in_file_name) == -1)
+	if ((*input_flag == 0) && input_file_check(in_file_name) == -1)
 		return (NULL);
 	*lst = temp;
 	return (in_file_name);
