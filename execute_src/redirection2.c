@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   redirection2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/15 18:08:16 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 18:25:10 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	hijack_stdin(int in_file, char *in_file_name) //handel errors
+int	hijack_stdin(int in_file, char *in_file_name)
 {
 	if (in_file_name != NULL)
 	{
@@ -35,7 +35,7 @@ int	hijack_stdin(int in_file, char *in_file_name) //handel errors
 	return (0);
 }
 
-int	hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag) //handle errors
+int	hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag)
 {
 	append_flag = (O_APPEND * (append_flag)) | (O_TRUNC * (!append_flag));
 	if (out_file_name != NULL)
@@ -94,44 +94,48 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 	return (0);
 }
 
-int	adopted_child(int in_file, char *here_doc) // handel errors
+int	adopted_child(int in_file, char *here_doc)
 {
 	int	*fd;
 
 	fd = (int *)malloc(sizeof(*fd) * 2); // add to big list
-	pipe(fd);
+	if (fd == NULL)
+		return (-1);
+	if (pipe(fd) == -1)
+		return (-1);
 	ft_putstr_fd(here_doc, fd[1]);
-	hijack_stdin(fd[0], NULL);
+	if (hijack_stdin(fd[0], NULL) == -1)
+		return (-1);
 	close(fd[0]);
 	close(in_file);
 	close(fd[1]);
-	return (0); // not always
+	return (0);
 }
 
-int	set_pipes(t_new **lst, int in_file, int out_file)
+int	set_pipes(t_new **lst, int in_fd, int out_fd)
 {
-	char	*in_file_name;
-	char	*out_file_name;
-	int		append_or_input_flag[2];
+	char	*ifile_name;
+	char	*ofile_name;
+	int		add_in_f[2];
 
-	in_file_name = NULL;
-	out_file_name = NULL;
-	append_or_input_flag[0] = 0;
-	append_or_input_flag[1] = 0;
+	ifile_name = NULL;
+	ofile_name = NULL;
+	add_in_f[0] = 0;
+	add_in_f[1] = 0;
 	if (*((*lst)->token) == '|') // use flag
 		print_error("syntax error near unexpected token ", (*lst)->token);
-	if (redirection_loop(lst, &in_file_name, &out_file_name, append_or_input_flag) == -1)
-		return (0);
-	if (hijack_stdout(out_file, out_file_name, *append_or_input_flag, list_has_pipes(*lst)) == -1)
+	if (redirection_loop(lst, &ifile_name, &ofile_name, add_in_f) == -1)
 		return (-1);
-	if (append_or_input_flag[1] == 0)
+	if (hijack_stdout(out_fd, ofile_name, *add_in_f, list_has_pipes(*lst)) < 0)
+		return (-1);
+	if (add_in_f[1] == 0)
 	{
-		if (hijack_stdin(in_file, in_file_name) == -1)
+		if (hijack_stdin(in_fd, ifile_name) == -1)
 			return (-1);
 	}
 	else
 	{
-		if (adopted_child(in_file, in_file_name) == -1)
+		if (adopted_child(in_fd, ifile_name) == -1)
 			return (-1);
 	}
 	return (0);

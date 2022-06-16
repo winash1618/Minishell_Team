@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:13:31 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/16 15:02:05 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 18:12:20 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,34 +87,6 @@ int	list_has_pipes(t_new *lst)
 }
 
 void	close_pipes(int (*fd)[2], int no_of_pipes)
-{
-	int	i;
-
-	i = 0;
-	while (i < no_of_pipes)
-	{
-		//ft_printf("closing fd %d and fd %d", fd[i][0], fd[i][1]);
-		close (fd[i][0]);
-		close (fd[i][1]);
-		++i;
-	}
-}
-
-void	close_some_pipes(int (*fd)[2], int no_of_pipes)
-{
-	int	i;
-
-	i = 0;
-	while (i < no_of_pipes - 1)
-	{
-		close (fd[i][0]);
-		close (fd[i][1]);
-		++i;
-	}
-	close (fd[i][1]);
-}
-
-void	close_pipes2(int **fd, int no_of_pipes)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/15 16:50:06 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 18:07:04 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	**args_array(t_new *lst)
 		temp = temp->next;
 	}
 	args = (char **)malloc(sizeof(*args) * (arg_count + 1));
+	if (args == NULL)
+		return (NULL);
 	i = 0;
 	temp = lst;
 	while (i < arg_count)
@@ -45,17 +47,16 @@ int	child_execute(t_new *lst, char **path, char **env)
 
 	i = 0;
 	args = args_array(lst);
+	if (args == NULL)
+		return (-1);
 	if (lst->token && *(lst->token) == '/')
 		execve(lst->token, args, env);
 	while (path[i])
 	{
-		ft_strjoin_minishell(&(path[i]), "/");
-		ft_strjoin_minishell(&(path[i]), lst->token);
+		if (ft_strjoin_minishell(&(path[i]), "/") < 0
+			|| ft_strjoin_minishell(&(path[i]), lst->token) < 0)
+			break ;
 		args[0] = path[i];
-		// ft_printf("______The array is _______\n");
-		// print_strarr(args);
-		// // lst_print(lst);
-		// ft_printf("_________________________\n");
 		execve(path[i], args, env);
 		++i;
 	}
