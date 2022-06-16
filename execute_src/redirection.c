@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/16 16:49:39 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 18:14:36 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,17 @@ int	input_file_check(char *file_name)
 char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
 {
 	char	*in_file_name; //not an accurate name
-	int		user_input_flag;
 	t_new	*temp;
 
 	in_file_name = NULL;
 	temp = *lst;
-	user_input_flag = 0;
+	*input_flag = 0;
 	if (temp && *((temp->token) + 1) == '<')
-		user_input_flag = 1;
+		*input_flag = 1;
 	if (temp)
 	{
-		if (*((temp->token) + 1 + user_input_flag) != '\0')
-			in_file_name = (temp->token) + 1 + user_input_flag;
+		if (*((temp->token) + 1 + *input_flag) != '\0')
+			in_file_name = (temp->token) + 1 + *input_flag;
 		else if (temp->next)
 		{
 			in_file_name = temp->next->token;
@@ -77,7 +76,6 @@ char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
 			print_error("syntax error near unexpected token ", temp->token);
 		skip_node(&temp, skip_flag);
 	}
-	*input_flag = user_input_flag;
 	if ((*input_flag == 0) && input_file_check(in_file_name) == -1)
 		return (NULL);
 	*lst = temp;
@@ -96,11 +94,6 @@ int	output_file_check(char *file_name, int trunc)
 			fd = open(file_name, O_WRONLY | trunc);
 			if (fd == -1)
 				return (print_error(file_name, ": Is a directory"));
-			// if (read(fd, file_name, 0) == -1)
-			// {
-			// 	close (fd);
-			// 	return (print_error(file_name, ": Is a directory"));
-			// }
 			close(fd);
 		}
 		else
@@ -116,7 +109,7 @@ int	output_file_check(char *file_name, int trunc)
 	return (0);
 }
 
-char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag) //error
+char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag)
 {
 	char	*out_file_name;
 	t_new	*temp;
