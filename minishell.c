@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/15 16:47:56 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 16:55:48 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	main(int argv, char **argc, char **env)
 {
 	t_new	*lst;
 	//char	*str[] = {"cat", "green.txt", "|" ,"grep", "high", "|", "wc", NULL};
-	//char	*str[] = {"www", "|", "cat", "|", "ls",  NULL};
-	//char	*str[] = {"cat", ">green.txt",  NULL};
+	//char	*str[] = {"cat", "|", "ls",  NULL};
+	//char	*str[] = {"ls",  NULL};
 	//char	*str[] = {"ls", "|", "cat", ">green.txt",  NULL};
-	char	*str[] = {"/bin/cat", "<green.txt", NULL};
-	//char	*str[] = {"cat", "|", "cat" , "-n", "|", "ls", NULL};
-	//char	*str[] = {"ls", "|", "cat", "<<", "green", ">green.txt", "|", "tail",
-	//		 "|", "wc", "-l", "|", "curl", "wttr.in/abudhabi", "|", "wc", NULL};
+	//char	*str[] = {"/bin/cat", "<green.txt", NULL};
+	char	*str[] = {"cat", "|", "cat", "|", "ls", NULL};
+	// char	*str[] = {"ls", "|", "cat", "<<", "green", ">>green.txt", "|", "tail",
+	// 		 "|", "wc", "-l", "|", "curl", "wttr.in/abudhabi", "|", "wc", NULL};
 	// cat <<green >green.txt
 	(void)argv;
 	(void)argc;

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/15 17:58:20 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 17:05:07 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ int		excute(t_new *lst, char **env);
 int		ft_strjoin_minishell(char **prestr, char *sufstr);
 void	clear_str_sep(char **str_sep);
 void	close_pipes(int (*fd)[2], int no_of_pipes);
+void	close_some_pipes(int (*fd)[2], int no_of_pipes);
+void	close_pipes2(int **fd, int no_of_pipes);
 int		number_of_pipes(t_new *lst);
 int		list_has_pipes(t_new *lst);
 int		print_error(char *problem, char *msg);
