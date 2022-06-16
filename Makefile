@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/06/06 16:56:14 by ayassin          ###   ########.fr        #
+#    Updated: 2022/06/16 14:54:59 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ PNAME = parser
 SRC = minishell.c $(EXECUTE_SRC_INDIR)
  
 EXECUTE_SRC = pipex.c pipex_utils.c child.c redirection.c redirection2.c \
-				temp_list.c
+				temp_list.c here_doc.c
 
 EXECUTE_SRC_DIR = execute_src
 				
@@ -35,7 +35,7 @@ OBJSP = $(SRCP:.c=.o)
 
 CC = gcc
 
-CFLAGS = -ggdb -Wall -Werror -Wextra 
+CFLAGS = -g3 -Wall -Werror -Wextra 
 
 all: $(NAME)
 
