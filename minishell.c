@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 17:58:07 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 16:55:48 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,25 @@ int	main(int argv, char **argc, char **env)
 {
 	t_new	*lst;
 	//char	*str[] = {"cat", "green.txt", "|" ,"grep", "high", "|", "wc", NULL};
-	//char	*str[] = {"<abc.txt", "ls", "-la", "<hi.txt", NULL};
-	char	*str[] = {"ls", "|", "cat", "green.txt", "|", "tail",
-			 "|", "wc", "-l", "|", "curl", "wttr.in/abudhabi", "|", "wc", ">green.txt", NULL};
-
+	//char	*str[] = {"cat", "|", "ls",  NULL};
+	//char	*str[] = {"ls",  NULL};
+	//char	*str[] = {"ls", "|", "cat", ">green.txt",  NULL};
+	//char	*str[] = {"/bin/cat", "<green.txt", NULL};
+	char	*str[] = {"cat", "|", "cat", "|", "ls", NULL};
+	// char	*str[] = {"ls", "|", "cat", "<<", "green", ">>green.txt", "|", "tail",
+	// 		 "|", "wc", "-l", "|", "curl", "wttr.in/abudhabi", "|", "wc", NULL};
+	// cat <<green >green.txt
 	(void)argv;
 	(void)argc;
 	(void)env;
+	// if (access("libft", F_OK) == 0)
+	// 	printf("*******\n");
+	// if (access("libft", W_OK) == 0)
+	// 	printf("!!!!!!!\n");
+	// if (open("libft", O_WRONLY) == -1)
+	// 	printf("_______\n");
+	// else 
+	// 	printf("@@@@@@\n");
 	lst = temp_makelist(str);
 	//lst_print(lst);
 	excute (lst, env);

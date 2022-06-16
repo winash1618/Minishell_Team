@@ -6,61 +6,18 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 17:56:59 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/16 18:14:36 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/* Retun a string since the first occurnce of string "needle" 
-in the string "haystack" within "len" chars of "haystack"*/
-
-/* Compare the first "n" chars from strings "s1" & "s2".
-Return the diffrence in the first char or 0 if no diffrence is found
-**NOT PROTECTED VS NULL INPUT**/
-int	ft_strncmp_protected(const char *s1, const char *s2, size_t n)
-{
-	size_t	pos;
-
-	pos = 0;
-	if (!n || !s1 || !s2)
-		return (0);
-	while (pos < (n - 1) && s1[pos] && s2[pos] && (unsigned char)s1[pos]
-		== (unsigned char)s2[pos])
-		pos++;
-	return ((unsigned char)s1[pos] - (unsigned char)s2[pos]);
-}
-
-char	*line_input(char *delimiter)
-{
-	char	*line;
-	char	*one_line;
-
-	line = NULL;
-	one_line = NULL;
-	while (1)
-	{
-		one_line = readline("> ");
-		if (ft_strncmp_protected(one_line, delimiter \
-			, ft_strlen(delimiter) + 1) != 0)
-		{
-			ft_strjoin_minishell(&line, one_line);
-			ft_strjoin_minishell(&line, "\n");
-			free(one_line);
-		}
-		else
-			break ;
-	}
-	free(one_line);
-	return (line);
-}
 
 void	skip_node(t_new **lst, int *skip_flag)
 {
 	*skip_flag = 1;
 	if (!(lst && *lst))
 	{
-		ft_printf("what are you doing");
+		ft_putstr_fd("What are you doing, there is no list\n", 2);
 		exit(-1);
 	}
 	if ((*lst)->prev != NULL)
@@ -70,47 +27,83 @@ void	skip_node(t_new **lst, int *skip_flag)
 	*lst = (*lst)->next;
 }
 
-char	*redirect_input(t_new **lst, int *skip_flag)
+int	input_file_check(char *file_name)
 {
-	char	*in_file_name;
+	int	fd;
+
+	if (access(file_name, F_OK) == 0)
+	{
+		if (access(file_name, R_OK) == 0)
+		{
+			fd = open(file_name, O_RDONLY);
+			if (fd == -1)
+				return (print_error(file_name, ": Failed to open"));
+			else if (read(fd, file_name, 0) == -1)
+			{
+				close (fd);
+				return (print_error(file_name, ": Is a directory"));
+			}
+			close(fd);
+		}
+		else
+			return (print_error(file_name, ": Permission denied"));
+	}
+	else
+		return (print_error(file_name, ": No such file or directory"));
+	return (0);
+}
+
+char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
+{
+	char	*in_file_name; //not an accurate name
 	t_new	*temp;
 
 	in_file_name = NULL;
 	temp = *lst;
-	if (temp && *(temp->token) == '<' && *((temp->token) + 1) != '<') // use flag
+	*input_flag = 0;
+	if (temp && *((temp->token) + 1) == '<')
+		*input_flag = 1;
+	if (temp)
 	{
-		if (*((temp->token) + 1) != '\0')
-			in_file_name = (temp->token) + 1;
+		if (*((temp->token) + 1 + *input_flag) != '\0')
+			in_file_name = (temp->token) + 1 + *input_flag;
 		else if (temp->next)
 		{
 			in_file_name = temp->next->token;
 			skip_node(&temp, skip_flag);
 		}
 		else
-			ft_printf("parse error near \\n");
+			print_error("syntax error near unexpected token ", temp->token);
 		skip_node(&temp, skip_flag);
 	}
+	if ((*input_flag == 0) && input_file_check(in_file_name) == -1)
+		return (NULL);
 	*lst = temp;
 	return (in_file_name);
 }
 
-int	empty_file(char *file_name)
+int	output_file_check(char *file_name, int trunc)
 {
 	int	fd;
 
+	trunc = (trunc != 0) * O_TRUNC;
 	if (access(file_name, F_OK) == 0)
 	{
 		if (access(file_name, W_OK) == 0)
 		{
-			fd = open(file_name, O_TRUNC);
+			fd = open(file_name, O_WRONLY | trunc);
+			if (fd == -1)
+				return (print_error(file_name, ": Is a directory"));
 			close(fd);
 		}
 		else
-			return (-1); // this is an error you should handel
+			return (print_error(file_name, ": Permission denied"));
 	}
 	else
 	{
-		fd = open(file_name, O_CREAT | O_TRUNC, 0644);
+		fd = open(file_name, O_CREAT, 0644);
+		if (fd == -1)
+			return (print_error(file_name, ": File failed to creat"));
 		close (fd);
 	}
 	return (0);
@@ -135,10 +128,10 @@ char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag)
 		skip_node(&temp, skip_flag);
 	}
 	else
-		ft_printf("parse error near \n");
+		print_error("syntax error near unexpected token ", temp->token);
 	skip_node(&temp, skip_flag);
 	*lst = temp;
-	if (*append_flag == 0 || access(out_file_name, F_OK) == -1)
-		empty_file(out_file_name); //handel error
+	if (output_file_check(out_file_name, (*append_flag == 0)) == -1)
+		return (NULL);
 	return (out_file_name);
 }

@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/14 17:48:15 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/16 18:52:25 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,11 @@ int		excute(t_new *lst, char **env);
 int		ft_strjoin_minishell(char **prestr, char *sufstr);
 void	clear_str_sep(char **str_sep);
 void	close_pipes(int (*fd)[2], int no_of_pipes);
+void	close_some_pipes(int (*fd)[2], int no_of_pipes);
+void	close_pipes2(int **fd, int no_of_pipes);
 int		number_of_pipes(t_new *lst);
 int		list_has_pipes(t_new *lst);
-int		ft_strncmp_protected(const char *s1, const char *s2, size_t n); // in redirction for the moment
+int		print_error(char *problem, char *msg);
 
 //child.c
 char	**args_array(t_new *lst);
@@ -144,7 +146,7 @@ int		child_execute(t_new *lst, char **path, char **env);
 
 //redirection.c
 void	skip_node(t_new **lst, int *skip_flag);
-char	*redirect_input(t_new **lst, int *skip_flag);
+char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag);
 int		empty_file(char *file_name);
 char	*redirect_output(t_new **lst, int *skip_flag , int *append_flag);
 char	*line_input(char *delimiter);
@@ -153,7 +155,12 @@ char	*line_input(char *delimiter);
 int		hijack_stdin(int in_file, char *in_file_name); //handel errors
 int		hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag); //handle errors
 int		redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int *append_flag);
-t_new	**set_pipes(t_new **lst, int in_file, int out_file);
+int		set_pipes(t_new **lst, int in_file, int out_file);
+
+//here_doc.c
+int		ft_strncmp_protected(const char *s1, const char *s2, size_t n);
+char	*line_input(char *delimiter);
+int		here_doc_input(t_new *lst);
 
 
 //temp_list.c
