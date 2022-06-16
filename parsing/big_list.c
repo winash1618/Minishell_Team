@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 09:49:19 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/06 18:43:24 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:34:43 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void make_big_list(t_new **cmd)
 		if ((*cmd)->lst != NULL)
 		{
 			t_list *tmp = (*cmd)->lst;
-			if ((*cmd)->flag == 3 || (*cmd)->flag == 1)
+			if ((*cmd)->flag == 3)
 			{
 				lst_add(cmd, tmp);
 				lst_skip_node2(*cmd);

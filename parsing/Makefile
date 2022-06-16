@@ -20,6 +20,7 @@ SRC = 	p_assign_1.c p_assign_2.c p_dollar.c \
 		../execute_src/pipex.c ../execute_src/redirection.c \
 		../execute_src/redirection2.c ../execute_src/temp_list.c \
 		../execute_src/here_doc.c
+
 		
 
 DIRS = ../libft
