@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/16 18:07:04 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/18 18:26:54 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ int	child_execute(t_new *lst, char **path, char **env)
 	args = args_array(lst);
 	if (args == NULL)
 		return (-1);
+	if (lst->token && ft_strncmp_protected(lst->token, "./", 3))
+	{
+		ft_putstr_fd("I am here\n", 2);
+		execve(lst->token, args, env);
+	}
 	if (lst->token && *(lst->token) == '/')
 		execve(lst->token, args, env);
 	while (path[i])

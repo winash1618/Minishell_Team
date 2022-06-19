@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:49:39 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/14 17:47:17 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/18 16:42:26 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,25 +113,25 @@ int find_lderror(char *str)
 	{
 		if (str[i] == '>' && str[i + 1] == '>')
 		{
-			if (str[i + 2] == '|')
+			if (str[i + 2] == '|' || !str[i + 2])
 			{
-				ft_putstr_fd("Wrong syntax", 2);
+				ft_putstr_fd("Wrong syntax \n", 2);
 				return (1);
 			}
 			else if (str[i + 2] == '<' || str[i + 2] == '>')
 			{
-				ft_putstr_fd("Wrong syntax", 2);
+				ft_putstr_fd("Wrong syntax \n", 2);
 				return (1);
 			}
 		}
 		else if (str[i] == '>' && str[i + 1] == '<')
 		{
-			ft_putstr_fd("Wrong syntax", 2);
+			ft_putstr_fd("Wrong syntax \n", 2);
 			return (1);
 		}
 		else if (str[i] == '>' && str[i + 1] == '|')
 		{
-			ft_putstr_fd("Wrong syntax", 2);
+			ft_putstr_fd("Wrong syntax \n", 2);
 			return (1);
 		}
 		i++;
@@ -148,24 +148,27 @@ int find_rderror(char *str)
 	{
 		if (str[i] == '<' && str[i + 1] == '<')
 		{
-			if (str[i + 2] == '|')
+			if (str[i + 2] == '|'  || !str[i + 2])
 			{
-				ft_putstr_fd("Wrong syntax", 2);
+				ft_putstr_fd("Wrong syntax \n", 2);
 				return (1);
 			}
 			else if (str[i + 2] == '<' || str[i + 2] == '>')
 			{
-				ft_putstr_fd("Wrong syntax", 2);
+				ft_putstr_fd("Wrong syntax \n", 2);
 				return (1);
 			}
 		}
 		else if (str[i] == '<' && str[i + 1] == '>')
 		{
-			ft_putstr_fd("Wrong syntax", 2);
+			ft_putstr_fd("Wrong syntax \n", 2);
 			return (1);
 		}
 		else if (str[i] == '<' && str[i + 1] == '|')
-			exit(0);
+		{
+			ft_putstr_fd("Wrong syntax \n", 2);
+			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -180,14 +183,14 @@ int find_perror(char *str)
 	{
 		if (str[i] == '|' )
 		{
-			if (str[i + 1] == '|')
+			if (str[i + 1] == '|' || !str[i + 1])
 			{
-				ft_putstr_fd("Wrong syntax", 2);
+				ft_putstr_fd("Wrong syntax \n", 2);
 				return (1);
 			}
 			else if (str[i + 1] == '<' || str[i + 1] == '>')
 			{
-				ft_putstr_fd("Wrong syntax", 2);
+				ft_putstr_fd("Wrong syntax \n", 2);
 				return (1);
 			}
 		}
@@ -200,16 +203,19 @@ int syntax_error(t_new *cmd)
 {
 	int i;
 	int flag;
+	int flag_n;
 
 	i = 0;
 	flag = 0;
+	flag_n = 0;
+	printf ("%d %d\n", flag, cmd->flag);
 	while(cmd != NULL)
 	{
 		if (cmd->flag == 3)
 		{
-			flag = find_rderror(cmd->token);
-			flag = find_lderror(cmd->token);
-			flag = find_perror(cmd->token);
+			flag += find_rderror(cmd->token);
+			flag += find_lderror(cmd->token);
+			flag += find_perror(cmd->token);
 		}
 		cmd = cmd->next;
 	}

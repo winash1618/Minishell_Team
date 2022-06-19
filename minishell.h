@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/16 18:52:25 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/18 13:24:18 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ char *get_expanded_string(char *str, char **env);// It returns entire string wit
 void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
 t_list *get_expanded_list(char *str, char **env);//It returns a list of expanded string
 int syntax_error(t_new *cmd);
+t_list *get_expanded_string2(char *str, char **env);
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//

@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/14 17:48:04 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/18 17:54:44 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int main(int ac, char **av, char **env)
 	// hist = NULL;
 	// (void)env;
 	// char *buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
+	// g_m = ft_lstnew((void *)getpid());
+	// ft_lstadd_front(g_m)
 	t_info *info;
 	info = malloc(sizeof(t_info));
 	g_m = ft_lstnew((void *)info);
@@ -72,6 +74,11 @@ int main(int ac, char **av, char **env)
 		line = ft_readline();
 		if (line)
 			add_history(line);
+		else
+		{
+			//list clear
+			exit(5);
+		}
 		// if (line && !hist)
 		// 	hist = ft_lstnew((void *)line);
 		// else if (line)
@@ -100,7 +107,7 @@ int main(int ac, char **av, char **env)
 				find_redirection_presence(cmd);
 				dollar_expansion(cmd, env);
 				make_all_zero(cmd);
-				if (cmd && syntax_error(cmd))
+				if (cmd && !syntax_error(cmd))
 				{
 					make_big_list(&cmd);
 					find_redirection_presence(cmd);
