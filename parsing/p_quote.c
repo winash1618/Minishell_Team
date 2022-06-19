@@ -6,37 +6,33 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:58:25 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/10 14:38:38 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/19 14:48:22 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // For handling the quotes
 #include "../minishell.h"
 
-char *quote_count_help(char *temp2)
+char	*quote_count_help(char *temp2)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (temp2[i])
 	{
 		if (temp2[i] == '"')
 		{
 			i++;
-			while (temp2[i] != '"' && temp2[i]) 
-			{
-				temp2[i] = 'a';
-				i++;
-			}
+			while (temp2[i] != '"' && temp2[i])
+				temp2[i++] = 'a';
 			if (temp2[i])
 				i++;
 		}
 		else if (temp2[i] == 39)
 		{
 			i++;
-			while (temp2[i] != 39 && temp2[i]) 
-			{
-				temp2[i] = 'a';
-				i++;
-			}
+			while (temp2[i] != 39 && temp2[i])
+				temp2[i++] = 'a';
 			if (temp2[i])
 				i++;
 		}
@@ -46,48 +42,20 @@ char *quote_count_help(char *temp2)
 	return (temp2);
 }
 
-void quote_counter(char *line, t_info *info)
+void	quote_counter(char *line, t_info *info)
 {
-	int c;
+	int		c;
+	int		i;
+	int		d;
+	char	*temp2;
+	t_list	*tmp;
 
 	c = 0;
-	char *temp; 
-	temp = line;
-	int d;
-
 	d = 0;
-	char *temp2 = ft_strdup(temp);
-	t_list *tmp = ft_lstnew((void *)(temp2));
+	temp2 = ft_strdup(line);
+	tmp = ft_lstnew((void *)(temp2));
 	ft_lstadd_back(&g_m, tmp);
 	temp2 = quote_count_help(temp2);
-	int i = 0;
-	// while (temp2[i])
-	// {
-	// 	if (temp2[i] == '"')
-	// 	{
-	// 		i++;
-	// 		while (temp2[i] != '"' && temp2[i]) 
-	// 		{
-	// 			temp2[i] = 'a';
-	// 			i++;
-	// 		}
-	// 		if (temp2[i])
-	// 			i++;
-	// 	}
-	// 	else if (temp2[i] == 39)
-	// 	{
-	// 		i++;
-	// 		while (temp2[i] != 39 && temp2[i]) 
-	// 		{
-	// 			temp2[i] = 'a';
-	// 			i++;
-	// 		}
-	// 		if (temp2[i])
-	// 			i++;
-	// 	}
-	// 	else
-	// 		i++;
-	// }
 	i = 0;
 	while (temp2[i])
 	{
@@ -101,10 +69,12 @@ void quote_counter(char *line, t_info *info)
 		info->q_flag = 1;
 }
 
-int ft_strlen_ch(char *line, char c)
+int	ft_strlen_ch(char *line, char c)
 {
-	int len = 0;
-	while(*line != c && *line)
+	int	len;
+
+	len = 0;
+	while (*line != c && *line)
 	{
 		len++;
 		line++;
@@ -113,18 +83,21 @@ int ft_strlen_ch(char *line, char c)
 }
 
 // get the quoted word
-char *quoted_word(char *line, char ch)
+char	*quoted_word(char *line, char ch)
 {
-	int i;
+	int		i;
+	int		len;
+	char	*s;
+	t_list	*tmp;
 
 	i = 0;
-	int len = ft_strlen_ch(line, ch);
+	len = ft_strlen_ch(line, ch);
 	if (len > 0)
 	{
-		char *s = malloc(sizeof(char) * (len + 1));
-		t_list *tmp = ft_lstnew((void *)(s));
+		s = malloc(sizeof(char) * (len + 1));
+		tmp = ft_lstnew((void *)(s));
 		ft_lstadd_back(&g_m, tmp);
-		while(line[i] && line[i]!=ch)
+		while (line[i] && line[i] != ch)
 		{
 			s[i] = line[i];
 			i++;
@@ -136,12 +109,12 @@ char *quoted_word(char *line, char ch)
 }
 
 // move the pointer after the quote
-char *go_past_quotes(char *s, char ch)
+char	*go_past_quotes(char *s, char ch, int *flag)
 {
-	// printf("%s \n", s);
+	*flag = 0;
 	while (*s != ch && *s)
 		s++;
-	if(*s == ch)
+	if (*s == ch)
 		s++;
 	return (s);
 }

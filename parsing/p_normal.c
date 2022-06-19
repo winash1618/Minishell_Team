@@ -6,16 +6,16 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:16:26 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/06 18:15:53 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/19 15:05:14 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 // handling words without quotes
-int get_word_len(char *line)
+int	get_word_len(char *line)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (ft_isspace(*line) && *line)
@@ -31,18 +31,22 @@ int get_word_len(char *line)
 }
 
 // get normal word
-char *normal_word(char *line)
+char	*normal_word(char *line)
 {
-	char *word;
-	int len = get_word_len(line);
+	char	*word;
+	t_list	*tmp;
+	int		i;
+	int		len;
+
+	len = get_word_len(line);
 	word = malloc(sizeof(char) * (len + 1));
-	t_list *tmp = ft_lstnew((void *)(word));
+	tmp = ft_lstnew((void *)(word));
 	ft_lstadd_back(&g_m, tmp);
-	int i = 0;
+	i = 0;
 	while (line[i] && is_quote(line[i]))
 	{
 		if (ft_isspace(line[i]))
-			break;
+			break ;
 		word[i] = line[i];
 		i++;
 	}
@@ -50,7 +54,7 @@ char *normal_word(char *line)
 	return (word);
 }
 
-int check_word_for_parsing(char *line)
+int	check_word_for_parsing(char *line)
 {
 	if (*(line) == '"')
 		return (1);
@@ -62,12 +66,12 @@ int check_word_for_parsing(char *line)
 		return (3);
 }
 
-char *get_word(t_info *info, char *line)
+char	*get_word(t_info *info, char *line)
 {
-	char *word;
+	char	*word;
+
 	info->flag = 1;
 	word = NULL;
-
 	if (info->e_flag)
 		return (NULL);
 	while (ft_isspace(*line) && *line)
@@ -82,52 +86,52 @@ char *get_word(t_info *info, char *line)
 	return (word);
 }
 
-void normal_lexer (t_new **pars, t_info *info, char *str)
+int	normal_lexer_help(t_new **pars, t_info *info, char *str, int wc)
 {
-	int wc;
-	wc = 0;
-	char *temp;
-	char *temp1;
-	temp = NULL;
-	int flag;
-	flag = 1;
-	while(*str)
+	char	*temp1;
+	t_list	*tmp;
+
+	temp1 = get_word(info, str);
+	if (!wc && *str && temp1)
 	{
-		info->w_flag = 0;
-		while(*str && ft_isspace(*str))
-			str++;
-		temp1 = get_word(info, str);
-		if (!wc && *str && temp1)
-		{
-			(*pars) = malloc(sizeof(t_new));
-			t_list *tmp = ft_lstnew((void *)(*pars));
-			ft_lstadd_back(&g_m, tmp);
-			lst_add_new(pars, temp1, info);
-			wc++;
-		}
-		else if (*str && temp1)
-		{
-			lst_add_back(pars, temp1, info);
-			wc++;
-		}
-		if (*str == '"')
-		{
-			temp = go_past_quotes(++str, '"');
-			flag = 0;
-		}
-		else if (*str == 39)
-		{
-			flag = 0;
-			temp = go_past_quotes(++str, 39);
-		}
-		while(*str && !ft_isspace(*str) && flag && is_quote(*str))
-			str++;
-		if (!flag)
-		{
-			str = temp;
-			flag = 1;
-		}
+		(*pars) = malloc(sizeof(t_new));
+		tmp = ft_lstnew((void *)(*pars));
+		ft_lstadd_back(&g_m, tmp);
+		lst_add_new(pars, temp1, info);
+		wc++;
 	}
-	// free(*pars);
-	
+	else if (*str && temp1)
+	{
+		lst_add_back(pars, temp1, info);
+		wc++;
+	}
+	return (wc);
 }
+
+// void	normal_lexer(t_new **pars, t_info *info, char *str)
+// {
+// 	int		wc;
+// 	char	*temp;
+// 	int		flag;
+
+// 	wc = 0;
+// 	flag = 1;
+// 	while (*str)
+// 	{
+// 		info->w_flag = 0;
+// 		while (*str && ft_isspace(*str))
+// 			str++;
+// 		wc = normal_lexer_help(pars, info, str, wc);
+// 		if (*str == '"')
+// 			temp = go_past_quotes(++str, '"', &flag);
+// 		else if (*str == 39)
+// 			temp = go_past_quotes(++str, 39, &flag);
+// 		while (*str && !ft_isspace(*str) && flag && is_quote(*str))
+// 			str++;
+// 		if (!flag)
+// 		{
+// 			str = temp;
+// 			flag = 1;
+// 		}
+// 	}
+// }

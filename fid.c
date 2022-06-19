@@ -32,7 +32,7 @@ t_list *g_m;
 
 int main (int ac, char **av, char **env)
 {
-	char *str = "$PATH$>green.txt";
+	char *str = "\"\'\"$PATH\"\'\"";
 	t_list *lst = get_expanded_string2(str, env);
 	
 	return (0);
