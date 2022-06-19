@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/15 16:13:28 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/18 18:03:55 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ char	*line_input(char *delimiter)
 	while (1)
 	{
 		one_line = readline("> ");
-		if (ft_strncmp_protected(one_line, delimiter \
-			, ft_strlen(delimiter) + 1) != 0)
+		if (ft_strncmp_protected(one_line, delimiter, ft_strlen(delimiter) + 1) != 0)
 		{
 			if (ft_strjoin_minishell(&line, one_line) < 0
 				|| ft_strjoin_minishell(&line, "\n"))
