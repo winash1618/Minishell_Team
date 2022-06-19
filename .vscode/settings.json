@@ -4,6 +4,7 @@
 		"parser.h": "c",
 		"stdio.h": "c",
 		"locale": "c",
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"termcap.h": "c"
 	}
 }

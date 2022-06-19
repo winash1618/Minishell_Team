@@ -290,15 +290,15 @@ char *get_expanded_string(char *str, char **env)
 	return (s);
 }
 
-int main(int ac, char **argv, char **env)
-{
-	ac++;
-	(void)argv;
-	char *s = get_expanded_string("$PWD'", env);
-	// char *s = get_expanded_string(">|", env);
-	// char *s = get_dollar_path("fsd", env);
-	// int s = get_strlen("aPATH&$PATH&|a");
-	// char *s = get_meta(">>>fsd");
-	// ft_printf("hi %s\n", s);
-	// printf("hi");
-}
+// int main(int ac, char **argv, char **env)
+// {
+// 	ac++;
+// 	(void)argv;
+// 	char *s = get_expanded_string("$PWD'", env);
+// 	// char *s = get_expanded_string(">|", env);
+// 	// char *s = get_dollar_path("fsd", env);
+// 	// int s = get_strlen("aPATH&$PATH&|a");
+// 	// char *s = get_meta(">>>fsd");
+// 	// ft_printf("hi %s\n", s);
+// 	// printf("hi");
+// }
