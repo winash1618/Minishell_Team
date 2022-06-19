@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:27:21 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/10 16:28:37 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/18 18:17:40 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ int ft_expand1(t_list **lst, t_list *temp)
 	return (2);
 }
 
-void ft_expand2(t_list **lst, t_list *temp)
+int ft_expand2(t_list **lst, t_list *temp)
 {
 	if (!*lst)
 	{
@@ -181,6 +181,7 @@ void ft_expand2(t_list **lst, t_list *temp)
 		t_list *tmp = ft_lstnew((void *)(temp));
 		ft_lstadd_back(&g_m, tmp);
 	}
+	return (0);
 }
 
 int ft_expand3(t_list **lst, t_list *temp, char *str, char **env)
@@ -310,8 +311,8 @@ t_list *get_expanded_list(char *str, char **env)
 		temp = NULL;
 		if (str[i] == '$' && str[i + 1] == '?')
 			i += ft_expand1(&lst, temp);
-		else if(str[i] == '$' && !str[i + 1])
-			ft_expand2(&lst, temp);
+		else if(str[i] == '$' && (!str[i + 1] || is_no_dollar_meta(str[i + 1])))
+			i += ft_expand2(&lst, temp) + 1;
 		else if (str[i] == '$')
 			i += ft_expand3(&lst, temp, str + i + 1, env) + get_strlen(str + i + 1) + 1;
 		else if (is_no_dollar_meta(str[i]))
@@ -341,4 +342,231 @@ char *get_expanded_string(char *str, char **env)
 	}
 	// printf("%s \n", s);
 	return (s);
+}
+
+int no_redirection(char *str)
+{
+	if(*str == '<' || *str == '>' || *str == '|')
+		return (0);
+	return (1);
+}
+
+// t_list *get_expanded_string2(char *str, char **env)
+// {
+// 	char *s;
+// 	t_list *temp;
+// 	s = "";
+// 	t_list *lst = get_expanded_list(str, env);
+// 	t_list *lst1;
+// 	t_list *tmp;
+// 	while (lst)
+// 	{
+// 		if (no_redirection(lst->content))
+// 		{
+// 			printf("%s \n",(char *)lst->content);
+// 			ft_strjoin_ps(&s, (char *)lst->content, 0);
+// 		}
+// 		else
+// 		{
+// 			if (!lst1)
+// 			{
+// 				lst1 = ft_lstnew((void *)s);
+// 				tmp = ft_lstnew((void *)(lst1));
+// 				ft_lstadd_back(&g_m, tmp);
+// 				temp = ft_lstnew(lst->content);
+// 				ft_lstadd_back(&lst1, temp);
+// 				tmp = ft_lstnew((void *)(temp));
+// 				ft_lstadd_back(&g_m, tmp);
+// 			}
+// 			else
+// 			{
+// 				temp = ft_lstnew((void *)s);// errno is 
+// 				ft_lstadd_back(&lst1, temp);
+// 				tmp = ft_lstnew((void *)(temp));
+// 				ft_lstadd_back(&g_m, tmp);
+// 				temp = ft_lstnew((void *)lst);
+// 				ft_lstadd_back(&lst1, temp);
+// 				tmp = ft_lstnew((void *)(temp));
+// 				ft_lstadd_back(&g_m, tmp);
+// 			}
+// 			s = "";
+// 		}
+// 		lst = lst->next;
+// 	}
+// 	// if (*s != '\0')
+// 	// {
+// 	// 	if (!lst1)
+// 	// 	{
+// 	// 		lst1 = ft_lstnew((void *)s);
+// 	// 		tmp = ft_lstnew((void *)(lst1));
+// 	// 		ft_lstadd_back(&g_m, tmp);
+// 	// 	}
+// 	// 	else
+// 	// 	{
+// 	// 		temp = ft_lstnew((void *)s);// errno is 
+// 	// 		ft_lstadd_back(&lst1, temp);
+// 	// 		tmp = ft_lstnew((void *)(temp));
+// 	// 		ft_lstadd_back(&g_m, tmp);
+// 	// 	}
+// 	// 	s = "";
+// 	// }
+// 	// printf("%s \n", s);
+// 	return (lst1);
+// }
+
+// t_list *get_expanded_string2(char *str, char **env)
+// {
+// 	char *s;
+// 	t_list *temp;
+// 	s = "";
+// 	t_list *lst = get_expanded_list(str, env);
+// 	t_list *lst1;
+// 	lst1 = NULL;
+// 	t_list *tmp;
+// 	while (lst)
+// 	{
+// 		if (no_redirection(lst->content) && lst)
+// 		{
+// 			// printf("%s \n",(char *)lst->content);
+// 			while (lst)
+// 			{
+// 				if (no_redirection(lst->content))
+// 				{
+// 					ft_strjoin_ps(&s, (char *)lst->content, 0);
+// 				}
+// 				else
+// 					break ;
+// 					lst = lst->next;
+// 			}
+// 			if (!lst1)
+// 			{
+// 				lst1 = ft_lstnew((void *)s);
+// 				tmp = ft_lstnew((void *)(lst1));
+// 				ft_lstadd_back(&g_m, tmp);
+// 			}
+// 			else
+// 			{
+// 				temp = ft_lstnew((void *)s);// errno is 
+// 				ft_lstadd_back(&lst1, temp);
+// 				tmp = ft_lstnew((void *)(temp));
+// 				ft_lstadd_back(&g_m, tmp);
+// 			}
+// 		}
+// 		else if (lst)
+// 		{
+// 			if (!lst1)
+// 			{
+// 				temp = ft_lstnew(lst->content);
+// 				ft_lstadd_back(&lst1, temp);
+// 				tmp = ft_lstnew((void *)(temp));
+// 				ft_lstadd_back(&g_m, tmp);
+// 			}
+// 			else
+// 			{
+// 				temp = ft_lstnew((void *)lst);
+// 				ft_lstadd_back(&lst1, temp);
+// 				tmp = ft_lstnew((void *)(temp));
+// 				ft_lstadd_back(&g_m, tmp);
+// 			}
+// 			lst = lst->next;
+// 			s = "";
+// 		}
+// 	}
+// 	// if (*s != '\0')
+// 	// {
+// 	// 	if (!lst1)
+// 	// 	{
+// 	// 		lst1 = ft_lstnew((void *)s);
+// 	// 		tmp = ft_lstnew((void *)(lst1));
+// 	// 		ft_lstadd_back(&g_m, tmp);
+// 	// 	}
+// 	// 	else
+// 	// 	{
+// 	// 		temp = ft_lstnew((void *)s);// errno is 
+// 	// 		ft_lstadd_back(&lst1, temp);
+// 	// 		tmp = ft_lstnew((void *)(temp));
+// 	// 		ft_lstadd_back(&g_m, tmp);
+// 	// 	}
+// 	// 	s = "";
+// 	// }
+// 	// printf("%s \n", s);
+// 	return (lst1);
+// }
+t_list *get_expanded_string2(char *str, char **env)
+{
+	char *s;
+	t_list *temp;
+	s = "";
+	t_list *lst = get_expanded_list(str, env);
+	t_list *lst1;
+	lst1 = NULL;
+	t_list *tmp;
+	while (lst)
+	{
+		if (no_redirection(lst->content) && lst)
+		{
+			// printf("%s \n",(char *)lst->content);
+			while (lst)
+			{
+				if (no_redirection(lst->content))
+				{
+					ft_strjoin_ps(&s, (char *)lst->content, 0);
+				}
+				else
+					break ;
+					lst = lst->next;
+			}
+			if (!lst1)
+			{
+				lst1 = ft_lstnew((void *)s);
+				tmp = ft_lstnew((void *)(lst1));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			else
+			{
+				temp = ft_lstnew((void *)s);// errno is 
+				ft_lstadd_back(&lst1, temp);
+				tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
+			}
+		}
+		else if (lst)
+		{
+			if (!lst1)
+			{
+				temp = ft_lstnew((void *)lst->content);
+				ft_lstadd_back(&lst1, temp);
+				tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			else
+			{
+				temp = ft_lstnew((void *)lst->content);
+				ft_lstadd_back(&lst1, temp);
+				tmp = ft_lstnew((void *)(temp));
+				ft_lstadd_back(&g_m, tmp);
+			}
+			lst = lst->next;
+			s = "";
+		}
+	}
+	// if (*s != '\0')
+	// {
+	// 	if (!lst1)
+	// 	{
+	// 		lst1 = ft_lstnew((void *)s);
+	// 		tmp = ft_lstnew((void *)(lst1));
+	// 		ft_lstadd_back(&g_m, tmp);
+	// 	}
+	// 	else
+	// 	{
+	// 		temp = ft_lstnew((void *)s);// errno is 
+	// 		ft_lstadd_back(&lst1, temp);
+	// 		tmp = ft_lstnew((void *)(temp));
+	// 		ft_lstadd_back(&g_m, tmp);
+	// 	}
+	// 	s = "";
+	// }
+	// printf("%s \n", s);
+	return (lst1);
 }
