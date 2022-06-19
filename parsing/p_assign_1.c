@@ -6,105 +6,102 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:32:04 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/05/29 13:29:49 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/19 14:01:30 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+// #include "../minishell.h"
 
-// Functions below is used for variable assignment.
-int check_var(char *line, t_info *info)
-{
-	int c = 0;
-	while(*line && ft_isspace(*line))
-		line++;
-	if (*line == '=')
-	{
-		info->e_flag = 1;
-		return (0);
-	}
-	else
-	{
-		if (!is_quote(*line))
-			return (0);
-		while (*line)
-		{
-			if (*line == '=')
-				c++;
-			line++;
-		}
-		if (c)
-			return (1);
-	}
-	return (0);
-}
+// // Functions below is used for variable assignment.
+// int check_var(char *line, t_info *info)
+// {
+// 	int c = 0;
+// 	while(*line && ft_isspace(*line))
+// 		line++;
+// 	if (*line == '=')
+// 	{
+// 		info->e_flag = 1;
+// 		return (0);
+// 	}
+// 	else
+// 	{
+// 		if (!is_quote(*line))
+// 			return (0);
+// 		while (*line)
+// 		{
+// 			if (*line == '=')
+// 				c++;
+// 			line++;
+// 		}
+// 		if (c)
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
-int get_vars(char *line)
-{
-	int len = 0;
-	while (*line != '=')
-	{
-		len++;
-		line++;
-	}
-	return (len);
-}
+// int get_vars(char *line)
+// {
+// 	int len = 0;
+// 	while (*line != '=')
+// 	{
+// 		len++;
+// 		line++;
+// 	}
+// 	return (len);
+// }
 
-int get_len(char *line)
-{
-	int len = 0;
-	while (*line)
-	{
-		len++;
-		line++;
-	}
-	return (len);
-}
+// int get_len(char *line)
+// {
+// 	int len = 0;
+// 	while (*line)
+// 	{
+// 		len++;
+// 		line++;
+// 	}
+// 	return (len);
+// }
 
-char *get_key(char *line)
-{
-	int len;
+// char *get_key(char *line)
+// {
+// 	int len;
 
-	char *temp;
-	len = 0;
-	
-	len = get_vars(line);
-	if(len)
-	{
-		temp = malloc(sizeof(char) * (len + 1));
-		t_list *tmp = ft_lstnew((void *)(temp));
-		ft_lstadd_back(&g_m, tmp);
-	}
-		
-	int i = 0;
-	while (line[i] != '=' && line[i])
-	{
-		temp[i] = line[i];
-		i++;
-	}
-	temp[i]='\0';
-	return (temp);
-}
+// 	char *temp;
+// 	len = 0;
+// 	len = get_vars(line);
+// 	if(len)
+// 	{
+// 		temp = malloc(sizeof(char) * (len + 1));
+// 		t_list *tmp = ft_lstnew((void *)(temp));
+// 		ft_lstadd_back(&g_m, tmp);
+// 	}
+// 	int i = 0;
+// 	while (line[i] != '=' && line[i])
+// 	{
+// 		temp[i] = line[i];
+// 		i++;
+// 	}
+// 	temp[i]='\0';
+// 	return (temp);
+// }
 
-char *get_value(char *line)
-{
-	int len;
-	
-	char *temp;
-	len = 0;
-	len = get_len(line);
-	if(len)
-	{
-		temp = malloc(sizeof(char) * (len + 1));
-		t_list *tmp = ft_lstnew((void *)(temp));
-		ft_lstadd_back(&g_m, tmp);
-	}
-	int i = 0;
-	while (line[i])
-	{
-		temp[i] = line[i];
-		i++;
-	}
-	temp[i] = '\0';
-	return (temp);
-}
+// char *get_value(char *line)
+// {
+// 	int len;
+// 	char *temp;
+// 	len = 0;
+// 	len = get_len(line);
+// 	if(len)
+// 	{
+// 		temp = malloc(sizeof(char) * (len + 1));
+// 		t_list *tmp = ft_lstnew((void *)(temp));
+// 		ft_lstadd_back(&g_m, tmp);
+// 	}
+// 	int i = 0;
+// 	while (line[i])
+// 	{
+// 		temp[i] = line[i];
+// 		i++;
+// 	}
+// 	temp[i] = '\0';
+// 	return (temp);
+// }

@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/18 13:24:18 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/19 16:29:53 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char *ft_readline(void);// Display a prompt and wait for input
 int ft_strlen_ch(char *line, char c);// find length of word until quote.
 void quote_counter(char *line, t_info *info);//count the number single and double quotes saperately if there is odd number return false
 char *quoted_word(char *line, char ch);//get the quoted word without quotes
-char *go_past_quotes(char *s, char ch); // move pointer after the closing quote
+char *go_past_quotes(char *s, char ch, int *flag); // move pointer after the closing quote
 // ----------handling normal-------------------
 int get_word_len(char *line); //find the word length for normal part in a string
 char *normal_word(char *line); //get the normal word
@@ -114,6 +114,7 @@ void make_all_zero(t_new *cmd);// utility for find redirection presence
 void find_redirection_presence(t_new *cmd); //handle the flags for redirection >>, >, <<, <
 void find_dollar_presence(t_new *cmd);// Find the presence of dollar
 int is_meta(char c);// check if the character meta or not returns one if true.
+int	is_meta_pipe(char c);
 int is_no_dollar_meta(char c);// contains |, <, >
 int is_no_dollar_meta1(char c);// space, tab, new line, &, ;, ()
 int is_meta_special(char c);// contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~
@@ -126,6 +127,21 @@ void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar e
 t_list *get_expanded_list(char *str, char **env);//It returns a list of expanded string
 int syntax_error(t_new *cmd);
 t_list *get_expanded_string2(char *str, char **env);
+int	ft_expand1(t_list **lst, t_list *temp);
+int	ft_expand2(t_list **lst, t_list *temp);
+int	ft_expand3(t_list **lst, t_list *temp, char *str, char **env);
+int	ft_expand4(t_list **lst, t_list *temp, char *str);
+int	ft_expand5(t_list **lst, t_list *temp, char *str);
+int	ft_expand6(t_list **lst, t_list *temp, char *str);
+int	ft_expand7(t_list **lst, t_list *temp, char *str);
+int	ft_move_string(char *str, int i, int flag);
+char	*get_meta_pipe(char *str);
+char	*get_meta1(char *str);
+char	*get_meta(char *str);
+int	normal_lexer_help(t_new **pars, t_info *info, char *str, int wc);
+void	big_list_help(t_new **cmd);
+void	lst_skip_node2(t_new *cmd);
+void	lst_add(t_new **cmd, t_list *lst);
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
