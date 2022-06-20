@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 09:49:19 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 16:13:58 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:02:13 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	lst_add_front(t_new **cmd, t_list *lst)
 		temp->lst = NULL;
 		temp->d_flag = 0;
 		temp->flag = 4;
-		temp->l_flag = 0;
-		temp->l2_flag = 0;
-		temp->r_flag = 0;
-		temp->r2_flag = 0;
+		temp->s_flag = (*cmd)->s_flag;
 		(*cmd)->prev->next = temp;
 		temp->prev = (*cmd)->prev;
 		temp->next = (*cmd);
@@ -54,6 +51,7 @@ void	lst_big_new(t_new **cmd, t_list *lst)
 		temp->lst = NULL;
 		temp->d_flag = 0;
 		temp->flag = 4;
+		temp->s_flag = (*cmd)->s_flag;
 		if ((*cmd)->prev == NULL)
 			temp->prev = NULL;
 		else

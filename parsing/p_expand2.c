@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:39:58 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 14:09:14 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:27:48 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,24 @@ char	*get_meta1(char *str)
 	return (s);
 }
 
-int	ft_expand1(t_list **lst, t_list *temp)
+int	ft_expand1(t_list **lst, t_list *temp, char c)
 {
 	t_list	*tmp;
+	char	*s;
 
+	if (c == '&')
+		s = ft_itoa(errno);
+	else if (c == '$')
+		s = ft_itoa(getpid());
 	if (!*lst)
 	{
-		*lst = ft_lstnew((void *)ft_strdup("$?"));
+		*lst = ft_lstnew((void *)s);
 		tmp = ft_lstnew((void *)(*lst));
 		ft_lstadd_back(&g_m, tmp);
 	}
 	else
 	{
-		temp = ft_lstnew((void *)ft_strdup("$?"));
+		temp = ft_lstnew((void *)s);
 		ft_lstadd_back(lst, temp);
 		tmp = ft_lstnew((void *)(temp));
 		ft_lstadd_back(&g_m, tmp);

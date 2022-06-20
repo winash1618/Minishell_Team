@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/18 12:16:18 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 09:31:17 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 			else
 				status = set_pipes(&lst, fd[count - 1][0], STDOUT_FILENO);
 			close_pipes(fd, no_of_pipes);
+			ft_putstr_fd("*******\n", 2);
+			ft_putstr_fd(lst->token, 2);
+			ft_putstr_fd("\n*******\n", 2);
 			if (status == 0)
 				child_execute (lst, path, env);
 			break ;

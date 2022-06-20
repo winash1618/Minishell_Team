@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/16 18:14:36 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/20 09:36:41 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,12 @@ char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag)
 	else if (temp->next)
 	{
 		out_file_name = temp->next->token;
+		ft_putstr_fd(" I SKIPED\n", 2);
 		skip_node(&temp, skip_flag);
 	}
 	else
 		print_error("syntax error near unexpected token ", temp->token);
+	ft_putstr_fd(" I SKIPED\n", 2);
 	skip_node(&temp, skip_flag);
 	*lst = temp;
 	if (output_file_check(out_file_name, (*append_flag == 0)) == -1)

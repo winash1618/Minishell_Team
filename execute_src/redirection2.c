@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/16 18:25:10 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/20 09:42:56 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,13 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 	}
 	if (temp != NULL)
 		temp->next = NULL; // remeber to free the list for the child
-	while (*lst && ft_strchr("<>", *((*lst)->token))) // check flags (and free)
+	while (*lst && ft_strchr("<>", *((*lst)->token)))
+	{
+		//if (ft_strchr("<>", *(((*lst)->token) + 1)))
 		*lst = (*lst)->next;
+		if (*lst) // check flags (and free)
+			*lst = (*lst)->next;
+	}
 	return (0);
 }
 
