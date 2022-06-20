@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:00:21 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/18 18:03:09 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/20 18:11:23 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,29 @@
 
 static void	signal_handler(int signum, siginfo_t *info, void *ptr)
 {
-	int	i;
 	int	status;
 	int	has_live_child;
 
-	i = 0;
+	(void) info;
+	(void) ptr;
 	has_live_child = 1;
 	if (signum == SIGINT)
 	{
 		if (!g_m)
-			return ;
-		while (i < 100)
+			exit(0);
+		if (waitpid(-1, &status, WNOHANG) == -1)
+			has_live_child = 0;
+		if (has_live_child == 0
+			&& (int) *((int *)(g_m->content)) != getpid())
 		{
-			if (waitpid(-1, &status, WNOHANG) == -1)
-			{
-				has_live_child = 0;
-				break ;
-			}
-			usleep (100);
-		}
-		if (has_live_child == 0 && (int) *((int *)(g_m->content)) != getpid())
-		{
-			//ft_lstclear(g_m, free());
+			ft_lstclear(&g_m, free);
 			exit(0);
 		}
+	}
+	if (waitpid(-1, &status, WNOHANG) == -1)
+	{
+		ft_printf("\r>Enter a string:   ");
+		ft_printf("\n>Enter a string: ");
 	}
 }
 	// if (signum == SIGQUIT) 
@@ -46,7 +45,7 @@ static void	signal_handler(int signum, siginfo_t *info, void *ptr)
 int	signals(void)
 {
 	struct sigaction	sa;
-	
+
 	sa.sa_sigaction = signal_handler;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART | SA_SIGINFO;

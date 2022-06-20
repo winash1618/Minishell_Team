@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/18 18:26:54 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 14:44:20 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,14 @@ int	child_execute(t_new *lst, char **path, char **env)
 	args = args_array(lst);
 	if (args == NULL)
 		return (-1);
-	if (lst->token && ft_strncmp_protected(lst->token, "./", 3))
-	{
-		ft_putstr_fd("I am here\n", 2);
+	if (lst->token && ft_strncmp_p(lst->token, "./", 3))
 		execve(lst->token, args, env);
-	}
 	if (lst->token && *(lst->token) == '/')
 		execve(lst->token, args, env);
 	while (path[i])
 	{
-		if (ft_strjoin_minishell(&(path[i]), "/") < 0
-			|| ft_strjoin_minishell(&(path[i]), lst->token) < 0)
+		if (ft_strjoin_ms(&(path[i]), "/") < 0
+			|| ft_strjoin_ms(&(path[i]), lst->token) < 0)
 			break ;
 		args[0] = path[i];
 		execve(path[i], args, env);
