@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:55:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 14:57:38 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 09:57:53 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_putstr_fd1(char *s, int fd)
 	return (1);
 }
 
-int	find_lderror(char *str)
+int	find_lderror(char *str, t_new *cmd)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ int	find_lderror(char *str)
 	{
 		if (str[i] == '>' && str[i + 1] == '>')
 		{
-			if (str[i + 2] == '|' || !str[i + 2])
+			if (str[i + 2] == '|' || (!str[i + 2] && !cmd->next))
 				return (ft_putstr_fd1("Wrong syntax \n", 2));
 			else if (str[i + 2] == '<' || str[i + 2] == '>')
 				return (ft_putstr_fd1("Wrong syntax \n", 2));
@@ -47,7 +47,7 @@ int	find_lderror(char *str)
 	return (0);
 }
 
-int	find_rderror(char *str)
+int	find_rderror(char *str, t_new *cmd)
 {
 	int	i;
 
@@ -56,7 +56,7 @@ int	find_rderror(char *str)
 	{
 		if (str[i] == '<' && str[i + 1] == '<')
 		{
-			if (str[i + 2] == '|' || !str[i + 2])
+			if (str[i + 2] == '|' || (!str[i + 2] && !cmd->next))
 				return (ft_putstr_fd1("Wrong syntax \n", 2));
 			else if (str[i + 2] == '<' || str[i + 2] == '>')
 				return (ft_putstr_fd1("Wrong syntax \n", 2));
@@ -70,7 +70,7 @@ int	find_rderror(char *str)
 	return (0);
 }
 
-int	find_perror(char *str)
+int	find_perror(char *str, t_new *cmd)
 {
 	int	i;
 
@@ -79,11 +79,14 @@ int	find_perror(char *str)
 	{
 		if (str[i] == '|' )
 		{
-			if (str[i + 1] == '|' || !str[i + 1])
+			if (str[i + 1] == '|' || (!str[i + 1] && !cmd->next))
 				return (ft_putstr_fd1("Wrong syntax \n", 2));
 			else if (str[i + 1] == '<' || str[i + 1] == '>')
 				return (ft_putstr_fd1("Wrong syntax \n", 2));
 		}
+		if (str[i] == '>' || str[i] == '<')
+			if (!str[i + 1] && !cmd->next)
+				return (ft_putstr_fd1("Wrong syntax \n", 2));
 		i++;
 	}
 	return (0);
@@ -91,21 +94,18 @@ int	find_perror(char *str)
 
 int	syntax_error(t_new *cmd)
 {
-	int	i;
 	int	flag;
-	int	flag_n;
 
-	i = 0;
 	flag = 0;
-	flag_n = 0;
-	printf ("%d %d\n", flag, cmd->flag);
 	while (cmd != NULL)
 	{
 		if (cmd->flag == 3)
 		{
-			flag += find_rderror(cmd->token);
-			flag += find_lderror(cmd->token);
-			flag += find_perror(cmd->token);
+			flag += find_rderror(cmd->token, cmd);
+			if (!flag)
+				flag += find_lderror(cmd->token, cmd);
+			if (!flag)
+				flag += find_perror(cmd->token, cmd);
 		}
 		cmd = cmd->next;
 	}

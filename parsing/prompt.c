@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:55:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 16:29:46 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 08:52:08 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_clearscreen(void)
 	tgetent(buf, getenv("TERM"));
 	str = tgetstr("cl", NULL);
 	printf("%s", str);
-	printf("");
+	// printf("");
 }
 
 // void	ft_clearscreen(void)

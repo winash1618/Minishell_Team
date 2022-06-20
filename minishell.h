@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/19 16:29:53 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:21:44 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct list
 	int r2_flag; // true if >> is present 
 	int p_flag; // indicate presence of pipe in a token
 	int err_flag;// true an error is present
+	int s_flag;// 1 if there is a space 0 if not
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
@@ -71,43 +72,44 @@ extern t_list *g_m;
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
-int ft_isspace(char c);// return 1 if space tab or newline 
-int is_quote(char c); // return 0 if double or single quote is found.
-void ft_clearscreen(void);// Used to clear the screen
-char *ft_readline(void);// Display a prompt and wait for input 
+int		ft_isspace(char c);// return 1 if space tab or newline 
+int		is_quote(char c); // return 0 if double or single quote is found.
+void	ft_clearscreen(void);// Used to clear the screen
+char	*ft_readline(void);// Display a prompt and wait for input 
 // --------handling quote----------------------
-int ft_strlen_ch(char *line, char c);// find length of word until quote.
-void quote_counter(char *line, t_info *info);//count the number single and double quotes saperately if there is odd number return false
-char *quoted_word(char *line, char ch);//get the quoted word without quotes
-char *go_past_quotes(char *s, char ch, int *flag); // move pointer after the closing quote
+int		ft_strlen_ch(char *line, char c);// find length of word until quote.
+void	quote_counter(char *line, t_info *info);//count the number single and double quotes saperately if there is odd number return false
+char	*quoted_word(char *line, char ch);//get the quoted word without quotes
+char	*go_past_quotes(char *s, char ch, int *flag); // move pointer after the closing quote
 // ----------handling normal-------------------
-int get_word_len(char *line); //find the word length for normal part in a string
-char *normal_word(char *line); //get the normal word
-void normal_lexer (t_new **pars, t_info *info, char *str);//normal part
-char *get_word(t_info *info, char *line); 
-int check_word_for_parsing(char *line);
+int		get_word_len(char *line); //find the word length for normal part in a string
+char	*normal_word(char *line); //get the normal word
+void	normal_lexer (t_new **pars, t_info *info, char *str);//normal part
+char	*get_word(t_info *info, char *line); 
+int		check_word_for_parsing(char *line);
 // ---------List operations for words--------------------
-void lst_add_new(t_new **pars, char *str, t_info *info); // adds new node to the pars structure
-void lst_add_back(t_new **pars, char *str, t_info *info); // adds new node at back side of pars structure
-void lst_print(t_new *pars); //prints contents of structure var
-void lst_rev_print(t_new *pars);
+void	lst_add_new(t_new **pars, char *str, t_info *info); // adds new node to the pars structure
+void	lst_add_back(t_new **pars, char *str, t_info *info, int flag); // adds new node at back side of pars structure
+void	lst_print(t_new *pars); //prints contents of structure var
+void	lst_rev_print(t_new *pars);
 //----------List operations for variable assignment-----
-void lst_add_newvar(t_var **var, char *line); // adds new node to the var structure
-void lst_add_backvar(t_var **var, char *line); // adds new node at back side of var structure
-void lst_print_vars(t_var *vars); // print structure var
+void	lst_add_newvar(t_var **var, char *line); // adds new node to the var structure
+void	lst_add_backvar(t_var **var, char *line); // adds new node at back side of var structure
+void	lst_print_vars(t_var *vars); // print structure var
 //----------variable assignment-------------------------
-int check_var(char *line, t_info *info);
-int get_vars(char *line);
-int get_len(char *line);
-char *get_key(char *line);
-char *get_value(char *line);
-void var_lexer (t_var **var, char *line);
+int		check_var(char *line, t_info *info);
+int		get_vars(char *line);
+int		get_len(char *line);
+char	*get_key(char *line);
+char	*get_value(char *line);
+void	var_lexer (t_var **var, char *line);
 ////////////////////////////////////////////
-void lst_add_front(t_new **cmd, t_list *lst);
-void lst_big_new(t_new **cmd, t_list *lst);
-void lst_add(t_new **cmd, t_list *lst);
-void lst_skip_node(t_new **cmd);
-void make_big_list(t_new **cmd);
+void	lst_add_front(t_new **cmd, t_list *lst);
+void	lst_big_new(t_new **cmd, t_list *lst);
+void	lst_add(t_new **cmd, t_list *lst);
+void	lst_skip_node(t_new **cmd);
+void	make_big_list(t_new **cmd);
+void	ft_lst_join(t_new *cmd);
 ////////////////////////////////////////////
 // ----------------Handling dollar----------------------
 void make_all_zero(t_new *cmd);// utility for find redirection presence
@@ -127,7 +129,7 @@ void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar e
 t_list *get_expanded_list(char *str, char **env);//It returns a list of expanded string
 int syntax_error(t_new *cmd);
 t_list *get_expanded_string2(char *str, char **env);
-int	ft_expand1(t_list **lst, t_list *temp);
+int	ft_expand1(t_list **lst, t_list *temp, char c);
 int	ft_expand2(t_list **lst, t_list *temp);
 int	ft_expand3(t_list **lst, t_list *temp, char *str, char **env);
 int	ft_expand4(t_list **lst, t_list *temp, char *str);
@@ -138,7 +140,7 @@ int	ft_move_string(char *str, int i, int flag);
 char	*get_meta_pipe(char *str);
 char	*get_meta1(char *str);
 char	*get_meta(char *str);
-int	normal_lexer_help(t_new **pars, t_info *info, char *str, int wc);
+int		normal_lexer_help(t_new **pars, t_info *info, char *str, int wc);
 void	big_list_help(t_new **cmd);
 void	lst_skip_node2(t_new *cmd);
 void	lst_add(t_new **cmd, t_list *lst);

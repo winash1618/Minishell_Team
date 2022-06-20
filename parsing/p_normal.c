@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:16:26 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 15:05:14 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:16:32 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ int	check_word_for_parsing(char *line)
 	if (*(line) == '"')
 		return (1);
 	else if (*(line) == 39)
-	{
 		return (2);
-	}
 	else
 		return (3);
 }
@@ -102,7 +100,10 @@ int	normal_lexer_help(t_new **pars, t_info *info, char *str, int wc)
 	}
 	else if (*str && temp1)
 	{
-		lst_add_back(pars, temp1, info);
+		if (ft_isspace(*(str - 1)))
+			lst_add_back(pars, temp1, info, 1);
+		else
+			lst_add_back(pars, temp1, info, -1);
 		wc++;
 	}
 	return (wc);

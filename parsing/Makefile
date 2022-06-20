@@ -6,7 +6,7 @@
 #    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/28 06:09:35 by mkaruvan          #+#    #+#              #
-#    Updated: 2022/06/19 15:25:50 by mkaruvan         ###   ########.fr        #
+#    Updated: 2022/06/20 10:58:45 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = 	p_assign_1.c p_assign_2.c p_dollar.c \
 		../execute_src/child.c ../execute_src/pipex_utils.c \
 		../execute_src/pipex.c ../execute_src/redirection.c \
 		../execute_src/redirection2.c ../execute_src/temp_list.c \
-		../execute_src/here_doc.c
+		../execute_src/here_doc.c join_list.c
 
 		
 

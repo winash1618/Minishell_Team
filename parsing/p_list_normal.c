@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 14:40:50 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:20:26 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	get_info(t_info *info, t_new *temp)
 		temp->flag = 2;
 }
 
-void	lst_add_back(t_new **pars, char *str, t_info *info)
+void	lst_add_back(t_new **pars, char *str, t_info *info, int flag)
 {
 	t_new	*par;
 	t_new	*temp;
@@ -56,6 +56,7 @@ void	lst_add_back(t_new **pars, char *str, t_info *info)
 	temp->token = str;
 	temp->es = NULL;
 	temp->lst = NULL;
+	temp->s_flag = flag;
 	if (info)
 		get_info(info, temp);
 	(*pars)->next = temp;
@@ -69,8 +70,8 @@ void	lst_print(t_new *pars)
 {
 	while (pars != NULL)
 	{
-		printf("<token: %s> <flag: %d> <d_flag: %d> ",
-			pars->token, pars->flag, pars->d_flag);
+		printf("<token: %s> <flag: %d> <d_flag: %d> <s_flag: %d>",
+			pars->token, pars->flag, pars->d_flag, pars->s_flag);
 		printf("\n");
 		pars = pars->next;
 	}
