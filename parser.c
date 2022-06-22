@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/20 16:07:03 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/21 13:31:40 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,21 +104,24 @@ int main(int ac, char **av, char **env)
 			// {
 				normal_lexer(&cmd, info, line);
 				lst_print(cmd);
-				printf("\n******************************\n");
+				printf("\n********* Befor Dollar Expansion *********************\n");
 				find_dollar_presence(cmd);
 				find_redirection_presence(cmd);
 				dollar_expansion(cmd, env);
 				lst_print(cmd);
-				printf("\n******************************\n");
+				printf("\n************* After Dollar Expansion *****************\n");
 				make_all_zero(cmd);
 				if (cmd && !syntax_error(cmd))
 				{
 					make_big_list(&cmd);
 					lst_print(cmd);
 					ft_lst_join(cmd);
-					printf("\n******************************\n");
+					printf("\n************* After Make big list *****************\n");
 					lst_print(cmd);
+					printf("\n****************After list join **************\n");
 					find_redirection_presence(cmd);
+					lst_print(cmd);
+					printf("\n************After finding redirection presence ******************\n");
 					excute (cmd, env);
 				}
 			// }

@@ -5,6 +5,7 @@
 		"stdio.h": "c",
 		"locale": "c",
 		"minishell.h": "c",
-		"termcap.h": "c"
+		"termcap.h": "c",
+		"errno.h": "c"
 	}
 }
