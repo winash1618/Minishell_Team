@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 12:21:44 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:09:04 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct list
 	int p_flag; // indicate presence of pipe in a token
 	int err_flag;// true an error is present
 	int s_flag;// 1 if there is a space 0 if not
+	int dq_flag;
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
@@ -112,31 +113,31 @@ void	make_big_list(t_new **cmd);
 void	ft_lst_join(t_new *cmd);
 ////////////////////////////////////////////
 // ----------------Handling dollar----------------------
-void make_all_zero(t_new *cmd);// utility for find redirection presence
-void find_redirection_presence(t_new *cmd); //handle the flags for redirection >>, >, <<, <
-void find_dollar_presence(t_new *cmd);// Find the presence of dollar
-int is_meta(char c);// check if the character meta or not returns one if true.
-int	is_meta_pipe(char c);
-int is_no_dollar_meta(char c);// contains |, <, >
-int is_no_dollar_meta1(char c);// space, tab, new line, &, ;, ()
-int is_meta_special(char c);// contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~
-int get_strlen(char *str);// get string length for dollar expansion
-int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf);//string join mehdy version
-char *get_dollar_path(char *str, char **env);//  if success returns the matching env variable part after the equal sign.
-char *get_str(char *str);// It returns normal string until dollar sign.
-char *get_expanded_string(char *str, char **env);// It returns entire string with expansion
-void dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
-t_list *get_expanded_list(char *str, char **env);//It returns a list of expanded string
-int syntax_error(t_new *cmd);
-t_list *get_expanded_string2(char *str, char **env);
-int	ft_expand1(t_list **lst, t_list *temp, char c);
-int	ft_expand2(t_list **lst, t_list *temp);
-int	ft_expand3(t_list **lst, t_list *temp, char *str, char **env);
-int	ft_expand4(t_list **lst, t_list *temp, char *str);
-int	ft_expand5(t_list **lst, t_list *temp, char *str);
-int	ft_expand6(t_list **lst, t_list *temp, char *str);
-int	ft_expand7(t_list **lst, t_list *temp, char *str);
-int	ft_move_string(char *str, int i, int flag);
+void	make_all_zero(t_new *cmd);// utility for find redirection presence
+void	find_redirection_presence(t_new *cmd); //handle the flags for redirection >>, >, <<, <
+void	find_dollar_presence(t_new *cmd);// Find the presence of dollar
+int		is_meta(char c);// check if the character meta or not returns one if true.
+int		is_meta_pipe(char c);
+int		is_no_dollar_meta(char c);// contains |, <, >
+int		is_no_dollar_meta1(char c);// space, tab, new line, &, ;, ()
+int		is_meta_special(char c);// contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~
+int		get_strlen(char *str);// get string length for dollar expansion
+int		ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf);//string join mehdy version
+char	*get_dollar_path(char *str, char **env);//  if success returns the matching env variable part after the equal sign.
+char	*get_str(char *str);// It returns normal string until dollar sign.
+char	*get_expanded_string(char *str, char **env);// It returns entire string with expansion
+void	dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
+t_list	*get_expanded_list(char *str, char **env);//It returns a list of expanded string
+int		syntax_error(t_new *cmd);
+t_list	*get_expanded_string2(char *str, char **env);
+int		ft_expand1(t_list **lst, t_list *temp, char c);
+int		ft_expand2(t_list **lst, t_list *temp);
+int		ft_expand3(t_list **lst, t_list *temp, char *str, char **env);
+int		ft_expand4(t_list **lst, t_list *temp, char *str);
+int		ft_expand5(t_list **lst, t_list *temp, char *str);
+int		ft_expand6(t_list **lst, t_list *temp, char *str);
+int		ft_expand7(t_list **lst, t_list *temp, char *str);
+int		ft_move_string(char *str, int i, int flag);
 char	*get_meta_pipe(char *str);
 char	*get_meta1(char *str);
 char	*get_meta(char *str);

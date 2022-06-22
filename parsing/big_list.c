@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 09:49:19 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/20 12:02:13 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:45:06 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	lst_add_front(t_new **cmd, t_list *lst)
 {
 	t_new	*temp;
-	t_list	*tmp;
 
 	while (lst)
 	{
 		temp = malloc(sizeof(t_new));
-		tmp = ft_lstnew((void *)(temp));
-		ft_lstadd_back(&g_m, tmp);
+		ft_lstadd_back(&g_m, ft_lstnew((void *)(temp)));
 		temp->token = (char *)lst->content;
+		// if (temp->token[0] == '$' && temp->token[1] == '?')
+		// 	temp->token = ft_itoa(errno);
 		temp->es = NULL;
 		temp->lst = NULL;
 		temp->d_flag = 0;
@@ -39,14 +39,14 @@ void	lst_add_front(t_new **cmd, t_list *lst)
 void	lst_big_new(t_new **cmd, t_list *lst)
 {
 	t_new	*temp;
-	t_list	*tmp;
 
 	while (lst)
 	{
 		temp = malloc(sizeof(t_new));
-		tmp = ft_lstnew((void *)(temp));
-		ft_lstadd_back(&g_m, tmp);
+		ft_lstadd_back(&g_m, ft_lstnew((void *)(temp)));
 		temp->token = (char *)lst->content;
+		// if (temp->token[0] == '$' && temp->token[1] == '?')
+		// 	temp->token = ft_itoa(errno);
 		temp->es = NULL;
 		temp->lst = NULL;
 		temp->d_flag = 0;

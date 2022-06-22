@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:49:39 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/20 08:58:43 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:15:38 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	make_others_zero(t_new *cmd)
 		cmd->l_flag = 0;
 	if (cmd->p_flag != 1)
 		cmd->p_flag = 0;
+	if (cmd->dq_flag != 1)
+		cmd->dq_flag = 0;
 }
 
 void	make_all_zero(t_new *cmd)
@@ -73,10 +75,10 @@ void	pipe_help(t_new *cmd)
 	i = 0;
 	while (cmd->token[i])
 	{
-		if (cmd ->token[i] == '|')
-		{
+		if (cmd->token[i] == '|')
 			cmd->p_flag = 1;
-		}
+		if (cmd->token[i] == '$' && cmd->token[i + 1] == '?')
+			cmd->dq_flag = 1;
 		i++;
 	}
 }
@@ -86,7 +88,7 @@ void	find_redirection_presence(t_new *cmd)
 	make_all_zero(cmd);
 	while (cmd != NULL)
 	{
-		if (cmd->flag == 3)
+		if (cmd->flag != 2)
 		{
 			redirection_help(cmd);
 			pipe_help(cmd);

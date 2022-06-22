@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:39:58 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/20 12:27:48 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:49:05 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int	ft_expand1(t_list **lst, t_list *temp, char c)
 	t_list	*tmp;
 	char	*s;
 
-	if (c == '&')
-		s = ft_itoa(errno);
+	if (c == '?')
+		s = ft_strdup("$?");
 	else if (c == '$')
-		s = ft_itoa(getpid());
+		s = ft_strdup("$$");
 	if (!*lst)
 	{
 		*lst = ft_lstnew((void *)s);
