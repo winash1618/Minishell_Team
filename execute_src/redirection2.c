@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 09:42:56 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:16:00 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,9 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 			temp = temp->next;
 	}
 	if (temp != NULL)
-		temp->next = NULL; // remeber to free the list for the child
+		temp->next = NULL;
 	while (*lst && ft_strchr("<>", *((*lst)->token)))
 	{
-		//if (ft_strchr("<>", *(((*lst)->token) + 1)))
 		*lst = (*lst)->next;
 		if (*lst) // check flags (and free)
 			*lst = (*lst)->next;
@@ -112,7 +111,8 @@ int	adopted_child(int in_file, char *here_doc)
 	if (hijack_stdin(fd[0], NULL) == -1)
 		return (-1);
 	close(fd[0]);
-	close(in_file);
+	if (in_file != STDIN_FILENO)
+		close(in_file);
 	close(fd[1]);
 	return (0);
 }

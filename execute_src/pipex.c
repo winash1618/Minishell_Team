@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 09:31:17 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:00:31 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-t_new	*nxt_cmd(t_new *lst)
-{
-	while (lst && *(lst->token) != '|') //use flag
-		lst = lst->next;
-	if (lst && *(lst->token) == '|') //use flag
-		lst = lst->next;
-	return (lst);
-}
 
 int	(*create_pipes(int no_of_pipes))[2]
 {
@@ -43,6 +34,22 @@ int	(*create_pipes(int no_of_pipes))[2]
 	return (fd);
 }
 
+int	parent_tarp(int count, int (*fd)[2], int no_of_pipes, t_new **lst)
+{
+	int	errors;
+
+	errors = 0;
+	if (no_of_pipes == 0)
+		errors = set_pipes(lst, STDIN_FILENO, STDOUT_FILENO);
+	else if (count > 0 && count < no_of_pipes)
+		errors = set_pipes(lst, fd[count - 1][0], fd[count][1]);
+	else if (count == 0)
+		errors = set_pipes(lst, STDIN_FILENO, fd[count][1]);
+	else
+		errors = set_pipes(lst, fd[count - 1][0], STDOUT_FILENO);
+	return (errors);
+}
+
 int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 {
 	int	count;
@@ -57,18 +64,8 @@ int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 		id = fork();
 		if (id == 0)
 		{
-			if (no_of_pipes == 0)
-				status = set_pipes(&lst, STDIN_FILENO, STDOUT_FILENO);
-			else if (count > 0 && count < no_of_pipes)
-				status = set_pipes(&lst, fd[count - 1][0], fd[count][1]);
-			else if (count == 0)
-				status = set_pipes(&lst, STDIN_FILENO, fd[count][1]);
-			else
-				status = set_pipes(&lst, fd[count - 1][0], STDOUT_FILENO);
+			status = parent_tarp(count, fd, no_of_pipes, &lst);
 			close_pipes(fd, no_of_pipes);
-			ft_putstr_fd("*******\n", 2);
-			ft_putstr_fd(lst->token, 2);
-			ft_putstr_fd("\n*******\n", 2);
 			if (status == 0)
 				child_execute (lst, path, env);
 			break ;
@@ -115,7 +112,7 @@ int	excute(t_new *lst, char **env)
 		exit(-1); //change code based on error
 	if (!env)
 		return (0);
-	while (env[i] && ft_strncmp_protected(env[i], "PATH=", 5) != 0)
+	while (env[i] && ft_strncmp_p(env[i], "PATH=", 5) != 0)
 		++i;
 	if (env[i] == NULL)
 		return (0);

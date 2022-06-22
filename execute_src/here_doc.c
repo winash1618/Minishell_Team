@@ -6,27 +6,11 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/18 18:03:55 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/20 15:17:04 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/* Compare the first "n" chars from strings "s1" & "s2".
-Return the diffrence in the first char or 0 if no diffrence is found
-**NOT PROTECTED VS NULL INPUT**/
-int	ft_strncmp_protected(const char *s1, const char *s2, size_t n)
-{
-	size_t	pos;
-
-	pos = 0;
-	if (!n || !s1 || !s2)
-		return (0);
-	while (pos < (n - 1) && s1[pos] && s2[pos] && (unsigned char)s1[pos]
-		== (unsigned char)s2[pos])
-		pos++;
-	return ((unsigned char)s1[pos] - (unsigned char)s2[pos]);
-}
 
 char	*line_input(char *delimiter)
 {
@@ -38,10 +22,9 @@ char	*line_input(char *delimiter)
 	while (1)
 	{
 		one_line = readline("> ");
-		if (ft_strncmp_protected(one_line, delimiter, ft_strlen(delimiter) + 1) != 0)
+		if (ft_strncmp_p(one_line, delimiter, ft_strlen(delimiter) + 1) != 0)
 		{
-			if (ft_strjoin_minishell(&line, one_line) < 0
-				|| ft_strjoin_minishell(&line, "\n"))
+			if (ft_strjoin_ms(&line, one_line) < 0 || ft_strjoin_ms(&line, "\n"))
 			{
 				free(one_line);
 				free(line);
@@ -74,14 +57,7 @@ int	here_doc_input(t_new *lst)
 				lst->token = line_input(delimiter);
 			}
 			else
-			{
-				delimiter = ((lst->token) + 2);
-				// //free(lst->token); // to be added for when inegrating
-				lst->token = ft_strdup("<<");
-				ft_strjoin_minishell(&(lst->token), line_input(delimiter));
-				if (*((lst->token) + 2) == '\0')
-					print_error(lst->token, ": Parsing error\n");
-			}
+				print_error(lst->token, ": Parsing error in Tokens\n");
 		}
 		lst = lst->next;
 	}

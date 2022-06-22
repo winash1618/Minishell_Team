@@ -6,55 +6,19 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:13:31 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/16 18:12:20 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/20 15:00:40 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* free the output of ft_split after we are done with it*/
-void	clear_str_sep(char **str_sep)
+t_new	*nxt_cmd(t_new *lst)
 {
-	int	i;
-
-	i = 0;
-	if (str_sep)
-	{
-		while (str_sep[i])
-			free(str_sep[i++]);
-		free (str_sep);
-	}
-}
-
-/*Appends suffex string "sufstr" to the prefix string "prestr" 
-up until "sufstr" char 0 or new line. 
-Return 1 if sufstr has new lone, -1 if Memory allocation failed, 0 otherwise
-**malloc DANGER**/
-int	ft_strjoin_minishell(char **prestr, char *sufstr)
-{
-	int		i1;
-	int		i2;
-	int		lineflag;
-	char	*fullstr;
-
-	i1 = 0;
-	i2 = 0;
-	lineflag = 0;
-	fullstr = (char *)malloc(ft_strlen(*prestr) + ft_strlen(sufstr) + 1);
-	if (fullstr == NULL)
-		return (-10);
-	while (*prestr && (*prestr)[i1])
-	{
-		fullstr[i1] = (*prestr)[i1];
-		++i1;
-	}
-	while (sufstr && sufstr[i2])
-		fullstr[i1++] = sufstr[i2++];
-	fullstr[i1] = 0;
-	if (*prestr)
-		free (*prestr);
-	*prestr = fullstr;
-	return (lineflag);
+	while (lst && *(lst->token) != '|') //use flag
+		lst = lst->next;
+	if (lst && *(lst->token) == '|') //use flag
+		lst = lst->next;
+	return (lst);
 }
 
 int	number_of_pipes(t_new *lst)

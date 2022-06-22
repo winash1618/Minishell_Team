@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
 /*   Updated: 2022/06/21 17:09:04 by mkaruvan         ###   ########.fr       */
@@ -21,6 +21,7 @@
 # include <term.h>
 # include <stdlib.h>
 # include <termcap.h> 
+# include <signal.h>
 # include <readline/readline.h>
 # include <string.h>
 # include <readline/history.h>
@@ -28,31 +29,31 @@
 # include "ft_printf/ft_printf.h"
 
 // for saving local variable
-typedef struct var 
+typedef struct	var 
 {
-	char *key; // consider "x = y" then x is key
-	char *value; // y is value
-	int err_flag;
-	struct var *next;
-	struct var *prev;
+	char		*key; // consider "x = y" then x is key
+	char		*value; // y is value
+	int			err_flag;
+	struct var	*next;
+	struct var	*prev;
 }	t_var;
 
 // for saving commands
 typedef struct list
 {
-	char	*token; // contains splited string 
-	int	flag; // returns 1 if double quote is present, returns 2 if single quote, 3 if normal word.
-	t_list *lst;// used for expansion of word without quote
-	char *es; // expanded string.
-	int d_flag; // indicate presence of dollar sign in the string.
-	int l_flag; // true if < is present and l2_flag is false
-	int l2_flag; // true if << is present 
-	int r_flag; // true if > is present and r2_flag is false
-	int r2_flag; // true if >> is present 
-	int p_flag; // indicate presence of pipe in a token
-	int err_flag;// true an error is present
-	int s_flag;// 1 if there is a space 0 if not
-	int dq_flag;
+	char		*token; // contains splited string 
+	int			flag; // returns 1 if double quote is present, returns 2 if single quote, 3 if normal word.
+	t_list		*lst;// used for expansion of word without quote
+	char		*es; // expanded string.
+	int			d_flag; // indicate presence of dollar sign in the string.
+	int			l_flag; // true if < is present and l2_flag is false
+	int			l2_flag; // true if << is present 
+	int			r_flag; // true if > is present and r2_flag is false
+	int			r2_flag; // true if >> is present 
+	int			p_flag; // indicate presence of pipe in a token
+	int			err_flag;// true an error is present
+	int			s_flag;// 1 if there is a space 0 if not
+  int     dq_flag;
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
@@ -60,50 +61,67 @@ typedef struct list
 // for saving required information
 typedef struct info
 {
-	int flag;
-	int w_flag; // if the string is double quoted then this flag exist.
-	int e_flag; // if the string starts with an equal sign it's an error;
-	int q_flag; // exist when count either of the quotes is odd
-	int dq_flag; // presence of $ then " or '
-	int err_flag;
-} t_info;
+	int	flag;
+	int	w_flag; // if the string is double quoted then this flag exist.
+	int	e_flag; // if the string starts with an equal sign it's an error;
+	int	q_flag; // exist when count either of the quotes is odd
+	int	dq_flag; // presence of $ then " or '
+	int	err_flag;
+}				t_info;
 
 // Global variable declaration
 extern t_list *g_m;
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
-int		ft_isspace(char c);// return 1 if space tab or newline 
-int		is_quote(char c); // return 0 if double or single quote is found.
-void	ft_clearscreen(void);// Used to clear the screen
-char	*ft_readline(void);// Display a prompt and wait for input 
+// return 1 if space tab or newline 
+int		ft_isspace(char c);
+// return 0 if double or single quote is found.
+int		is_quote(char c);
+// Used to clear the screen
+void	ft_clearscreen(void);
+// Display a prompt and wait for input 
+char	*ft_readline(void);
 // --------handling quote----------------------
-int		ft_strlen_ch(char *line, char c);// find length of word until quote.
-void	quote_counter(char *line, t_info *info);//count the number single and double quotes saperately if there is odd number return false
-char	*quoted_word(char *line, char ch);//get the quoted word without quotes
-char	*go_past_quotes(char *s, char ch, int *flag); // move pointer after the closing quote
+// find length of word until quote.
+int		ft_strlen_ch(char *line, char c);
+//count the number single and double quotes saperately if there is odd number return false
+void	quote_counter(char *line, t_info *info);
+//get the quoted word without quotes
+char	*quoted_word(char *line, char ch);
+// move pointer after the closing quote
+char	*go_past_quotes(char *s, char ch, int *flag);
 // ----------handling normal-------------------
-int		get_word_len(char *line); //find the word length for normal part in a string
-char	*normal_word(char *line); //get the normal word
-void	normal_lexer (t_new **pars, t_info *info, char *str);//normal part
-char	*get_word(t_info *info, char *line); 
+//find the word length for normal part in a string
+int		get_word_len(char *line);
+//get the normal word
+char	*normal_word(char *line);
+//normal part
+void	normal_lexer(t_new **pars, t_info *info, char *str);
+char	*get_word(t_info *info, char *line);
 int		check_word_for_parsing(char *line);
 // ---------List operations for words--------------------
-void	lst_add_new(t_new **pars, char *str, t_info *info); // adds new node to the pars structure
-void	lst_add_back(t_new **pars, char *str, t_info *info, int flag); // adds new node at back side of pars structure
-void	lst_print(t_new *pars); //prints contents of structure var
+// adds new node to the pars structure
+void	lst_add_new(t_new **pars, char *str, t_info *info);
+// adds new node at back side of pars structure
+void	lst_add_back(t_new **pars, char *str, t_info *info, int flag);
+//prints contents of structure var
+void	lst_print(t_new *pars);
 void	lst_rev_print(t_new *pars);
 //----------List operations for variable assignment-----
-void	lst_add_newvar(t_var **var, char *line); // adds new node to the var structure
-void	lst_add_backvar(t_var **var, char *line); // adds new node at back side of var structure
-void	lst_print_vars(t_var *vars); // print structure var
+// adds new node to the var structure
+void	lst_add_newvar(t_var **var, char *line);
+// adds new node at back side of var structure
+void	lst_add_backvar(t_var **var, char *line);
+// print structure var
+void	lst_print_vars(t_var *vars);
 //----------variable assignment-------------------------
 int		check_var(char *line, t_info *info);
 int		get_vars(char *line);
 int		get_len(char *line);
 char	*get_key(char *line);
 char	*get_value(char *line);
-void	var_lexer (t_var **var, char *line);
+void	var_lexer(t_var **var, char *line);
 ////////////////////////////////////////////
 void	lst_add_front(t_new **cmd, t_list *lst);
 void	lst_big_new(t_new **cmd, t_list *lst);
@@ -113,21 +131,35 @@ void	make_big_list(t_new **cmd);
 void	ft_lst_join(t_new *cmd);
 ////////////////////////////////////////////
 // ----------------Handling dollar----------------------
-void	make_all_zero(t_new *cmd);// utility for find redirection presence
-void	find_redirection_presence(t_new *cmd); //handle the flags for redirection >>, >, <<, <
-void	find_dollar_presence(t_new *cmd);// Find the presence of dollar
-int		is_meta(char c);// check if the character meta or not returns one if true.
+// utility for find redirection presence
+void	make_all_zero(t_new *cmd);
+// handle the flags for redirection >>, >, <<, <
+void	find_redirection_presence(t_new *cmd);
+// Find the presence of dollar
+void	find_dollar_presence(t_new *cmd);
+// check if the character meta or not returns one if true.
+int		is_meta(char c);
 int		is_meta_pipe(char c);
-int		is_no_dollar_meta(char c);// contains |, <, >
-int		is_no_dollar_meta1(char c);// space, tab, new line, &, ;, ()
-int		is_meta_special(char c);// contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~
-int		get_strlen(char *str);// get string length for dollar expansion
-int		ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf);//string join mehdy version
-char	*get_dollar_path(char *str, char **env);//  if success returns the matching env variable part after the equal sign.
-char	*get_str(char *str);// It returns normal string until dollar sign.
-char	*get_expanded_string(char *str, char **env);// It returns entire string with expansion
-void	dollar_expansion(t_new *cmd, char **env);//loop through cmd and do dollar expansion.
-t_list	*get_expanded_list(char *str, char **env);//It returns a list of expanded string
+// contains |, <, >
+int		is_no_dollar_meta(char c);
+// space, tab, new line, &, ;, ()
+int		is_no_dollar_meta1(char c);
+// contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~
+int		is_meta_special(char c);
+// get string length for dollar expansion
+int		get_strlen(char *str);
+//string join mehdy version
+int		ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf);
+//  if success returns the matching env variable part after the equal sign.
+char	*get_dollar_path(char *str, char **env);
+// It returns normal string until dollar sign.
+char	*get_str(char *str);
+// It returns entire string with expansion
+char	*get_expanded_string(char *str, char **env);
+//loop through cmd and do dollar expansion.
+void	dollar_expansion(t_new *cmd, char **env);
+//It returns a list of expanded string
+t_list	*get_expanded_list(char *str, char **env);
 int		syntax_error(t_new *cmd);
 t_list	*get_expanded_string2(char *str, char **env);
 int		ft_expand1(t_list **lst, t_list *temp, char c);
@@ -151,14 +183,16 @@ void	lst_add(t_new **cmd, t_list *lst);
 int		excute(t_new *lst, char **env);
 
 //pipex_utils.c
-int		ft_strjoin_minishell(char **prestr, char *sufstr);
-void	clear_str_sep(char **str_sep);
+t_new	*nxt_cmd(t_new *lst);
 void	close_pipes(int (*fd)[2], int no_of_pipes);
-void	close_some_pipes(int (*fd)[2], int no_of_pipes);
-void	close_pipes2(int **fd, int no_of_pipes);
 int		number_of_pipes(t_new *lst);
 int		list_has_pipes(t_new *lst);
 int		print_error(char *problem, char *msg);
+
+//pipex_utils1.c
+int		ft_strjoin_ms(char **prestr, char *sufstr);
+void	clear_str_sep(char **str_sep);
+int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
 
 //child.c
 char	**args_array(t_new *lst);
@@ -168,24 +202,31 @@ int		child_execute(t_new *lst, char **path, char **env);
 void	skip_node(t_new **lst, int *skip_flag);
 char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag);
 int		empty_file(char *file_name);
-char	*redirect_output(t_new **lst, int *skip_flag , int *append_flag);
+char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag);
 char	*line_input(char *delimiter);
 
 //redirection2.c
-int		hijack_stdin(int in_file, char *in_file_name); //handel errors
-int		hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag); //handle errors
-int		redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int *append_flag);
+int		hijack_stdin(int in_file, char *in_file_name);
+int		hijack_stdout(int out_file, char *out_file_name,
+			int append_flag, int flag);
+int		redirection_loop(t_new **lst, char **in_file_name,
+			char **out_file_name, int *append_flag);
 int		set_pipes(t_new **lst, int in_file, int out_file);
 
 //here_doc.c
-int		ft_strncmp_protected(const char *s1, const char *s2, size_t n);
+int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
 char	*line_input(char *delimiter);
 int		here_doc_input(t_new *lst);
-
 
 //temp_list.c
 t_new	*temp_lst_newnode(char *str);
 void	temp_list_clear(t_new **lst);
 void	print_strarr(char **args);
 void	temp_lstadd_back(t_new **lst, t_new *node);
+
+//signals.c
+int		signals(void);
+
+int		main(int ac, char **av, char **env);
+
 #endif
