@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 15:00:31 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/22 09:43:42 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int	excute(t_new *lst, char **env)
 	{
 		clear_str_sep(path);
 		// clear list
-		exit(50);
+		exit(127);
 	}
 	clear_str_sep(path);
 	return (0);
