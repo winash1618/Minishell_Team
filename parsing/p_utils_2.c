@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:53:57 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 16:15:44 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:43:33 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,24 @@ int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf)
 	return (1);
 }
 
+// char	*ft_combine_from_list(t_new *cmd)
+// {
+// 	char	*s;
+// 	t_list	*lst;
+
+// 	s = "";
+// 	lst = cmd->lst;
+// 	while (lst)
+// 	{
+// 		if (ft_strncmp((char *)lst->content, "$?", 2))
+// 			ft_strjoin_ps(&s, ft_itoa(errno), 0);
+// 		else
+// 			ft_strjoin_ps(&s, (char *)lst->content, 0);
+// 		lst = lst->next;
+// 	}
+// 	return (s);
+// }
+
 void	big_list_help(t_new **cmd)
 {
 	char	*str;
@@ -98,6 +116,9 @@ void	big_list_help(t_new **cmd)
 	}
 	if ((*cmd)->flag == 1)
 	{
+		// if ((*cmd)->dq_flag == 1)
+		// 	str = ft_combine_from_list(*cmd);
+		// else
 		str = ft_strdup((*cmd)->es);
 		tmp = ft_lstnew((void *)(str));
 		ft_lstadd_back(&g_m, tmp);

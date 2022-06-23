@@ -55,6 +55,7 @@ typedef struct list
 	int			p_flag; // indicate presence of pipe in a token
 	int			err_flag;// true an error is present
 	int			s_flag;// 1 if there is a space 0 if not
+  int     dq_flag;
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
