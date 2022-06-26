@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 14:44:20 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/22 09:45:23 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	child_execute(t_new *lst, char **path, char **env)
 		++i;
 	}
 	print_error(ft_strrchr(args[0], '/') + 1, ": command not found");
+	errno = 127;
 	free(args);
 	return (-1);
 }

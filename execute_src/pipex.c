@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 15:00:31 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/22 10:06:19 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	int		id;
 	int		(*fd)[2];
 	int		no_of_pipes;
+	int		status;
+	int		temp_error;
 
+	temp_error = 0;
 	no_of_pipes = number_of_pipes(lst);
 	fd = create_pipes(no_of_pipes);
 	if (fd == NULL)
@@ -91,9 +94,12 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	if (id != 0)
 	{
 		close_pipes(fd, no_of_pipes);
-		while (wait(NULL) > 0)
-			;
-		ft_printf("The parent is alive %d\n", 0);
+		while (waitpid(-1, &status, 0) > 0)
+			if (WEXITSTATUS(status))
+				temp_error = WEXITSTATUS(status);
+		errno = temp_error;
+		ft_printf("The parent is alive %d %d %d\n", WEXITSTATUS(status) , errno , status);
+		//ft_printf("The parent is alive %d\n", 0);
 	}
 	free(fd);
 	if (id == 0)
@@ -125,7 +131,7 @@ int	excute(t_new *lst, char **env)
 	{
 		clear_str_sep(path);
 		// clear list
-		exit(50);
+		exit(127);
 	}
 	clear_str_sep(path);
 	return (0);
