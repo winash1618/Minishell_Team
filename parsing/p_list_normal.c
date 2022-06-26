@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/21 17:28:22 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/22 09:37:33 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ void	lst_print(t_new *pars)
 {
 	while (pars != NULL)
 	{
-		printf("<token: %s> <flag: %d> <d_flag: %d> <s_flag: %d>
-				<l_flag: %d> <l2_flag: %d> <r_flag: %d> <r2_flag: %d> <dq_flag: %d>",
+		printf("<token: %s> <flag: %d> <d_flag: %d> <s_flag: %d> <l_flag: %d> <l2_flag: %d> <r_flag: %d> <r2_flag: %d> <dq_flag: %d>",
 			pars->token, pars->flag, pars->d_flag, pars->s_flag, pars->l_flag, 
 			pars->l2_flag, pars->r_flag, pars->r2_flag, pars->dq_flag);
 		printf("\n");
