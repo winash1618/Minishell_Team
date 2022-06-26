@@ -40,6 +40,46 @@ char	**args_array(t_new *lst)
 	return (args);
 }
 
+int	ft_echo(char **args)
+{
+	char	flag;
+	int		i;
+
+	flag = 1;
+	i = 1;
+	//ft_putstr_fd("\n", 1);
+	while (args[i])
+	{
+		if (ft_strncmp_p(args[i], "-n", 3) == 0)
+			flag = 0;
+		else
+			ft_printf("%s ", args[i]);
+		++i;
+	}
+	if (flag)
+		ft_putstr_fd("\n", 1);
+	free(args);
+	return (0);
+}
+
+int	ft_pwd(char **args)
+{
+	ft_printf("%s\n", getcwd(NULL, 0));
+	free(args);
+	return (0);
+}
+
+int	ft_env(char **env, char **args)
+{
+	int		i;
+
+	i = 0;
+	while (env[i])
+		ft_printf("%s\n", env[i++]);
+	free(args);
+	return (0);
+}
+
 int	child_execute(t_new *lst, char **path, char **env)
 {
 	int		i;
@@ -49,9 +89,15 @@ int	child_execute(t_new *lst, char **path, char **env)
 	args = args_array(lst);
 	if (args == NULL)
 		return (-1);
-	if (lst->token && ft_strncmp_p(lst->token, "./", 3))
-		execve(lst->token, args, env);
-	if (lst->token && *(lst->token) == '/')
+	if (lst->token && ft_strncmp_p(lst->token, "echo", 5) == 0)
+		return (ft_echo(args));
+	if (lst->token && (ft_strncmp_p(lst->token, "pwd", 4)
+			* ft_strncmp_p(lst->token, "PWD", 4)) == 0)
+		return (ft_pwd(args));
+	if (lst->token && (ft_strncmp_p(lst->token, "env", 4)
+			* ft_strncmp_p(lst->token, "ENV", 4)) == 0)
+		return (ft_env(env, args));
+	if (lst->token && (*(lst->token) == '/' || *(lst->token) == '.'))
 		execve(lst->token, args, env);
 	while (path[i])
 	{

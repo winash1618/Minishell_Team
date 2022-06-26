@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/21 17:09:04 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/21 12:52:48 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include <readline/history.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
+
+extern int errno ;
 
 // for saving local variable
 typedef struct	var 
