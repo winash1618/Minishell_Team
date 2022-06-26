@@ -1,1 +1,7 @@
-
+12 12 green.txt
+0
+0
+127
+0
+/Users/ayassin/Documents/git files/Minishell_Team
+/Users/ayassin/Documents/git files/Minishell_Team

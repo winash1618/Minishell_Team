@@ -6,11 +6,11 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:54:24 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/06 16:33:21 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/21 12:47:55 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../minishell.h"
+#include "../minishell.h"
 
 t_new	*temp_lst_newnode(char *str)
 {
@@ -76,4 +76,3 @@ void	print_strarr(char **args)
 		ft_printf("\"%s\" ", args[i++]);
 	ft_printf("\n");
 }
-
