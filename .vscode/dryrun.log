@@ -18,7 +18,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
@@ -27,7 +26,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
@@ -40,7 +38,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
@@ -49,7 +46,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
@@ -69,6 +65,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dolla
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
@@ -81,20 +78,21 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expa
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c minishell.c -o minishell.o
+ 
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
@@ -113,6 +111,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
@@ -131,10 +130,10 @@ gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
- 
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
@@ -145,7 +144,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
- 
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
  
@@ -157,9 +155,11 @@ make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
@@ -171,12 +171,13 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
-gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
  
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
@@ -202,7 +203,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
@@ -220,7 +220,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
@@ -230,6 +229,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
@@ -247,11 +247,13 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
@@ -263,6 +265,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
@@ -278,9 +281,11 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_l
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c execute_src/pipex_utils.c -o execute_src/pipex_utils.o
+ 
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
@@ -295,7 +300,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
@@ -312,6 +316,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
@@ -319,7 +324,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
@@ -330,6 +334,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
@@ -351,10 +356,10 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
@@ -366,8 +371,8 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_l
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
-make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
  
+make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c execute_src/pipex_utils1.c -o execute_src/pipex_utils1.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
@@ -387,6 +392,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
@@ -400,18 +406,17 @@ gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
@@ -420,7 +425,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
@@ -436,16 +440,16 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_ass
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
-gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
  
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
@@ -463,6 +467,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_d
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
+ 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c execute_src/child.c -o execute_src/child.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
@@ -470,6 +475,7 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
  
@@ -497,6 +503,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
@@ -507,7 +514,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
@@ -515,6 +521,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
+ 
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
  
@@ -526,13 +533,13 @@ make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
-gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
  
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
@@ -557,7 +564,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_d
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c execute_src/redirection.c -o execute_src/redirection.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
@@ -565,11 +571,9 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -586,7 +590,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
@@ -595,7 +598,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
@@ -614,20 +616,17 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
  
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
@@ -637,7 +636,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_util
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
@@ -648,13 +646,13 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c execute_src/redirection2.c -o execute_src/redirection2.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
@@ -666,7 +664,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -674,12 +671,12 @@ gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
@@ -694,7 +691,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
@@ -706,7 +702,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
@@ -716,16 +711,12 @@ make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/li
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
- 
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
@@ -740,7 +731,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
@@ -760,19 +750,19 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
@@ -791,6 +781,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
@@ -807,18 +798,23 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
@@ -839,13 +835,16 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redire
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
+ 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c execute_src/here_doc.c -o execute_src/here_doc.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
@@ -859,7 +858,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
@@ -873,7 +871,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
@@ -901,16 +898,20 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
@@ -919,6 +920,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
@@ -927,10 +929,12 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
+ 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c execute_src/signals.c -o execute_src/signals.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
@@ -938,11 +942,13 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
@@ -950,6 +956,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
@@ -959,6 +966,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
@@ -966,6 +974,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
@@ -974,6 +983,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
@@ -983,23 +993,29 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
@@ -1009,20 +1025,22 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expa
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
+ 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_assign_1.c -o parsing/p_assign_1.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
@@ -1070,19 +1088,23 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
@@ -1092,6 +1114,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
@@ -1108,14 +1131,18 @@ ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
  
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_assign_2.c -o parsing/p_assign_2.o
+ 
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -1127,6 +1154,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
@@ -1136,6 +1164,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
@@ -1152,12 +1181,14 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
@@ -1197,7 +1228,6 @@ gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_dollar
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
@@ -1254,6 +1284,7 @@ make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
@@ -1276,6 +1307,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
@@ -1285,7 +1317,9 @@ gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_expand
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
@@ -1305,6 +1339,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
@@ -1327,25 +1362,30 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
@@ -1360,6 +1400,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expa
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
@@ -1372,11 +1413,14 @@ gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_list_a
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -1392,6 +1436,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
@@ -1419,26 +1464,31 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
@@ -1448,6 +1498,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
@@ -1456,14 +1507,18 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_l
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_list_normal.c -o parsing/p_list_normal.o
+ 
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -1472,6 +1527,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
@@ -1497,6 +1553,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
@@ -1506,16 +1563,20 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
@@ -1524,8 +1585,8 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_util
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
-gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
  
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
@@ -1537,6 +1598,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
@@ -1546,11 +1608,14 @@ gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_normal
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -1573,6 +1638,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
@@ -1590,10 +1656,13 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
@@ -1601,10 +1670,12 @@ make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
@@ -1618,6 +1689,7 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expa
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
@@ -1636,10 +1708,12 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
@@ -1659,6 +1733,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
@@ -1684,18 +1759,14 @@ make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/li
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
@@ -1707,7 +1778,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
@@ -1718,17 +1788,15 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
-gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
  
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_utils_1.c -o parsing/p_utils_1.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
@@ -1737,6 +1805,7 @@ gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
@@ -1779,19 +1848,15 @@ make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/li
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
@@ -1805,7 +1870,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expa
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
@@ -1814,7 +1878,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redire
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
@@ -1825,12 +1888,10 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
@@ -1840,7 +1901,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
@@ -1853,44 +1913,36 @@ gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
@@ -1902,24 +1954,20 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/prompt.c -o parsing/prompt.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
@@ -1927,12 +1975,10 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
@@ -1941,7 +1987,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
@@ -1949,7 +1994,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
@@ -1967,7 +2011,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
@@ -1977,24 +2020,19 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
@@ -2007,19 +2045,16 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expa
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_redirection.c -o parsing/p_redirection.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
@@ -2027,12 +2062,10 @@ for dir in libft ft_printf parsing; do \
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
@@ -2046,7 +2079,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
@@ -2057,7 +2089,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
@@ -2067,7 +2098,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
@@ -2077,22 +2107,18 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
@@ -2104,7 +2130,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_lis
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
@@ -2112,28 +2137,23 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/big_list.c -o parsing/big_list.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
@@ -2146,7 +2166,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
@@ -2155,7 +2174,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
@@ -2163,7 +2181,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
@@ -2172,28 +2189,23 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
-gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
  
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
@@ -2203,14 +2215,12 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
@@ -2220,20 +2230,15 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_d
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_redirection2.c -o parsing/p_redirection2.o
- 
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -2243,7 +2248,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
@@ -2253,7 +2257,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
@@ -2264,7 +2267,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
@@ -2273,29 +2275,24 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
@@ -2307,7 +2304,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_lis
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
@@ -2315,7 +2311,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
@@ -2326,14 +2321,11 @@ gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_expand
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -2345,7 +2337,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memmove.c -o ft_memmove.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
@@ -2355,7 +2346,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
@@ -2364,7 +2354,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
@@ -2374,23 +2363,18 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
@@ -2403,19 +2387,16 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_util
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
@@ -2423,22 +2404,18 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_d
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_expand2.c -o parsing/p_expand2.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
@@ -2451,7 +2428,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
@@ -2460,7 +2436,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
@@ -2471,7 +2446,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
@@ -2481,26 +2455,22 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_1.c -o p_utils_1.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_utils_2.c -o p_utils_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
@@ -2509,36 +2479,29 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_expand3.c -o parsing/p_expand3.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
@@ -2549,7 +2512,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_memset.c -o ft_memset.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
@@ -2560,7 +2522,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
@@ -2570,7 +2531,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
@@ -2582,20 +2542,15 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
@@ -2615,29 +2570,23 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expa
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/p_expand4.c -o parsing/p_expand4.o
- 
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
@@ -2651,7 +2600,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
@@ -2661,7 +2609,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
@@ -2671,7 +2618,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
@@ -2683,20 +2629,15 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
@@ -2708,16 +2649,15 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c prompt.c -o prompt.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection.c -o p_redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
+ 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
@@ -2725,21 +2665,16 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_d
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parsing/join_list.c -o parsing/join_list.o
- 
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
     done
- 
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
 gcc -g3 -Werror -Wall -Wextra -c ft_atoi.c -o ft_atoi.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_bzero.c -o ft_bzero.o
 gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
@@ -2752,7 +2687,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
@@ -2762,7 +2696,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
@@ -2771,7 +2704,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strjoin.c -o ft_strjoin.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strmapi.c -o ft_strmapi.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
- 
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
@@ -2781,24 +2713,20 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstiter.c -o ft_lstiter.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
@@ -2812,7 +2740,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c big_list.c -o big_lis
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_redirection2.c -o p_redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expand1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
@@ -2820,14 +2747,12 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex.c -o ../execute_src/pipex.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
 gcc -g3 -Wall -Werror -Wextra  -Ilibft -Ift_printf -Iparsing -c parser.c -o parser.o
 for dir in libft ft_printf parsing; do \
         /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
@@ -2841,9 +2766,9 @@ gcc -g3 -Werror -Wall -Wextra -c ft_calloc.c -o ft_calloc.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalnum.c -o ft_isalnum.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isalpha.c -o ft_isalpha.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isascii.c -o ft_isascii.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_isdigit.c -o ft_isdigit.o
 gcc -g3 -Werror -Wall -Wextra -c ft_isprint.c -o ft_isprint.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_memchr.c -o ft_memchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcmp.c -o ft_memcmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_memcpy.c -o ft_memcpy.o
@@ -2853,7 +2778,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strchr.c -o ft_strchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strncmp.c -o ft_strncmp.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strdup.c -o ft_strdup.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcat.c -o ft_strlcat.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_strlcpy.c -o ft_strlcpy.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strlen.c -o ft_strlen.o
 gcc -g3 -Werror -Wall -Wextra -c ft_strnstr.c -o ft_strnstr.o
@@ -2861,10 +2785,10 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strrchr.c -o ft_strrchr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_tolower.c -o ft_tolower.o
 gcc -g3 -Werror -Wall -Wextra -c ft_toupper.c -o ft_toupper.o
 gcc -g3 -Werror -Wall -Wextra -c ft_itoa.c -o ft_itoa.o
+ 
 gcc -g3 -Werror -Wall -Wextra -c ft_putchar_fd.c -o ft_putchar_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putendl_fd.c -o ft_putendl_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_putnbr_fd.c -o ft_putnbr_fd.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_putstr_fd.c -o ft_putstr_fd.o
 gcc -g3 -Werror -Wall -Wextra -c ft_split.c -o ft_split.o
 gcc -g3 -Werror -Wall -Wextra -c ft_striteri.c -o ft_striteri.o
@@ -2874,7 +2798,6 @@ gcc -g3 -Werror -Wall -Wextra -c ft_strtrim.c -o ft_strtrim.o
 gcc -g3 -Werror -Wall -Wextra -c ft_substr.c -o ft_substr.o
 ar cr libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_front.c -o ft_lstadd_front.o
- 
 gcc -g3 -Werror -Wall -Wextra -c ft_lstadd_back.c -o ft_lstadd_back.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstclear.c -o ft_lstclear.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstdelone.c -o ft_lstdelone.o
@@ -2883,25 +2806,21 @@ gcc -g3 -Werror -Wall -Wextra -c ft_lstlast.c -o ft_lstlast.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstmap.c -o ft_lstmap.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstnew.c -o ft_lstnew.o
 gcc -g3 -Werror -Wall -Wextra -c ft_lstsize.c -o ft_lstsize.o
- 
 ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printfhelper.c -o ft_printfhelper.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -c ft_printf.c -o ft_printf.o
 ar cr  libftprintf.a ft_printfhelper.o ft_printf.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_1.c -o p_assign_1.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_assign_2.c -o p_assign_2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_dollar.c -o p_dollar.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand.c -o p_expand.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_assign.c -o p_list_assign.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_list_normal.c -o p_list_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_normal.c -o p_normal.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_quote.c -o p_quote.o
@@ -2915,7 +2834,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand1.c -o p_expa
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand2.c -o p_expand2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand3.c -o p_expand3.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c p_expand4.c -o p_expand4.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/child.c -o ../execute_src/child.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils.c -o ../execute_src/pipex_utils.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/pipex_utils1.c -o ../execute_src/pipex_utils1.o
@@ -2924,7 +2842,6 @@ gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redire
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/temp_list.c -o ../execute_src/temp_list.o
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/here_doc.c -o ../execute_src/here_doc.o
- 
 gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c join_list.c -o join_list.o
 ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
@@ -2933,6 +2850,5 @@ gcc  minishell.c execute_src/pipex.c execute_src/pipex_utils.c execute_src/pipex
 gcc  parser.c  \
 	 parsing/parsing.a \
 	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o parser
- 
 make: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team'
  
