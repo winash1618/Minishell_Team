@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 18:16:00 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/26 13:29:27 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 	while (*lst && ft_strchr("<>", *((*lst)->token)))
 	{
 		*lst = (*lst)->next;
-		if (*lst) // check flags (and free)
+		if (*lst)
 			*lst = (*lst)->next;
 	}
 	return (0);

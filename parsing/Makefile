@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/28 06:09:35 by mkaruvan          #+#    #+#              #
-#    Updated: 2022/06/20 15:21:05 by ayassin          ###   ########.fr        #
+#    Updated: 2022/06/26 19:49:05 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC = 	p_assign_1.c p_assign_2.c p_dollar.c \
 		../execute_src/pipex_utils1.c \
 		../execute_src/pipex.c ../execute_src/redirection.c \
 		../execute_src/redirection2.c ../execute_src/temp_list.c \
-		../execute_src/here_doc.c join_list.c
+		../execute_src/here_doc.c ../execute_src/enviroment.c \
+		../execute_src/builtins.c join_list.c
 
 		
 
