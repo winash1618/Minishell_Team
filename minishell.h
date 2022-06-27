@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/26 19:52:32 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/27 08:32:02 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
 
 //child.c
 char	**args_array(t_new *lst);
+int		buitin_switch(t_new *lst, char **args, char **env);
 int		child_execute(t_new *lst, char **path, char **env);
 
 //redirection.c

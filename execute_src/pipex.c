@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/26 20:28:23 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/27 08:33:16 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ int	builtins(t_new *lst, char **env)
 	char	*armrest2;
 	int		legrests[2];
 	t_new	*temp;
+	char	**args;
 
 	armrest1 = NULL;
 	armrest2 = NULL;
@@ -120,10 +121,15 @@ int	builtins(t_new *lst, char **env)
 	legrests[1] = 0;
 	temp = lst;
 	if (list_has_pipes(temp))
-		return (1);
+		return (-1);
 	//redirection_loop(&temp, &armrest1, &armrest2, legrests);
-	child_execute(lst, NULL, env);
-	return (0);
+	args = args_array(lst);
+	if (args == NULL)
+		return (-1);
+	return (buitin_switch(lst, args, env));
+	//child_execute(lst, NULL, env);
+	//return
+	//return (0);
 }
 
 int	excute(t_new *lst, char **env)
@@ -135,7 +141,8 @@ int	excute(t_new *lst, char **env)
 	(void)lst;
 	if (here_doc_input(lst))
 		exit(-1); //change code based on error
-	builtins(lst, env);
+	if (builtins(lst, env) != -1)
+		return (0);
 	if (!env)
 		return (0);
 	while (env[i] && ft_strncmp_p(env[i], "PATH=", 5) != 0)
