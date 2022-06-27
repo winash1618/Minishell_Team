@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/21 17:09:04 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:52:32 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include <readline/history.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
+
+extern int errno ;
 
 // for saving local variable
 typedef struct	var 
@@ -226,6 +228,17 @@ void	temp_lstadd_back(t_new **lst, t_new *node);
 
 //signals.c
 int		signals(void);
+
+// biultins.c
+int		ft_echo(char **args);
+int		ft_pwd(char **args);
+int		ft_env(char **env, char **args);
+int		ft_chdir(char **args, char **env);
+
+// enviroment.c
+int	cpynewenv(char **new_env, char **env);
+int	setnewenv(char **env);
+int	ft_export(char **args, char **env);
 
 int		main(int ac, char **av, char **env);
 

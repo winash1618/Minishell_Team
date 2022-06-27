@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/22 10:06:19 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/26 20:28:23 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,25 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	return (0);
 }
 
+int	builtins(t_new *lst, char **env)
+{
+	char	*armrest1;
+	char	*armrest2;
+	int		legrests[2];
+	t_new	*temp;
+
+	armrest1 = NULL;
+	armrest2 = NULL;
+	legrests[0] = 0;
+	legrests[1] = 0;
+	temp = lst;
+	if (list_has_pipes(temp))
+		return (1);
+	//redirection_loop(&temp, &armrest1, &armrest2, legrests);
+	child_execute(lst, NULL, env);
+	return (0);
+}
+
 int	excute(t_new *lst, char **env)
 {
 	char	**path;
@@ -116,21 +135,20 @@ int	excute(t_new *lst, char **env)
 	(void)lst;
 	if (here_doc_input(lst))
 		exit(-1); //change code based on error
+	builtins(lst, env);
 	if (!env)
 		return (0);
 	while (env[i] && ft_strncmp_p(env[i], "PATH=", 5) != 0)
 		++i;
 	if (env[i] == NULL)
 		return (0);
-	//env[i] = ft_strnstr(env[i], "PATH=", 5);
-	// split path
 	path = ft_split(env[i] + 5, ':');
 	if (path == NULL)
 		return (-1);
 	if (parent_forking5(lst, path, env) == -1)
 	{
 		clear_str_sep(path);
-		// clear list
+		ft_lstclear(&g_m, free);
 		exit(127);
 	}
 	clear_str_sep(path);

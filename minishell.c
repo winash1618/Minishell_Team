@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 16:30:28 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/26 19:46:16 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,101 +28,69 @@ t_new	*temp_makelist(char **str)
 	return (commands);
 }
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-	ac++;
-	(void)av;
-	// count_size(env);
+	int		*id;
+	t_new	*cmd;
+	char	*line;
+	int		i;
+	t_info	*info;
+
+	(void) ac;
+	(void) av;
 	g_m = NULL;
-	// t_list *hist;
-	// hist = NULL;
-	// (void)env;
-	// char *buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
 	signals();
-	int *id;
 	id = malloc(sizeof(int));
 	*id = getpid();
 	g_m = ft_lstnew(id);
-	//ft_lstadd_front(g_m)
-	t_info *info;
 	info = malloc(sizeof(t_info));
 	ft_lstadd_back(&g_m, ft_lstnew((void *)info));
-	t_new *cmd;
+	setnewenv(env);
 	info->flag = 1;
 	info->e_flag = 0;
-	// 
-	// t_var *var;
-	// char *str;
-	// str = NULL;
-	// tgetent(buf, getenv("TERM"));
-	// str = tgetstr("cl", NULL);
-	// free(buf);
-	// printf("%s", str);
-	// printf(" ");
-	char *line;
-	int i = 0;
+	i = 0;
 	while (1)
 	{
 		i++;
 		info->e_flag = 0;
 		info->q_flag = 0;
-		
 		line = ft_readline();
 		if (line)
 			add_history(line);
 		else
 		{
-			//list clear
-			exit(5);
+			ft_lstclear (&g_m, free);
+			exit(0);
 		}
-		// if (line && !hist)
-		// 	hist = ft_lstnew((void *)line);
-		// else if (line)
-		// {
-		// 	t_list *tmp = ft_lstnew((void *)line);
-		// 	ft_lstadd_front(&hist, tmp);
-		// }
 		quote_counter(line, info);
 		if (!line || !strcmp(line, "exit"))
+		{
+			ft_lstclear (&g_m, free);
 			return (0);
+		}
 		else if (!(strcmp(line, "")))
 			;
 		else if (!strcmp(line, "clear"))
 			ft_clearscreen();
 		else if (!info->q_flag)
 		{
-			// if(*line && check_var(line, info))
-			// {
-			// 	var_lexer(&var, line);
-			// 	lst_print_vars(var);
-			// }
-			// else
-			// {
-				normal_lexer(&cmd, info, line);
-				lst_print(cmd);
-				printf("\n******************************\n");
-				find_dollar_presence(cmd);
+			normal_lexer(&cmd, info, line);
+			find_dollar_presence(cmd);
+			find_redirection_presence(cmd);
+			dollar_expansion(cmd, env);
+			make_all_zero(cmd);
+			if (cmd && !syntax_error(cmd))
+			{
+				make_big_list(&cmd);
+				ft_lst_join(cmd);
 				find_redirection_presence(cmd);
-				dollar_expansion(cmd, env);
-				lst_print(cmd);
-				printf("\n******************************\n");
-				make_all_zero(cmd);
-				if (cmd && !syntax_error(cmd))
-				{
-					make_big_list(&cmd);
-					lst_print(cmd);
-					ft_lst_join(cmd);
-					printf("\n******************************\n");
-					lst_print(cmd);
-					find_redirection_presence(cmd);
-					excute (cmd, env);
-				}
-			// }
+				excute (cmd, env);
+			}
 		}
 		free (line);
 	}
 	ft_lstclear(&g_m, free);
-	return(0);
+	return (0);
 }
 
 // int	main(int argv, char **argc, char **env)

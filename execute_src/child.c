@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/22 09:45:23 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/26 20:25:23 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,38 @@ char	**args_array(t_new *lst)
 	return (args);
 }
 
+int	buitin_switch(t_new *lst, char **args, char **env)
+{
+	if (lst->token && ft_strncmp_p(lst->token, "echo", 5) == 0)
+		return (ft_echo(args));
+	else if (lst->token && (ft_strncmp_p(lst->token, "pwd", 4)
+			* ft_strncmp_p(lst->token, "PWD", 4)) == 0)
+		return (ft_pwd(args));
+	else if (lst->token && (ft_strncmp_p(lst->token, "env", 4)
+			* ft_strncmp_p(lst->token, "ENV", 4)) == 0)
+		return (ft_env(env, args));
+	else if (lst->token && (ft_strncmp_p(lst->token, "cd", 3) == 0))
+		return (ft_chdir(args, env));
+	else if (lst->token && (ft_strncmp_p(lst->token, "export", 7) == 0))
+		return (ft_export(args, env));
+	// else if (lst->token && (ft_strncmp_p(lst->token, "unset", 6) == 0))
+	// 	return (ft_unset(args, env));
+	return (-1);
+}
 int	child_execute(t_new *lst, char **path, char **env)
 {
 	int		i;
 	char	**args;
+	int		temp_return;
 
 	i = 0;
 	args = args_array(lst);
 	if (args == NULL)
 		return (-1);
-	if (lst->token && ft_strncmp_p(lst->token, "./", 3))
-		execve(lst->token, args, env);
-	if (lst->token && *(lst->token) == '/')
+	temp_return = buitin_switch(lst, args, env);
+	if (temp_return != -1)
+		return (temp_return);
+	if (lst->token && (*(lst->token) == '/' || *(lst->token) == '.'))
 		execve(lst->token, args, env);
 	while (path[i])
 	{
