@@ -6,6 +6,7 @@
 		"locale": "c",
 		"minishell.h": "c",
 		"termcap.h": "c",
-		"errno.h": "c"
+		"errno.h": "c",
+		"bitset": "c"
 	}
 }

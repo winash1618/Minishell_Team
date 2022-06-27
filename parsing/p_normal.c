@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:16:26 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/20 11:16:32 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/26 15:08:31 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ int	normal_lexer_help(t_new **pars, t_info *info, char *str, int wc)
 	{
 		if (ft_isspace(*(str - 1)))
 			lst_add_back(pars, temp1, info, 1);
-		else
+		else if (!is_no_dollar_meta(*str) && !is_meta_pipe(*str))
 			lst_add_back(pars, temp1, info, -1);
+		else
+			lst_add_back(pars, temp1, info, 1);
 		wc++;
 	}
 	return (wc);
