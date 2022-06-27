@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/21 13:31:40 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/26 12:06:30 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_list *g_m;
 // 	ft_printf("hi %s\n", s);
 // 	// printf("hi");
 // }
+
 t_new	*temp_makelist(char **str)
 {
 	t_new	*commands;
@@ -36,6 +37,7 @@ t_new	*temp_makelist(char **str)
 	}
 	return (commands);
 }
+
 int main(int ac, char **av, char **env)
 {
 	ac++;
