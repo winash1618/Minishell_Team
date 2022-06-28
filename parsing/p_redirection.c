@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:49:39 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/21 11:15:38 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/27 14:02:20 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	make_all_zero(t_new *cmd)
 		cmd->l2_flag = 0;
 		cmd->l_flag = 0;
 		cmd->p_flag = 0;
+		cmd->dq_flag = 0;
 		cmd = cmd->next;
 	}
 }

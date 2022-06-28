@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/27 08:33:16 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/27 13:54:13 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	builtins(t_new *lst, char **env)
 	temp = lst;
 	if (list_has_pipes(temp))
 		return (-1);
-	//redirection_loop(&temp, &armrest1, &armrest2, legrests);
+	redirection_loop(&temp, &armrest1, &armrest2, legrests);
 	args = args_array(lst);
 	if (args == NULL)
 		return (-1);

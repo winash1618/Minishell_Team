@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/27 08:32:02 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/27 16:18:58 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ int		is_no_dollar_meta(char c);
 int		is_no_dollar_meta1(char c);
 // contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~
 int		is_meta_special(char c);
+// contatins space, tab, new line, |&;()<>:?+-=!@#$^{}[]|%*,.~1234567890
+int		is_meta_special2(char c);
 // get string length for dollar expansion
 int		get_strlen(char *str);
 //string join mehdy version
@@ -165,7 +167,7 @@ t_list	*get_expanded_list(char *str, char **env);
 int		syntax_error(t_new *cmd);
 t_list	*get_expanded_string2(char *str, char **env);
 int		ft_expand1(t_list **lst, t_list *temp, char c);
-int		ft_expand2(t_list **lst, t_list *temp);
+int		ft_expand2(t_list **lst, t_list *temp, char c);
 int		ft_expand3(t_list **lst, t_list *temp, char *str, char **env);
 int		ft_expand4(t_list **lst, t_list *temp, char *str);
 int		ft_expand5(t_list **lst, t_list *temp, char *str);

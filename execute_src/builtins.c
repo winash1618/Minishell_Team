@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:02 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/26 20:25:40 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/27 15:13:41 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_echo(char **args)
 		if (ft_strncmp_p(args[i], "-n", 3) == 0)
 			flag = 0;
 		else
-			ft_printf("%s ", args[i]);
+			ft_printf("%s", args[i]);
 		++i;
 	}
 	if (flag)

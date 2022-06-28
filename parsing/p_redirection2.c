@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:55:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/26 18:26:02 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:25:33 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	find_rderror(char *str, t_new *cmd)
 		}
 		else if (str[i] == '<' && str[i + 1] == '>')
 			return (ft_putstr_fd1("Wrong syntax \n", 2));
-		// else if (str[i] == '<' && str[i + 1] == '|')
-		// 	return (ft_putstr_fd1("Wrong syntax \n", 2));
+		else if (str[i] == '<' && str[i + 1] == '|')
+			return (ft_putstr_fd1("Wrong syntax \n", 2));
 		i++;
 	}
 	return (0);

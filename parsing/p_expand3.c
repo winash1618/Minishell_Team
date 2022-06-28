@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:43:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 14:09:18 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:42:11 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,24 +95,16 @@ int	ft_expand7(t_list **lst, t_list *temp, char *str)
 int	ft_move_string(char *str, int i, int flag)
 {
 	if (flag == 1)
-	{
 		while (str[i] && is_no_dollar_meta(str[i]))
 			i++;
-	}
 	else if (flag == 2)
-	{
 		while (str[i] && is_no_dollar_meta1(str[i]))
 				i++;
-	}
 	else if (flag == 3)
-	{
 		while (str[i] && !is_meta(str[i]))
 			i++;
-	}
 	else if (flag == 4)
-	{
 		while (str[i] && is_meta_pipe(str[i]))
 				i++;
-	}
 	return (i);
 }
