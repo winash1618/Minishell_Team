@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 09:49:19 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/26 16:22:08 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:57:35 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	check_temp_token(int i, char *str, char *s2)
 {
+	if (!*s2 && i == -1)
+		return (i);
 	if (!is_no_dollar_meta(*str) && !is_meta_pipe(*str))
 		if (!is_no_dollar_meta(*s2) && !is_meta_pipe(*s2))
 			return (i);

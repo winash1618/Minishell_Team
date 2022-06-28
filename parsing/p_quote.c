@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:58:25 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 14:48:22 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/27 07:04:25 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	*quoted_word(char *line, char ch)
 
 	i = 0;
 	len = ft_strlen_ch(line, ch);
-	if (len > 0)
+	if (len >= 0)
 	{
 		s = malloc(sizeof(char) * (len + 1));
 		tmp = ft_lstnew((void *)(s));
