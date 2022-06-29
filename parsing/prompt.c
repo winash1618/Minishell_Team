@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:55:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/20 08:52:08 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/27 07:21:06 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,30 @@ void	ft_clearscreen(void)
 // 	printf("%s", str);
 // 	// printf("");
 // }
+
+// for printing purposes
+void	lst_print(t_new *pars)
+{
+	while (pars != NULL)
+	{
+		printf("<token: %s> <flag: %d> <d_flag: %d> <s_flag: %d> <l_flag: %d> <l2_flag: %d> <r_flag: %d> <r2_flag: %d> <dq_flag: %d>",
+			pars->token, pars->flag, pars->d_flag, pars->s_flag, pars->l_flag, 
+			pars->l2_flag, pars->r_flag, pars->r2_flag, pars->dq_flag);
+		printf("\n");
+		pars = pars->next;
+	}
+}
+
+void	lst_rev_print(t_new *pars)
+{
+	while (pars && pars->next != NULL)
+		pars = pars->next;
+	while (pars != NULL)
+	{
+		printf("<token: %s> <flag: %d> <d_flag: %d> ",
+			pars->token, pars->flag, pars->d_flag);
+		printf("\n");
+		pars = pars->prev;
+	}
+}
+// control - v then enter, gives ^M 

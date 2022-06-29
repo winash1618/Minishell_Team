@@ -6,11 +6,20 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:39:58 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/22 09:45:36 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/27 11:44:12 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	ft_isdigit2(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	if (ft_strchr("!@", c))
+		return (1);
+	return (0);
+}
 
 char	*get_meta(char *str)
 {
@@ -81,24 +90,49 @@ int	ft_expand1(t_list **lst, t_list *temp, char c)
 	return (2);
 }
 
-int	ft_expand2(t_list **lst, t_list *temp)
+int	ft_expand2(t_list **lst, t_list *temp, char c)
 {
-	t_list	*tmp;
+	int		k;
 
-	if (!*lst)
-	{
-		*lst = ft_lstnew((void *)ft_strdup("$"));
-		tmp = ft_lstnew((void *)(*lst));
-		ft_lstadd_back(&g_m, tmp);
-	}
-	else
-	{
-		temp = ft_lstnew((void *)ft_strdup("$"));
+	k = 0;
+	
+	// if (!*lst)
+	// {
+	// 	if (is_meta_special(c))
+	// 	{
+	// 		*lst = ft_lstnew((void *)ft_strdup("$"));
+	// 		k = 1;
+	// 	}
+	// 	else
+	// 		*lst = ft_lstnew((void *)ft_strdup(""));
+	// 	ft_lstadd_back(&g_m, ft_lstnew((void *)(*lst)));
+	// }
+	// else
+	// {
+		if (!c)
+			temp = ft_lstnew((void *)ft_strdup("$"));
+		else if (is_meta_special2(c) && !ft_isdigit2(c))
+		{
+			temp = ft_lstnew((void *)ft_strdup("$"));
+			k = 0;
+		}
+		// else if (is_meta_special2(c) && ft_isdigit(c))
+		// {
+		// 	s[0] = '$';
+		// 	s[1] = c;
+		// 	s[2] = '\0';
+		// 	temp = ft_lstnew((void *)ft_strdup(s));
+		// 	k = 1;
+		// }
+		else if (is_meta_special2(c) && ft_isdigit2(c))
+		{
+			temp = ft_lstnew((void *)ft_strdup(""));
+			k = 1;
+		}
 		ft_lstadd_back(lst, temp);
-		tmp = ft_lstnew((void *)(temp));
-		ft_lstadd_back(&g_m, tmp);
-	}
-	return (0);
+		ft_lstadd_back(&g_m, ft_lstnew((void *)(temp)));
+	// }
+	return (k);
 }
 
 int	ft_expand3(t_list **lst, t_list *temp, char *str, char **env)
