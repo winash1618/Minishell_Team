@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 19:44:36 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/26 20:11:27 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/29 18:17:20 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,34 +62,95 @@ int	ft_export(char **args, char **env)
 {
 	int		prelen;
 	int		i;
+	int		j;
 	t_list	*node;
 	char	**new_env;
 
-	if (args[1] == NULL || ft_strchr(args[1], '=') == NULL)
-		return (0);
-	prelen = ft_strchr(args[1], '=') - args[1] + 1;
 	i = 0;
-	while (env [i] && ft_strncmp_p(env[i], args[1], prelen) != 0)
-		++i;
-	if (env[i])
+	if (args[1] == NULL)
 	{
-		env[i] = args[1]; // I do not free env
-		node = ft_lstnew(env[i]);
-		if (node == 0)
+		while (env[i])
 		{
-			//free(args);
-			return (1);
+			ft_printf("declare -x ");
+			j = 0;
+			while (env[i][j] && env[i][j] != '=')
+				write(1, &(env[i][j++]), 1);
+			if (env[i][j] == '=')
+				ft_printf("=\"%s\"", &(env[i][j + 1]));
+			write(1, "\n", 1);
+			++i;
 		}
-		ft_lstadd_back(&g_m, node);
+		free(args);
+		return (0);
 	}
-	else
+	i = 1;
+	while (args[i] != NULL)
 	{
-		new_env = (char **)malloc(sizeof(*env) * (i + 2));
-		cpynewenv(new_env, env); // check success
-		env[i] = args[1];
-		env[i + 1] = NULL;
+		if (!ft_isalpha(args[i][0]))
+		{
+			print_error(args[i], ": not a valid identifier");
+			++i;
+			continue ;
+		}
+		else
+		if (ft_strchr(args[i], '=') != 0)
+			prelen = ft_strchr(args[i], '=') - args[i];
+		else
+			prelen = ft_strlen(args[i]);
+		j = 0;
+		while (env [j] && ft_strncmp_p(env[j], args[i], prelen) != 0)
+			++j;
+		if (env[j] && ft_strchr(args[i], '=') != 0)
+		{
+			env[j] = ft_strdup(args[i]); // protect
+			node = ft_lstnew(env[j]);
+			if (node == 0)
+			{
+				free(args);
+				return (1);
+			}
+			ft_lstadd_back(&g_m, node);
+		}
+		else if (!env[j])
+		{
+			new_env = (char **)malloc(sizeof(*env) * (j + 2));
+			cpynewenv(new_env, env); // check success
+			env[j] = args[i];
+			env[j + 1] = NULL;
+		}
+		++i;
 	}
+	free(args);
 	return (0);
 }
 
+int	ft_unset(char **args, char **env)
+{
+	int		prelen;
+	int		i;
+	int		j;
 
+	i = 1;
+	while (args[i] != NULL)
+	{
+		if (!ft_isalpha(args[i][0]) || ft_strchr(args[i], '=') != 0)
+		{
+			print_error(args[i++], ": not a valid identifier");
+			continue ;
+		}
+		prelen = ft_strlen(args[i]) + 1;
+		j = 0;
+		while (env [j] && !((ft_strncmp_p(env[j], args[i], prelen) == '=')
+			|| (ft_strncmp_p(env[j], args[i], prelen) == 0 && ft_strchr(env[j], '=') == NULL)))
+			++j;
+		while (env[j] && env [j + 1])
+		{
+			env[j] = env[j + 1];
+			++j;
+		}
+		env[j] = NULL;
+		++i;
+	}
+	free(args);
+	return (0);
+}

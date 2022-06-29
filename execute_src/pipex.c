@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/27 08:33:16 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/29 16:47:14 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,14 +122,24 @@ int	builtins(t_new *lst, char **env)
 	temp = lst;
 	if (list_has_pipes(temp))
 		return (-1);
-	//redirection_loop(&temp, &armrest1, &armrest2, legrests);
+	redirection_loop(&temp, &armrest1, &armrest2, legrests);
 	args = args_array(lst);
 	if (args == NULL)
 		return (-1);
 	return (buitin_switch(lst, args, env));
-	//child_execute(lst, NULL, env);
-	//return
-	//return (0);
+}
+
+int	has_parentbuiltins(t_new *lst)
+{
+	if (list_has_pipes(lst))
+		return (0);
+	else if (lst->token && (ft_strncmp_p(lst->token, "cd", 3) == 0))
+		return (1);
+	else if (lst->token && (ft_strncmp_p(lst->token, "export", 7) == 0))
+		return (1);
+	else if (lst->token && (ft_strncmp_p(lst->token, "unset", 6) == 0))
+		return (1);
+	return (0);
 }
 
 int	excute(t_new *lst, char **env)
@@ -141,17 +151,16 @@ int	excute(t_new *lst, char **env)
 	(void)lst;
 	if (here_doc_input(lst))
 		exit(-1); //change code based on error
-	if (builtins(lst, env) != -1)
-		return (0);
+	if (has_parentbuiltins(lst))
+		return (builtins(lst, env));
 	if (!env)
 		return (0);
-	while (env[i] && ft_strncmp_p(env[i], "PATH=", 5) != 0)
+	while (env && env[i] && ft_strncmp_p(env[i], "PATH=", 5) != 0)
 		++i;
-	if (env[i] == NULL)
-		return (0);
-	path = ft_split(env[i] + 5, ':');
-	if (path == NULL)
-		return (-1);
+	if (!env || env[i] == NULL)
+		path = NULL;
+	else
+		path = ft_split(env[i] + 5, ':');
 	if (parent_forking5(lst, path, env) == -1)
 	{
 		clear_str_sep(path);
