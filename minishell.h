@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/27 16:18:58 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:46:40 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct list
 	int			p_flag; // indicate presence of pipe in a token
 	int			err_flag;// true an error is present
 	int			s_flag;// 1 if there is a space 0 if not
-  int     dq_flag;
+	int			dq_flag;
 	struct list	*next;
 	struct list	*prev;
 }	t_new;
@@ -239,9 +239,10 @@ int		ft_env(char **env, char **args);
 int		ft_chdir(char **args, char **env);
 
 // enviroment.c
-int	cpynewenv(char **new_env, char **env);
-int	setnewenv(char **env);
-int	ft_export(char **args, char **env);
+int		cpynewenv(char **new_env, char **env);
+int		setnewenv(char **env);
+int		ft_export(char **args, char **env);
+int		ft_unset(char **args, char **env);
 
 int		main(int ac, char **av, char **env);
 
