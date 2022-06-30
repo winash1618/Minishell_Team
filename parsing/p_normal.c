@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:16:26 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/26 15:08:31 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:29:24 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ char	*normal_word(char *line)
 	int		len;
 
 	len = get_word_len(line);
+	// printf("%d", len);
+	// if (len == -1)
+	// 	return (NULL);
 	word = malloc(sizeof(char) * (len + 1));
 	tmp = ft_lstnew((void *)(word));
 	ft_lstadd_back(&g_m, tmp);
