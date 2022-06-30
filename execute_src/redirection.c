@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/21 08:58:28 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/27 14:33:41 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
 			in_file_name = (temp->token) + 1 + *input_flag;
 		else if (temp->next)
 		{
+			// if (*(temp->next->token) == '|')
+			// 	skip_node(&temp, skip_flag);
 			in_file_name = temp->next->token;
 			skip_node(&temp, skip_flag);
 		}
