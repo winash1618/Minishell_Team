@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:53:57 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/26 18:22:02 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:57:07 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	normal_lexer(t_new **pars, t_info *info, char *str)
 		info->w_flag = 0;
 		while (*str && ft_isspace(*str))
 			str++;
-		wc = normal_lexer_help(pars, info, str, wc);
+		if (*str)
+			wc = normal_lexer_help(pars, info, str, wc);
 		if (*str == '"')
 			temp = go_past_quotes(++str, '"', &flag);
 		else if (*str == 39)
