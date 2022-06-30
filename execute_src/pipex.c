@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/27 13:54:13 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:35:19 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,6 @@ int	excute(t_new *lst, char **env)
 	int		i;
 
 	i = 0;
-	(void)lst;
 	if (here_doc_input(lst))
 		exit(-1); //change code based on error
 	if (has_parentbuiltins(lst))

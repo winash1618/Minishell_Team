@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:02 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/29 18:20:33 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/30 09:54:18 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,12 @@ int	ft_echo(char **args)
 
 int	ft_pwd(char **args)
 {
-	ft_printf("%s\n", getcwd(NULL, 0));
+	char	*my_dir;
+
+	my_dir = getcwd(NULL, 0);
+	ft_printf("%s\n", my_dir);
+	if (my_dir)
+		free(my_dir);
 	free(args);
 	return (0);
 }
@@ -73,34 +78,63 @@ char	*get_home(char **env)
 	return (NULL);
 }
 
-int	ft_chdir(char **args, char **env)
+void	go_to_headdir(void)
 {
 	char	*new_loc;
+	char	*temp_loc;
+
+	new_loc = NULL;
+	temp_loc = NULL;
+	while (ft_strlen(new_loc) != ft_strlen(temp_loc) || temp_loc == NULL)
+	{
+		if (new_loc)
+			free(new_loc);
+		new_loc = getcwd(NULL, 0);
+		chdir("..");
+		if (temp_loc)
+			free(temp_loc);
+		temp_loc = getcwd(NULL, 0);
+	}
+	if (temp_loc)
+		free(temp_loc);
+	if (new_loc)
+		free(new_loc);
+}
+
+// void	go_to_headdir2(void)
+// {
+// 	char	*temp_loc;
+
+// 	temp_loc = getcwd(NULL, 0);
+// 	while (temp_loc[1] != '\0')
+// 	{
+// 		chdir("..");
+// 		if (temp_loc)
+// 			free(temp_loc);
+// 		temp_loc = getcwd(NULL, 0);
+// 	}
+// 	if (temp_loc)
+// 		free(temp_loc);
+// }
+
+int	ft_chdir(char **args, char **env)
+{
 	char	*home;
 	char	*old_loc;
 
-	new_loc = NULL;
 	old_loc = getcwd(NULL, 0);
 	if (args[1] == NULL || args[1][0] == '~') // make it fail
 	{
 		home = get_home(env);
 		if (home && *home != '\0')
 		{
-			while (ft_strlen(new_loc) != ft_strlen(getcwd(NULL, 0)))
-			{
-				new_loc = getcwd(NULL, 0);
-				chdir("..");
-			}
+			go_to_headdir();
 			chdir(home);
 			if (args[1] && args[1][1] != '\0' && chdir(&args[1][2]) == -1)
 			{
-				while (ft_strlen(new_loc) != ft_strlen(getcwd(NULL, 0)))
-				{
-					new_loc = getcwd(NULL, 0);
-					chdir("..");
-				}
+				go_to_headdir();
 				chdir(old_loc);
-				print_error(&args[1][2], ": No such file or directory");
+				print_error(&args[1][1], ": No such file or directory");
 			}
 		}
 	}
@@ -112,12 +146,16 @@ int	ft_chdir(char **args, char **env)
 			print_error(args[1], ": Permission denied");
 		else
 			print_error(args[1], ": Not a directory");
+		if (old_loc)
+			free(old_loc);
 		free (args);
 		return (1); // correct error code
 	}
 	// new_loc = ft_strdup("PWD="); // protect
 	// ft_strjoin_ms(&new_loc, getcwd(NULL, 0)); // errors check
 //	ft_export(&new_loc, env);
+	if (old_loc)
+		free(old_loc);
 	free(args);
 	return (0);
 }
