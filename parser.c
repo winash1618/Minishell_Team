@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/27 14:26:23 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/06/29 08:26:33 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,9 @@ int main(int ac, char **av, char **env)
 // 		if (!line || !strcmp(line, "exit"))
 // 		{
 // 			ft_lstclear(&g_m, free);
+// 			close(0);
+// 			close(1);
+// 			close(2);
 // 			return (0);
 // 		}
 // 		else if (!(strcmp(line, "")))
