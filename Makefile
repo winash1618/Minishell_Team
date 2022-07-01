@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/06/26 19:47:57 by ayassin          ###   ########.fr        #
+#    Updated: 2022/06/30 18:17:24 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJSP = $(SRCP:.c=.o)
 
 CC = gcc
 
-CFLAGS = -g3 -Wall -Werror -Wextra 
+CFLAGS = -g3 -Wall -Werror -Wextra
 
 all: $(NAME)
 
@@ -61,10 +61,10 @@ $(NAME): $(OBJS) $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFALGS) $(SRC) -ltermcap -lreadline \
+	$(CC) $(CFALGS) $(SRC) -ltermcap -lreadline -lreadline \
 	-Lft_printf -lftprintf -Llibft -lft -o $(NAME)
 	$(CC) $(CFALGS) $(SRCP)  \
-	 parsing/parsing.a \
+	 parsing/parsing.a -lreadline \
 	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o $(PNAME)
 
 

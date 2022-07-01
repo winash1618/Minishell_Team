@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:00:21 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 18:11:23 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/06/30 18:25:23 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,15 @@ static void	signal_handler(int signum, siginfo_t *info, void *ptr)
 	}
 	if (waitpid(-1, &status, WNOHANG) == -1)
 	{
-		ft_printf("\r>Enter a string:   ");
-		ft_printf("\n>Enter a string: ");
+		//char i = 26;
+		//write(0, &i, 1);
+		ft_printf("\r>Enter a string:\n");
+		rl_redisplay();
+		rl_on_new_line();
+		rl_redisplay();
+		rl_on_new_line();
+		//rl_replace_line("", 0);
+		//ft_printf("\n>Enter a string: ");
 	}
 }
 	// if (signum == SIGQUIT) 
