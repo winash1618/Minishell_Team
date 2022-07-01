@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   P_expand4.c                                        :+:      :+:    :+:   */
+/*   p_expand4.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 15:24:15 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 15:25:14 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/01 14:47:01 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	ft_expand3(t_list **lst, t_list *temp, char *str, char **env)
+{
+	t_list	*tmp;
+
+	if (!*lst)
+	{
+		*lst = ft_lstnew((void *)get_dollar_path(str, env));
+		tmp = ft_lstnew((void *)(*lst));
+		ft_lstadd_back(&g_m, tmp);
+	}
+	else
+	{
+		temp = ft_lstnew((void *)get_dollar_path(str, env));
+		ft_lstadd_back(lst, temp);
+		tmp = ft_lstnew((void *)(temp));
+		ft_lstadd_back(&g_m, tmp);
+	}
+	return (0);
+}
 
 int	no_redirection(char *str)
 {

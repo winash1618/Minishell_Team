@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:53:57 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/28 11:57:07 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/01 14:52:27 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ int	is_quote(char c)
 {
 	if (c == '"' || c == 39)
 		return (0);
+	return (1);
+}
+
+int	ft_putstr_fd1(char *s, int fd)
+{
+	if (s)
+		while (*s)
+			write(fd, s++, 1);
 	return (1);
 }
 
@@ -84,45 +92,4 @@ int	ft_strjoin_ps(char **prestr, char *sufstr, int8_t freesuf)
 		free (sufstr);
 	*prestr = fullstr;
 	return (1);
-}
-
-// char	*ft_combine_from_list(t_new *cmd)
-// {
-// 	char	*s;
-// 	t_list	*lst;
-
-// 	s = "";
-// 	lst = cmd->lst;
-// 	while (lst)
-// 	{
-// 		if (ft_strncmp((char *)lst->content, "$?", 2))
-// 			ft_strjoin_ps(&s, ft_itoa(errno), 0);
-// 		else
-// 			ft_strjoin_ps(&s, (char *)lst->content, 0);
-// 		lst = lst->next;
-// 	}
-// 	return (s);
-// }
-
-void	big_list_help(t_new **cmd)
-{
-	char	*str;
-	t_list	*tmp;
-
-	tmp = (*cmd)->lst;
-	if ((*cmd)->flag == 3)
-	{
-		lst_add(cmd, tmp);
-		lst_skip_node2(*cmd);
-	}
-	if ((*cmd)->flag == 1)
-	{
-		// if ((*cmd)->dq_flag == 1)
-		// 	str = ft_combine_from_list(*cmd);
-		// else
-		str = ft_strdup((*cmd)->es);
-		tmp = ft_lstnew((void *)(str));
-		ft_lstadd_back(&g_m, tmp);
-		(*cmd)->token = str;
-	}
 }

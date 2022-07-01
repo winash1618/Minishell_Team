@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:39:58 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/27 11:44:12 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/01 15:44:15 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,13 @@ int	ft_expand1(t_list **lst, t_list *temp, char c)
 	t_list	*tmp;
 	char	*s;
 
+	s = NULL;
 	if (c == '?')
 		s = ft_itoa(errno);
 	else if (c == '$')
 		s = ft_strdup("$$");
+	if (s)
+		ft_lstadd_back(&g_m, ft_lstnew((void *)(s)));
 	if (!*lst)
 	{
 		*lst = ft_lstnew((void *)s);
@@ -95,62 +98,19 @@ int	ft_expand2(t_list **lst, t_list *temp, char c)
 	int		k;
 
 	k = 0;
-	
-	// if (!*lst)
-	// {
-	// 	if (is_meta_special(c))
-	// 	{
-	// 		*lst = ft_lstnew((void *)ft_strdup("$"));
-	// 		k = 1;
-	// 	}
-	// 	else
-	// 		*lst = ft_lstnew((void *)ft_strdup(""));
-	// 	ft_lstadd_back(&g_m, ft_lstnew((void *)(*lst)));
-	// }
-	// else
-	// {
-		if (!c)
-			temp = ft_lstnew((void *)ft_strdup("$"));
-		else if (is_meta_special2(c) && !ft_isdigit2(c))
-		{
-			temp = ft_lstnew((void *)ft_strdup("$"));
-			k = 0;
-		}
-		// else if (is_meta_special2(c) && ft_isdigit(c))
-		// {
-		// 	s[0] = '$';
-		// 	s[1] = c;
-		// 	s[2] = '\0';
-		// 	temp = ft_lstnew((void *)ft_strdup(s));
-		// 	k = 1;
-		// }
-		else if (is_meta_special2(c) && ft_isdigit2(c))
-		{
-			temp = ft_lstnew((void *)ft_strdup(""));
-			k = 1;
-		}
-		ft_lstadd_back(lst, temp);
-		ft_lstadd_back(&g_m, ft_lstnew((void *)(temp)));
-	// }
+	if (!c)
+		temp = ft_lstnew((void *)ft_strdup("$"));
+	else if (is_meta_special2(c) && !ft_isdigit2(c))
+	{
+		temp = ft_lstnew((void *)ft_strdup("$"));
+		k = 0;
+	}
+	else if (is_meta_special2(c) && ft_isdigit2(c))
+	{
+		temp = ft_lstnew((void *)ft_strdup(""));
+		k = 1;
+	}
+	ft_lstadd_back(lst, temp);
+	ft_lstadd_back(&g_m, ft_lstnew((void *)(temp)));
 	return (k);
-}
-
-int	ft_expand3(t_list **lst, t_list *temp, char *str, char **env)
-{
-	t_list	*tmp;
-
-	if (!*lst)
-	{
-		*lst = ft_lstnew((void *)get_dollar_path(str, env));
-		tmp = ft_lstnew((void *)(*lst));
-		ft_lstadd_back(&g_m, tmp);
-	}
-	else
-	{
-		temp = ft_lstnew((void *)get_dollar_path(str, env));
-		ft_lstadd_back(lst, temp);
-		tmp = ft_lstnew((void *)(temp));
-		ft_lstadd_back(&g_m, tmp);
-	}
-	return (0);
 }
