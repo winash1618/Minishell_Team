@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/06/30 18:17:24 by ayassin          ###   ########.fr        #
+#    Updated: 2022/07/01 14:37:46 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ EXECUTE_SRC = pipex.c pipex_utils.c  pipex_utils1.c child.c redirection.c \
 				builtins.c
 				
 EXECUTE_SRC1 = p_assign_1.c p_assign_2.c p_dollar.c \
-		p_expand.c p_list_assign.c p_list_normal.c \
+		p_expand.c p_list_assign.c p_list_normal.c big_list2.c \
 		p_normal.c p_quote.c p_utils_1.c p_utils_2.c \
 		prompt.c p_redirection.c big_list.c p_redirection2.c \
 		p_expand1.c p_expand2.c p_expand3.c p_expand4.c  join_list.c\

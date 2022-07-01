@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:27:21 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/27 11:25:12 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/01 14:45:12 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ t_list	*get_expanded_list(char *str, char **env)
 			i += ft_expand1(&lst, temp, str[i + 1]);
 		else if (str[i] == '$' && (!str[i + 1] || is_meta_special2(str[i + 1])))
 			i += ft_expand2(&lst, temp, str[i + 1]) + 1;
-		// else if (str[i] == '$' && ft_isdigit(str[i + 1]))
-		// 	i += 2;
 		else if (str[i] == '$')
 			i += ft_expand3(&lst, temp, str + i + 1, env)
 				+ get_strlen(str + i + 1) + 1;

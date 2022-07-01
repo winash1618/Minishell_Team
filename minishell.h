@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/29 16:46:40 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/01 15:31:06 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-extern int errno ;
+extern int	errno ;
 
 // for saving local variable
 typedef struct	var 
@@ -181,6 +181,7 @@ int		normal_lexer_help(t_new **pars, t_info *info, char *str, int wc);
 void	big_list_help(t_new **cmd);
 void	lst_skip_node2(t_new *cmd);
 void	lst_add(t_new **cmd, t_list *lst);
+int		ft_putstr_fd1(char *s, int fd);
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//

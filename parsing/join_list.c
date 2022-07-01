@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 10:36:18 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/27 10:31:47 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/01 15:26:43 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_lst_join_help(t_new *cmd)
 	{
 		(cmd)->prev->token = ft_strjoin((cmd)->prev->token,
 				(cmd)->token);
+		ft_lstadd_back(&g_m, ft_lstnew((void *)((cmd)->prev->token)));
 		lst_skip_node2(cmd);
 		if (!cmd->next)
 		{
