@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/28 06:09:35 by mkaruvan          #+#    #+#              #
-#    Updated: 2022/06/26 19:49:05 by ayassin          ###   ########.fr        #
+#    Updated: 2022/07/01 14:37:17 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = parsing.a
 
-SRC = 	p_assign_1.c p_assign_2.c p_dollar.c \
+SRC = 	p_assign_1.c p_assign_2.c p_dollar.c big_list2.c\
 		p_expand.c p_list_assign.c p_list_normal.c \
 		p_normal.c p_quote.c p_utils_1.c p_utils_2.c \
 		prompt.c p_redirection.c big_list.c p_redirection2.c \
@@ -22,7 +22,7 @@ SRC = 	p_assign_1.c p_assign_2.c p_dollar.c \
 		../execute_src/pipex.c ../execute_src/redirection.c \
 		../execute_src/redirection2.c ../execute_src/temp_list.c \
 		../execute_src/here_doc.c ../execute_src/enviroment.c \
-		../execute_src/builtins.c join_list.c
+		../execute_src/builtins.c join_list.c 
 
 		
 

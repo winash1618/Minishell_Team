@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:22:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/27 09:30:22 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/01 14:47:21 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ void	lst_add_back(t_new **pars, char *str, t_info *info, int flag)
 	temp->prev = (*pars);
 	(*pars) = par;
 }
-
