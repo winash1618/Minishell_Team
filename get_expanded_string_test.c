@@ -83,7 +83,7 @@ char *get_meta(char *str)
 
 int is_meta_pipe(char c)
 {
-	if (ft_strchr("|", c))
+	if (ft_strchr("|", c)) // c == '\'
 	{
 		return (1);
 	}
