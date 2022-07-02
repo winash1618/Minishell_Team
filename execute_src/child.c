@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/29 16:46:09 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/02 18:42:17 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**args_array(t_new *lst)
 
 	arg_count = 0;
 	temp = lst;
-	while (temp && !ft_strchr("<>|", *(temp->token))) // check flags (and free)
+	while (temp && (!ft_strchr("<>|", *(temp->token)) || *(temp->token) == 0)) // check flags (and free)
 	{
 		++arg_count;
 		temp = temp->next;

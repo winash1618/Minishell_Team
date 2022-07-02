@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/30 19:37:58 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/02 15:30:58 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	here_doc_input(t_new *lst)
 			{
 				lst = lst->next;
 				delimiter = lst->token;
-				//free(lst->token); // to be added when integrating
-				lst->token = line_input(delimiter);
+				lst->token = line_input(delimiter); //check what is happining
+				ft_lstadd_back(&g_m, ft_lstnew(lst->token)); // check success
 			}
 			else
 				print_error(lst->token, ": Parsing error in Tokens\n");

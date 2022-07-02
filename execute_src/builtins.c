@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:02 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/30 09:54:18 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/02 20:01:13 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	ft_echo(char **args)
 	if (flag)
 		ft_putstr_fd("\n", 1);
 	free(args);
+	close(1); // temp place
+	close(3);
 	return (0);
 }
 
