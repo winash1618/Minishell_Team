@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_redirection2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:55:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/01 14:53:13 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/02 18:14:20 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	is_rpd(char c)
 {
-	if (ft_strchr("<>|/", c))
+	if (ft_strchr("<>|/", c)) // pssible strchr prolblem
 		return (1);
 	return (0);
 }

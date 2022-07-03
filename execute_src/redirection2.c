@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/30 18:39:46 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/02 18:12:38 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 	}
 	if (temp != NULL)
 		temp->next = NULL;
-	while (*lst && ft_strchr("<>", *((*lst)->token)))
+	while (*lst && ft_strchr("<>", *((*lst)->token))) // the strchr problem
 	{
 		*lst = (*lst)->next;
 		if (*lst)
