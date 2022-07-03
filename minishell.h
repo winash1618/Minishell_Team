@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/01 15:31:06 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/03 18:09:33 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 # include <readline/history.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
-
-extern int	errno ;
 
 // for saving local variable
 typedef struct	var 
@@ -198,6 +196,8 @@ int		print_error(char *problem, char *msg);
 int		ft_strjoin_ms(char **prestr, char *sufstr);
 void	clear_str_sep(char **str_sep);
 int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
+int		ft_strncmp_pc(const char *s1, const char *s2, size_t n);
+void	ft_tolower_str(char *str);
 
 //child.c
 char	**args_array(t_new *lst);
