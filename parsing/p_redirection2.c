@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:55:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/02 09:02:32 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/03 08:12:07 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	is_rpd(char c)
 {
-	if (ft_strchr("<>|/", c))
+	if (ft_strchr("<>|/", c)) // pssible strchr prolblem
 		return (1);
 	return (0);
 }

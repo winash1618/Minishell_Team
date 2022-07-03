@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 19:44:36 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/29 18:17:20 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/02 19:52:12 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	cpynewenv(char **new_env, char **env)
 {
 	int		count;
-	t_list	*temp;
+	t_list	*node;
 
 	count = 0;
 	while (env[count])
@@ -23,13 +23,13 @@ int	cpynewenv(char **new_env, char **env)
 		new_env[count] = ft_strdup(env[count]);
 		if (new_env[count] == NULL)
 			return (1);
-		temp = ft_lstnew(new_env[count]);
-		if (!temp)
+		node = ft_lstnew(new_env[count]);
+		if (!node)
 		{
 			free (new_env[count]);
 			return (1);
 		}
-		ft_lstadd_back(&g_m, temp);
+		ft_lstadd_back(&g_m, node);
 		++count;
 	}
 	new_env[count] = NULL;
@@ -56,6 +56,22 @@ int	setnewenv(char **env)
 		return (1);
 	ft_lstadd_back(&g_m, temp);
 	return (cpynewenv(new_env, env));
+}
+
+int	valid_varible(char *var)
+{
+	int	i;
+
+	i = 0;
+	if (!var || !*var || !(ft_isalpha(*var) || *var == '_'))
+		return (0);
+	while (var[i] && var[i] != '=')
+	{
+		if (!(ft_isalnum(var[i]) || var[i] == '_'))
+			return (0);
+		++i;
+	}
+	return (1);
 }
 
 int	ft_export(char **args, char **env)
@@ -86,9 +102,9 @@ int	ft_export(char **args, char **env)
 	i = 1;
 	while (args[i] != NULL)
 	{
-		if (!ft_isalpha(args[i][0]))
+		if (!valid_varible(args[i]))
 		{
-			print_error(args[i], ": not a valid identifier");
+			print_error(": not a valid identifier", args[i]);
 			++i;
 			continue ;
 		}
@@ -114,6 +130,13 @@ int	ft_export(char **args, char **env)
 		else if (!env[j])
 		{
 			new_env = (char **)malloc(sizeof(*env) * (j + 2));
+			node = ft_lstnew(new_env);
+			if (node == 0)
+			{
+				free(args);
+				return (1);
+			}
+			ft_lstadd_back(&g_m, node);
 			cpynewenv(new_env, env); // check success
 			env[j] = args[i];
 			env[j + 1] = NULL;
