@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:55:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/01 14:53:13 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/02 09:02:32 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	find_perror(char *str, t_new *cmd)
 	int	i;
 
 	i = 0;
+	if (str[i] == '|' && !cmd->prev)
+		return (ft_putstr_fd1("Wrong syntax \n", 2));
 	while (str[i])
 	{
 		if (str[i] == '|')

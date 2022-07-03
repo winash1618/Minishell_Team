@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 10:36:18 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/01 15:26:43 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/02 18:51:38 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_lst_join_help(t_new *cmd)
 {
-	if ((cmd)->s_flag == -1 && !ft_strchr("<>|",
-			(cmd)->prev->token[0]))
+	if ((cmd)->s_flag == -1 && (!ft_strchr("<>|",
+			(cmd)->prev->token[0]) || ((cmd)->prev->token[0] == 0)))
 	{
 		(cmd)->prev->token = ft_strjoin((cmd)->prev->token,
 				(cmd)->token);
@@ -45,11 +45,12 @@ void	ft_lst_join(t_new *cmd)
 			}
 			else
 			{
-				if ((cmd)->s_flag == -1 && !ft_strchr("<>|",
-						(cmd)->prev->token[0]))
+				if ((cmd)->s_flag == -1 && (!ft_strchr("<>|",
+						(cmd)->prev->token[0]) || ((cmd)->prev->token[0] == 0)))
 				{
 					(cmd)->prev->token = ft_strjoin((cmd)->prev->token,
 							(cmd)->token);
+					ft_lstadd_back(&g_m, ft_lstnew((void *)((cmd)->prev->token)));
 					cmd->prev->next = NULL;
 				}
 				break ;
