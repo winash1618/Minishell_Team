@@ -137,7 +137,6 @@ char *get_meta1(char *str)
 t_list *get_expanded_list(char *str, char **env)
 {
 	int i = 0;
-	errno = 0;
 	t_list *lst;
 	lst = NULL;
 	t_list *temp;

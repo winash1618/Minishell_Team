@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 10:36:18 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/02 18:13:20 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/03 16:42:00 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_lst_join_help(t_new *cmd)
 {
-	if ((cmd)->s_flag == -1 && !ft_strchr("<>|",
-			(cmd)->prev->token[0])) // the strchr problem
+	if ((cmd)->s_flag == -1 && (!ft_strchr("<>|",
+						(cmd)->prev->token[0]) || (cmd)->prev->token[0] == 0)) // the strchr problem
 	{
 		(cmd)->prev->token = ft_strjoin((cmd)->prev->token,
 				(cmd)->token);

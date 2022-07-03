@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 19:44:36 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/02 19:52:12 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/03 08:49:57 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	ft_export(char **args, char **env)
 	{
 		if (!valid_varible(args[i]))
 		{
-			print_error(": not a valid identifier", args[i]);
+			print_error( args[i], ": not a valid identifier");
 			++i;
 			continue ;
 		}

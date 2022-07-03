@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_expand2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:39:58 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/01 15:44:15 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/03 17:13:17 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ int	ft_expand1(t_list **lst, t_list *temp, char c)
 
 	s = NULL;
 	if (c == '?')
+	{
+		ft_printf("THE error number is %d and the string is %s\n", errno, s);
 		s = ft_itoa(errno);
+		ft_printf("THE error number is %d and the string is %s\n", errno, s);
+	}
 	else if (c == '$')
 		s = ft_strdup("$$");
 	if (s)
