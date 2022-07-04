@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/03 18:08:55 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/04 20:27:28 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,18 @@ char	**args_array(t_new *lst)
 	return (args);
 }
 
-int	buitin_switch(t_new *lst, char **args, char **env)
+int	buitin_switch(t_new *lst, char **env, char *file_name, int append	)
 {
+	char	**args;
+
+	args = args_array(lst);
+	if (args == NULL)
+		return (-1); // cahnge number
 	ft_tolower_str(lst->token);
 	if (lst->token && (ft_strncmp_p(lst->token, "cd", 3) == 0))
 		return (ft_chdir(args, env));
 	else if (lst->token && (ft_strncmp_p(lst->token, "export", 7) == 0))
-		return (ft_export(args, env));
+		return (ft_export(args, env, file_name, append));
 	else if (lst->token && (ft_strncmp_p(lst->token, "unset", 6) == 0))
 		return (ft_unset(args, env));
 	return (-1);
@@ -66,7 +71,7 @@ int	child_buitin_switch(char *cmd, char **args, char **env)
 	else if (cmd && (ft_strncmp_p(cmd, "cd", 3) == 0))
 		value = ft_chdir(args, env);
 	else if (cmd && (ft_strncmp_p(cmd, "export", 7) == 0))
-		value = ft_export(args, env);
+		value = ft_export(args, env, NULL, 0);
 	else if (cmd && (ft_strncmp_p(cmd, "unset", 6) == 0))
 		value = ft_unset(args, env);
 	else

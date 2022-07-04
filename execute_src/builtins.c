@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:02 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/03 20:02:50 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/04 18:53:36 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,10 +196,6 @@ int	ft_chdir(char **args, char **env)
 		free (args);
 		return (1); // correct error code
 	}
-	
-	// new_loc = ft_strdup("PWD="); // protect
-	// ft_strjoin_ms(&new_loc, getcwd(NULL, 0)); // errors check
-	//	ft_export(&new_loc, env);
 	update_envpwd(NULL, "PWD", env);
 	update_envpwd(old_loc, "OLDPWD", env);
 	if (old_loc)

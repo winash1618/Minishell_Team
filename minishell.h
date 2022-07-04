@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/03 18:09:33 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/04 19:40:13 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void	ft_tolower_str(char *str);
 
 //child.c
 char	**args_array(t_new *lst);
-int		buitin_switch(t_new *lst, char **args, char **env);
+int		buitin_switch(t_new *lst, char **env, char *file_name, int append);
 int		child_execute(t_new *lst, char **path, char **env);
 
 //redirection.c
@@ -242,7 +242,7 @@ int		ft_chdir(char **args, char **env);
 // enviroment.c
 int		cpynewenv(char **new_env, char **env);
 int		setnewenv(char **env);
-int		ft_export(char **args, char **env);
+int		ft_export(char **args, char **env, char *file_name, int append);
 int		ft_unset(char **args, char **env);
 
 int		main(int ac, char **av, char **env);

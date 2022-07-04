@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/03 18:07:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/04 19:48:25 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,24 +110,20 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 int	builtins(t_new *lst, char **env)
 {
 	char	*armrest1;
-	char	*armrest2;
+	char	*out_file_name;
 	int		legrests[2];
 	t_new	*temp;
-	char	**args;
 
 	armrest1 = NULL;
-	armrest2 = NULL;
+	out_file_name = NULL;
 	legrests[0] = 0;
 	legrests[1] = 0;
 	temp = lst;
 	if (list_has_pipes(temp))
-		return (-1);
-	if (redirection_loop(&temp, &armrest1, &armrest2, legrests))
 		return (-1); // change number
-	args = args_array(lst);
-	if (args == NULL)
-		return (-1);
-	return (buitin_switch(lst, args, env));
+	if (redirection_loop(&temp, &armrest1, &out_file_name, legrests))
+		return (-1); // change number
+	return (buitin_switch(lst, env, out_file_name, legrests[0]));
 }
 
 int	has_parentbuiltins(t_new *lst)

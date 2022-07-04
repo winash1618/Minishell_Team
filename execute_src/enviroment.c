@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 19:44:36 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/03 08:49:57 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/04 20:23:46 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	valid_varible(char *var)
 	return (1);
 }
 
-int	ft_export(char **args, char **env)
+int	ft_export(char **args, char **env, char *file_name, int append)
 {
 	int		prelen;
 	int		i;
@@ -85,17 +85,30 @@ int	ft_export(char **args, char **env)
 	i = 0;
 	if (args[1] == NULL)
 	{
-		while (env[i])
+		int	fd;
+
+		append = (O_APPEND * (append)) | (O_TRUNC * (!append));
+		if (file_name == NULL)
+			fd = 1;
+		else
+			fd = open(file_name, O_WRONLY | append);
+		while (fd > 0 && env[i])
 		{
-			ft_printf("declare -x ");
+			ft_putstr_fd("declare -x ", fd);
 			j = 0;
 			while (env[i][j] && env[i][j] != '=')
-				write(1, &(env[i][j++]), 1);
+				write(fd, &(env[i][j++]), 1);
 			if (env[i][j] == '=')
-				ft_printf("=\"%s\"", &(env[i][j + 1]));
-			write(1, "\n", 1);
+			{
+				ft_putstr_fd("=\"", fd);
+				ft_putstr_fd(&(env[i][j + 1]), fd);
+				ft_putstr_fd("\"", fd);
+			}
+			write(fd, "\n", 1);
 			++i;
 		}
+		if (file_name && fd > 0)
+			close(fd);
 		free(args);
 		return (0);
 	}
