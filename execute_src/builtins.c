@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:02 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/04 18:53:36 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/05 19:57:34 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,19 @@ int	ft_echo(char **args)
 {
 	char	flag;
 	int		i;
+	int		j;
 
 	flag = 1;
 	i = 1;
-	while (args[i] && ft_strncmp_p(args[i], "-n", 3) == 0)
+	while (args[i] && args[i][0] == '-')
 	{
-		flag = 0;
+		j = 1;
+		while (args[i][j] && args[i][j] == 'n')
+			++j;
+		if (!args[i][j] && args[i][j - 1] == 'n')
+			flag = 0;
+		else
+			break ;
 		++i;
 	}
 	while (args[i])
