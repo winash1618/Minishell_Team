@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/02 18:12:38 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/03 11:08:59 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,14 @@ int	set_pipes(t_new **lst, int in_fd, int out_fd)
 	add_in_f[0] = 0;
 	add_in_f[1] = 0;
 	if (*((*lst)->token) == '|') // use flag
+	{
 		print_error("syntax error near unexpected token ", (*lst)->token);
+		return -1;
+	}
 	if (redirection_loop(lst, &ifile_name, &ofile_name, add_in_f) == -1)
 		return (-1);
+	if (*lst == NULL || *((*lst)->token) == '|')
+		return (-1); // this should not be an error
 	if (hijack_stdout(out_fd, ofile_name, *add_in_f, list_has_pipes(*lst)) < 0)
 		return (-1);
 	if (add_in_f[1] == 0)

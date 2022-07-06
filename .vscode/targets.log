@@ -6,11 +6,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Sat Jul  2 17:39:47 2022
+# Make data base, printed on Tue Jul  5 20:34:28 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -50,7 +52,7 @@ OBJS = $(SRC:.c=.o)
 # makefile (from `Makefile', line 35)
 EXECUTE_SRC_INDIR1 = $(addprefix $(EXECUTE_SRC_DIR1)/,$(EXECUTE_SRC1))
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbym0032zn/T/vscode-ipc-178af475-e20a-45d6-a900-e84fb89df2c6.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cbym0032zn/T/vscode-ipc-1660f1fb-738d-41e3-803f-8818b5dfdacd.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -60,6 +62,8 @@ EXECUTE_SRC_DIR1 = parsing
 # makefile (from `Makefile', line 15)
 PNAME = parser
 # environment
+LaunchInstanceID = 3A590668-3C64-4A46-BFF9-840899957E98
+# environment
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
@@ -68,7 +72,7 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 19)
 EXECUTE_SRC = pipex.c pipex_utils.c  pipex_utils1.c child.c redirection.c redirection2.c temp_list.c here_doc.c signals.c enviroment.c builtins.c
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.vbHuQqqh5K/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.qMXoDKk7gm/Listeners
 # makefile (from `Makefile', line 31)
 EXECUTE_SRC_INDIR = $(addprefix $(EXECUTE_SRC_DIR)/,$(EXECUTE_SRC))
 # automatic
@@ -79,7 +83,6 @@ EXECUTE_SRC1 = p_assign_1.c p_assign_2.c p_dollar.c p_expand.c p_list_assign.c p
 VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /Users/ayassin/Documents/git files/Minishell_Team
- 
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -137,7 +140,7 @@ MFLAGS = -Rrqp
 # environment
 MAIL = ayassin@student.42abudhabi.ae
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.3288
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000016.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 37)
@@ -146,12 +149,17 @@ EXECUTE_OBJ_DIR = execute_objs
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x18BF5:0x0:0x0
+# environment
+ 
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 1871c
 # automatic
 ^F = $(notdir $^)
 # default
@@ -165,9 +173,9 @@ SUBDIRS = libft ft_printf parsing
 # environment
 LANG = C
 # environment
-VSCODE_PID = 23497
+VSCODE_PID = 70792
 # variable set hash-table stats:
-# Load=77/1024=8%, Rehash=0, Collisions=8/113=7%
+# Load=80/1024=8%, Rehash=0, Collisions=8/116=7%
 
 # Pattern-specific Variable Values
 
@@ -176,10 +184,10 @@ VSCODE_PID = 23497
 # Directories
 
 # execute_src (device 16777225, inode 2174630): 24 files, no impossibilities so far.
-# . (device 16777225, inode 1847004): 33 files, no impossibilities.
+# . (device 16777225, inode 1847004): 35 files, no impossibilities.
 # parsing (device 16777225, inode 2006130): 43 files, no impossibilities so far.
 
-# 100 files, no impossibilities in 3 directories.
+# 102 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -198,7 +206,7 @@ VSCODE_PID = 23497
 # Not a target:
 parsing/p_expand2.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 14:58:20
+#  Last modified 2022-07-03 17:13:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -216,7 +224,7 @@ parsing/p_redirection.c:
 execute_src/pipex_utils.o: execute_src/pipex_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex_utils'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -282,7 +290,7 @@ parsing/big_list.c:
 parsing/p_redirection2.o: parsing/p_redirection2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_redirection2'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -297,7 +305,7 @@ parsing/p_redirection2.o: parsing/p_redirection2.c
 parsing/p_list_normal.o: parsing/p_list_normal.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_list_normal'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -312,7 +320,7 @@ parsing/p_list_normal.o: parsing/p_list_normal.c
 execute_src/redirection.o: execute_src/redirection.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/redirection'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -327,7 +335,7 @@ execute_src/redirection.o: execute_src/redirection.c
 parsing/p_expand.o: parsing/p_expand.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_expand'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -342,7 +350,7 @@ parsing/p_expand.o: parsing/p_expand.c
 # Not a target:
 execute_src/builtins.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 09:54:18
+#  Last modified 2022-07-05 19:57:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -360,7 +368,7 @@ execute_src/here_doc.c:
 parsing/prompt.o: parsing/prompt.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/prompt'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -375,10 +383,9 @@ parsing/prompt.o: parsing/prompt.c
 parsing/big_list2.o: parsing/big_list2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/big_list2'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:56
 #  File has been updated.
 #  Successfully updated.
- 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 54):
@@ -415,7 +422,7 @@ Makefile:
 execute_src/pipex_utils1.o: execute_src/pipex_utils1.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex_utils1'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -437,9 +444,10 @@ parsing/p_expand3.c:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
+ 
 parsing/join_list.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 14:58:20
+#  Last modified 2022-07-03 16:42:00
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -475,7 +483,7 @@ parsing/p_list_assign.c:
 execute_src/child.o: execute_src/child.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/child'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -490,7 +498,7 @@ execute_src/child.o: execute_src/child.c
 parsing/p_expand1.o: parsing/p_expand1.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_expand1'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -505,7 +513,7 @@ parsing/p_expand1.o: parsing/p_expand1.c
 execute_src/enviroment.o: execute_src/enviroment.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/enviroment'
-#  Last modified 2022-07-02 17:22:22
+#  Last modified 2022-07-05 18:48:00
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -529,7 +537,7 @@ execute_src/pipex_utils.c:
 execute_src/pipex.o: execute_src/pipex.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -543,7 +551,7 @@ execute_src/pipex.o: execute_src/pipex.c
 
 minishell: minishell.o execute_src/pipex.o execute_src/pipex_utils.o execute_src/pipex_utils1.o execute_src/child.o execute_src/redirection.o execute_src/redirection2.o execute_src/temp_list.o execute_src/here_doc.o execute_src/signals.o execute_src/enviroment.o execute_src/builtins.o parsing/p_assign_1.o parsing/p_assign_2.o parsing/p_dollar.o parsing/p_expand.o parsing/p_list_assign.o parsing/p_list_normal.o parsing/big_list2.o parsing/p_normal.o parsing/p_quote.o parsing/p_utils_1.o parsing/p_utils_2.o parsing/prompt.o parsing/p_redirection.o parsing/big_list.o parsing/p_redirection2.o parsing/p_expand1.o parsing/p_expand2.o parsing/p_expand3.o parsing/p_expand4.o parsing/join_list.o parser.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-02 17:22:25
+#  Last modified 2022-07-05 19:57:38
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -562,7 +570,7 @@ minishell: minishell.o execute_src/pipex.o execute_src/pipex_utils.o execute_src
 minishell.o: minishell.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `minishell'
-#  Last modified 2022-07-02 15:44:24
+#  Last modified 2022-07-05 19:55:20
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -590,7 +598,7 @@ fclean: clean
 # Not a target:
 parsing/p_redirection2.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 14:58:20
+#  Last modified 2022-07-02 18:14:20
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -617,7 +625,7 @@ execute_src/redirection.c:
 # Not a target:
 parsing/p_expand.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 14:58:20
+#  Last modified 2022-07-02 18:20:03
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -626,7 +634,7 @@ parsing/p_expand.c:
 # Not a target:
 parsing/prompt.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 18:25:34
+#  Last modified 2022-07-02 17:41:22
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -635,10 +643,9 @@ parsing/prompt.c:
 parsing/p_normal.o: parsing/p_normal.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_normal'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:57
 #  File has been updated.
 #  Successfully updated.
- 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 54):
@@ -651,7 +658,7 @@ parsing/p_normal.o: parsing/p_normal.c
 parsing/p_assign_1.o: parsing/p_assign_1.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_assign_1'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:56
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -666,7 +673,7 @@ parsing/p_assign_1.o: parsing/p_assign_1.c
 parsing/p_expand2.o: parsing/p_expand2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_expand2'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -690,8 +697,9 @@ parsing/big_list2.c:
 execute_src/signals.o: execute_src/signals.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/signals'
-#  Last modified 2022-07-02 15:44:25
+#  Last modified 2022-07-05 18:48:06
 #  File has been updated.
+ 
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
@@ -705,7 +713,7 @@ execute_src/signals.o: execute_src/signals.c
 parser.o: parser.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parser'
-#  Last modified 2022-07-02 15:44:27
+#  Last modified 2022-07-05 18:48:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -720,7 +728,7 @@ parser.o: parser.c
 execute_src/redirection2.o: execute_src/redirection2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/redirection2'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -741,7 +749,7 @@ execute_src/redirection2.o: execute_src/redirection2.c
 execute_src/temp_list.o: execute_src/temp_list.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/temp_list'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -756,7 +764,7 @@ execute_src/temp_list.o: execute_src/temp_list.c
 # Not a target:
 execute_src/pipex_utils1.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-21 08:30:03
+#  Last modified 2022-07-03 18:10:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -771,7 +779,7 @@ re: fclean all
 # Not a target:
 execute_src/child.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-29 16:46:09
+#  Last modified 2022-07-04 20:27:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -793,7 +801,7 @@ clean:
 # Not a target:
 parsing/p_expand1.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-20 13:26:00
+#  Last modified 2022-07-02 18:13:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -802,7 +810,7 @@ parsing/p_expand1.c:
 parsing/p_redirection.o: parsing/p_redirection.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_redirection'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -817,7 +825,7 @@ parsing/p_redirection.o: parsing/p_redirection.c
 parsing/p_utils_1.o: parsing/p_utils_1.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_utils_1'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -832,7 +840,7 @@ parsing/p_utils_1.o: parsing/p_utils_1.c
 parsing/p_expand4.o: parsing/p_expand4.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_expand4'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -847,7 +855,7 @@ parsing/p_expand4.o: parsing/p_expand4.c
 parsing/p_assign_2.o: parsing/p_assign_2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_assign_2'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:56
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -862,7 +870,7 @@ parsing/p_assign_2.o: parsing/p_assign_2.c
 # Not a target:
 execute_src/enviroment.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 17:22:07
+#  Last modified 2022-07-04 20:23:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -871,7 +879,7 @@ execute_src/enviroment.c:
 parsing/big_list.o: parsing/big_list.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/big_list'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -886,7 +894,7 @@ parsing/big_list.o: parsing/big_list.c
 # Not a target:
 minishell.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-26 19:46:16
+#  Last modified 2022-07-05 19:32:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -895,7 +903,7 @@ minishell.c:
 execute_src/builtins.o: execute_src/builtins.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/builtins'
-#  Last modified 2022-07-02 15:44:22
+#  Last modified 2022-07-05 19:57:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -910,9 +918,8 @@ execute_src/builtins.o: execute_src/builtins.c
 execute_src/here_doc.o: execute_src/here_doc.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/here_doc'
-#  Last modified 2022-07-02 15:44:21
+#  Last modified 2022-07-05 18:47:59
 #  File has been updated.
- 
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
@@ -944,7 +951,7 @@ parsing/p_assign_1.c:
 parsing/p_utils_2.o: parsing/p_utils_2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_utils_2'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -971,13 +978,14 @@ parser.c:
 #  Last modified 2022-06-30 08:12:36
 #  File has been updated.
 #  Successfully updated.
+ 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 execute_src/redirection2.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 18:39:46
+#  Last modified 2022-07-03 11:08:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -986,7 +994,7 @@ execute_src/redirection2.c:
 parsing/p_expand3.o: parsing/p_expand3.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_expand3'
-#  Last modified 2022-07-02 15:44:20
+#  Last modified 2022-07-05 18:47:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1010,7 +1018,7 @@ execute_src/temp_list.c:
 # Not a target:
 execute_src/pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 15:35:19
+#  Last modified 2022-07-04 19:48:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1019,7 +1027,7 @@ execute_src/pipex.c:
 parsing/join_list.o: parsing/join_list.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/join_list'
-#  Last modified 2022-07-02 15:44:22
+#  Last modified 2022-07-05 18:48:00
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1034,7 +1042,7 @@ parsing/join_list.o: parsing/join_list.c
 parsing/p_dollar.o: parsing/p_dollar.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_dollar'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:56
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1049,7 +1057,7 @@ parsing/p_dollar.o: parsing/p_dollar.c
 parsing/p_quote.o: parsing/p_quote.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_quote'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1064,7 +1072,7 @@ parsing/p_quote.o: parsing/p_quote.c
 parsing/p_list_assign.o: parsing/p_list_assign.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `parsing/p_list_assign'
-#  Last modified 2022-07-02 15:44:19
+#  Last modified 2022-07-05 18:47:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1089,6 +1097,6 @@ parsing/p_list_assign.o: parsing/p_list_assign.c
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Jul  2 17:39:47 2022
+# Finished Make data base on Tue Jul  5 20:34:28 2022
 
  

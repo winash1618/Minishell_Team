@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:02 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/02 20:01:13 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/05 19:57:34 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,31 @@ int	ft_echo(char **args)
 {
 	char	flag;
 	int		i;
+	int		j;
 
 	flag = 1;
 	i = 1;
-	while (args[i])
+	while (args[i] && args[i][0] == '-')
 	{
-		if (ft_strncmp_p(args[i], "-n", 3) == 0)
+		j = 1;
+		while (args[i][j] && args[i][j] == 'n')
+			++j;
+		if (!args[i][j] && args[i][j - 1] == 'n')
 			flag = 0;
 		else
-		{
-			ft_printf("%s", args[i]);
-			if (args[i + 1])
-				ft_printf(" ");
-		}	
+			break ;
+		++i;
+	}
+	while (args[i])
+	{
+		ft_printf("%s", args[i]);
+		if (args[i + 1])
+			ft_printf(" ");
 		++i;
 	}
 	if (flag)
 		ft_putstr_fd("\n", 1);
 	free(args);
-	close(1); // temp place
-	close(3);
 	return (0);
 }
 
@@ -73,7 +78,7 @@ char	*get_home(char **env)
 	i = 0;
 	while (env[i])
 	{
-		if (strncmp(env[i], "HOME=", 5) == 0)
+		if (ft_strncmp_p(env[i], "HOME=", 5) == 0)
 			return (&env[i][5]);
 		++i;
 	}
@@ -118,6 +123,51 @@ void	go_to_headdir(void)
 // 	if (temp_loc)
 // 		free(temp_loc);
 // }
+int	ft_lstadd_backhelper(void *content) // add to some utils
+{
+	t_list	*node;
+
+	node = ft_lstnew(content);
+	if (node == 0)
+	{
+		free(content);
+		return (-1); // error number
+	}
+	ft_lstadd_back(&g_m, node);
+	return (0);
+}
+
+int	update_envpwd(char *old_loc, char *var, char **env)
+{
+	int		i;
+	char	*tempstr;
+
+	i = 0;
+	while (env [i] && !(ft_strncmp_p(env[i], var, ft_strlen(var)) == 0
+		&& (env[i][ft_strlen(var)] == '\0' || env[i][ft_strlen(var)] == '=')))
+			++i;
+	if (env[i])
+	{
+		ft_printf(" The env var is %s with index %i\n", env[i], i);
+		tempstr = ft_strdup(var);
+		if (!tempstr)
+			return (-1); // error number
+		ft_strjoin_ms(&tempstr, "="); // check for errors
+		env[i] = tempstr;
+		if (old_loc)
+			tempstr = old_loc;
+		else
+			tempstr = getcwd(NULL, 0);
+		ft_strjoin_ms(&env[i], tempstr); // error mangment
+		if (!tempstr)
+			return (-1); // error number
+		if (!old_loc)
+			free (tempstr);
+		if (ft_lstadd_backhelper(env[i]) != 0)
+			return (-1); // update code
+	}
+	return (0);
+}
 
 int	ft_chdir(char **args, char **env)
 {
@@ -153,9 +203,8 @@ int	ft_chdir(char **args, char **env)
 		free (args);
 		return (1); // correct error code
 	}
-	// new_loc = ft_strdup("PWD="); // protect
-	// ft_strjoin_ms(&new_loc, getcwd(NULL, 0)); // errors check
-//	ft_export(&new_loc, env);
+	update_envpwd(NULL, "PWD", env);
+	update_envpwd(old_loc, "OLDPWD", env);
 	if (old_loc)
 		free(old_loc);
 	free(args);

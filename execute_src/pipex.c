@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/30 15:35:19 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/04 19:48:25 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,34 +110,31 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 int	builtins(t_new *lst, char **env)
 {
 	char	*armrest1;
-	char	*armrest2;
+	char	*out_file_name;
 	int		legrests[2];
 	t_new	*temp;
-	char	**args;
 
 	armrest1 = NULL;
-	armrest2 = NULL;
+	out_file_name = NULL;
 	legrests[0] = 0;
 	legrests[1] = 0;
 	temp = lst;
 	if (list_has_pipes(temp))
-		return (-1);
-	redirection_loop(&temp, &armrest1, &armrest2, legrests);
-	args = args_array(lst);
-	if (args == NULL)
-		return (-1);
-	return (buitin_switch(lst, args, env));
+		return (-1); // change number
+	if (redirection_loop(&temp, &armrest1, &out_file_name, legrests))
+		return (-1); // change number
+	return (buitin_switch(lst, env, out_file_name, legrests[0]));
 }
 
 int	has_parentbuiltins(t_new *lst)
 {
 	if (list_has_pipes(lst))
 		return (0);
-	else if (lst->token && (ft_strncmp_p(lst->token, "cd", 3) == 0))
+	else if (lst->token && (ft_strncmp_pc(lst->token, "cd", 3) == 0))
 		return (1);
-	else if (lst->token && (ft_strncmp_p(lst->token, "export", 7) == 0))
+	else if (lst->token && (ft_strncmp_pc(lst->token, "export", 7) == 0))
 		return (1);
-	else if (lst->token && (ft_strncmp_p(lst->token, "unset", 6) == 0))
+	else if (lst->token && (ft_strncmp_pc(lst->token, "unset", 6) == 0))
 		return (1);
 	return (0);
 }
@@ -164,8 +161,10 @@ int	excute(t_new *lst, char **env)
 	{
 		clear_str_sep(path);
 		ft_lstclear(&g_m, free);
+		errno = 122;
 		exit(127);
 	}
 	clear_str_sep(path);
+	errno = 122;
 	return (0);
 }

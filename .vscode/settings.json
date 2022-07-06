@@ -8,6 +8,8 @@
 		"termcap.h": "c",
 		"errno.h": "c",
 		"bitset": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"__threading_support": "c",
+		"cerrno": "c"
 	}
 }
