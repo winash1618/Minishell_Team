@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:39:58 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/01 15:44:15 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/03 08:32:56 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,20 +96,29 @@ int	ft_expand1(t_list **lst, t_list *temp, char c)
 int	ft_expand2(t_list **lst, t_list *temp, char c)
 {
 	int		k;
+	char	*s;
 
 	k = 0;
-	if (!c)
-		temp = ft_lstnew((void *)ft_strdup("$"));
-	else if (is_meta_special2(c) && !ft_isdigit2(c))
+	s = NULL;
+	// if (!c)
+	// {
+	// 	s = ft_strdup("$");
+	// 	temp = ft_lstnew((void *)s);
+	// }
+	if ((is_meta_special2(c) && !ft_isdigit2(c)) || !c)
 	{
-		temp = ft_lstnew((void *)ft_strdup("$"));
+		s = ft_strdup("$");
+		temp = ft_lstnew((void *)s);
 		k = 0;
 	}
 	else if (is_meta_special2(c) && ft_isdigit2(c))
 	{
-		temp = ft_lstnew((void *)ft_strdup(""));
+		s = ft_strdup("");
+		temp = ft_lstnew((void *)s);
 		k = 1;
 	}
+	if (s)
+		ft_lstadd_back(&g_m, ft_lstnew((void *)(s)));
 	ft_lstadd_back(lst, temp);
 	ft_lstadd_back(&g_m, ft_lstnew((void *)(temp)));
 	return (k);
