@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_redirection2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:55:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/02 18:14:20 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/03 08:12:07 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	find_perror(char *str, t_new *cmd)
 	int	i;
 
 	i = 0;
+	if (str[i] == '|' && !cmd->prev)
+		return (ft_putstr_fd1("Wrong syntax \n", 2));
 	while (str[i])
 	{
 		if (str[i] == '|')

@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 08:25:36 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/19 15:07:04 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/03 13:12:38 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	is_no_dollar_meta1(char c)
 
 int	is_meta_special(char c)
 {
-	if (ft_strchr("	 \n|&;()<>:?+-=!@#$^{'}[]|%*,.~", c))
+	if (ft_strchr("	 \n|&;()<>:?+-=!@#$^{/'}[]|%*,.~", c))
 	{
 		return (1);
 	}
