@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:13:31 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/20 15:00:40 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/06 17:56:14 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ void	close_pipes(int (*fd)[2], int no_of_pipes)
 	}
 }
 
-int	print_error(char *problem, char *msg)
+int	print_error(char *problem, char *msg, int errorno)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(problem, 2);
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
-	return (-1);
+	return (errorno);
 }

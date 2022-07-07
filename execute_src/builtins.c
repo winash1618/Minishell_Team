@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:02 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/05 19:57:34 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/07 21:44:14 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,18 +186,18 @@ int	ft_chdir(char **args, char **env)
 			{
 				go_to_headdir();
 				chdir(old_loc);
-				print_error(&args[1][1], ": No such file or directory");
+				print_error(&args[1][1], ": No such file or directory", 1);
 			}
 		}
 	}
 	else if (chdir(args[1]) == -1)
 	{	
 		if (access(args[1], F_OK))
-			print_error(args[1], ": No such file or directory");
+			print_error(args[1], ": No such file or directory", 1);
 		else if (access(args[1], X_OK))
-			print_error(args[1], ": Permission denied");
+			print_error(args[1], ": Permission denied", 1);
 		else
-			print_error(args[1], ": Not a directory");
+			print_error(args[1], ": Not a directory", 1);
 		if (old_loc)
 			free(old_loc);
 		free (args);

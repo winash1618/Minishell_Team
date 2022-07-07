@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 19:44:36 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/04 20:23:46 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/07 21:43:23 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	ft_export(char **args, char **env, char *file_name, int append)
 	{
 		if (!valid_varible(args[i]))
 		{
-			print_error( args[i], ": not a valid identifier");
+			print_error( args[i], ": not a valid identifier", 1);
 			++i;
 			continue ;
 		}
@@ -171,7 +171,7 @@ int	ft_unset(char **args, char **env)
 	{
 		if (!ft_isalpha(args[i][0]) || ft_strchr(args[i], '=') != 0)
 		{
-			print_error(args[i++], ": not a valid identifier");
+			print_error(args[i++], ": not a valid identifier", 1);
 			continue ;
 		}
 		prelen = ft_strlen(args[i]) + 1;

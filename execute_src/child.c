@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/04 20:27:28 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/07 21:41:41 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,8 @@ int	child_execute(t_new *lst, char **path, char **env)
 	// if (path)
 	// 	print_error(ft_strrchr(args[0], '/') + 1, ": command not found");
 	// else
-		print_error(lst->token, ": command not found");
-	errno = 127;
+		print_error(lst->token, ": command not found", 127);
 	free(clone_cmd);
 	free(args);
-	return (-1);
+	return (127);
 }

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/02 15:30:58 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/07 21:42:02 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	here_doc_input(t_new *lst)
 				ft_lstadd_back(&g_m, ft_lstnew(lst->token)); // check success
 			}
 			else
-				print_error(lst->token, ": Parsing error in Tokens\n");
+				print_error(lst->token, ": Parsing error in Tokens\n", 22);
 		}
 		lst = lst->next;
 	}
