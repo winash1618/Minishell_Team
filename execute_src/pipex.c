@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/04 19:48:25 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/08 16:17:41 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,31 @@ int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 	int	no_of_pipes;
 
 	count = 0;
+	status = 0;
 	no_of_pipes = number_of_pipes(lst);
 	while (lst)
 	{
 		id = fork();
 		if (id == 0)
 		{
+			ft_putstr_fd("THE GREEN SCREEN\n", 2);
 			status = parent_tarp(count, fd, no_of_pipes, &lst);
+			ft_putstr_fd("THE GREEN SCREEN\n", 2);
 			close_pipes(fd, no_of_pipes);
 			if (status == 0)
-				child_execute (lst, path, env);
+				status = child_execute (lst, path, env);
 			break ;
 		}
 		else
 			lst = nxt_cmd(lst);
 		++count;
 	}
-	return (id);
+	return (status);
 }
 
 int	parent_forking5(t_new *lst, char **path, char **env)
 {
-	int		id;
+	int		error;
 	int		(*fd)[2];
 	int		no_of_pipes;
 	int		status;
@@ -90,8 +93,8 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	fd = create_pipes(no_of_pipes);
 	if (fd == NULL)
 		return (-1);
-	id = loopy_parent(lst, path, env, fd);
-	if (id != 0)
+	error = loopy_parent(lst, path, env, fd);
+	if (error == 0)
 	{
 		close_pipes(fd, no_of_pipes);
 		while (waitpid(-1, &status, 0) > 0)
@@ -102,9 +105,7 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 		//ft_printf("The parent is alive %d\n", 0);
 	}
 	free(fd);
-	if (id == 0)
-		return (-1);
-	return (0);
+	return (error);
 }
 
 int	builtins(t_new *lst, char **env)
@@ -143,6 +144,7 @@ int	excute(t_new *lst, char **env)
 {
 	char	**path;
 	int		i;
+	int		errorno;
 
 	i = 0;
 	if (here_doc_input(lst))
@@ -157,14 +159,13 @@ int	excute(t_new *lst, char **env)
 		path = NULL;
 	else
 		path = ft_split(env[i] + 5, ':');
-	if (parent_forking5(lst, path, env) == -1)
+	errorno = parent_forking5(lst, path, env);
+	if (errorno)
 	{
 		clear_str_sep(path);
 		ft_lstclear(&g_m, free);
-		errno = 122;
-		exit(127);
+		exit(errorno);
 	}
 	clear_str_sep(path);
-	errno = 122;
 	return (0);
 }

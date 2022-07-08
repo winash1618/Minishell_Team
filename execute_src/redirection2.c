@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/07 21:40:19 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/08 14:07:32 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int
 	int		no;
 
 	temp = *lst;
+	no = 0;
 	while (temp && *(temp->token) != '|') //use flag
 	{
 		skpflag = 0;
@@ -104,15 +105,15 @@ int	adopted_child(int in_file, char *here_doc)
 	int	*fd;
 
 	fd = (int *)malloc(sizeof(*fd) * 2);
-	ft_lstadd_back(&g_m, ft_lstnew(fd)); // handel error
+	//ft_lstadd_back(&g_m, ft_lstnew(fd)); // handel error
 	if (ft_lstadd_backhelper(fd))
 		return (1);
 	if (fd == NULL)
 		return (1);
-	if (pipe(fd) == -1)
+	if (pipe(fd))
 		return (1);
 	ft_putstr_fd(here_doc, fd[1]);
-	if (hijack_stdin(fd[0], NULL) == -1)
+	if (hijack_stdin(fd[0], NULL))
 		return (1);
 	close(fd[0]);
 	if (in_file != STDIN_FILENO)
@@ -132,24 +133,21 @@ int	set_pipes(t_new **lst, int in_fd, int out_fd)
 	add_in_f[0] = 0;
 	add_in_f[1] = 0;
 	if (*((*lst)->token) == '|') // use flag
-	{
-		print_error("syntax error near unexpected token ", (*lst)->token, 1);
-		return -1;
-	}
-	if (redirection_loop(lst, &ifile_name, &ofile_name, add_in_f) == -1)
+		return (print_error("syntax error near unexpected token ", (*lst)->token, 1));
+	if (redirection_loop(lst, &ifile_name, &ofile_name, add_in_f))
 		return (1);
 	if (*lst == NULL || *((*lst)->token) == '|')
-		return (-1); // this should not be an error
-	if (hijack_stdout(out_fd, ofile_name, *add_in_f, list_has_pipes(*lst)) < 0)
+		return (1); // this should not be an error
+	if (hijack_stdout(out_fd, ofile_name, *add_in_f, list_has_pipes(*lst)))
 		return (1);
 	if (add_in_f[1] == 0)
 	{
-		if (hijack_stdin(in_fd, ifile_name) == -1)
+		if (hijack_stdin(in_fd, ifile_name))
 			return (1);
 	}
 	else
 	{
-		if (adopted_child(in_fd, ifile_name) == -1)
+		if (adopted_child(in_fd, ifile_name))
 			return (1);
 	}
 	return (0);

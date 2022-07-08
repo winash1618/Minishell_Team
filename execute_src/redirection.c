@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/06 20:11:32 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/08 14:04:22 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	redirect_output(t_new **lst, int *skpflag, int *appendflag, char **filename)
 {
 	t_new	*temp;
 
-	filename = NULL;
+	*filename = NULL;
 	temp = *lst;
 	if (*((temp->token) + 1) == '>') // use flag
 		*appendflag = 1;
