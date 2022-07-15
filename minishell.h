@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/05 20:32:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/15 20:36:34 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ t_new	*nxt_cmd(t_new *lst);
 void	close_pipes(int (*fd)[2], int no_of_pipes);
 int		number_of_pipes(t_new *lst);
 int		list_has_pipes(t_new *lst);
-int		print_error(char *problem, char *msg);
+int		print_error(char *problem, char *msg, int errrorno);
 
 //pipex_utils1.c
 int		ft_strjoin_ms(char **prestr, char *sufstr);
@@ -199,6 +199,10 @@ int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
 int		ft_strncmp_pc(const char *s1, const char *s2, size_t n);
 void	ft_tolower_str(char *str);
 
+//pipex_utils2.c
+int		ft_lstadd_backhelper(void *content); // add to some utils
+
+
 //child.c
 char	**args_array(t_new *lst);
 int		buitin_switch(t_new *lst, char **env, char *file_name, int append);
@@ -206,8 +210,9 @@ int		child_execute(t_new *lst, char **path, char **env);
 
 //redirection.c
 void	skip_node(t_new **lst, int *skip_flag);
-char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag);
-char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag);
+int		redirect_input(t_new **lst, int *skpflag, int *inflag, char **filestr);
+int		redirect_output(t_new **lst, int *skpflag,
+			int *appendflag, char **filename);
 char	*line_input(char *delimiter);
 
 //redirection2.c
@@ -232,11 +237,14 @@ void	temp_lstadd_back(t_new **lst, t_new *node);
 //signals.c
 int		signals(void);
 
-// biultins.c
+// builtins.c
 int		ft_echo(char **args);
 int		ft_pwd(char **args);
 int		ft_env(char **env, char **args);
+
+// builtins1.c
 int		ft_chdir(char **args, char **env);
+
 
 // enviroment.c
 int		cpynewenv(char **new_env, char **env);
