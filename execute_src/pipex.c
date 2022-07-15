@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/08 16:17:41 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/15 19:58:24 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ int	(*create_pipes(int no_of_pipes))[2]
 	int	(*fd)[2];
 	int	i;
 
+	fd = NULL;
+	if (no_of_pipes < 1)
+		return (NULL);
 	fd = malloc(sizeof(*fd) * (no_of_pipes));
 	if (fd == NULL)
 		return (NULL);
@@ -65,13 +68,15 @@ int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 		id = fork();
 		if (id == 0)
 		{
-			ft_putstr_fd("THE GREEN SCREEN\n", 2);
 			status = parent_tarp(count, fd, no_of_pipes, &lst);
-			ft_putstr_fd("THE GREEN SCREEN\n", 2);
 			close_pipes(fd, no_of_pipes);
 			if (status == 0)
-				status = child_execute (lst, path, env);
-			break ;
+				status = child_execute (lst, path, env);			
+			clear_str_sep(path);
+			ft_lstclear(&g_m, free);
+			if (fd)
+				free(fd);
+			exit(status);
 		}
 		else
 			lst = nxt_cmd(lst);
@@ -91,7 +96,7 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	temp_error = 0;
 	no_of_pipes = number_of_pipes(lst);
 	fd = create_pipes(no_of_pipes);
-	if (fd == NULL)
+	if (fd == NULL && no_of_pipes != 0)
 		return (-1);
 	error = loopy_parent(lst, path, env, fd);
 	if (error == 0)
@@ -144,7 +149,6 @@ int	excute(t_new *lst, char **env)
 {
 	char	**path;
 	int		i;
-	int		errorno;
 
 	i = 0;
 	if (here_doc_input(lst))
@@ -159,13 +163,13 @@ int	excute(t_new *lst, char **env)
 		path = NULL;
 	else
 		path = ft_split(env[i] + 5, ':');
-	errorno = parent_forking5(lst, path, env);
-	if (errorno)
-	{
-		clear_str_sep(path);
-		ft_lstclear(&g_m, free);
-		exit(errorno);
-	}
+	parent_forking5(lst, path, env);
+	// if (errorno)
+	// {
+	// 	clear_str_sep(path);
+	// 	ft_lstclear(&g_m, free);
+	// 	exit(errorno);
+	// }
 	clear_str_sep(path);
 	return (0);
 }

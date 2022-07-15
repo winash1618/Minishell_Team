@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/07 21:41:05 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/15 20:36:34 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,10 @@ int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
 int		ft_strncmp_pc(const char *s1, const char *s2, size_t n);
 void	ft_tolower_str(char *str);
 
+//pipex_utils2.c
+int		ft_lstadd_backhelper(void *content); // add to some utils
+
+
 //child.c
 char	**args_array(t_new *lst);
 int		buitin_switch(t_new *lst, char **env, char *file_name, int append);
@@ -233,12 +237,13 @@ void	temp_lstadd_back(t_new **lst, t_new *node);
 //signals.c
 int		signals(void);
 
-// biultins.c
+// builtins.c
 int		ft_echo(char **args);
 int		ft_pwd(char **args);
 int		ft_env(char **env, char **args);
+
+// builtins1.c
 int		ft_chdir(char **args, char **env);
-int		ft_lstadd_backhelper(void *content); // add to some utils
 
 
 // enviroment.c
