@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:02 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/15 20:30:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/16 19:42:29 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	ft_env(char **env, char **args)
 // 		free(new_loc);
 // }
 
-// int	ft_lstadd_backhelper(void *content) // add to some utils
+// int	ft_lstadd_backhelper(int &g_m, void *content) // add to some utils
 // {
 // 	t_list	*node;
 
@@ -152,7 +152,7 @@ int	ft_env(char **env, char **args)
 // 		error += 1;
 // 	if (!old_loc && tempstr)
 // 		free (tempstr);
-// 	if (ft_lstadd_backhelper(env[i]) != 0)
+// 	if (ft_lstadd_backhelper(&g_m, env[i]) != 0)
 // 		return (1);
 // 	return (error);
 // }
@@ -316,7 +316,7 @@ int	ft_env(char **env, char **args)
 // 			return (-1); // error number
 // 		if (!old_loc)
 // 			free (tempstr);
-// 		if (ft_lstadd_backhelper(env[i]) != 0)
+// 		if (ft_lstadd_backhelper(&g_m, env[i]) != 0)
 // 			return (-1); // update code
 // 	}
 // 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/15 20:36:34 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/16 20:33:22 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ int		ft_strncmp_pc(const char *s1, const char *s2, size_t n);
 void	ft_tolower_str(char *str);
 
 //pipex_utils2.c
-int		ft_lstadd_backhelper(void *content); // add to some utils
+int		ft_lstadd_backhelper(t_list **head, void *content); // add to some utils
 
 
 //child.c
@@ -249,8 +249,11 @@ int		ft_chdir(char **args, char **env);
 // enviroment.c
 int		cpynewenv(char **new_env, char **env);
 int		setnewenv(char **env);
-int		ft_export(char **args, char **env, char *file_name, int append);
+int		valid_varible(char *var);
 int		ft_unset(char **args, char **env);
+
+//enviroment1
+int		ft_export(char **args, char **env, char *file_name, int append);
 
 int		main(int ac, char **av, char **env);
 

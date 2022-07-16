@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/08 14:07:32 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/16 19:40:57 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	adopted_child(int in_file, char *here_doc)
 
 	fd = (int *)malloc(sizeof(*fd) * 2);
 	//ft_lstadd_back(&g_m, ft_lstnew(fd)); // handel error
-	if (ft_lstadd_backhelper(fd))
+	if (ft_lstadd_backhelper(&g_m, fd))
 		return (1);
 	if (fd == NULL)
 		return (1);
