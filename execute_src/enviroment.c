@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 19:44:36 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/07 21:43:23 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/16 20:32:17 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	cpynewenv(char **new_env, char **env)
 {
 	int		count;
-	t_list	*node;
 
 	count = 0;
 	while (env[count])
@@ -23,13 +22,11 @@ int	cpynewenv(char **new_env, char **env)
 		new_env[count] = ft_strdup(env[count]);
 		if (new_env[count] == NULL)
 			return (1);
-		node = ft_lstnew(new_env[count]);
-		if (!node)
+		if (ft_lstadd_backhelper(&g_m, new_env[count]))
 		{
 			free (new_env[count]);
 			return (1);
 		}
-		ft_lstadd_back(&g_m, node);
 		++count;
 	}
 	new_env[count] = NULL;
@@ -41,7 +38,6 @@ int	setnewenv(char **env)
 {
 	int		count;
 	char	**new_env;
-	t_list	*temp;
 
 	count = 0;
 	new_env = NULL;
@@ -51,10 +47,11 @@ int	setnewenv(char **env)
 		new_env = (char **)malloc((sizeof(*new_env) + 1) * count);
 	if (!new_env)
 		return (1);
-	temp = ft_lstnew(new_env);
-	if (!temp)
+	if (ft_lstadd_backhelper(&g_m, new_env))
+	{
+		free (new_env);
 		return (1);
-	ft_lstadd_back(&g_m, temp);
+	}
 	return (cpynewenv(new_env, env));
 }
 
@@ -74,54 +71,68 @@ int	valid_varible(char *var)
 	return (1);
 }
 
+void	ft_unset_helper(char *args, char **env)
+{
+	int	i;
+	int	prelen;
+
+	i = 0;
+	prelen = ft_strlen(args) + 1;
+	while (env [i] && !((ft_strncmp_p(env[i], args, prelen) == '=')
+			|| (ft_strncmp_p(env[i], args, prelen) == 0
+				&& ft_strchr(env[i], '=') == NULL)))
+		++i;
+	while (env[i] && env [i + 1])
+	{
+		env[i] = env[i + 1];
+		++i;
+	}
+	env[i] = NULL;
+}
+
+int	ft_unset(char **args, char **env)
+{
+	int	i;
+	int	error;
+
+	i = 1;
+	error = 0;
+	while (args[i] != NULL)
+	{
+		if (!valid_varible(args[i]) || ft_strchr(args[i], '=') != 0)
+		{
+			error = print_error(args[i++], ": not a valid identifier", 1);
+			continue ;
+		}
+		ft_unset_helper(args[i], env);
+		++i;
+	}
+	free(args);
+	return (error);
+}
+
+/*
 int	ft_export(char **args, char **env, char *file_name, int append)
 {
 	int		prelen;
 	int		i;
 	int		j;
+	int		error;
 	t_list	*node;
 	char	**new_env;
 
-	i = 0;
+	error = 0;
 	if (args[1] == NULL)
-	{
-		int	fd;
-
-		append = (O_APPEND * (append)) | (O_TRUNC * (!append));
-		if (file_name == NULL)
-			fd = 1;
-		else
-			fd = open(file_name, O_WRONLY | append);
-		while (fd > 0 && env[i])
-		{
-			ft_putstr_fd("declare -x ", fd);
-			j = 0;
-			while (env[i][j] && env[i][j] != '=')
-				write(fd, &(env[i][j++]), 1);
-			if (env[i][j] == '=')
-			{
-				ft_putstr_fd("=\"", fd);
-				ft_putstr_fd(&(env[i][j + 1]), fd);
-				ft_putstr_fd("\"", fd);
-			}
-			write(fd, "\n", 1);
-			++i;
-		}
-		if (file_name && fd > 0)
-			close(fd);
-		free(args);
-		return (0);
-	}
+		error = display_env (env, file_name, append);
 	i = 1;
 	while (args[i] != NULL)
 	{
 		if (!valid_varible(args[i]))
 		{
-			print_error( args[i], ": not a valid identifier", 1);
+			error += print_error(args[i], ": not a valid identifier", 1);
 			++i;
 			continue ;
 		}
-		else
 		if (ft_strchr(args[i], '=') != 0)
 			prelen = ft_strchr(args[i], '=') - args[i];
 		else
@@ -159,34 +170,4 @@ int	ft_export(char **args, char **env, char *file_name, int append)
 	free(args);
 	return (0);
 }
-
-int	ft_unset(char **args, char **env)
-{
-	int		prelen;
-	int		i;
-	int		j;
-
-	i = 1;
-	while (args[i] != NULL)
-	{
-		if (!ft_isalpha(args[i][0]) || ft_strchr(args[i], '=') != 0)
-		{
-			print_error(args[i++], ": not a valid identifier", 1);
-			continue ;
-		}
-		prelen = ft_strlen(args[i]) + 1;
-		j = 0;
-		while (env [j] && !((ft_strncmp_p(env[j], args[i], prelen) == '=')
-			|| (ft_strncmp_p(env[j], args[i], prelen) == 0 && ft_strchr(env[j], '=') == NULL)))
-			++j;
-		while (env[j] && env [j + 1])
-		{
-			env[j] = env[j + 1];
-			++j;
-		}
-		env[j] = NULL;
-		++i;
-	}
-	free(args);
-	return (0);
-}
+*/

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 18:31:11 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/15 20:37:07 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/16 19:41:32 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	update_envpwd_helper(char *old_loc, char *var, char **env, int i)
 		error += 1;
 	if (!old_loc && tempstr)
 		free (tempstr);
-	if (ft_lstadd_backhelper(env[i]) != 0)
+	if (ft_lstadd_backhelper(&g_m, env[i]) != 0)
 		return (1);
 	return (error);
 }
@@ -91,7 +91,7 @@ int	update_envpwd(char *old_loc, char *var, char **env)
 	return (error);
 }
 
-int	ft_chdir_rel(char **args, char **env, char	*old_loc)
+int	ft_chdir_abs(char **args, char **env, char	*old_loc)
 {
 	char	*home;
 
@@ -118,22 +118,21 @@ int	ft_chdir(char **args, char **env)
 	error = 0;
 	old_loc = getcwd(NULL, 0);
 	if (args[1] == NULL || args[1][0] == '~')
-		error = ft_chdir_rel(args, env, old_loc);
+		error = ft_chdir_abs(args, env, old_loc);
 	else if (chdir(args[1]) == -1)
-	{	
+	{
 		if (access(args[1], F_OK))
 			print_error(args[1], ": No such file or directory", 1);
 		else if (access(args[1], X_OK))
 			print_error(args[1], ": Permission denied", 1);
 		else
 			print_error(args[1], ": Not a directory", 1);
-		if (old_loc)
-			free(old_loc);
-		free (args);
-		return (1);
+		error = 1;
 	}
-	update_envpwd(NULL, "PWD", env);
-	update_envpwd(old_loc, "OLDPWD", env);
+	if (error == 0)
+		error = update_envpwd(NULL, "PWD", env);
+	if (error == 0)
+		error = update_envpwd(old_loc, "OLDPWD", env);
 	if (old_loc)
 		free(old_loc);
 	free(args);

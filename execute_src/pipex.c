@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/15 19:58:24 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/16 20:38:08 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,9 @@ int	builtins(t_new *lst, char **env)
 	legrests[1] = 0;
 	temp = lst;
 	if (list_has_pipes(temp))
-		return (-1); // change number
+		return (1); // change number
 	if (redirection_loop(&temp, &armrest1, &out_file_name, legrests))
-		return (-1); // change number
+		return (1); // change number
 	return (buitin_switch(lst, env, out_file_name, legrests[0]));
 }
 
@@ -154,7 +154,10 @@ int	excute(t_new *lst, char **env)
 	if (here_doc_input(lst))
 		exit(-1); //change code based on error
 	if (has_parentbuiltins(lst))
-		return (builtins(lst, env));
+	{
+		errno = builtins(lst, env);
+		return (errno);
+	}
 	if (!env)
 		return (0);
 	while (env && env[i] && ft_strncmp_p(env[i], "PATH=", 5) != 0)
