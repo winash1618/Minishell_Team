@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/08 14:04:22 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/17 15:29:47 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	skip_node(t_new **lst, int *skip_flag)
 	if (!(lst && *lst))
 	{
 		ft_putstr_fd("What are you doing, there is no list\n", 2);
-		exit(-1);
+		return ;
 	}
 	if ((*lst)->prev != NULL)
 		(*lst)->prev->next = (*lst)->next;
@@ -38,11 +38,6 @@ int	input_file_check(char *file_name)
 			fd = open(file_name, O_RDONLY);
 			if (fd == -1)
 				return (print_error(file_name, ": Failed to open", 1));
-			// else if (read(fd, file_name, 0) == -1) // not needed in our case
-			// {
-			// 	close (fd);
-			// 	return (print_error(file_name, ": Is a directory", 1));
-			// }
 			close(fd);
 		}
 		else
@@ -115,7 +110,7 @@ int	redirect_output(t_new **lst, int *skpflag, int *appendflag, char **filename)
 
 	*filename = NULL;
 	temp = *lst;
-	if (*((temp->token) + 1) == '>') // use flag
+	if (*((temp->token) + 1) == '>')
 		*appendflag = 1;
 	else
 		*appendflag = 0;

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:13:31 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/06 17:56:14 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/17 09:54:12 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_new	*nxt_cmd(t_new *lst)
 {
-	while (lst && *(lst->token) != '|') //use flag
+	while (lst && (*(lst->token) != '|' || lst->flag != 4))
 		lst = lst->next;
-	if (lst && *(lst->token) == '|') //use flag
+	if (lst && *(lst->token) == '|' && lst->flag == 4)
 		lst = lst->next;
 	return (lst);
 }
@@ -30,7 +30,7 @@ int	number_of_pipes(t_new *lst)
 		return (0);
 	while (lst)
 	{
-		if (*(lst->token) == '|') // use flag
+		if (*(lst->token) == '|' && lst->flag == 4)
 			++count;
 		lst = lst->next;
 	}
@@ -43,7 +43,7 @@ int	list_has_pipes(t_new *lst)
 		return (0);
 	while (lst)
 	{
-		if (*(lst->token) == '|') // use flag
+		if (*(lst->token) == '|' && lst->flag == 4)
 			return (1);
 		lst = lst->next;
 	}

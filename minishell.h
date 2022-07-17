@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/16 20:33:22 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/17 18:45:50 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,10 @@ int		ft_strncmp_pc(const char *s1, const char *s2, size_t n);
 void	ft_tolower_str(char *str);
 
 //pipex_utils2.c
-int		ft_lstadd_backhelper(t_list **head, void *content); // add to some utils
+int		ft_lstadd_backhelper(t_list **head, void *content);
+void	cleanexit(char **path, int (*fd)[2], int status);
+int		builtins(t_new *lst, char **env);
+int		has_parentbuiltins(t_new *lst);
 
 
 //child.c
@@ -219,7 +222,7 @@ char	*line_input(char *delimiter);
 int		hijack_stdin(int in_file, char *in_file_name);
 int		hijack_stdout(int out_file, char *out_file_name,
 			int append_flag, int flag);
-int		redirection_loop(t_new **lst, char **in_file_name,
+int		redirect_loop(t_new **lst, char **in_file_name,
 			char **out_file_name, int *append_flag);
 int		set_pipes(t_new **lst, int in_file, int out_file);
 
@@ -241,6 +244,7 @@ int		signals(void);
 int		ft_echo(char **args);
 int		ft_pwd(char **args);
 int		ft_env(char **env, char **args);
+char	*get_home(char **env);
 
 // builtins1.c
 int		ft_chdir(char **args, char **env);

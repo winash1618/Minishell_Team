@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 20:31:30 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/16 20:32:20 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/17 18:33:30 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	display_env(char **env, char *file_name, int append)
 	return (0);
 }
 
-int append_env(char **env, char **args, int i, int j)
+int	append_env(char **env, char **args, int i, int j)
 {
 	char	**new_env;
 

@@ -6,25 +6,11 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 18:31:11 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/16 19:41:32 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/17 15:46:00 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char	*get_home(char **env)
-{
-	int	i;
-
-	i = 0;
-	while (env[i])
-	{
-		if (ft_strncmp_p(env[i], "HOME=", 5) == 0)
-			return (&env[i][5]);
-		++i;
-	}
-	return (NULL);
-}
 
 void	go_to_headdir(void)
 {
