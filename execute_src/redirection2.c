@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/16 19:40:57 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/17 19:04:28 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	hijack_stdin(int in_file, char *in_file_name)
 	if (in_file_name != NULL)
 	{
 		if (access(in_file_name, F_OK) == -1)
-			return (print_error(in_file_name, ": No such file or directory", 1));
+			return (print_error(in_file_name,
+					": No such file or directory", 1));
 		else if (access(in_file_name, R_OK) == -1)
 			return (print_error(in_file_name, ": Permission denied", 1));
 		in_file = open(in_file_name, O_RDONLY);
@@ -63,40 +64,32 @@ int	hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag)
 	return (0);
 }
 
-int	redirection_loop(t_new **lst, char **in_file_name, char **out_file_name, int *append_flag)
+int	redirect_loop(t_new **lst, char **inputname, char **outputname, int *flag)
 {
 	t_new	*temp;
 	int		skpflag;
-	int		no;
+	int		err;
 
 	temp = *lst;
-	no = 0;
-	while (temp && *(temp->token) != '|') //use flag
+	err = 0;
+	while (temp && (*(temp->token) != '|' || temp->flag != 4))
 	{
 		skpflag = 0;
-		if (temp && *(temp->token) == '<') // and flag
+		if (temp && (*(temp->token) == '<' || *(temp->token) == '>')
+			&& temp->flag == 4)
 		{
-			no = redirect_input(&temp, &skpflag, &(append_flag[1]), in_file_name);
-			if (no)
-				return (no);
-		}
-		if (temp && *(temp->token) == '>') // and flag
-		{
-			no = redirect_output(&temp, &skpflag, append_flag, out_file_name);
-			if (no)
-				return (no);
+			if (*(temp->token) == '<')
+				err = redirect_input(&temp, &skpflag, &(flag[1]), inputname);
+			else
+				err = redirect_output(&temp, &skpflag, flag, outputname);
+			if (err)
+				return (err);
 		}
 		if (skpflag != 1)
 			temp = temp->next;
 	}
 	if (temp != NULL)
 		temp->next = NULL;
-	while (*lst && ft_strchr("<>", *((*lst)->token))) // the strchr problem
-	{
-		*lst = (*lst)->next;
-		if (*lst)
-			*lst = (*lst)->next;
-	}
 	return (0);
 }
 
@@ -105,7 +98,6 @@ int	adopted_child(int in_file, char *here_doc)
 	int	*fd;
 
 	fd = (int *)malloc(sizeof(*fd) * 2);
-	//ft_lstadd_back(&g_m, ft_lstnew(fd)); // handel error
 	if (ft_lstadd_backhelper(&g_m, fd))
 		return (1);
 	if (fd == NULL)
@@ -122,33 +114,33 @@ int	adopted_child(int in_file, char *here_doc)
 	return (0);
 }
 
+// return fd of hijacking to close later
 int	set_pipes(t_new **lst, int in_fd, int out_fd)
 {
 	char	*ifile_name;
 	char	*ofile_name;
-	int		add_in_f[2];
+	int		flag[2];
 
 	ifile_name = NULL;
 	ofile_name = NULL;
-	add_in_f[0] = 0;
-	add_in_f[1] = 0;
-	if (*((*lst)->token) == '|') // use flag
-		return (print_error("syntax error near unexpected token ", (*lst)->token, 1));
-	if (redirection_loop(lst, &ifile_name, &ofile_name, add_in_f))
+	flag[0] = 0;
+	flag[1] = 0;
+	if (redirect_loop(lst, &ifile_name, &ofile_name, flag))
 		return (1);
-	if (*lst == NULL || *((*lst)->token) == '|')
-		return (1); // this should not be an error
-	if (hijack_stdout(out_fd, ofile_name, *add_in_f, list_has_pipes(*lst)))
+	while (*lst && (*lst)->flag == 4
+		&& (*((*lst)->token) == '<' || *((*lst)->token) == '>'))
+	{
+		*lst = (*lst)->next;
+		if (*lst)
+			*lst = (*lst)->next;
+	}
+	if (hijack_stdout(out_fd, ofile_name, *flag, out_fd != 1))
 		return (1);
-	if (add_in_f[1] == 0)
-	{
-		if (hijack_stdin(in_fd, ifile_name))
-			return (1);
-	}
-	else
-	{
-		if (adopted_child(in_fd, ifile_name))
-			return (1);
-	}
+	if (flag[1] == 0 && hijack_stdin(in_fd, ifile_name))
+		return (1);
+	if (flag[1] != 0 && adopted_child(in_fd, ifile_name))
+		return (1);
 	return (0);
 }
+
+// starnge case cat -e  >green >>green.txt red.txt | cat -e
