@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 20:31:30 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/17 18:33:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 19:44:15 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ int	display_env(char **env, char *file_name, int append)
 	return (0);
 }
 
-int	append_env(char **env, char **args, int i, int j)
+int	append_env(char **env, char *args, int j)
 {
 	char	**new_env;
 
-	if (env[j] && ft_strchr(args[i], '=') != 0)
+	if (env[j] && ft_strchr(args, '=') != 0)
 	{
-		env[j] = ft_strdup(args[i]);
+		env[j] = ft_strdup(args);
 		if (!env[j])
 			return (1);
 		return (ft_lstadd_backhelper(&g_m, env[j]));
@@ -75,7 +75,7 @@ int	append_env(char **env, char **args, int i, int j)
 		}
 		if (cpynewenv(new_env, env))
 			return (1);
-		env[j] = args[i];
+		env[j] = args;
 		env[j + 1] = NULL;
 	}
 	return (0);
@@ -104,7 +104,7 @@ int	export_loop(char **env, char **args)
 		j = 0;
 		while (env [j] && ft_strncmp_p(env[j], args[i], prelen) != 0)
 			++j;
-		error += append_env(env, args, i, j);
+		error += append_env(env, args[i], j);
 		++i;
 	}
 	return (error);

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 18:31:11 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/17 15:46:00 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 19:52:09 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,13 @@ int	update_envpwd(char *old_loc, char *var, char **env)
 {
 	int		i;
 	int		error;
+	int		len;
 
 	i = 0;
 	error = 0;
-	while (env [i] && !(ft_strncmp_p(env[i], var, ft_strlen(var)) == 0
-			&& (env[i][ft_strlen(var)] == '\0'
-			|| env[i][ft_strlen(var)] == '=')))
+	len = ft_strlen(var);
+	while (env [i] && !(ft_strncmp_p(env[i], var, len) == 0
+			&& (env[i][len] == '\0' || env[i][len] == '=')))
 			++i;
 	if (env[i])
 		error = update_envpwd_helper(old_loc, var, env, i);
