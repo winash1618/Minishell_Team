@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/05 19:32:17 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 09:54:18 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_new	*temp_makelist(char **str)
 
 int	main(int ac, char **av, char **env)
 {
-	int		*id;
 	t_new	*cmd;
 	char	*line;
 	int		i;
@@ -40,12 +39,20 @@ int	main(int ac, char **av, char **env)
 	(void) av;
 	g_m = NULL;
 	signals();
-	id = malloc(sizeof(int));
-	*id = getpid();
-	g_m = ft_lstnew(id);
 	info = malloc(sizeof(t_info));
-	ft_lstadd_back(&g_m, ft_lstnew((void *)info));
-	setnewenv(env);
+	if (info == NULL)
+		return (1);
+	if (ft_lstadd_backhelper(&g_m, info) != 0)
+	{
+		ft_lstclear(&g_m, free);
+		return (1);
+	}
+	if (setnewenv(env))
+	{
+		ft_lstclear(&g_m, free);
+		//free (env);
+		return (1);
+	}
 	info->flag = 1;
 	info->e_flag = 0;
 	i = 0;
@@ -66,7 +73,7 @@ int	main(int ac, char **av, char **env)
 		if (!line || !strcmp(line, "exit"))
 		{
 			ft_lstclear (&g_m, free);
-			return (0);
+			exit (0);
 		}
 		else if (!(strcmp(line, "")))
 			;

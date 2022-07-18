@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:00:21 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/17 19:27:21 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 09:20:33 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,21 @@ static void	signal_handler(int signum, siginfo_t *info, void *ptr)
 {
 	(void) info;
 	(void) ptr;
+	if (waitpid(-1, NULL, WNOHANG) != -1)
+		return ;
 	if (signum == SIGINT)
 	{
 		rl_replace_line("", 0);
-		//ft_printf("\r>Enter a string:                                  \r");
+		//ft_printf("\r>Enter a string:                               \r");
+		//ft_printf("\r");
 		rl_redisplay();
 		rl_replace_line("", 0);
-		ft_printf("\n>Enter a string: ");
+		rl_on_new_line();
+		ft_printf("\n");
+		rl_redisplay();
 	}
 	else if (signum == SIGQUIT)
-	{
-	}
+		return ;
 }
 
 int	signals(void)
