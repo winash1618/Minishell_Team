@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/17 18:44:46 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 10:59:08 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,23 @@ int	parent_tarp(int count, int (*fd)[2], int no_of_pipes, t_new **lst)
 		errors = set_pipes(lst, fd[count - 1][0], STDOUT_FILENO);
 	return (errors);
 }
+
+// int	parent_tarp2(int count, int (*fd)[2], int no_of_pipes, t_new **lst)
+// {
+// 	int	in_fd;
+// 	int	out_fd;
+// 	int	errors;
+
+// 	errors = 0;
+// 	in_fd = STDIN_FILENO;
+// 	if (count != 0)
+// 		in_fd = fd[count - 1][0];
+// 	out_fd = STDOUT_FILENO;
+// 	if (count < no_of_pipes)
+// 		out_fd = fd[count][1];
+// 	errors = set_pipes(lst, in_fd, out_fd);
+// 	return (errors);
+// }
 
 int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 {

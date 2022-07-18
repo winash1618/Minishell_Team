@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 09:26:24 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 10:50:09 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_lstadd_backhelper(t_list **head, void *content)
 	node = ft_lstnew(content);
 	if (node == 0)
 	{
-		if (content);
+		if (content)
 			free(content);
 		return (1);
 	}

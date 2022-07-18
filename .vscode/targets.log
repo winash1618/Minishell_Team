@@ -20,7 +20,7 @@ for dir in libft ft_printf parsing; do \
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon Jul 18 09:24:15 2022
+# Make data base, printed on Mon Jul 18 10:59:02 2022
 
 # Variables
 
@@ -178,7 +178,7 @@ VSCODE_PID = 70882
 # Not a target:
 ft_strmapi.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -187,7 +187,7 @@ ft_strmapi.o:
 # Not a target:
 ft_lstiter.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -196,7 +196,7 @@ ft_lstiter.o:
 # Not a target:
 ft_memcpy.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -205,7 +205,7 @@ ft_memcpy.o:
 # Not a target:
 ft_itoa.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -214,7 +214,7 @@ ft_itoa.o:
 # Not a target:
 ft_memcmp.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -223,7 +223,7 @@ ft_memcmp.o:
 # Not a target:
 ft_strlen.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -232,7 +232,7 @@ ft_strlen.o:
 # Not a target:
 ft_isdigit.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -251,7 +251,7 @@ all: libft.a bonus
 # Not a target:
 ft_lstlast.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -260,7 +260,7 @@ ft_lstlast.o:
 # Not a target:
 ft_memchr.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -274,7 +274,7 @@ ft_memchr.o:
 # Not a target:
 ft_tolower.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -283,7 +283,7 @@ ft_tolower.o:
 # Not a target:
 ft_strrchr.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -292,7 +292,7 @@ ft_strrchr.o:
 # Not a target:
 ft_strjoin.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -301,7 +301,7 @@ ft_strjoin.o:
 # Not a target:
 ft_split.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -310,7 +310,7 @@ ft_split.o:
 # Not a target:
 ft_lstclear.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -319,7 +319,7 @@ ft_lstclear.o:
 # Not a target:
 ft_strlcat.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -344,7 +344,7 @@ Makefile:
 # Not a target:
 ft_isprint.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -352,7 +352,7 @@ ft_isprint.o:
 
 libft.a: ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-18 09:14:47
+#  Last modified 2022-07-18 10:56:13
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -364,7 +364,7 @@ libft.a: ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o
 # Not a target:
 ft_striteri.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -373,7 +373,7 @@ ft_striteri.o:
 # Not a target:
 ft_bzero.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -382,7 +382,7 @@ ft_bzero.o:
 # Not a target:
 ft_lstnew.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -419,7 +419,7 @@ bonus: ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstdelone.o ft_lstite
 # Not a target:
 ft_putnbr_fd.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -445,7 +445,7 @@ fclean: clean
 # Not a target:
 ft_calloc.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -454,7 +454,7 @@ ft_calloc.o:
 # Not a target:
 ft_substr.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:46
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -463,7 +463,7 @@ ft_substr.o:
 # Not a target:
 ft_isalpha.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -472,7 +472,7 @@ ft_isalpha.o:
 # Not a target:
 ft_lstsize.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -487,7 +487,7 @@ ft_lstsize.o:
 # Not a target:
 ft_strlcpy.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -496,7 +496,7 @@ ft_strlcpy.o:
 # Not a target:
 ft_lstmap.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -505,7 +505,7 @@ ft_lstmap.o:
 # Not a target:
 ft_strncmp.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -529,7 +529,7 @@ clean:
 # Not a target:
 ft_isalnum.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -538,7 +538,7 @@ ft_isalnum.o:
 # Not a target:
 ft_lstadd_front.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -548,7 +548,7 @@ ft_lstadd_front.o:
 ft_isascii.o:
 #  Implicit rule search has been done.
  
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -557,7 +557,7 @@ ft_isascii.o:
 # Not a target:
 ft_strdup.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -566,7 +566,7 @@ ft_strdup.o:
 # Not a target:
 ft_lstdelone.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -575,7 +575,7 @@ ft_lstdelone.o:
 # Not a target:
 ft_memmove.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -584,7 +584,7 @@ ft_memmove.o:
 # Not a target:
 ft_strchr.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -593,7 +593,7 @@ ft_strchr.o:
 # Not a target:
 ft_toupper.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -602,7 +602,7 @@ ft_toupper.o:
 # Not a target:
 ft_strnstr.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -611,7 +611,7 @@ ft_strnstr.o:
 # Not a target:
 ft_putstr_fd.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -620,7 +620,7 @@ ft_putstr_fd.o:
 # Not a target:
 ft_memset.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -629,7 +629,7 @@ ft_memset.o:
 # Not a target:
 ft_putchar_fd.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -638,7 +638,7 @@ ft_putchar_fd.o:
 # Not a target:
 ft_atoi.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:44
+#  Last modified 2022-07-18 10:56:08
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -647,7 +647,7 @@ ft_atoi.o:
 # Not a target:
 ft_strtrim.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:46
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -656,7 +656,7 @@ ft_strtrim.o:
 # Not a target:
 ft_lstadd_back.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:47
+#  Last modified 2022-07-18 10:56:10
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -665,7 +665,7 @@ ft_lstadd_back.o:
 # Not a target:
 ft_putendl_fd.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:45
+#  Last modified 2022-07-18 10:56:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -684,7 +684,7 @@ ft_putendl_fd.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 18 09:24:15 2022
+# Finished Make data base on Mon Jul 18 10:59:02 2022
 
 # GNU Make 3.81
 # Copyright (C) 2006  Free Software Foundation, Inc.
@@ -694,7 +694,7 @@ ft_putendl_fd.o:
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Mon Jul 18 09:24:15 2022
+# Make data base, printed on Mon Jul 18 10:59:02 2022
 
 # Variables
 
@@ -875,7 +875,7 @@ ft_printfhelper2_bonus.o:
 # Not a target:
 ft_printf.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:49
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -955,7 +955,7 @@ clean:
 
 libftprintf.a: ft_printfhelper.o ft_printf.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-18 08:07:50
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -979,7 +979,7 @@ ft_printf_bonus.o:
 # Not a target:
 ft_printfhelper.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:49
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -998,9 +998,8 @@ ft_printfhelper.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 18 09:24:15 2022
+# Finished Make data base on Mon Jul 18 10:59:02 2022
 
- 
 # GNU Make 3.81
 # Copyright (C) 2006  Free Software Foundation, Inc.
 # This is free software; see the source for copying conditions.
@@ -1009,7 +1008,7 @@ ft_printfhelper.o:
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Mon Jul 18 09:24:15 2022
+# Make data base, printed on Mon Jul 18 10:59:02 2022
 
 # Variables
 
@@ -1165,7 +1164,7 @@ VSCODE_PID = 70882
 # Not a target:
 ../execute_src/redirection2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1173,8 +1172,9 @@ VSCODE_PID = 70882
 
 # Not a target:
 ../execute_src/temp_list.o:
+ 
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1192,7 +1192,7 @@ all: parsing.a
 # Not a target:
 p_utils_2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:51
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1206,7 +1206,7 @@ p_utils_2.o:
 # Not a target:
 p_expand3.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:52
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1215,7 +1215,7 @@ p_expand3.o:
 # Not a target:
 p_dollar.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:50
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1224,7 +1224,7 @@ p_dollar.o:
 # Not a target:
 p_quote.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:51
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1233,7 +1233,7 @@ p_quote.o:
 # Not a target:
 p_list_assign.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:50
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1242,7 +1242,7 @@ p_list_assign.o:
 # Not a target:
 join_list.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:54
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1263,7 +1263,7 @@ libft:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 14:58:20
+#  Last modified 2022-07-18 10:58:39
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1272,7 +1272,7 @@ Makefile:
 # Not a target:
 ../execute_src/builtins.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:54
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1281,7 +1281,7 @@ Makefile:
 # Not a target:
 big_list2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:50
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1290,7 +1290,7 @@ big_list2.o:
 # Not a target:
 p_redirection2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:52
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1299,7 +1299,7 @@ p_redirection2.o:
 # Not a target:
 p_list_normal.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:50
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1308,8 +1308,7 @@ p_list_normal.o:
 # Not a target:
 p_expand.o:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-07-18 08:07:50
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1318,7 +1317,7 @@ p_expand.o:
 # Not a target:
 prompt.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:51
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1327,7 +1326,7 @@ prompt.o:
 # Not a target:
 ../execute_src/here_doc.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:54
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1353,7 +1352,7 @@ fclean: clean
 # Not a target:
 ../execute_src/pipex_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1362,7 +1361,7 @@ fclean: clean
 # Not a target:
 p_expand1.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:52
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1377,7 +1376,7 @@ p_expand1.o:
 # Not a target:
 ../execute_src/redirection.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1400,7 +1399,7 @@ clean:
 # Not a target:
 p_normal.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:51
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1409,7 +1408,7 @@ p_normal.o:
 # Not a target:
 ../execute_src/pipex_utils1.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1418,7 +1417,7 @@ p_normal.o:
 # Not a target:
 p_assign_1.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:50
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1427,7 +1426,7 @@ p_assign_1.o:
 # Not a target:
 p_expand2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:52
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1436,7 +1435,7 @@ p_expand2.o:
 # Not a target:
 ../execute_src/child.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1445,7 +1444,7 @@ p_expand2.o:
 # Not a target:
 big_list.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:51
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1454,7 +1453,7 @@ big_list.o:
 # Not a target:
 ../execute_src/enviroment.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:54
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1463,15 +1462,16 @@ big_list.o:
 # Not a target:
 ../execute_src/pipex.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
+ 
 parsing.a: p_assign_1.o p_assign_2.o p_dollar.o big_list2.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/temp_list.o ../execute_src/here_doc.o ../execute_src/enviroment.o ../execute_src/builtins.o join_list.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-18 08:07:57
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1483,7 +1483,7 @@ parsing.a: p_assign_1.o p_assign_2.o p_dollar.o big_list2.o p_expand.o p_list_as
 # Not a target:
 p_redirection.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:51
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1492,7 +1492,7 @@ p_redirection.o:
 # Not a target:
 p_utils_1.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:51
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1501,7 +1501,7 @@ p_utils_1.o:
 # Not a target:
 p_expand4.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1510,7 +1510,7 @@ p_expand4.o:
 # Not a target:
 p_assign_2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 08:07:50
+#  Last modified 2022-07-18 10:56:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1529,10 +1529,10 @@ p_assign_2.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 18 09:24:15 2022
+# Finished Make data base on Mon Jul 18 10:59:02 2022
 
 
-# Make data base, printed on Mon Jul 18 09:24:15 2022
+# Make data base, printed on Mon Jul 18 10:59:02 2022
 
 # Variables
 
@@ -1587,9 +1587,6 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 19)
 EXECUTE_SRC = pipex.c pipex_utils.c  pipex_utils1.c pipex_utils2.c child.c redirection.c redirection2.c temp_list.c here_doc.c signals.c enviroment.c enviroment1.c builtins.c builtins1.c
 # environment
- 
-make: *** Deleting file `execute_src/signals.o'
-
 SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.woHQPbbdlY/Listeners
 # makefile (from `Makefile', line 31)
 EXECUTE_SRC_INDIR = $(addprefix $(EXECUTE_SRC_DIR)/,$(EXECUTE_SRC))
@@ -1698,10 +1695,10 @@ VSCODE_PID = 70882
 
 # Directories
 
-# execute_src (device 16777225, inode 2174630): 30 files, no impossibilities so far.
-# . (device 16777225, inode 1847004): 36 files, no impossibilities.
+# execute_src (device 16777225, inode 2174630): 27 files, no impossibilities so far.
+# . (device 16777225, inode 1847004): 33 files, no impossibilities.
 
-# 66 files, no impossibilities in 2 directories.
+# 60 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -1726,7 +1723,7 @@ execute_src/builtins1.o:
 execute_src/pipex_utils.o: execute_src/pipex_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex_utils'
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1749,6 +1746,7 @@ all: minishell
 # Load=0/32=0%, Rehash=0, Collisions=0/9=0%
 
 .PHONY: clean fclean all re
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1768,7 +1766,7 @@ parsing/p_list_normal.o:
 execute_src/redirection.o: execute_src/redirection.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/redirection'
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1816,7 +1814,7 @@ parsing/big_list2.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-16 20:33:48
+#  Last modified 2022-07-18 10:58:51
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1825,7 +1823,7 @@ Makefile:
 execute_src/pipex_utils1.o: execute_src/pipex_utils1.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex_utils1'
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1840,7 +1838,7 @@ execute_src/pipex_utils1.o: execute_src/pipex_utils1.c
 execute_src/child.o: execute_src/child.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/child'
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1876,7 +1874,7 @@ execute_src/pipex_utils.c:
 execute_src/pipex.o: execute_src/pipex.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex'
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1888,10 +1886,9 @@ execute_src/pipex.o: execute_src/pipex.c
 	$(CC) $(CFLAGS) -Ilibft -Ift_printf -Iparsing -c $^ -o $@
 	
 
- 
 minishell: minishell.o execute_src/pipex.o execute_src/pipex_utils.o execute_src/pipex_utils1.o execute_src/pipex_utils2.o execute_src/child.o execute_src/redirection.o execute_src/redirection2.o execute_src/temp_list.o execute_src/here_doc.o execute_src/signals.o execute_src/enviroment.o execute_src/enviroment1.o execute_src/builtins.o execute_src/builtins1.o parsing/p_assign_1.o parsing/p_assign_2.o parsing/p_dollar.o parsing/p_expand.o parsing/p_list_assign.o parsing/p_list_normal.o parsing/big_list2.o parsing/p_normal.o parsing/p_quote.o parsing/p_utils_1.o parsing/p_utils_2.o parsing/prompt.o parsing/p_redirection.o parsing/big_list.o parsing/p_redirection2.o parsing/p_expand1.o parsing/p_expand2.o parsing/p_expand3.o parsing/p_expand4.o parsing/join_list.o parser.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-18 09:14:49
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -1910,7 +1907,7 @@ minishell: minishell.o execute_src/pipex.o execute_src/pipex_utils.o execute_src
 minishell.o: minishell.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `minishell'
-#  Last modified 2022-07-18 08:07:57
+#  Last modified 2022-07-18 10:56:13
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -1947,7 +1944,7 @@ execute_src/redirection.c:
 execute_src/pipex_utils2.o: execute_src/pipex_utils2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/pipex_utils2'
-#  Last modified 2022-07-18 08:08:00
+#  Last modified 2022-07-18 10:56:13
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -2015,9 +2012,10 @@ parser.o:
 #  File has not been updated.
 
 execute_src/redirection2.o: execute_src/redirection2.c
+ 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/redirection2'
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -2038,7 +2036,7 @@ execute_src/redirection2.o: execute_src/redirection2.c
 execute_src/temp_list.o: execute_src/temp_list.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/temp_list'
-#  Last modified 2022-07-18 08:07:53
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -2126,7 +2124,7 @@ parsing/big_list.o:
 # Not a target:
 minishell.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-05 19:32:17
+#  Last modified 2022-07-18 09:54:18
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -2141,7 +2139,7 @@ execute_src/builtins.o:
 execute_src/here_doc.o: execute_src/here_doc.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `execute_src/here_doc'
-#  Last modified 2022-07-18 08:07:54
+#  Last modified 2022-07-18 10:56:12
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -2156,10 +2154,9 @@ execute_src/here_doc.o: execute_src/here_doc.c
 # Not a target:
 execute_src/pipex_utils2.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-17 18:46:26
+#  Last modified 2022-07-18 10:50:09
 #  File has been updated.
 #  Successfully updated.
- 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -2205,7 +2202,7 @@ execute_src/temp_list.c:
 # Not a target:
 execute_src/pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-17 18:44:46
+#  Last modified 2022-07-18 10:49:30
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -2248,6 +2245,6 @@ parsing/p_list_assign.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 18 09:24:15 2022
+# Finished Make data base on Mon Jul 18 10:59:02 2022
 
  
