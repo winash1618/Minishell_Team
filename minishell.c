@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 09:54:18 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 20:43:02 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,75 @@
 
 t_list	*g_m;
 
-t_new	*temp_makelist(char **str)
+/*atoi function with a flag "valid flag" to check if resulting int is positive
+and has non-numeric digits*/
+int	minishell_atoi(char *str, int *flag)
 {
-	t_new	*commands;
-	int	i = 0;
+	int				i;
+	int				sign;
+	unsigned long	num;
 
-	commands = NULL;
-	while (str[i])
+	sign = 1;
+	num = 0;
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		temp_lstadd_back(&commands, temp_lst_newnode(str[i]));
+		if (str[i] == '-')
+			sign = -1;
 		++i;
 	}
-	return (commands);
+	if (str[i] < '0' || str[i] > '9')
+		(*flag) = 1;
+	while (str[i] >= '0' && str[i] <= '9' && !(*flag))
+	{
+		num = num * 10 + str[i] - '0';
+		if ((num >> 31) && !(sign == -1 && ((num - 1) >> 31 == 0)))
+			*flag = 1;
+		++i;
+	}
+	return (num * sign);
+}
+
+int	update_shlvl(char **env, char *var)
+{
+	int		i;
+	int		error;
+	int		level;
+	int		len;
+	char	*temp;
+
+	i = 0;
+	error = 0;
+	len = ft_strlen(var);
+	while (env [i] && !(ft_strncmp_p(env[i], var, len) == 0
+			&& (env[i][len] == '\0' || env[i][len] == '=')))
+			++i;
+	if (env[i])
+	{
+		level = minishell_atoi(&(env[i][5 + (ft_strchr(env[i], '=') != 0)]), &error);
+		//ft_printf("The number is %d for string %s	%s\n", level, );
+		if (error || level == 999)
+			append_env(env, "SHLVL=", i);
+		else if (level < 0)
+			append_env(env, "SHLVL=0", i);
+		else if (level > 999)
+		{
+			print_error(" :warning", ": shell level too high, resetting to 1\n", 1);
+			append_env(env, "SHLVL=1", i);
+		}
+		else
+		{
+			temp = ft_strdup("SHLVL=");
+			ft_strjoin_ms(&temp, ft_itoa(level + 1));
+			append_env(env, temp, i);
+			free (temp);
+		}
+	}
+	else
+	{
+		error = append_env(env, "SHLVL=", i);
+	}
+	return (error);
 }
 
 int	main(int ac, char **av, char **env)
@@ -53,6 +110,7 @@ int	main(int ac, char **av, char **env)
 		//free (env);
 		return (1);
 	}
+	//update_shlvl(env, "SHLVL");
 	info->flag = 1;
 	info->e_flag = 0;
 	i = 0;
@@ -99,6 +157,20 @@ int	main(int ac, char **av, char **env)
 	ft_lstclear(&g_m, free);
 	return (0);
 }
+
+// t_new	*temp_makelist(char **str)
+// {
+// 	t_new	*commands;
+// 	int	i = 0;
+
+// 	commands = NULL;
+// 	while (str[i])
+// 	{
+// 		temp_lstadd_back(&commands, temp_lst_newnode(str[i]));
+// 		++i;
+// 	}
+// 	return (commands);
+// }
 
 // int	main(int argv, char **argc, char **env)
 // {

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/17 18:45:50 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 20:31:52 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include "ft_printf/ft_printf.h"
 
 // for saving local variable
-typedef struct	var 
+typedef struct var
 {
 	char		*key; // consider "x = y" then x is key
 	char		*value; // y is value
@@ -70,7 +70,7 @@ typedef struct info
 }				t_info;
 
 // Global variable declaration
-extern t_list *g_m;
+extern t_list	*g_m;
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
@@ -201,10 +201,9 @@ void	ft_tolower_str(char *str);
 
 //pipex_utils2.c
 int		ft_lstadd_backhelper(t_list **head, void *content);
-void	cleanexit(char **path, int (*fd)[2], int status);
+void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds);
 int		builtins(t_new *lst, char **env);
 int		has_parentbuiltins(t_new *lst);
-
 
 //child.c
 char	**args_array(t_new *lst);
@@ -224,6 +223,9 @@ int		hijack_stdout(int out_file, char *out_file_name,
 			int append_flag, int flag);
 int		redirect_loop(t_new **lst, char **in_file_name,
 			char **out_file_name, int *append_flag);
+int		adopted_child(int in_file, char *here_doc);
+int		set_pipes2(t_new **lst, char **ifile_name,
+			char **ofile_name, int *flag);
 int		set_pipes(t_new **lst, int in_file, int out_file);
 
 //here_doc.c
@@ -249,7 +251,6 @@ char	*get_home(char **env);
 // builtins1.c
 int		ft_chdir(char **args, char **env);
 
-
 // enviroment.c
 int		cpynewenv(char **new_env, char **env);
 int		setnewenv(char **env);
@@ -257,6 +258,7 @@ int		valid_varible(char *var);
 int		ft_unset(char **args, char **env);
 
 //enviroment1
+int		append_env(char **env, char *args, int j);
 int		ft_export(char **args, char **env, char *file_name, int append);
 
 int		main(int ac, char **av, char **env);

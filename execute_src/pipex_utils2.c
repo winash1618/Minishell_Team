@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 10:50:09 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 13:39:49 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_lstadd_backhelper(t_list **head, void *content)
 	return (0);
 }
 
-void	cleanexit(char **path, int (*fd)[2], int status)
+void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds)
 {
 	int	i;
 
@@ -38,6 +38,8 @@ void	cleanexit(char **path, int (*fd)[2], int status)
 		free(fd);
 	while (i <= 3)
 		close(i++);
+	close(open_fds[0]);
+	close(open_fds[1]);
 	exit(status);
 }
 

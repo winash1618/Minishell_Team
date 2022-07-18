@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 10:59:08 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/18 18:44:05 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,66 +37,78 @@ int	(*create_pipes(int no_of_pipes))[2]
 	return (fd);
 }
 
-int	parent_tarp(int count, int (*fd)[2], int no_of_pipes, t_new **lst)
-{
-	int	errors;
-
-	errors = 0;
-	if (no_of_pipes == 0)
-		errors = set_pipes(lst, STDIN_FILENO, STDOUT_FILENO);
-	else if (count > 0 && count < no_of_pipes)
-		errors = set_pipes(lst, fd[count - 1][0], fd[count][1]);
-	else if (count == 0)
-		errors = set_pipes(lst, STDIN_FILENO, fd[count][1]);
-	else
-		errors = set_pipes(lst, fd[count - 1][0], STDOUT_FILENO);
-	return (errors);
-}
-
-// int	parent_tarp2(int count, int (*fd)[2], int no_of_pipes, t_new **lst)
+// int	parent_tarp(int count, int (*fd)[2], int no_of_pipes, t_new **lst)
 // {
-// 	int	in_fd;
-// 	int	out_fd;
 // 	int	errors;
 
 // 	errors = 0;
-// 	in_fd = STDIN_FILENO;
-// 	if (count != 0)
-// 		in_fd = fd[count - 1][0];
-// 	out_fd = STDOUT_FILENO;
-// 	if (count < no_of_pipes)
-// 		out_fd = fd[count][1];
-// 	errors = set_pipes(lst, in_fd, out_fd);
+// 	if (no_of_pipes == 0)
+// 		errors = set_pipes(lst, STDIN_FILENO, STDOUT_FILENO);
+// 	else if (count > 0 && count < no_of_pipes)
+// 		errors = set_pipes(lst, fd[count - 1][0], fd[count][1]);
+// 	else if (count == 0)
+// 		errors = set_pipes(lst, STDIN_FILENO, fd[count][1]);
+// 	else
+// 		errors = set_pipes(lst, fd[count - 1][0], STDOUT_FILENO);
 // 	return (errors);
 // }
+
+int	childmanager(int count, int (*fd)[2], t_new **lst, int *open_fd)
+{
+	int		new_fd[2];
+	int		flag[2];
+	char	*ifile_name;
+	char	*ofile_name;
+	int		errors;
+
+	new_fd[0] = STDIN_FILENO;
+	if (count != 0)
+		new_fd[0] = fd[count - 1][0];
+	new_fd[1] = STDOUT_FILENO;
+	if (list_has_pipes(*lst))
+		new_fd[1] = fd[count][1];
+	errors = set_pipes2(lst, &ifile_name, &ofile_name, flag);
+	if (errors)
+		return (errors);
+	open_fd[1] = hijack_stdout(new_fd[1], ofile_name, *flag, new_fd[1] != 1);
+	if (open_fd[1] < 0)
+		return (-open_fd[1]);
+	if (flag[1] == 0)
+		open_fd[0] = hijack_stdin(new_fd[0], ifile_name);
+	else if (flag[1] != 0)
+		open_fd[0] = adopted_child(new_fd[0], ifile_name);
+	if (open_fd[0] < 0)
+		return (-open_fd[0]);
+	return (errors);
+}
 
 int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 {
 	int	count;
-	int	id;
 	int	status;
 	int	no_of_pipes;
+	int	open_fds[2];
 
 	count = 0;
-	status = 0;
+	open_fds[0] = 0;
+	open_fds[1] = 1;
 	no_of_pipes = number_of_pipes(lst);
 	while (lst)
 	{
-		id = fork();
-		if (id == 0)
+		if (fork() == 0)
 		{
-			status = parent_tarp(count, fd, no_of_pipes, &lst);
+			status = childmanager(count, fd, &lst, open_fds);
 			close_pipes(fd, no_of_pipes);
 			if (status == 0 && lst != NULL
 				&& !(lst->flag == 4 && *(lst->token) == '|'))
 				status = child_execute (lst, path, env);
-			cleanexit(path, fd, status);
+			cleanexit(path, fd, status, open_fds);
 		}
 		else
 			lst = nxt_cmd(lst);
 		++count;
 	}
-	return (status);
+	return (0);
 }
 
 int	parent_forking5(t_new *lst, char **path, char **env)
