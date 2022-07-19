@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 18:43:54 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 11:49:13 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,13 +126,7 @@ int	set_pipes2(t_new **lst, char **ifile_name, char **ofile_name, int *flag)
 	errors = redirect_loop(lst, ifile_name, ofile_name, flag);
 	if (errors)
 		return (errors);
-	while (*lst && (*lst)->flag == 4
-		&& (*((*lst)->token) == '<' || *((*lst)->token) == '>'))
-	{
-		*lst = (*lst)->next;
-		if (*lst)
-			*lst = (*lst)->next;
-	}
+	find_cmd(lst);
 	return (errors);
 }
 

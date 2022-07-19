@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 13:39:49 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 11:48:40 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,43 @@ int	builtins(t_new *lst, char **env)
 		return (1);
 	if (redirect_loop(&temp, &armrest1, &out_file_name, legrests))
 		return (1);
+	find_cmd(&lst);
 	return (buitin_switch(lst, env, out_file_name, legrests[0]));
+}
+
+void	find_cmd(t_new **lst)
+{
+	t_new	*node;
+
+	node = *lst;
+	if (!node)
+		return ;
+	while (node)
+	{
+		if (node->flag == 4 && (*(node->token) == '>' || *(node->token) == '<'))
+		{
+			node = node->next;
+			if (node)
+				node = node->next;
+			continue ;
+		}
+		else if (node->flag == 4 && ft_strchr(node->token, '=')
+			&& valid_varible(node->token))
+		{
+			node = node->next;
+			continue ;
+		}
+		break ;
+	}
+	*lst = node;
 }
 
 int	has_parentbuiltins(t_new *lst)
 {
 	if (list_has_pipes(lst))
+		return (0);
+	find_cmd(&lst);
+	if (!lst)
 		return (0);
 	else if (lst->token && (ft_strncmp_pc(lst->token, "cd", 3) == 0))
 		return (1);
