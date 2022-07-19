@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 18:44:05 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 18:40:29 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,10 +145,7 @@ int	excute(t_new *lst, char **env)
 
 	i = 0;
 	if (here_doc_input(lst))
-	{
-		ft_lstclear(&g_m, free);
-		exit(1);
-	}
+		cleanexit(NULL, NULL, 1, NULL);
 	if (has_parentbuiltins(lst))
 	{
 		errno = builtins(lst, env);

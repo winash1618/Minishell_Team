@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/19 11:48:40 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 18:12:17 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds)
 		free(fd);
 	while (i <= 3)
 		close(i++);
-	close(open_fds[0]);
-	close(open_fds[1]);
+	if (open_fds)
+	{
+		close(open_fds[0]);
+		close(open_fds[1]);
+	}
 	exit(status);
 }
 
