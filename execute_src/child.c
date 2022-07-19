@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/16 20:36:09 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 10:42:43 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	buitin_switch(t_new *lst, char **env, char *file_name, int append	)
 		return (ft_export(args, env, file_name, append));
 	else if (lst->token && (ft_strncmp_p(lst->token, "unset", 6) == 0))
 		return (ft_unset(args, env));
+	else if (ft_strchr(lst->token, '=') && valid_varible(lst->token))
+		return (1);
 	return (1);
 }
 

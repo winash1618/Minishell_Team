@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 20:31:52 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 11:45:43 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ void	ft_tolower_str(char *str);
 int		ft_lstadd_backhelper(t_list **head, void *content);
 void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds);
 int		builtins(t_new *lst, char **env);
+void	find_cmd(t_new **lst);
 int		has_parentbuiltins(t_new *lst);
 
 //child.c

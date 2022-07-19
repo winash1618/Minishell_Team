@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 20:43:02 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 10:07:39 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	update_shlvl(char **env, char *var)
 	}
 	else
 	{
-		error = append_env(env, "SHLVL=", i);
+		error = append_env(env, "SHLVL=1", i);
 	}
 	return (error);
 }
