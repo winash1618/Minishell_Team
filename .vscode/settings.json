@@ -10,6 +10,7 @@
 		"bitset": "c",
 		"sstream": "c",
 		"__threading_support": "c",
-		"cerrno": "c"
+		"cerrno": "c",
+		"__locale": "c"
 	}
 }

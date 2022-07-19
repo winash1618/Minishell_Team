@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/19 10:07:39 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 20:47:19 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 t_list	*g_m;
 
-/*atoi function with a flag "valid flag" to check if resulting int is positive
-and has non-numeric digits*/
-int	minishell_atoi(char *str, int *flag)
+/*atoi function that overflows ints*/
+int	minishell_atoi(char *str)
 {
-	int				i;
-	int				sign;
-	unsigned long	num;
+	int	i;
+	int	sign;
+	int	num;
 
 	sign = 1;
 	num = 0;
@@ -32,57 +31,70 @@ int	minishell_atoi(char *str, int *flag)
 		++i;
 	}
 	if (str[i] < '0' || str[i] > '9')
-		(*flag) = 1;
-	while (str[i] >= '0' && str[i] <= '9' && !(*flag))
+		return (0);
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + str[i] - '0';
-		if ((num >> 31) && !(sign == -1 && ((num - 1) >> 31 == 0)))
-			*flag = 1;
 		++i;
 	}
+	if (str[i])
+		return (0);
 	return (num * sign);
+}
+
+int	update_shlvlhelper(char **env, int i, int level)
+{
+	int		error;
+	char	*temp;
+	char	*temp2;
+
+	error = 0;
+	if (level < 0)
+			level = 0;
+	else if (level > 1000)
+	{
+		ft_putstr_fd("minishell: warning: shell level (", 2);
+		ft_putnbr_fd(level, 2);
+		ft_putstr_fd(") too high, reseting to 1\n", 2);
+		level = 1;
+	}
+	temp = ft_itoa(level);
+	if (temp == NULL)
+		return (1);
+	temp2 = ft_strjoin("SHLVL=", temp);
+	if (temp2 != NULL)
+		error = append_env(env, temp2, i);
+	free (temp);
+	if (temp2 == NULL)
+		return (1);
+	free(temp2);
+	return (error);
 }
 
 int	update_shlvl(char **env, char *var)
 {
 	int		i;
-	int		error;
 	int		level;
-	int		len;
 	char	*temp;
+	int		len;
 
 	i = 0;
-	error = 0;
 	len = ft_strlen(var);
 	while (env [i] && !(ft_strncmp_p(env[i], var, len) == 0
 			&& (env[i][len] == '\0' || env[i][len] == '=')))
 			++i;
 	if (env[i])
 	{
-		level = minishell_atoi(&(env[i][5 + (ft_strchr(env[i], '=') != 0)]), &error);
-		//ft_printf("The number is %d for string %s	%s\n", level, );
-		if (error || level == 999)
-			append_env(env, "SHLVL=", i);
-		else if (level < 0)
-			append_env(env, "SHLVL=0", i);
-		else if (level > 999)
-		{
-			print_error(" :warning", ": shell level too high, resetting to 1\n", 1);
-			append_env(env, "SHLVL=1", i);
-		}
-		else
-		{
-			temp = ft_strdup("SHLVL=");
-			ft_strjoin_ms(&temp, ft_itoa(level + 1));
-			append_env(env, temp, i);
-			free (temp);
-		}
+		level = 1 +
+			minishell_atoi(&(env[i][5 + (ft_strchr(env[i], '=') != 0)]));
+		if (level == 1000)
+			return (append_env(env, "SHLVL=", i));
+		return (update_shlvlhelper(env, i, level));
 	}
-	else
-	{
-		error = append_env(env, "SHLVL=1", i);
-	}
-	return (error);
+	temp = ft_strdup("SHLVL=1");
+	if (temp == NULL)
+		return (1);
+	return (append_env(env, temp, i));
 }
 
 int	main(int ac, char **av, char **env)
@@ -98,19 +110,13 @@ int	main(int ac, char **av, char **env)
 	signals();
 	info = malloc(sizeof(t_info));
 	if (info == NULL)
-		return (1);
+		cleanexit(NULL, NULL, 1, NULL);
 	if (ft_lstadd_backhelper(&g_m, info) != 0)
-	{
-		ft_lstclear(&g_m, free);
-		return (1);
-	}
+		cleanexit(NULL, NULL, 1, NULL);
 	if (setnewenv(env))
-	{
-		ft_lstclear(&g_m, free);
-		//free (env);
-		return (1);
-	}
-	//update_shlvl(env, "SHLVL");
+		cleanexit(NULL, NULL, 1, NULL);
+	if (update_shlvl(env, "SHLVL"))
+		cleanexit(NULL, NULL, 1, NULL);
 	info->flag = 1;
 	info->e_flag = 0;
 	i = 0;
@@ -123,16 +129,10 @@ int	main(int ac, char **av, char **env)
 		if (line)
 			add_history(line);
 		else
-		{
-			ft_lstclear (&g_m, free);
-			exit(0);
-		}
+			cleanexit(NULL, NULL, 0, NULL);
 		quote_counter(line, info);
 		if (!line || !strcmp(line, "exit"))
-		{
-			ft_lstclear (&g_m, free);
-			exit (0);
-		}
+			cleanexit(NULL, NULL, 0, NULL);
 		else if (!(strcmp(line, "")))
 			;
 		else if (!strcmp(line, "clear"))
@@ -154,7 +154,7 @@ int	main(int ac, char **av, char **env)
 		}
 		free (line);
 	}
-	ft_lstclear(&g_m, free);
+	cleanexit(NULL, NULL, 0, NULL);
 	return (0);
 }
 
