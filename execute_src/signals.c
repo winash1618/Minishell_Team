@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:00:21 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 11:02:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/20 17:35:35 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static void	signal_handler(int signum, siginfo_t *info, void *ptr)
 		//ft_printf("\r>Enter a string:                               \r");
 		//ft_printf("\r");
 		rl_redisplay();
+		//ft_putchar_fd(EOF,0);
+		write(1, NULL, 1);
 		//rl_replace_line("", 0);
 		rl_on_new_line();
 		ft_printf("\n");
