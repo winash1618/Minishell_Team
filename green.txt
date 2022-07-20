@@ -66,3 +66,4 @@ drwxr-xr-x  44 ayassin  2021_abudhabi    1496 Jul 19 17:59 parsing
 -rw-r--r--   1 ayassin  2021_abudhabi       3 Jun 28 15:26 red.txt
 -rw-r--r--   1 ayassin  2021_abudhabi     740 Jun  1 18:21 test.c
 d--x--x--x+  2 ayassin  2021_abudhabi      68 Jun 26 15:05 testdir
+the name of the game
