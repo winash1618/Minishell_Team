@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/19 11:49:13 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/20 09:06:41 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	adopted_child(int in_file, char *here_doc)
 	if (pipe(fd))
 		return (-1);
 	ft_putstr_fd(here_doc, fd[1]);
-	if (hijack_stdin(fd[0], NULL))
+	if (hijack_stdin(fd[0], NULL) < 0)
 		return (-1);
 	close(fd[0]);
 	if (in_file != STDIN_FILENO)

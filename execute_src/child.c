@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/19 10:42:43 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/20 09:26:00 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,14 @@ int	child_execute(t_new *lst, char **path, char **env)
 	if (temp_return != -1)
 		return (temp_return);
 	temp_return = child_loop(path, args, env, clone_cmd);
-	if (clone_cmd && temp_return == 0)
+	if (clone_cmd && temp_return == 0 && ft_strchr(clone_cmd, '/'))
 		execve(clone_cmd, args, env);
 	free(clone_cmd);
 	free(args);
 	if (temp_return)
 		return (1);
+	else if (lst->token && ft_strchr(lst->token, '/'))
+		return (print_error(lst->token, ": No such file or directory", 127));
 	else
 		return (print_error(lst->token, ": command not found", 127));
 }
