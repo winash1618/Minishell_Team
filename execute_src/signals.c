@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:00:21 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/20 17:35:35 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/21 19:17:30 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,29 @@ static void	signal_handler(int signum, siginfo_t *info, void *ptr)
 		//rl_replace_line("", 0);
 		//ft_printf("\r>Enter a string:                               \r");
 		//ft_printf("\r");
-		rl_redisplay();
+		//rl_redisplay();
 		//ft_putchar_fd(EOF,0);
-		write(1, NULL, 1);
+		//write(0, "\ngreen", 7);
+		//write(1, "\ngreen\n", 1);
+		//ft_putstr_fd("green", 0);
+		//write(0, "\n", 0);
+		//int fd = dup(STDIN_FILENO);
+		//close(fd);
+		//write(1, "green", 6);
+		//write(2, "green", 6);
+		//char *temp = ft_strdup("g");
+		//temp[0] = 4;
+		rl_replace_line("", 0);
+		ft_putstr_fd("\b\b  \n", 2);
+		//rl_redisplay();
 		//rl_replace_line("", 0);
 		rl_on_new_line();
-		ft_printf("\n");
+		//ft_putstr_fd("Enter a string: ", 0);
 		rl_redisplay();
+		//rl_forced_update_display();
+		//free(temp);
+		//ft_putstr_fd("\r\n", 2);
+		//ft_printf("\n");
 	}
 	else if (signum == SIGQUIT)
 		return ;
@@ -77,6 +93,7 @@ int	signals(void)
 	sa.sa_sigaction = signal_handler;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART | SA_SIGINFO;
+	//rl_catch_signals = 0;
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
 	return (0);

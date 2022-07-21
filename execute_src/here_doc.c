@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/20 19:43:01 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:22:30 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ char	*line_input(char *delimiter)
 	while (1)
 	{
 		one_line = readline("> ");
+		//ft_putstr_fd("I LOOPED\n", 2);
+		if (!one_line)
+			return (NULL);
 		if (ft_strncmp_p(one_line, delimiter, ft_strlen(delimiter) + 1) != 0)
 		{
 			if (ft_strjoin_ms(&line, one_line) < 0 || ft_strjoin_ms(&line, "\n"))
@@ -46,9 +49,12 @@ char	*line_input_parent(char *delimiter)
 	int		fd[2];
 	char	*line;
 	int		len;
+	int		id;
+	int		status;
 
 	pipe(fd);
-	if (fork() == 0)
+	id = fork();
+	if (id == 0)
 	{
 		close(fd[0]);
 		line = line_input(delimiter);
@@ -60,6 +66,7 @@ char	*line_input_parent(char *delimiter)
 			free(line);
 		exit(0);
 	}
+	waitpid(id, &status, 0);
 	close(fd[1]);
 	read(fd[0], &len, sizeof(int));
 	line = malloc(sizeof(char) * (len + 1));
