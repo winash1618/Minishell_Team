@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/17 15:49:09 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:22:30 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ char	*line_input(char *delimiter)
 	while (1)
 	{
 		one_line = readline("> ");
+		//ft_putstr_fd("I LOOPED\n", 2);
+		if (!one_line)
+			return (NULL);
 		if (ft_strncmp_p(one_line, delimiter, ft_strlen(delimiter) + 1) != 0)
 		{
 			if (ft_strjoin_ms(&line, one_line) < 0 || ft_strjoin_ms(&line, "\n"))
@@ -38,6 +41,38 @@ char	*line_input(char *delimiter)
 	free(one_line);
 	if (line == NULL)
 		line = ft_strdup("");
+	return (line);
+}
+
+char	*line_input_parent(char *delimiter)
+{
+	int		fd[2];
+	char	*line;
+	int		len;
+	int		id;
+	int		status;
+
+	pipe(fd);
+	id = fork();
+	if (id == 0)
+	{
+		close(fd[0]);
+		line = line_input(delimiter);
+		len = ft_strlen(line);
+		write(fd[1], &len, sizeof(int));
+		ft_putstr_fd(line, fd[1]);
+		close(fd[1]);
+		if (line)
+			free(line);
+		exit(0);
+	}
+	waitpid(id, &status, 0);
+	close(fd[1]);
+	read(fd[0], &len, sizeof(int));
+	line = malloc(sizeof(char) * (len + 1));
+	read(fd[0], line, len);
+	close(fd[0]);
+	line[len] = 0;
 	return (line);
 }
 
