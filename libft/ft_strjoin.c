@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 20:35:16 by ayassin           #+#    #+#             */
-/*   Updated: 2021/12/27 10:03:07 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/19 20:43:36 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		temp[pos] = s1[pos];
 		++pos;
 	}
-	while (pos < len && s2)
+	while (pos < len && s2[pos1])
 		temp[pos++] = s2[pos1++];
+	temp[pos] = 0;
 	return (temp);
 }

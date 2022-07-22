@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:59:22 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/03 18:10:32 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/15 18:52:55 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,13 @@ int	ft_strjoin_ms(char **prestr, char *sufstr)
 {
 	int		i1;
 	int		i2;
-	int		lineflag;
 	char	*fullstr;
 
 	i1 = 0;
 	i2 = 0;
-	lineflag = 0;
 	fullstr = (char *)malloc(ft_strlen(*prestr) + ft_strlen(sufstr) + 1);
 	if (fullstr == NULL)
-		return (-10);
+		return (-1);
 	while (*prestr && (*prestr)[i1])
 	{
 		fullstr[i1] = (*prestr)[i1];
@@ -54,7 +52,7 @@ int	ft_strjoin_ms(char **prestr, char *sufstr)
 	if (*prestr)
 		free (*prestr);
 	*prestr = fullstr;
-	return (lineflag);
+	return (0);
 }
 
 /* Compare the first "n" chars from strings "s1" & "s2".

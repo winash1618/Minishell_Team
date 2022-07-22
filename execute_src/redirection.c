@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/06/27 14:33:41 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/17 15:29:47 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	skip_node(t_new **lst, int *skip_flag)
 	if (!(lst && *lst))
 	{
 		ft_putstr_fd("What are you doing, there is no list\n", 2);
-		exit(-1);
+		return ;
 	}
 	if ((*lst)->prev != NULL)
 		(*lst)->prev->next = (*lst)->next;
@@ -37,51 +37,44 @@ int	input_file_check(char *file_name)
 		{
 			fd = open(file_name, O_RDONLY);
 			if (fd == -1)
-				return (print_error(file_name, ": Failed to open"));
-			else if (read(fd, file_name, 0) == -1)
-			{
-				close (fd);
-				return (print_error(file_name, ": Is a directory"));
-			}
+				return (print_error(file_name, ": Failed to open", 1));
 			close(fd);
 		}
 		else
-			return (print_error(file_name, ": Permission denied"));
+			return (print_error(file_name, ": Permission denied", 1));
 	}
 	else
-		return (print_error(file_name, ": No such file or directory"));
+		return (print_error(file_name, ": No such file or directory", 1));
 	return (0);
 }
 
-char	*redirect_input(t_new **lst, int *skip_flag, int *input_flag)
+int	redirect_input(t_new **lst, int *skpflag, int *inflag, char **filestr)
 {
-	char	*in_file_name; //not an accurate name
 	t_new	*temp;
 
-	in_file_name = NULL;
+	*filestr = NULL;
 	temp = *lst;
-	*input_flag = 0;
+	*inflag = 0;
 	if (temp && *((temp->token) + 1) == '<')
-		*input_flag = 1;
+		*inflag = 1;
 	if (temp)
 	{
-		if (*((temp->token) + 1 + *input_flag) != '\0')
-			in_file_name = (temp->token) + 1 + *input_flag;
+		if (*((temp->token) + 1 + *inflag) != '\0')
+			*filestr = (temp->token) + 1 + *inflag;
 		else if (temp->next)
 		{
-			// if (*(temp->next->token) == '|')
-			// 	skip_node(&temp, skip_flag);
-			in_file_name = temp->next->token;
-			skip_node(&temp, skip_flag);
+			*filestr = temp->next->token;
+			skip_node(&temp, skpflag);
 		}
 		else
-			print_error("syntax error near unexpected token ", temp->token);
-		skip_node(&temp, skip_flag);
+			return (print_error("syntax error near unexpected token "
+					, temp->token, 258));
+		skip_node(&temp, skpflag);
 	}
-	if ((*input_flag == 0) && input_file_check(in_file_name) == -1)
-		return (NULL);
+	if ((*inflag == 0) && input_file_check(*filestr) != 0)
+		return (1);
 	*lst = temp;
-	return (in_file_name);
+	return (0);
 }
 
 int	output_file_check(char *file_name, int trunc)
@@ -95,45 +88,45 @@ int	output_file_check(char *file_name, int trunc)
 		{
 			fd = open(file_name, O_WRONLY | trunc);
 			if (fd == -1)
-				return (print_error(file_name, ": Is a directory"));
+				return (print_error(file_name, ": Is a directory", 1));
 			close(fd);
 		}
 		else
-			return (print_error(file_name, ": Permission denied"));
+			return (print_error(file_name, ": Permission denied", 1));
 	}
 	else
 	{
 		fd = open(file_name, O_CREAT, 0644);
 		if (fd == -1)
-			return (print_error(file_name, ": File failed to creat"));
+			return (print_error(file_name, ": File failed to creat", 1));
 		close (fd);
 	}
 	return (0);
 }
 
-char	*redirect_output(t_new **lst, int *skip_flag, int *append_flag)
+int	redirect_output(t_new **lst, int *skpflag, int *appendflag, char **filename)
 {
-	char	*out_file_name;
 	t_new	*temp;
 
-	out_file_name = NULL;
+	*filename = NULL;
 	temp = *lst;
-	if (*((temp->token) + 1) == '>') // use flag
-		*append_flag = 1;
+	if (*((temp->token) + 1) == '>')
+		*appendflag = 1;
 	else
-		*append_flag = 0;
-	if (*((temp->token) + 1 + *append_flag) != '\0')
-		out_file_name = (temp->token) + 1 + *append_flag;
+		*appendflag = 0;
+	if (*((temp->token) + 1 + *appendflag) != '\0')
+		*filename = (temp->token) + 1 + *appendflag;
 	else if (temp->next)
 	{
-		out_file_name = temp->next->token;
-		skip_node(&temp, skip_flag);
+		*filename = temp->next->token;
+		skip_node(&temp, skpflag);
 	}
 	else
-		print_error("syntax error near unexpected token ", temp->token);
-	skip_node(&temp, skip_flag);
+		return (print_error("syntax error near unexpected token "
+				, temp->token, 258));
+	skip_node(&temp, skpflag);
 	*lst = temp;
-	if (output_file_check(out_file_name, (*append_flag == 0)) == -1)
-		return (NULL);
-	return (out_file_name);
+	if (output_file_check(*filename, (*appendflag == 0)) != 0)
+		return (1);
+	return (0);
 }
