@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/19 11:45:43 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/23 13:13:54 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,6 @@ void	skip_node(t_new **lst, int *skip_flag);
 int		redirect_input(t_new **lst, int *skpflag, int *inflag, char **filestr);
 int		redirect_output(t_new **lst, int *skpflag,
 			int *appendflag, char **filename);
-char	*line_input(char *delimiter);
 
 //redirection2.c
 int		hijack_stdin(int in_file, char *in_file_name);
@@ -231,7 +230,7 @@ int		set_pipes(t_new **lst, int in_file, int out_file);
 
 //here_doc.c
 int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
-char	*line_input(char *delimiter);
+char	*line_input(char *delimiter, char *line);
 int		here_doc_input(t_new *lst);
 
 //temp_list.c
@@ -261,6 +260,9 @@ int		ft_unset(char **args, char **env);
 //enviroment1
 int		append_env(char **env, char *args, int j);
 int		ft_export(char **args, char **env, char *file_name, int append);
+
+//enviroment2
+int		update_shlvl(char **env, char *var);
 
 int		main(int ac, char **av, char **env);
 

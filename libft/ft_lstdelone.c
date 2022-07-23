@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:10:00 by ayassin           #+#    #+#             */
-/*   Updated: 2021/12/26 11:01:49 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/23 09:27:13 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
 	if (lst)
 	{
-		del(lst->content);
+		if (lst->content)
+			del(lst->content);
 		free(lst);
 	}
 }
