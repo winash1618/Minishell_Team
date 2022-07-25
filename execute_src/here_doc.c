@@ -6,13 +6,14 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 09:29:24 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 17:53:44 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*line_input(char *delimiter, char *line)
+// user input is regiterd for here doc
+static char	*line_input(char *delimiter, char *line)
 {
 	char	*one_line;
 	t_list	*node;
@@ -41,7 +42,8 @@ char	*line_input(char *delimiter, char *line)
 	return (line);
 }
 
-void	line_input_child(char *delimiter, int *fd)
+// child managing user input and sending it to parent
+static void	line_input_child(char *delimiter, int *fd)
 {
 	char	*line;
 	int		len;
@@ -65,7 +67,8 @@ void	line_input_child(char *delimiter, int *fd)
 	cleanexit(NULL, NULL, 0, fd);
 }
 
-char	*line_input_parent(int id, int *fd)
+// parent waiting for child to send << input
+static char	*line_input_parent(int id, int *fd)
 {
 	int		status;
 	int		len;
@@ -92,7 +95,8 @@ char	*line_input_parent(int id, int *fd)
 	return (line);
 }
 
-char	*line_input_manager(char *delimiter)
+// create a child for here doc
+static char	*line_input_manager(char *delimiter)
 {
 	int		*fd;
 	int		id;
@@ -108,6 +112,7 @@ char	*line_input_manager(char *delimiter)
 	return (line_input_parent(id, fd));
 }
 
+// take input from << redirection
 int	here_doc_input(t_new *lst)
 {
 	char	*delimiter;

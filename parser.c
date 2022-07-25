@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:33:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/06/29 08:26:33 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:27:18 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,6 @@ t_list *g_m;
 // 	// printf("hi");
 // }
 
-t_new	*temp_makelist(char **str)
-{
-	t_new	*commands;
-	int i = 0;
-
-	commands = NULL;
-	while (str[i])
-	{
-		temp_lstadd_back(&commands, temp_lst_newnode(str[i]));
-		++i;
-	}
-	return (commands);
-}
 
 int main(int ac, char **av, char **env)
 {

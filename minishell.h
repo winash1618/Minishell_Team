@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 10:03:12 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 18:26:01 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,36 +183,74 @@ int		ft_putstr_fd1(char *s, int fd);
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//
-int		excute(t_new *lst, char **env);
+
+// builtins.c
+
+int		ft_echo(char **args);
+int		ft_pwd(char **args);
+int		ft_env(char **env, char **args);
+char	*get_home(char **env);
+
+// builtins1.c
+
+int		ft_chdir(char **args, char **env);
+
+//child.c
+
+char	**args_array(t_new *lst);
+int		buitin_switch(t_new *lst, char **env, char *file_name, int append);
+int		child_execute(t_new *lst, char **path, char **env);
+
+// enviroment.c
+
+int		cpynewenv(char **new_env, char **env);
+int		setnewenv(char **env);
+int		valid_varible(char *var);
+int		ft_unset(char **args, char **env);
+
+//enviroment1
+
+int		append_env(char **env, char *args, int j);
+int		ft_export(char **args, char **env, char *file_name, int append);
+
+//enviroment2
+
+int		update_shlvl(char **env, char *var);
+
+//here_doc.c
+
+int		here_doc_input(t_new *lst);
 
 //pipex_utils.c
+
 t_new	*nxt_cmd(t_new *lst);
-void	close_pipes(int (*fd)[2], int no_of_pipes);
 int		number_of_pipes(t_new *lst);
 int		list_has_pipes(t_new *lst);
+void	close_pipes(int (*fd)[2], int no_of_pipes);
 int		print_error(char *problem, char *msg, int errrorno);
 
 //pipex_utils1.c
-int		ft_strjoin_ms(char **prestr, char *sufstr);
+
 void	clear_str_sep(char **str_sep);
+int		ft_strjoin_ms(char **prestr, char *sufstr);
 int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
 int		ft_strncmp_pc(const char *s1, const char *s2, size_t n);
 void	ft_tolower_str(char *str);
 
 //pipex_utils2.c
+
 int		ft_lstadd_backhelper(t_list **head, void *content);
 void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds);
 int		builtins(t_new *lst, char **env);
 void	find_cmd(t_new **lst);
 int		has_parentbuiltins(t_new *lst);
 
-//child.c
-char	**args_array(t_new *lst);
-int		buitin_switch(t_new *lst, char **env, char *file_name, int append);
-int		child_execute(t_new *lst, char **path, char **env);
+// pipex.c
+
+int		excute(t_new *lst, char **env);
 
 //redirection.c
-void	skip_node(t_new **lst, int *skip_flag);
+
 int		redirect_input(t_new **lst, int *skpflag, int *inflag, char **filestr);
 int		redirect_output(t_new **lst, int *skpflag,
 			int *appendflag, char **filename);
@@ -226,44 +264,8 @@ int		redirect_loop(t_new **lst, char **in_file_name,
 int		adopted_child(int in_file, char *here_doc);
 int		set_pipes2(t_new **lst, char **ifile_name,
 			char **ofile_name, int *flag);
-int		set_pipes(t_new **lst, int in_file, int out_file);
-
-//here_doc.c
-int		ft_strncmp_p(const char *s1, const char *s2, size_t n);
-char	*line_input(char *delimiter, char *line);
-int		here_doc_input(t_new *lst);
-
-//temp_list.c
-t_new	*temp_lst_newnode(char *str);
-void	temp_list_clear(t_new **lst);
-void	print_strarr(char **args);
-void	temp_lstadd_back(t_new **lst, t_new *node);
 
 //signals.c
 int		signals(void);
-
-// builtins.c
-int		ft_echo(char **args);
-int		ft_pwd(char **args);
-int		ft_env(char **env, char **args);
-char	*get_home(char **env);
-
-// builtins1.c
-int		ft_chdir(char **args, char **env);
-
-// enviroment.c
-int		cpynewenv(char **new_env, char **env);
-int		setnewenv(char **env);
-int		valid_varible(char *var);
-int		ft_unset(char **args, char **env);
-
-//enviroment1
-int		append_env(char **env, char *args, int j);
-int		ft_export(char **args, char **env, char *file_name, int append);
-
-//enviroment2
-int		update_shlvl(char **env, char *var);
-
-int		main(int ac, char **av, char **env);
 
 #endif

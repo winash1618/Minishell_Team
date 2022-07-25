@@ -6,14 +6,14 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 13:12:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 09:34:37 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 17:48:30 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*atoi function that overflows ints*/
-int	minishell_atoi(char *str)
+/*atoi function that allows overflows */
+static int	minishell_atoi(char *str)
 {
 	int	i;
 	int	sign;
@@ -40,7 +40,8 @@ int	minishell_atoi(char *str)
 	return (num * sign);
 }
 
-int	update_shlvlhelper(char **env, int i, int level)
+// help update shell level
+static int	update_shlvlhelper(char **env, int i, int level)
 {
 	int		error;
 	char	*temp;
@@ -69,6 +70,7 @@ int	update_shlvlhelper(char **env, int i, int level)
 	return (error);
 }
 
+// update shell level in env
 int	update_shlvl(char **env, char *var)
 {
 	int		i;
