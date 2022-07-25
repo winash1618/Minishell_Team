@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 09:44:49 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 11:23:19 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 			if (WEXITSTATUS(status))
 				temp_error = WEXITSTATUS(status);
 		errno = temp_error;
-		ft_printf("The parent is alive %d %d\n", WEXITSTATUS(status), errno);
+		//ft_printf("The parent is alive %d %d\n", WEXITSTATUS(status), errno);
 	}
 	free(fd);
 	return (error);

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 09:27:26 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 11:22:09 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(int ac, char **av, char **env)
 {
 	t_new	*cmd;
 	char	*line;
-	int		i;
 	t_info	*info;
 	t_list	*node;
+	int		err;
 
 	(void) ac;
 	(void) av;
@@ -41,13 +41,14 @@ int	main(int ac, char **av, char **env)
 		cleanexit(NULL, NULL, 1, NULL);
 	info->flag = 1;
 	info->e_flag = 0;
-	i = 0;
 	while (1)
 	{
-		i++;
 		info->e_flag = 0;
 		info->q_flag = 0;
+		err = errno;
 		line = ft_readline();
+		if (!errno)
+			errno = err;
 		if (line)
 			add_history(line);
 		else
