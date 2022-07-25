@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/23 13:17:23 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:27:26 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	main(int ac, char **av, char **env)
 	if (info == NULL)
 		cleanexit(NULL, NULL, print_error("", "malloc failed", 1), NULL);
 	if (ft_lstadd_backhelper(&g_m, info) != 0)
-		cleanexit(NULL, NULL, print_error("", "malloc failed", 1), NULL);
+		cleanexit(NULL, NULL, 1, NULL);
 	if (setnewenv(env))
-		cleanexit(NULL, NULL, print_error("", "malloc failed", 1), NULL);
+		cleanexit(NULL, NULL, 1, NULL);
 	if (update_shlvl(env, "SHLVL"))
-		cleanexit(NULL, NULL, print_error("", "malloc failed", 1), NULL);
+		cleanexit(NULL, NULL, 1, NULL);
 	info->flag = 1;
 	info->e_flag = 0;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/23 13:05:26 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:29:24 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,7 @@ int	here_doc_input(t_new *lst)
 				if (lst->token == NULL)
 					return (1);
 				if (ft_lstadd_backhelper(&g_m, lst->token))
-				{
-					free(lst->token);
-					cleanexit(NULL, NULL,
-						print_error("", "malloc failed", 1), NULL);
-				}
+					cleanexit(NULL, NULL, 1, NULL);
 			}
 		}
 		lst = lst->next;

@@ -11,6 +11,7 @@
 		"sstream": "c",
 		"__threading_support": "c",
 		"cerrno": "c",
-		"__locale": "c"
+		"__locale": "c",
+		"readline.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/23 11:58:44 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:26:35 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_lstadd_backhelper(t_list **head, void *content)
 	{
 		if (content)
 			free(content);
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	}
 	ft_lstadd_back(head, node);
 	return (0);

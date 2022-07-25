@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/23 13:13:54 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 10:03:12 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include <stdlib.h>
 # include <termcap.h> 
 # include <signal.h>
+# include <readline/history.h>
 # include <readline/readline.h>
 # include <string.h>
-# include <readline/history.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 

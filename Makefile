@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/07/23 15:55:33 by ayassin          ###   ########.fr        #
+#    Updated: 2022/07/25 10:57:44 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJSP = $(SRCP:.c=.o)
 
 CC = gcc
 
-CFLAGS = -g3 -Wall -Werror -Wextra
+CFLAGS = -g3 -Wall -Werror -Wextra -I/usr/local/opt/readline/include
 
 all: $(NAME)
 
@@ -54,18 +54,18 @@ all: $(NAME)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFLAGS) -Ilibft -Ift_printf -Iparsing -c $^ -o $@
+	$(CC) $(CFLAGS)  -Ilibft -Ift_printf -Iparsing -c $^ -o $@
 
 
 $(NAME): $(OBJS) $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFALGS) $(SRC) -ltermcap -lreadline -lreadline \
-	-Lft_printf -lftprintf -Llibft -lft -o $(NAME)
-	$(CC) $(CFALGS) $(SRCP)  \
-	 parsing/parsing.a -lreadline \
-	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o $(PNAME)
+	$(CC) $(CFLAGS) $(SRC)  \
+	-Lft_printf -lftprintf -Llibft -lft -ltermcap -L/usr/local/opt/readline/lib -lreadline -o $(NAME)
+	$(CC) $(CFLAGS) -L/usr/local/opt/readline/lib -lreadline $(SRCP)  \
+	 parsing/parsing.a \
+	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -L/usr/local/opt/readline/lib -lreadline -o $(PNAME)
 
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 13:12:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/23 13:20:17 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:34:37 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	update_shlvlhelper(char **env, int i, int level)
 	}
 	temp = ft_itoa(level);
 	if (temp == NULL)
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	temp2 = ft_strjoin("SHLVL=", temp);
 	if (temp2 != NULL)
 		error = append_env(env, temp2, i);
 	free (temp);
 	if (temp2 == NULL)
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	free(temp2);
 	return (error);
 }
@@ -91,6 +91,6 @@ int	update_shlvl(char **env, char *var)
 	}
 	temp = ft_strdup("SHLVL=1");
 	if (temp == NULL)
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	return (append_env(env, temp, i));
 }
