@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 19:44:36 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/16 20:32:17 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:28:47 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@ int	cpynewenv(char **new_env, char **env)
 	int		count;
 
 	count = 0;
+	if (!env)
+		return (0);
 	while (env[count])
 	{
 		new_env[count] = ft_strdup(env[count]);
 		if (new_env[count] == NULL)
-			return (1);
+			return (print_error("", "malloc failed", 1));
 		if (ft_lstadd_backhelper(&g_m, new_env[count]))
-		{
-			free (new_env[count]);
 			return (1);
-		}
 		++count;
 	}
 	new_env[count] = NULL;
@@ -44,15 +43,15 @@ int	setnewenv(char **env)
 	while (env && env[count])
 		++count;
 	if (count)
-		new_env = (char **)malloc((sizeof(*new_env) + 1) * count);
-	if (!new_env)
-		return (1);
-	if (ft_lstadd_backhelper(&g_m, new_env))
 	{
-		free (new_env);
-		return (1);
+			new_env = (char **)malloc((sizeof(*new_env) + 1) * count);
+		if (!new_env)
+			return (print_error("", "malloc failed", 1));
+		if (ft_lstadd_backhelper(&g_m, new_env))
+			return (1);
+		return (cpynewenv(new_env, env));
 	}
-	return (cpynewenv(new_env, env));
+	return (0);
 }
 
 int	valid_varible(char *var)

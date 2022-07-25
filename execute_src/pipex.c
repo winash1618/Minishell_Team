@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/20 09:07:17 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 11:23:19 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int	(*create_pipes(int no_of_pipes))[2]
 		return (NULL);
 	fd = malloc(sizeof(*fd) * (no_of_pipes));
 	if (fd == NULL)
+	{
+		print_error("", "malloc failed", 1);
 		return (NULL);
-	if (fd == NULL)
-		return (NULL);
+	}
 	i = 0;
 	while (i < no_of_pipes)
 	{
@@ -123,7 +124,7 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 	no_of_pipes = number_of_pipes(lst);
 	fd = create_pipes(no_of_pipes);
 	if (fd == NULL && no_of_pipes != 0)
-		return (-1);
+		return (print_error("", "malloc failed", -1));
 	error = loopy_parent(lst, path, env, fd);
 	if (error == 0)
 	{
@@ -132,7 +133,7 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 			if (WEXITSTATUS(status))
 				temp_error = WEXITSTATUS(status);
 		errno = temp_error;
-		ft_printf("The parent is alive %d %d\n", WEXITSTATUS(status), errno);
+		//ft_printf("The parent is alive %d %d\n", WEXITSTATUS(status), errno);
 	}
 	free(fd);
 	return (error);
@@ -145,7 +146,7 @@ int	excute(t_new *lst, char **env)
 
 	i = 0;
 	if (here_doc_input(lst))
-		cleanexit(NULL, NULL, 1, NULL);
+		return (0);
 	if (has_parentbuiltins(lst))
 	{
 		errno = builtins(lst, env);

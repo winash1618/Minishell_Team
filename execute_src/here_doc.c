@@ -6,37 +6,34 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 08:13:47 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/21 16:22:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:29:24 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*line_input(char *delimiter)
+char	*line_input(char *delimiter, char *line)
 {
-	char	*line;
 	char	*one_line;
+	t_list	*node;
 
-	line = NULL;
 	one_line = NULL;
+	if (ft_lstadd_backhelper(&g_m, line))
+		return (NULL);
+	node = ft_lstlast(g_m);
 	while (1)
 	{
 		one_line = readline("> ");
-		//ft_putstr_fd("I LOOPED\n", 2);
-		if (!one_line)
-			return (NULL);
-		if (ft_strncmp_p(one_line, delimiter, ft_strlen(delimiter) + 1) != 0)
-		{
-			if (ft_strjoin_ms(&line, one_line) < 0 || ft_strjoin_ms(&line, "\n"))
-			{
-				free(one_line);
-				free(line);
-				return (NULL);
-			}
-			free(one_line);
-		}
-		else
+		if (ft_strncmp_p(one_line, delimiter, ft_strlen(delimiter) + 1) == 0)
 			break ;
+		if (ft_strjoin_ms(&line, one_line) < 0 || ft_strjoin_ms(&line, "\n"))
+		{
+			free(one_line);
+			free(line);
+			return (NULL);
+		}
+		free(one_line);
+		node->content = line;
 	}
 	free(one_line);
 	if (line == NULL)
@@ -44,36 +41,71 @@ char	*line_input(char *delimiter)
 	return (line);
 }
 
-char	*line_input_parent(char *delimiter)
+void	line_input_child(char *delimiter, int *fd)
 {
-	int		fd[2];
 	char	*line;
 	int		len;
-	int		id;
-	int		status;
+	t_list	*node;
 
-	pipe(fd);
-	id = fork();
-	if (id == 0)
+	line = NULL;
+	node = ft_lstnew(fd);
+	if (node == NULL)
+		cleanexit(NULL, NULL, print_error("", "malloc failed", 1), fd);
+	ft_lstadd_front(&g_m, node);
+	close(fd[0]);
+	line = line_input(delimiter, line);
+	if (line == NULL)
+		cleanexit(NULL, NULL, print_error("", "malloc failed", 1), fd);
+	len = ft_strlen(line);
+	write(fd[1], &len, sizeof(int));
+	ft_putstr_fd(line, fd[1]);
+	close(fd[1]);
+	if (*line == '\0')
+		free (line);
+	cleanexit(NULL, NULL, 0, fd);
+}
+
+char	*line_input_parent(int id, int *fd)
+{
+	int		status;
+	int		len;
+	char	*line;
+
+	status = 0;
+	len = 0;
+	line = NULL;
+	waitpid(id, &status, 0);
+	if (id == -1 || WEXITSTATUS(status))
 	{
 		close(fd[0]);
-		line = line_input(delimiter);
-		len = ft_strlen(line);
-		write(fd[1], &len, sizeof(int));
-		ft_putstr_fd(line, fd[1]);
 		close(fd[1]);
-		if (line)
-			free(line);
-		exit(0);
+		free(fd);
+		return (NULL);
 	}
-	waitpid(id, &status, 0);
 	close(fd[1]);
 	read(fd[0], &len, sizeof(int));
 	line = malloc(sizeof(char) * (len + 1));
 	read(fd[0], line, len);
 	close(fd[0]);
 	line[len] = 0;
+	free(fd);
 	return (line);
+}
+
+char	*line_input_manager(char *delimiter)
+{
+	int		*fd;
+	int		id;
+
+	fd = (int *)malloc(sizeof(*fd) * 2);
+	if (fd == NULL)
+		return (NULL);
+	if (pipe(fd) == -1)
+		return (NULL);
+	id = fork();
+	if (id == 0)
+		line_input_child(delimiter, fd);
+	return (line_input_parent(id, fd));
 }
 
 int	here_doc_input(t_new *lst)
@@ -89,15 +121,12 @@ int	here_doc_input(t_new *lst)
 			{
 				lst = lst->next;
 				delimiter = lst->token;
-				lst->token = line_input(delimiter); //check what is happining
-				if (ft_lstadd_backhelper(&g_m, lst->token))
-				{
-					free(lst->token);
+				lst->token = line_input_manager(delimiter);
+				if (lst->token == NULL)
 					return (1);
-				}
+				if (ft_lstadd_backhelper(&g_m, lst->token))
+					cleanexit(NULL, NULL, 1, NULL);
 			}
-			else
-				print_error(lst->token, ": Parsing error in Tokens\n", 22);
 		}
 		lst = lst->next;
 	}

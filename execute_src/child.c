@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/20 09:26:00 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:38:07 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,11 @@ int	child_execute(t_new *lst, char **path, char **env)
 
 	clone_cmd = ft_strdup(lst->token);
 	if (!clone_cmd)
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	ft_tolower_str(clone_cmd);
 	args = args_array(lst);
 	if (args == NULL)
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	temp_return = child_buitin_switch(clone_cmd, args, env);
 	if (temp_return != -1)
 		return (temp_return);

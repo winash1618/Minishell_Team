@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/19 18:12:17 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:26:35 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_lstadd_backhelper(t_list **head, void *content)
 	{
 		if (content)
 			free(content);
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	}
 	ft_lstadd_back(head, node);
 	return (0);
@@ -31,18 +31,18 @@ void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds)
 {
 	int	i;
 
-	i = 0;
-	clear_str_sep(path);
-	ft_lstclear(&g_m, free);
-	if (fd)
-		free(fd);
-	while (i <= 3)
-		close(i++);
+	i = 3;
+	while (i >= 0)
+		close(i--);
 	if (open_fds)
 	{
 		close(open_fds[0]);
 		close(open_fds[1]);
 	}
+	if (fd)
+		free(fd);
+	clear_str_sep(path);
+	ft_lstclear(&g_m, free);
 	exit(status);
 }
 

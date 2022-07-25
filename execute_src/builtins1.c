@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 18:31:11 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 19:52:09 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:28:27 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	update_envpwd_helper(char *old_loc, char *var, char **env, int i)
 	tempstr = NULL;
 	tempstr = ft_strdup(var);
 	if (!tempstr)
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	error = ft_strjoin_ms(&tempstr, "=");
 	env[i] = tempstr;
 	if (old_loc)
@@ -94,6 +94,8 @@ int	ft_chdir_abs(char **args, char **env, char	*old_loc)
 			return (print_error(&args[1][1], ": No such file or directory", 1));
 		}
 	}
+	else
+		return (print_error("cd: ", "HOME not set", 1));
 	return (0);
 }
 

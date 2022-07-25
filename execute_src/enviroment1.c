@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 20:31:30 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 19:44:15 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 09:29:04 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,16 @@ int	append_env(char **env, char *args, int j)
 	{
 		env[j] = ft_strdup(args);
 		if (!env[j])
-			return (1);
+			return (print_error("", "malloc failed", 1));
 		return (ft_lstadd_backhelper(&g_m, env[j]));
 	}
 	else if (!env[j])
 	{
 		new_env = (char **)malloc(sizeof(*env) * (j + 2));
 		if (!new_env)
-			return (1);
+			return (print_error("", "malloc failed", 1));
 		if (ft_lstadd_backhelper(&g_m, new_env))
-		{
-			free(new_env);
 			return (1);
-		}
 		if (cpynewenv(new_env, env))
 			return (1);
 		env[j] = args;
