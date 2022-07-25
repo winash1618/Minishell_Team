@@ -6,13 +6,14 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:30:18 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 11:23:19 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 18:11:06 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	(*create_pipes(int no_of_pipes))[2]
+// create and return a number of pipes
+static int	(*create_pipes(int no_of_pipes))[2]
 {
 	int	(*fd)[2];
 	int	i;
@@ -38,23 +39,8 @@ int	(*create_pipes(int no_of_pipes))[2]
 	return (fd);
 }
 
-// int	parent_tarp(int count, int (*fd)[2], int no_of_pipes, t_new **lst)
-// {
-// 	int	errors;
-
-// 	errors = 0;
-// 	if (no_of_pipes == 0)
-// 		errors = set_pipes(lst, STDIN_FILENO, STDOUT_FILENO);
-// 	else if (count > 0 && count < no_of_pipes)
-// 		errors = set_pipes(lst, fd[count - 1][0], fd[count][1]);
-// 	else if (count == 0)
-// 		errors = set_pipes(lst, STDIN_FILENO, fd[count][1]);
-// 	else
-// 		errors = set_pipes(lst, fd[count - 1][0], STDOUT_FILENO);
-// 	return (errors);
-// }
-
-int	childmanager(int count, int (*fd)[2], t_new **lst, int *open_fd)
+// guide the child step by step until output excution
+static int	childmanager(int count, int (*fd)[2], t_new **lst, int *open_fd)
 {
 	int		new_fd[2];
 	int		flag[2];
@@ -83,7 +69,8 @@ int	childmanager(int count, int (*fd)[2], t_new **lst, int *open_fd)
 	return (errors);
 }
 
-int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
+// loop and fork until you can't no more
+static int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 {
 	int	count;
 	int	status;
@@ -112,7 +99,8 @@ int	loopy_parent(t_new *lst, char **path, char **env, int (*fd)[2])
 	return (0);
 }
 
-int	parent_forking5(t_new *lst, char **path, char **env)
+// parent creating pipes and waiting for children to die
+static int	parent_forking5(t_new *lst, char **path, char **env)
 {
 	int		error;
 	int		(*fd)[2];
@@ -133,12 +121,12 @@ int	parent_forking5(t_new *lst, char **path, char **env)
 			if (WEXITSTATUS(status))
 				temp_error = WEXITSTATUS(status);
 		errno = temp_error;
-		//ft_printf("The parent is alive %d %d\n", WEXITSTATUS(status), errno);
 	}
 	free(fd);
 	return (error);
 }
 
+// excution steps here_doc -> parent builtins -> child builtins
 int	excute(t_new *lst, char **env)
 {
 	char	**path;

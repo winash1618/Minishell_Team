@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/07/25 10:57:44 by ayassin          ###   ########.fr        #
+#    Updated: 2022/07/25 18:23:01 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ PNAME = parser
 SRC = minishell.c $(EXECUTE_SRC_INDIR) $(EXECUTE_SRC_INDIR1)
  
 EXECUTE_SRC = pipex.c pipex_utils.c  pipex_utils1.c pipex_utils2.c child.c \
-				redirection.c redirection2.c temp_list.c here_doc.c signals.c \
+				redirection.c redirection2.c here_doc.c signals.c \
 				enviroment.c enviroment1.c enviroment2.c builtins.c builtins1.c
 				
 EXECUTE_SRC1 = p_assign_1.c p_assign_2.c p_dollar.c \
@@ -61,11 +61,11 @@ $(NAME): $(OBJS) $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFLAGS) $(SRC)  \
-	-Lft_printf -lftprintf -Llibft -lft -ltermcap -L/usr/local/opt/readline/lib -lreadline -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) -L/usr/local/opt/readline/lib -lreadline \
+	-Lft_printf -lftprintf -Llibft -lft -ltermcap -o $(NAME)
 	$(CC) $(CFLAGS) -L/usr/local/opt/readline/lib -lreadline $(SRCP)  \
-	 parsing/parsing.a \
-	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -L/usr/local/opt/readline/lib -lreadline -o $(PNAME)
+	 parsing/parsing.a -L/usr/local/opt/readline/lib -lreadline \
+	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -o $(PNAME)
 
 
 clean:

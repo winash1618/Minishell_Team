@@ -6,12 +6,13 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 09:26:35 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 18:05:01 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// lst_add_back that makes the node also
 int	ft_lstadd_backhelper(t_list **head, void *content)
 {
 	t_list	*node;
@@ -27,6 +28,7 @@ int	ft_lstadd_backhelper(t_list **head, void *content)
 	return (0);
 }
 
+// exit minishell with appropriate status
 void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds)
 {
 	int	i;
@@ -46,6 +48,7 @@ void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds)
 	exit(status);
 }
 
+// setup excute for builtins in parent
 int	builtins(t_new *lst, char **env)
 {
 	char	*armrest1;
@@ -66,6 +69,7 @@ int	builtins(t_new *lst, char **env)
 	return (buitin_switch(lst, env, out_file_name, legrests[0]));
 }
 
+// move lst to the appropriate cmd and not a redirection
 void	find_cmd(t_new **lst)
 {
 	t_new	*node;
@@ -93,6 +97,7 @@ void	find_cmd(t_new **lst)
 	*lst = node;
 }
 
+// check if the cmd will excute in parent
 int	has_parentbuiltins(t_new *lst)
 {
 	if (list_has_pipes(lst))

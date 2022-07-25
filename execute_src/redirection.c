@@ -6,13 +6,14 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:17 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/17 15:29:47 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 18:16:35 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	skip_node(t_new **lst, int *skip_flag)
+// remove node from lst and poit lst to nxt node
+static void	skip_node(t_new **lst, int *skip_flag)
 {
 	*skip_flag = 1;
 	if (!(lst && *lst))
@@ -27,7 +28,8 @@ void	skip_node(t_new **lst, int *skip_flag)
 	*lst = (*lst)->next;
 }
 
-int	input_file_check(char *file_name)
+// check if input file is valid
+static int	input_file_check(char *file_name)
 {
 	int	fd;
 
@@ -48,6 +50,7 @@ int	input_file_check(char *file_name)
 	return (0);
 }
 
+// save input redirection name
 int	redirect_input(t_new **lst, int *skpflag, int *inflag, char **filestr)
 {
 	t_new	*temp;
@@ -77,7 +80,8 @@ int	redirect_input(t_new **lst, int *skpflag, int *inflag, char **filestr)
 	return (0);
 }
 
-int	output_file_check(char *file_name, int trunc)
+// check if output is valid
+static int	output_file_check(char *file_name, int trunc)
 {
 	int	fd;
 
@@ -104,6 +108,7 @@ int	output_file_check(char *file_name, int trunc)
 	return (0);
 }
 
+// save output redirction name
 int	redirect_output(t_new **lst, int *skpflag, int *appendflag, char **filename)
 {
 	t_new	*temp;

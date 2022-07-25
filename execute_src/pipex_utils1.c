@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:59:22 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 09:37:05 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 17:59:56 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	ft_strncmp_pc(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[pos] - (unsigned char)s2[pos]);
 }
 
+// make all chars of str lowercase
 void	ft_tolower_str(char *str)
 {
 	int	i;

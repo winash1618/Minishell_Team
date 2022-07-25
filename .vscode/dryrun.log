@@ -11,17 +11,55 @@ make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/li
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
 make[1]: Nothing to be done for `all'.
- 
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
  
 make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
- 
-make[1]: Nothing to be done for `all'.
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
+ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o big_list2.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/here_doc.o ../execute_src/enviroment.o ../execute_src/builtins.o join_list.o
 make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
-gcc  minishell.c execute_src/pipex.c execute_src/pipex_utils.c execute_src/pipex_utils1.c execute_src/pipex_utils2.c execute_src/child.c execute_src/redirection.c execute_src/redirection2.c execute_src/temp_list.c execute_src/here_doc.c execute_src/signals.c execute_src/enviroment.c execute_src/enviroment1.c execute_src/enviroment2.c execute_src/builtins.c execute_src/builtins1.c parsing/p_assign_1.c parsing/p_assign_2.c parsing/p_dollar.c parsing/p_expand.c parsing/p_list_assign.c parsing/p_list_normal.c parsing/big_list2.c parsing/p_normal.c parsing/p_quote.c parsing/p_utils_1.c parsing/p_utils_2.c parsing/prompt.c parsing/p_redirection.c parsing/big_list.c parsing/p_redirection2.c parsing/p_expand1.c parsing/p_expand2.c parsing/p_expand3.c parsing/p_expand4.c parsing/join_list.c -ltermcap -lreadline -lreadline \
-	-Lft_printf -lftprintf -Llibft -lft -o minishell
-gcc  parser.c  \
-	 parsing/parsing.a -lreadline \
-	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o parser
+gcc -g3 -Wall -Werror -Wextra -I/usr/local/opt/readline/include  -Ilibft -Ift_printf -Iparsing -c execute_src/redirection.c -o execute_src/redirection.o
+for dir in libft ft_printf parsing; do \
+        /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
+    done
+ 
+make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
+ 
+make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
+make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
+ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o big_list2.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/here_doc.o ../execute_src/enviroment.o ../execute_src/builtins.o join_list.o
+make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
+gcc -g3 -Wall -Werror -Wextra -I/usr/local/opt/readline/include  -Ilibft -Ift_printf -Iparsing -c execute_src/redirection2.c -o execute_src/redirection2.o
+ 
+for dir in libft ft_printf parsing; do \
+        /Library/Developer/CommandLineTools/usr/bin/make all -C $dir; \
+    done
+ 
+make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ar cr libft.a ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strncmp.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_itoa.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmapi.o ft_strtrim.o ft_substr.o
+ 
+make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/libft'
+ 
+make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/ft_printf'
+ 
+make[1]: Entering directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection.c -o ../execute_src/redirection.o
+gcc -g3 -Werror -Wall -Wextra -I../libft -I../ft_printf -c ../execute_src/redirection2.c -o ../execute_src/redirection2.o
+ar cr  parsing.a p_assign_1.o p_assign_2.o p_dollar.o big_list2.o p_expand.o p_list_assign.o p_list_normal.o p_normal.o p_quote.o p_utils_1.o p_utils_2.o prompt.o p_redirection.o big_list.o p_redirection2.o p_expand1.o p_expand2.o p_expand3.o p_expand4.o ../execute_src/child.o ../execute_src/pipex_utils.o ../execute_src/pipex_utils1.o ../execute_src/pipex.o ../execute_src/redirection.o ../execute_src/redirection2.o ../execute_src/here_doc.o ../execute_src/enviroment.o ../execute_src/builtins.o join_list.o
+make[1]: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team/parsing'
+gcc -g3 -Wall -Werror -Wextra -I/usr/local/opt/readline/include minishell.c execute_src/pipex.c execute_src/pipex_utils.c execute_src/pipex_utils1.c execute_src/pipex_utils2.c execute_src/child.c execute_src/redirection.c execute_src/redirection2.c execute_src/here_doc.c execute_src/signals.c execute_src/enviroment.c execute_src/enviroment1.c execute_src/enviroment2.c execute_src/builtins.c execute_src/builtins1.c parsing/p_assign_1.c parsing/p_assign_2.c parsing/p_dollar.c parsing/p_expand.c parsing/p_list_assign.c parsing/p_list_normal.c parsing/big_list2.c parsing/p_normal.c parsing/p_quote.c parsing/p_utils_1.c parsing/p_utils_2.c parsing/prompt.c parsing/p_redirection.c parsing/big_list.c parsing/p_redirection2.c parsing/p_expand1.c parsing/p_expand2.c parsing/p_expand3.c parsing/p_expand4.c parsing/join_list.c -L/usr/local/opt/readline/lib -lreadline \
+	-Lft_printf -lftprintf -Llibft -lft -ltermcap -o minishell
+gcc -g3 -Wall -Werror -Wextra -I/usr/local/opt/readline/include -L/usr/local/opt/readline/lib -lreadline parser.c  \
+	 parsing/parsing.a -L/usr/local/opt/readline/lib -lreadline \
+	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -o parser
 make: Leaving directory `/Users/ayassin/Documents/git files/Minishell_Team'
  

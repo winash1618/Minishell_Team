@@ -6,13 +6,14 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 18:31:11 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 09:28:27 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 17:30:19 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	go_to_headdir(void)
+// go to root folder
+static void	go_to_headdir(void)
 {
 	char	*new_loc;
 	char	*temp_loc;
@@ -35,7 +36,8 @@ void	go_to_headdir(void)
 		free(new_loc);
 }
 
-int	update_envpwd_helper(char *old_loc, char *var, char **env, int i)
+// help update PWD and OLDPWD in env
+static int	update_envpwd_helper(char *old_loc, char *var, char **env, int i)
 {
 	int		error;
 	char	*tempstr;
@@ -61,7 +63,8 @@ int	update_envpwd_helper(char *old_loc, char *var, char **env, int i)
 	return (error);
 }
 
-int	update_envpwd(char *old_loc, char *var, char **env)
+// update PWD and OLDPWD in env
+static int	update_envpwd(char *old_loc, char *var, char **env)
 {
 	int		i;
 	int		error;
@@ -78,7 +81,8 @@ int	update_envpwd(char *old_loc, char *var, char **env)
 	return (error);
 }
 
-int	ft_chdir_abs(char **args, char **env, char	*old_loc)
+// go to an absilute directory
+static int	ft_chdir_abs(char **args, char **env, char	*old_loc)
 {
 	char	*home;
 
@@ -99,6 +103,7 @@ int	ft_chdir_abs(char **args, char **env, char	*old_loc)
 	return (0);
 }
 
+// cd builtin function
 int	ft_chdir(char **args, char **env)
 {
 	char	*old_loc;

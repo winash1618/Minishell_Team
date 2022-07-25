@@ -6,12 +6,13 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:54:00 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/20 09:06:41 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 18:25:14 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// hijack stdout to in_file_name or pipe of in_file
 int	hijack_stdin(int in_file, char *in_file_name)
 {
 	if (in_file_name != NULL)
@@ -36,6 +37,7 @@ int	hijack_stdin(int in_file, char *in_file_name)
 	return (in_file);
 }
 
+// hijack stdout to out_file_name or pipe of out_file
 int	hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag)
 {
 	append_flag = (O_APPEND * (append_flag)) | (O_TRUNC * (!append_flag));
@@ -64,6 +66,7 @@ int	hijack_stdout(int out_file, char *out_file_name, int append_flag, int flag)
 	return (out_file);
 }
 
+// loop to know ehich redirection will stand
 int	redirect_loop(t_new **lst, char **inputname, char **outputname, int *flag)
 {
 	t_new	*temp;
@@ -93,6 +96,7 @@ int	redirect_loop(t_new **lst, char **inputname, char **outputname, int *flag)
 	return (0);
 }
 
+// write to input pipe if input id from here doc
 int	adopted_child(int in_file, char *here_doc)
 {
 	int	*fd;
@@ -114,6 +118,7 @@ int	adopted_child(int in_file, char *here_doc)
 	return (0);
 }
 
+// save values of redirection in input params
 int	set_pipes2(t_new **lst, char **ifile_name, char **ofile_name, int *flag)
 {
 	int	errors;
@@ -129,34 +134,3 @@ int	set_pipes2(t_new **lst, char **ifile_name, char **ofile_name, int *flag)
 	find_cmd(lst);
 	return (errors);
 }
-
-// // return fd of hijacking to close later
-// int	set_pipes(t_new **lst, int in_fd, int out_fd)
-// {
-// 	char	*ifile_name;
-// 	char	*ofile_name;
-// 	int		flag[2];
-
-// 	ifile_name = NULL;
-// 	ofile_name = NULL;
-// 	flag[0] = 0;
-// 	flag[1] = 0;
-// 	if (redirect_loop(lst, &ifile_name, &ofile_name, flag))
-// 		return (1);
-// 	while (*lst && (*lst)->flag == 4
-// 		&& (*((*lst)->token) == '<' || *((*lst)->token) == '>'))
-// 	{
-// 		*lst = (*lst)->next;
-// 		if (*lst)
-// 			*lst = (*lst)->next;
-// 	}
-// 	if (hijack_stdout(out_fd, ofile_name, *flag, out_fd != 1))
-// 		return (1);
-// 	if (flag[1] == 0 && hijack_stdin(in_fd, ifile_name))
-// 		return (1);
-// 	if (flag[1] != 0 && adopted_child(in_fd, ifile_name))
-// 		return (1);
-// 	return (0);
-// }
-
-// starnge case cat -e  >green >>green.txt red.txt | cat -e

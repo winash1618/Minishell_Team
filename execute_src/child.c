@@ -6,12 +6,13 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 09:38:07 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 17:37:42 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// transform lst (until a pipe apears) into a 2D array 
 char	**args_array(t_new *lst)
 {
 	int		arg_count;
@@ -41,6 +42,7 @@ char	**args_array(t_new *lst)
 	return (args);
 }
 
+// switch function for parent buitins
 int	buitin_switch(t_new *lst, char **env, char *file_name, int append	)
 {
 	char	**args;
@@ -60,7 +62,8 @@ int	buitin_switch(t_new *lst, char **env, char *file_name, int append	)
 	return (1);
 }
 
-int	child_buitin_switch(char *cmd, char **args, char **env)
+// switch function for child buitins
+static int	child_buitin_switch(char *cmd, char **args, char **env)
 {
 	int	value;
 
@@ -88,7 +91,8 @@ int	child_buitin_switch(char *cmd, char **args, char **env)
 	return (value);
 }
 
-int	child_loop(char **path, char **args, char **env, char *clone_cmd)
+// try and excute function in each and every path given
+static int	child_loop(char **path, char **args, char **env, char *clone_cmd)
 {
 	int	i;
 
@@ -105,6 +109,7 @@ int	child_loop(char **path, char **args, char **env, char *clone_cmd)
 	return (0);
 }
 
+// try to excute command in a child
 int	child_execute(t_new *lst, char **path, char **env)
 {
 	char	**args;
