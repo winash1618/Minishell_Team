@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 
 int is_quote(char c)
 {
@@ -15,6 +17,9 @@ int main()
 
 	d = 0;
 	c = 0;
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
 	char *temp = "\'sfs\'df\'\"\'\"\'\'\""; 
 	char *temp2 = strdup(temp);
 

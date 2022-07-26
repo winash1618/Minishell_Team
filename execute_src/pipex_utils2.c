@@ -6,12 +6,13 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/19 18:12:17 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 18:05:01 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// lst_add_back that makes the node also
 int	ft_lstadd_backhelper(t_list **head, void *content)
 {
 	t_list	*node;
@@ -21,31 +22,33 @@ int	ft_lstadd_backhelper(t_list **head, void *content)
 	{
 		if (content)
 			free(content);
-		return (1);
+		return (print_error("", "malloc failed", 1));
 	}
 	ft_lstadd_back(head, node);
 	return (0);
 }
 
+// exit minishell with appropriate status
 void	cleanexit(char **path, int (*fd)[2], int status, int *open_fds)
 {
 	int	i;
 
-	i = 0;
-	clear_str_sep(path);
-	ft_lstclear(&g_m, free);
-	if (fd)
-		free(fd);
-	while (i <= 3)
-		close(i++);
+	i = 3;
+	while (i >= 0)
+		close(i--);
 	if (open_fds)
 	{
 		close(open_fds[0]);
 		close(open_fds[1]);
 	}
+	if (fd)
+		free(fd);
+	clear_str_sep(path);
+	ft_lstclear(&g_m, free);
 	exit(status);
 }
 
+// setup excute for builtins in parent
 int	builtins(t_new *lst, char **env)
 {
 	char	*armrest1;
@@ -66,6 +69,7 @@ int	builtins(t_new *lst, char **env)
 	return (buitin_switch(lst, env, out_file_name, legrests[0]));
 }
 
+// move lst to the appropriate cmd and not a redirection
 void	find_cmd(t_new **lst)
 {
 	t_new	*node;
@@ -93,6 +97,7 @@ void	find_cmd(t_new **lst)
 	*lst = node;
 }
 
+// check if the cmd will excute in parent
 int	has_parentbuiltins(t_new *lst)
 {
 	if (list_has_pipes(lst))

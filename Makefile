@@ -6,7 +6,7 @@
 #    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/07/18 10:58:51 by ayassin          ###   ########.fr        #
+#    Updated: 2022/07/25 18:23:01 by ayassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ PNAME = parser
 SRC = minishell.c $(EXECUTE_SRC_INDIR) $(EXECUTE_SRC_INDIR1)
  
 EXECUTE_SRC = pipex.c pipex_utils.c  pipex_utils1.c pipex_utils2.c child.c \
-				redirection.c redirection2.c temp_list.c here_doc.c signals.c \
-				enviroment.c enviroment1.c builtins.c builtins1.c
+				redirection.c redirection2.c here_doc.c signals.c \
+				enviroment.c enviroment1.c enviroment2.c builtins.c builtins1.c
 				
 EXECUTE_SRC1 = p_assign_1.c p_assign_2.c p_dollar.c \
 		p_expand.c p_list_assign.c p_list_normal.c big_list2.c \
@@ -46,7 +46,7 @@ OBJSP = $(SRCP:.c=.o)
 
 CC = gcc
 
-CFLAGS = -g3 -Wall -Werror -Wextra
+CFLAGS = -g3 -Wall -Werror -Wextra -I/usr/local/opt/readline/include
 
 all: $(NAME)
 
@@ -54,18 +54,18 @@ all: $(NAME)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFLAGS) -Ilibft -Ift_printf -Iparsing -c $^ -o $@
+	$(CC) $(CFLAGS)  -Ilibft -Ift_printf -Iparsing -c $^ -o $@
 
 
 $(NAME): $(OBJS) $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
-	$(CC) $(CFALGS) $(SRC) -ltermcap -lreadline -lreadline \
-	-Lft_printf -lftprintf -Llibft -lft -o $(NAME)
-	$(CC) $(CFALGS) $(SRCP)  \
-	 parsing/parsing.a -lreadline \
-	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -lreadline -o $(PNAME)
+	$(CC) $(CFLAGS) $(SRC) -L/usr/local/opt/readline/lib -lreadline \
+	-Lft_printf -lftprintf -Llibft -lft -ltermcap -o $(NAME)
+	$(CC) $(CFLAGS) -L/usr/local/opt/readline/lib -lreadline $(SRCP)  \
+	 parsing/parsing.a -L/usr/local/opt/readline/lib -lreadline \
+	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -o $(PNAME)
 
 
 clean:

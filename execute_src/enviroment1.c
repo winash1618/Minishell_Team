@@ -6,13 +6,14 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 20:31:30 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/18 19:44:15 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 17:46:19 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_putenv_fd(char **env, int fd)
+// help print env in spical condition of export
+static void	ft_putenv_fd(char **env, int fd)
 {
 	int	i;
 	int	j;
@@ -35,7 +36,8 @@ void	ft_putenv_fd(char **env, int fd)
 	}
 }
 
-int	display_env(char **env, char *file_name, int append)
+// print env in spical condition of export
+static int	display_env(char **env, char *file_name, int append)
 {
 	int	fd;
 
@@ -52,6 +54,7 @@ int	display_env(char **env, char *file_name, int append)
 	return (0);
 }
 
+// change existing env by adding/modifying args in env
 int	append_env(char **env, char *args, int j)
 {
 	char	**new_env;
@@ -60,19 +63,16 @@ int	append_env(char **env, char *args, int j)
 	{
 		env[j] = ft_strdup(args);
 		if (!env[j])
-			return (1);
+			return (print_error("", "malloc failed", 1));
 		return (ft_lstadd_backhelper(&g_m, env[j]));
 	}
 	else if (!env[j])
 	{
 		new_env = (char **)malloc(sizeof(*env) * (j + 2));
 		if (!new_env)
-			return (1);
+			return (print_error("", "malloc failed", 1));
 		if (ft_lstadd_backhelper(&g_m, new_env))
-		{
-			free(new_env);
 			return (1);
-		}
 		if (cpynewenv(new_env, env))
 			return (1);
 		env[j] = args;
@@ -81,7 +81,8 @@ int	append_env(char **env, char *args, int j)
 	return (0);
 }
 
-int	export_loop(char **env, char **args)
+// loop through args for export function
+static int	export_loop(char **env, char **args)
 {
 	int		prelen;
 	int		i;
@@ -110,6 +111,7 @@ int	export_loop(char **env, char **args)
 	return (error);
 }
 
+// export buitin
 int	ft_export(char **args, char **env, char *file_name, int append)
 {
 	int		error;

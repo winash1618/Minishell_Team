@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:59:22 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/15 18:52:55 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/25 17:59:56 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_strjoin_ms(char **prestr, char *sufstr)
 	i2 = 0;
 	fullstr = (char *)malloc(ft_strlen(*prestr) + ft_strlen(sufstr) + 1);
 	if (fullstr == NULL)
-		return (-1);
+		return (print_error("", "malloc failed", -1));
 	while (*prestr && (*prestr)[i1])
 	{
 		fullstr[i1] = (*prestr)[i1];
@@ -88,6 +88,7 @@ int	ft_strncmp_pc(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[pos] - (unsigned char)s2[pos]);
 }
 
+// make all chars of str lowercase
 void	ft_tolower_str(char *str)
 {
 	int	i;
