@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_expand1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:34:33 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/02 18:13:49 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/26 05:57:22 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*get_dollar_path(char *str, char **env)
 
 int	is_meta_pipe(char c)
 {
-	if (ft_strchr("|", c)) // c == '\'
+	if (ft_strchr("|", c))
 	{
 		return (1);
 	}

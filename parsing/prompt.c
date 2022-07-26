@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:55:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/26 12:05:50 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/26 06:01:42 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_clearscreen(void)
 	tgetent(buf, getenv("TERM"));
 	str = tgetstr("cl", NULL);
 	printf("%s", str);
-	// printf("");
 }
 
 // void	ft_clearscreen(void)
@@ -53,8 +52,10 @@ void	lst_print(t_new *pars)
 {
 	while (pars != NULL)
 	{
-		printf("<token: %s> <flag: %d> <d_flag: %d> <s_flag: %d> <l_flag: %d> <l2_flag: %d> <r_flag: %d> <r2_flag: %d> <dq_flag: %d>",
-			pars->token, pars->flag, pars->d_flag, pars->s_flag, pars->l_flag, 
+		printf("<token: %s> <flag: %d> <d_flag: %d> \
+		<s_flag: %d> <l_flag: %d> <l2_flag: %d> \
+			<r_flag: %d> <r2_flag: %d> <dq_flag: %d>",
+			pars->token, pars->flag, pars->d_flag, pars->s_flag, pars->l_flag,
 			pars->l2_flag, pars->r_flag, pars->r2_flag, pars->dq_flag);
 		printf("\n");
 		pars = pars->next;

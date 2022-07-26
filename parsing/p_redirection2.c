@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:55:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/03 08:12:07 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/07/26 06:14:13 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 //----------------------------Error Handling------------------------
 //------------------------------------------------------------------
 
-int	is_rpd(char c)
-{
-	if (ft_strchr("<>|/", c)) // pssible strchr prolblem
-		return (1);
-	return (0);
-}
+// int	is_rpd(char c)
+// {
+// 	if (ft_strchr("<>|/", c))
+// 		return (1);
+// 	return (0);
+// }
 
 int	find_lderror(char *str, t_new *cmd)
 {
@@ -72,6 +72,24 @@ int	find_rderror(char *str, t_new *cmd)
 	return (0);
 }
 
+int	find_perror_help(char *str, t_new *cmd, int i)
+{
+	if (str[i + 1] == '|' || (!str[i + 1] && !cmd->next))
+		return (2);
+	else if (str[i + 1] == '\0' && cmd->next)
+	{
+		if (cmd->next->token[0] == '|')
+			return (2);
+	}
+	else if (str[i + 1] == '<' || str[i + 1] == '>')
+	{
+		if (is_meta_pipe(str[i + 2]))
+			if (!str[i + 2])
+				return (2);
+	}
+	return (0);
+}
+
 int	find_perror(char *str, t_new *cmd)
 {
 	int	i;
@@ -83,19 +101,8 @@ int	find_perror(char *str, t_new *cmd)
 	{
 		if (str[i] == '|')
 		{
-			if (str[i + 1] == '|' || (!str[i + 1] && !cmd->next))
+			if (find_perror_help(str, cmd, i))
 				return (ft_putstr_fd1("Wrong syntax \n", 2));
-			else if (str[i + 1] == '\0' && cmd->next)
-			{
-				if (cmd->next->token[0] == '|')
-					return (ft_putstr_fd1("Wrong syntax \n", 2));
-			}
-			else if (str[i + 1] == '<' || str[i + 1] == '>')
-			{
-				if (is_meta_pipe(str[i + 2]))
-					if (!str[i + 2])
-						return (ft_putstr_fd1("Wrong syntax \n", 2));
-			}
 		}
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_expand2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:39:58 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/15 18:28:31 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/26 06:32:01 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_expand1(t_list **lst, t_list *temp, char c)
 	if (c == '?')
 		s = ft_itoa(errno);
 	else if (c == '$')
-		s = ft_strdup("$$");
+		s = ft_strdup("");
 	if (s)
 		ft_lstadd_back(&g_m, ft_lstnew((void *)(s)));
 	if (!*lst)
@@ -100,14 +100,9 @@ int	ft_expand2(t_list **lst, t_list *temp, char c)
 
 	k = 0;
 	s = NULL;
-	// if (!c)
-	// {
-	// 	s = ft_strdup("$");
-	// 	temp = ft_lstnew((void *)s);
-	// }
 	if ((is_meta_special2(c) && !ft_isdigit2(c)) || !c)
 	{
-		s = ft_strdup("$");
+		s = ft_strdup("");
 		temp = ft_lstnew((void *)s);
 		k = 0;
 	}
@@ -123,3 +118,9 @@ int	ft_expand2(t_list **lst, t_list *temp, char c)
 	ft_lstadd_back(&g_m, ft_lstnew((void *)(temp)));
 	return (k);
 }
+
+	// if (!c)
+	// {
+	// 	s = ft_strdup("$");
+	// 	temp = ft_lstnew((void *)s);
+	// }
