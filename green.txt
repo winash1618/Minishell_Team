@@ -2,7 +2,6 @@ Enter
 Makefile
 My_stash
 README.md
-a.out
 abc.txt
 arabic.txt
 blue.txt
@@ -13,6 +12,7 @@ fid.c
 file
 ft_printf
 get_expanded_string_test.c
+gree.txt
 green
 green.txt
 greetme.sh
@@ -20,50 +20,16 @@ leaks.sh
 libft
 minishell
 minishell.c
+minishell.dSYM
 minishell.h
 minishell.o
 parser
 parser.c
+parser.dSYM
 parser.o
 parsing
 red.txt
+test
 test.c
+test_dir
 testdir
-total 2216
-drwxr-xr-x  36 ayassin  2021_abudhabi    1224 Jul 19 17:59 .
-drwxr-xr-x  11 ayassin  2021_abudhabi     374 Jun  5 14:45 ..
-drwxr-xr-x  15 ayassin  2021_abudhabi     510 Jul 19 15:25 .git
--rw-r--r--   1 ayassin  2021_abudhabi      94 May 29 08:29 .ignore_readline
-drwxr-xr-x   8 ayassin  2021_abudhabi     272 Jul  2 14:58 .vscode
--rw-r--r--   1 ayassin  2021_abudhabi       0 Jul 18 08:26 Enter
--rw-r--r--   1 ayassin  2021_abudhabi    2625 Jul 18 10:58 Makefile
-drwxr-xr-x   3 ayassin  2021_abudhabi     102 Jul  3 13:20 My_stash
--rw-r--r--   1 ayassin  2021_abudhabi     939 Jun  4 08:21 README.md
--rw-r--r--   1 ayassin  2021_abudhabi       0 Jul 17 12:12 a.out
--rw-r--r--   1 ayassin  2021_abudhabi     214 Jun 18 08:15 abc.txt
--rw-r--r--   1 ayassin  2021_abudhabi       0 Jul 19 09:20 arabic.txt
--rw-r--r--   1 ayassin  2021_abudhabi    9598 Jun 30 18:42 blue.txt
-drwxr-xr-x   8 ayassin  2021_abudhabi     272 Jul  2 14:58 builtins
-drwxr-xr-x   2 ayassin  2021_abudhabi      68 Jun  6 16:47 execute_obj
-drwxr-xr-x  32 ayassin  2021_abudhabi    1088 Jul 19 17:59 execute_src
--rw-r--r--   1 ayassin  2021_abudhabi    1168 Jun 27 08:17 fid.c
--rw-r--r--   1 ayassin  2021_abudhabi       0 Jul  3 16:32 file
-drwxr-xr-x  14 ayassin  2021_abudhabi     476 Jul 19 17:59 ft_printf
--rw-r--r--   1 ayassin  2021_abudhabi    5581 Jul  3 17:08 get_expanded_string_test.c
--rw-r--r--   1 ayassin  2021_abudhabi       0 Jul 19 10:30 green
--rwxr-xr-x   1 ayassin  2021_abudhabi     293 Jul 19 18:08 green.txt
--rwxr-xr-x   1 ayassin  2021_abudhabi     166 Jun 27 08:17 greetme.sh
--rwxr-xr-x   1 ayassin  2021_abudhabi     127 Jun 30 08:12 leaks.sh
-drwxr-xr-x  91 ayassin  2021_abudhabi    3094 Jul 19 17:59 libft
--rwxr-xr-x   1 ayassin  2021_abudhabi  160080 Jul 19 17:59 minishell
--rw-r--r--   1 ayassin  2021_abudhabi    5264 Jul 19 17:50 minishell.c
--rw-r--r--   1 ayassin  2021_abudhabi    9863 Jul 19 11:45 minishell.h
--rw-r--r--   1 ayassin  2021_abudhabi  254448 Jul 19 17:59 minishell.o
--rwxr-xr-x   1 ayassin  2021_abudhabi  365032 Jul 19 17:59 parser
--rw-r--r--   1 ayassin  2021_abudhabi    5634 Jun 30 08:12 parser.c
--rw-r--r--   1 ayassin  2021_abudhabi  252128 Jul 19 17:59 parser.o
-drwxr-xr-x  44 ayassin  2021_abudhabi    1496 Jul 19 17:59 parsing
--rw-r--r--   1 ayassin  2021_abudhabi       3 Jun 28 15:26 red.txt
--rw-r--r--   1 ayassin  2021_abudhabi     740 Jun  1 18:21 test.c
-d--x--x--x+  2 ayassin  2021_abudhabi      68 Jun 26 15:05 testdir
-the name of the game
