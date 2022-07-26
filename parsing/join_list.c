@@ -6,20 +6,20 @@
 /*   By: mkaruvan <mkaruvan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 10:36:18 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/07/03 16:42:00 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/26 05:56:25 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int is_metardp(char c)
+int	is_metardp(char c)
 {
 	if (c == '<' || c == '>' || c == '|')
 		return (1);
 	return (0);
 }
 
-int checks(t_new *cmd)
+int	checks(t_new *cmd)
 {
 	if (is_metardp(cmd->token[0]) && (cmd->flag == 4))
 	{
@@ -29,21 +29,6 @@ int checks(t_new *cmd)
 	}
 	else if (cmd->s_flag != -1)
 		return (0);
-	
-	// if (cmd->s_flag == -1 && !is_metardp(cmd->prev->token[0]) && (cmd->flag == 1 || cmd->flag == 2))
-	// if ((cmd)->s_flag == -1 && (!ft_strchr("<>|",
-	// 		(cmd)->prev->token[0]) || ((cmd)->prev->token[0] == 0)))
-	// 		{
-	// 			return (1);
-	// 		}
-	// else if((cmd)->s_flag == -1 && (ft_strchr("<>|",
-	// 		(cmd)->prev->token[0]) || ((cmd)->prev->token[0] == 0)) && 
-	// 		(cmd->flag == 1 || cmd->flag == 2))
-	// 		return (1);
-	// else if ((cmd)->s_flag == -1 && (cmd->flag == 4) && (!ft_strchr("<>|",
-	// 		(cmd)->prev->token[0]) || ((cmd)->prev->token[0] == 0)))
-	// 		return (1);
-			
 	return (1);
 }
 
@@ -83,7 +68,8 @@ void	ft_lst_join(t_new *cmd)
 				{
 					(cmd)->prev->token = ft_strjoin((cmd)->prev->token,
 							(cmd)->token);
-					ft_lstadd_back(&g_m, ft_lstnew((void *)((cmd)->prev->token)));
+					ft_lstadd_back(&g_m, ft_lstnew((void *)
+							((cmd)->prev->token)));
 					cmd->prev->next = NULL;
 				}
 				break ;
