@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 18:26:01 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 11:58:52 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
+// Global variable declaration
+extern t_list	*g_m;
+
 // for saving local variable
 typedef struct var
 {
-	char		*key; // consider "x = y" then x is key
-	char		*value; // y is value
+	char		*key;
+	char		*value;
 	int			err_flag;
 	struct var	*next;
 	struct var	*prev;
@@ -41,18 +44,18 @@ typedef struct var
 // for saving commands
 typedef struct list
 {
-	char		*token; // contains splited string 
-	int			flag; // returns 1 if double quote is present, returns 2 if single quote, 3 if normal word.
-	t_list		*lst;// used for expansion of word without quote
-	char		*es; // expanded string.
-	int			d_flag; // indicate presence of dollar sign in the string.
-	int			l_flag; // true if < is present and l2_flag is false
-	int			l2_flag; // true if << is present 
-	int			r_flag; // true if > is present and r2_flag is false
-	int			r2_flag; // true if >> is present 
-	int			p_flag; // indicate presence of pipe in a token
-	int			err_flag;// true an error is present
-	int			s_flag;// 1 if there is a space 0 if not
+	char		*token;
+	int			flag;
+	t_list		*lst;
+	char		*es;
+	int			d_flag;
+	int			l_flag;
+	int			l2_flag;
+	int			r_flag;
+	int			r2_flag;
+	int			p_flag;
+	int			err_flag;
+	int			s_flag;
 	int			dq_flag;
 	struct list	*next;
 	struct list	*prev;
@@ -62,15 +65,13 @@ typedef struct list
 typedef struct info
 {
 	int	flag;
-	int	w_flag; // if the string is double quoted then this flag exist.
-	int	e_flag; // if the string starts with an equal sign it's an error;
-	int	q_flag; // exist when count either of the quotes is odd
-	int	dq_flag; // presence of $ then " or '
+	int	w_flag;
+	int	e_flag;
+	int	q_flag;
+	int	dq_flag;
 	int	err_flag;
 }				t_info;
 
-// Global variable declaration
-extern t_list	*g_m;
 //---------------------------------------------//
 //--------------Parsing Functions--------------//
 //---------------------------------------------//

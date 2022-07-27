@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/26 17:59:24 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 13:35:49 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 t_list	*g_m;
 
+static void	main_helper(t_info *info, char **env, char *line, t_new *cmd);
+static void	main_loop(t_info *info, char **env);
+
 int	main(int ac, char **av, char **env)
 {
-	t_new	*cmd;
-	char	*line;
 	t_info	*info;
-	t_list	*node;
-	int		err;
 
 	(void) ac;
 	(void) av;
 	g_m = NULL;
-	node = ft_lstnew(NULL);
-	if (node == NULL)
-		return (print_error("", "malloc failed", 1));
-	ft_lstadd_front(&g_m, node);
+	if (ft_lstadd_backhelper(&g_m, NULL) != 0)
+		return (1);
 	signals();
 	info = malloc(sizeof(t_info));
 	if (info == NULL)
@@ -41,6 +38,49 @@ int	main(int ac, char **av, char **env)
 		cleanexit(NULL, NULL, 1, NULL);
 	info->flag = 1;
 	info->e_flag = 0;
+	main_loop(info, env);
+	cleanexit(NULL, NULL, 0, NULL);
+	return (0);
+}
+
+static void	main_helper(t_info *info, char **env, char *line, t_new *cmd)
+{
+	if (!line || !ft_strncmp(line, "exit", 5))
+	{
+		if (line)
+			free(line);
+		cleanexit(NULL, NULL, 0, NULL);
+	}
+	else if (*line == '\0')
+		;
+	else if (!ft_strncmp(line, "clear", 6))
+		ft_clearscreen(); //ft_putstr_fd("\33[2J\33[H\r", 2); 
+	else if (!info->q_flag)
+	{
+		normal_lexer(&cmd, info, line);
+		find_dollar_presence(cmd);
+		find_redirection_presence(cmd);
+		dollar_expansion(cmd, env);
+		make_all_zero(cmd);
+		if (cmd && !syntax_error(cmd))
+		{
+			make_big_list(&cmd);
+			ft_lst_join(cmd);
+			find_redirection_presence(cmd);
+			excute (cmd, env);
+		}
+	}
+}
+
+static void	main_loop(t_info *info, char **env)
+{
+	int		err;
+	char	*line;
+	t_new	*cmd;
+
+	err = 0;
+	line = NULL;
+	cmd = NULL;
 	while (1)
 	{
 		info->e_flag = 0;
@@ -54,29 +94,7 @@ int	main(int ac, char **av, char **env)
 		else
 			cleanexit(NULL, NULL, 0, NULL);
 		quote_counter(line, info);
-		if (!line || !strcmp(line, "exit"))
-			cleanexit(NULL, NULL, 0, NULL);
-		else if (!(strcmp(line, "")))
-			;
-		else if (!strcmp(line, "clear"))
-			ft_clearscreen();
-		else if (!info->q_flag)
-		{
-			normal_lexer(&cmd, info, line);
-			find_dollar_presence(cmd);
-			find_redirection_presence(cmd);
-			dollar_expansion(cmd, env);
-			make_all_zero(cmd);
-			if (cmd && !syntax_error(cmd))
-			{
-				make_big_list(&cmd);
-				ft_lst_join(cmd);
-				find_redirection_presence(cmd);
-				excute (cmd, env);
-			}
-		}
+		main_helper(info, env, line, cmd);
 		free (line);
 	}
-	cleanexit(NULL, NULL, 0, NULL);
-	return (0);
 }
