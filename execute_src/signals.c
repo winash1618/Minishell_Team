@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:00:21 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/26 18:12:47 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 14:04:21 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	signal_handler(int signum, siginfo_t *info, void *ptr)
 	{
 		if (g_m->content != NULL)
 			cleanexit(NULL, NULL, 5, g_m->content);
-		rl_redisplay();
 		rl_replace_line("", 0);
 		ft_putstr_fd("\n", 2);
 		rl_on_new_line();
