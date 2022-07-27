@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 20:31:30 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 17:46:19 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 18:47:48 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,14 @@ static int	display_env(char **env, char *file_name, int append)
 // change existing env by adding/modifying args in env
 int	append_env(char **env, char *args, int j)
 {
-	char	**new_env;
-
-	if (env[j] && ft_strchr(args, '=') != 0)
+	if (env[j] && ft_strchr(args, '+') != 0)
+	{
+		env[j] = ft_strjoin(env[j], ft_strchr(args, '=') + 1);
+		if (env[j] == NULL)
+			return (print_error("", "malloc failed", 1));
+		return (ft_lstadd_backhelper(&g_m, env[j]));
+	}
+	else if (env[j] && ft_strchr(args, '=') != 0)
 	{
 		env[j] = ft_strdup(args);
 		if (!env[j])
@@ -67,17 +72,7 @@ int	append_env(char **env, char *args, int j)
 		return (ft_lstadd_backhelper(&g_m, env[j]));
 	}
 	else if (!env[j])
-	{
-		new_env = (char **)malloc(sizeof(*env) * (j + 2));
-		if (!new_env)
-			return (print_error("", "malloc failed", 1));
-		if (ft_lstadd_backhelper(&g_m, new_env))
-			return (1);
-		if (cpynewenv(new_env, env))
-			return (1);
-		env[j] = args;
-		env[j + 1] = NULL;
-	}
+		return (append_env1(env, args, j));
 	return (0);
 }
 
@@ -98,12 +93,10 @@ static int	export_loop(char **env, char **args)
 			error += print_error(args[i++], ": not a valid identifier", 1);
 			continue ;
 		}
-		if (ft_strchr(args[i], '=') != 0)
-			prelen = ft_strchr(args[i], '=') - args[i];
-		else
-			prelen = ft_strlen(args[i]);
+		prelen = varlen(args[i]);
 		j = 0;
-		while (env [j] && ft_strncmp_p(env[j], args[i], prelen) != 0)
+		while (env [j] && !(ft_strncmp_p(env[j], args[i], prelen) == 0
+				&& (env[j][prelen] == '\0' || env[j][prelen] == '=')))
 			++j;
 		error += append_env(env, args[i], j);
 		++i;
