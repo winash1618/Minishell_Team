@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 19:44:36 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 17:42:28 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 18:23:34 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	setnewenv(char **env)
 		++count;
 	if (count)
 	{
-			new_env = (char **)malloc((sizeof(*new_env) + 1) * count);
+		new_env = (char **)malloc((sizeof(*new_env) + 1) * count);
 		if (!new_env)
 			return (print_error("", "malloc failed", 1));
 		if (ft_lstadd_backhelper(&g_m, new_env))
@@ -64,12 +64,14 @@ int	valid_varible(char *var)
 	i = 0;
 	if (!var || !*var || !(ft_isalpha(*var) || *var == '_'))
 		return (0);
-	while (var[i] && var[i] != '=')
+	while (var[i] && !(var[i] == '=' || var[i] == '+'))
 	{
 		if (!(ft_isalnum(var[i]) || var[i] == '_'))
 			return (0);
 		++i;
 	}
+	if (var[i] == '+' && var[i + 1] != '=')
+		return (0);
 	return (1);
 }
 

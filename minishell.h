@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:16:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/27 11:58:52 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 18:31:42 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ char	*ft_readline(void);
 // --------handling quote----------------------
 // find length of word until quote.
 int		ft_strlen_ch(char *line, char c);
-//count the number single and double quotes saperately if there is odd number return false
+/*count the number single and double quotes saperately
+if there is odd number return false*/
 void	quote_counter(char *line, t_info *info);
 //get the quoted word without quotes
 char	*quoted_word(char *line, char ch);
@@ -217,6 +218,8 @@ int		ft_export(char **args, char **env, char *file_name, int append);
 //enviroment2
 
 int		update_shlvl(char **env, char *var);
+int		varlen(char *var);
+int		append_env1(char **env, char *args, int j);
 
 //here_doc.c
 

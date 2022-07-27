@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 13:12:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 17:48:30 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 18:13:47 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,39 @@ int	update_shlvl(char **env, char *var)
 	if (temp == NULL)
 		return (print_error("", "malloc failed", 1));
 	return (append_env(env, temp, i));
+}
+
+// check variable name length
+int	varlen(char *var)
+{
+	if (ft_strchr(var, '+') != 0)
+		return (ft_strchr(var, '+') - var);
+	else if (ft_strchr(var, '=') != 0)
+		return (ft_strchr(var, '=') - var);
+	else
+		return (ft_strlen(var));
+}
+
+// add varable to new malloced env
+int	append_env1(char **env, char *args, int j)
+{
+	char	**new_env;
+	char	*pluspos;
+
+	new_env = (char **)malloc(sizeof(*env) * (j + 2));
+	if (!new_env)
+		return (print_error("", "malloc failed", 1));
+	if (ft_lstadd_backhelper(&g_m, new_env))
+		return (1);
+	if (cpynewenv(new_env, env))
+		return (1);
+	env[j] = args;
+	pluspos = ft_strchr(env[j], '+');
+	while (pluspos && *pluspos)
+	{
+		*pluspos = *(pluspos + 1);
+		++pluspos;
+	}
+	env[j + 1] = NULL;
+	return (0);
 }
