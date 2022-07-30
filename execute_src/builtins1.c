@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 18:31:11 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 17:30:19 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 09:49:32 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,11 @@ static int	ft_chdir_abs(char **args, char **env, char	*old_loc)
 	if (home && *home != '\0')
 	{
 		go_to_headdir();
-		chdir(home);
+		if (chdir(home) == -1)
+		{
+			chdir(old_loc);
+			return (print_error(home, ": No such file or directory", 1));
+		}
 		if (args[1] && args[1][1] != '\0' && chdir(&args[1][2]) == -1)
 		{
 			go_to_headdir();

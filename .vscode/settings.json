@@ -12,6 +12,7 @@
 		"__threading_support": "c",
 		"cerrno": "c",
 		"__locale": "c",
-		"readline.h": "c"
+		"readline.h": "c",
+		"__node_handle": "c"
 	}
 }

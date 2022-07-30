@@ -6,7 +6,7 @@
 /*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 17:37:42 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/07/27 10:58:25 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ static int	child_loop(char **path, char **args, char **env, char *clone_cmd)
 		if (ft_strjoin_ms(&(path[i]), "/") < 0
 			|| ft_strjoin_ms(&(path[i]), clone_cmd) < 0)
 			return (1);
-		args[0] = path[i];
 		execve(path[i], args, env);
 		++i;
 	}
