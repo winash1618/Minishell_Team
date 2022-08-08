@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:55:02 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/08/06 12:54:12 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/08/08 13:20:55 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ char	*ft_readline(void)
 
 void	ft_clearscreen(void)
 {
-	char	*buf;
-	char	*str;
-	t_list	*tmp;
+	// char	*buf;
+	// char	*str;
+	// t_list	*tmp;
 
-	buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
-	tmp = ft_lstnew((void *)buf);
-	ft_lstadd_back(&g_m, tmp);
-	tgetent(buf, getenv("TERM"));
-	str = tgetstr("cl", NULL);
-	printf("%s", str);
+	// buf = (char *)malloc(sizeof(char) * (ft_strlen(getenv("TERM")) + 1));
+	// tmp = ft_lstnew((void *)buf);
+	// ft_lstadd_back(&g_m, tmp);
+	// tgetent(buf, getenv("TERM"));
+	// str = tgetstr("cl", NULL);
+	// printf("%s", str);
+	ft_putstr_fd("\e[1;1H\e[2J", 2);
 }
 
 // void	ft_clearscreen(void)
