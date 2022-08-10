@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:06:46 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/25 18:05:01 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/08/08 18:13:10 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ int	has_parentbuiltins(t_new *lst)
 	else if (lst->token && (ft_strncmp_pc(lst->token, "export", 7) == 0))
 		return (1);
 	else if (lst->token && (ft_strncmp_pc(lst->token, "unset", 6) == 0))
+		return (1);
+	else if (lst->token && (ft_strncmp_pc(lst->token, "exit", 5) == 0))
 		return (1);
 	return (0);
 }

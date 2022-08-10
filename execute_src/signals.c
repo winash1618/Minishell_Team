@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:00:21 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/27 14:04:21 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/08/10 10:43:55 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,26 @@ int	signals(void)
 
 // ft_putstr_fd(">Enter a string:   \b\b\n", 2); for valgrind
 // //ft_putstr_fd("\33[2K\r>Enter a string: \n", 2); for cool code
+
+int	ft_exit(char **args, int child)
+{
+	int				i;
+	unsigned char	x;
+
+	i = 0;
+	x = 0;
+	if (args[1] && (args[1][i] == '-' || args[1][i] == '+'))
+		++i;
+	while (args[1] && args[1][i] >= '0' && args[1][i] <= '9')
+		++i;
+	if (args[1] && args[1][i])
+		x = print_error("exit: ", "numeric argument required", 2);
+	else if (args[2] != NULL)
+		x = print_error("exit: ", "too many arguments", 1);
+	if (x == 0 && args[1] != NULL)
+		x = ft_atoi(args[1]);
+	free (args);
+	if (!child)
+		cleanexit(NULL, NULL, x, NULL);
+	return (x);
+}
