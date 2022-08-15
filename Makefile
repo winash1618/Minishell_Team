@@ -3,16 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: mkaruvan <mkaruvan@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/07/25 18:23:01 by ayassin          ###   ########.fr        #
+#    Updated: 2022/08/15 21:38:52 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-
-PNAME = parser
 
 SRC = minishell.c $(EXECUTE_SRC_INDIR) $(EXECUTE_SRC_INDIR1)
  
@@ -34,15 +32,9 @@ EXECUTE_SRC_DIR1 = parsing
 				
 EXECUTE_SRC_INDIR1 = $(addprefix $(EXECUTE_SRC_DIR1)/,$(EXECUTE_SRC1))
 
-EXECUTE_OBJ_DIR =  execute_objs
-
-SRCP = parser.c
-
-SUBDIRS = libft ft_printf parsing
+SUBDIRS = libft ft_printf
 
 OBJS = $(SRC:.c=.o)
-
-OBJSP = $(SRCP:.c=.o)
 
 CC = gcc
 
@@ -51,33 +43,24 @@ CFLAGS = -g3 -Wall -Werror -Wextra -I/usr/local/opt/readline/include
 all: $(NAME)
 
 %.o : %.c
-	for dir in $(SUBDIRS); do \
-        $(MAKE) all -C $$dir; \
-    done
-	$(CC) $(CFLAGS)  -Ilibft -Ift_printf -Iparsing -c $^ -o $@
+	$(CC) $(CFLAGS)  -Ilibft -Ift_printf -c $^ -o $@
 
 
-$(NAME): $(OBJS) $(OBJSP)
+$(NAME): $(OBJS)
 	for dir in $(SUBDIRS); do \
         $(MAKE) all -C $$dir; \
     done
 	$(CC) $(CFLAGS) $(SRC) -L/usr/local/opt/readline/lib -lreadline \
 	-Lft_printf -lftprintf -Llibft -lft -ltermcap -o $(NAME)
-	$(CC) $(CFLAGS) -L/usr/local/opt/readline/lib -lreadline $(SRCP)  \
-	 parsing/parsing.a -L/usr/local/opt/readline/lib -lreadline \
-	 -Lft_printf -lftprintf -Llibft -lft -ltermcap -o $(PNAME)
-
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(OBJSP)
 	for dir in $(SUBDIRS); do \
         $(MAKE) clean -C $$dir; \
     done
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(PNAME)
 	for dir in $(SUBDIRS); do \
         $(MAKE) fclean -C $$dir; \
     done
