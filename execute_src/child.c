@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:06 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/27 10:58:25 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/08/09 18:17:36 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	buitin_switch(t_new *lst, char **env, char *file_name, int append	)
 		return (ft_export(args, env, file_name, append));
 	else if (lst->token && (ft_strncmp_p(lst->token, "unset", 6) == 0))
 		return (ft_unset(args, env));
+	else if (lst->token && (ft_strncmp_p(lst->token, "exit", 5) == 0))
+		return (ft_exit(args, 0));
 	else if (ft_strchr(lst->token, '=') && valid_varible(lst->token))
 		return (1);
 	return (1);
@@ -67,7 +69,7 @@ static int	child_buitin_switch(char *cmd, char **args, char **env)
 {
 	int	value;
 
-	value = 0;
+	value = -1;
 	if (cmd && ft_strncmp_p(cmd, "echo", 5) == 0)
 		value = ft_echo(args);
 	else if (cmd && ft_strncmp_p(cmd, "pwd", 4) == 0)
@@ -80,8 +82,8 @@ static int	child_buitin_switch(char *cmd, char **args, char **env)
 		value = ft_export(args, env, NULL, 0);
 	else if (cmd && (ft_strncmp_p(cmd, "unset", 6) == 0))
 		value = ft_unset(args, env);
-	else
-		value = -1;
+	else if (cmd && (ft_strncmp_p(cmd, "exit", 5) == 0))
+		value = ft_exit(args, 1);
 	if (value != -1)
 	{
 		close (1);

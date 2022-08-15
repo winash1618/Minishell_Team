@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: ayassin <ayassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/07/27 13:35:49 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/08/10 10:47:41 by ayassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,12 @@ int	main(int ac, char **av, char **env)
 
 static void	main_helper(t_info *info, char **env, char *line, t_new *cmd)
 {
-	if (!line || !ft_strncmp(line, "exit", 5))
-	{
-		if (line)
-			free(line);
+	if (!line)
 		cleanexit(NULL, NULL, 0, NULL);
-	}
 	else if (*line == '\0')
 		;
 	else if (!ft_strncmp(line, "clear", 6))
-		ft_clearscreen(); //ft_putstr_fd("\33[2J\33[H\r", 2); 
+		ft_clearscreen();
 	else if (!info->q_flag)
 	{
 		normal_lexer(&cmd, info, line);
