@@ -6,7 +6,7 @@
 #    By: mkaruvan <mkaruvan@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 08:40:39 by ayassin           #+#    #+#              #
-#    Updated: 2022/08/15 21:38:52 by mkaruvan         ###   ########.fr        #
+#    Updated: 2022/08/16 12:22:22 by mkaruvan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ CFLAGS = -g3 -Wall -Werror -Wextra -I/usr/local/opt/readline/include
 all: $(NAME)
 
 %.o : %.c
+	@printf "\033[A\033[2K\r"
 	$(CC) $(CFLAGS)  -Ilibft -Ift_printf -c $^ -o $@
 
 

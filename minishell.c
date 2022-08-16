@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/08/10 10:47:41 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/08/16 12:59:12 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ static void	main_loop(t_info *info, char **env)
 	char	*line;
 	t_new	*cmd;
 
-	err = 0;
 	line = NULL;
 	cmd = NULL;
 	while (1)
@@ -88,7 +87,10 @@ static void	main_loop(t_info *info, char **env)
 		if (line)
 			add_history(line);
 		else
+		{
+			ft_putstr_fd("exit\n", 2);
 			cleanexit(NULL, NULL, 0, NULL);
+		}
 		quote_counter(line, info);
 		main_helper(info, env, line, cmd);
 		free (line);
