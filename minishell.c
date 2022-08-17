@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 09:19:39 by ayassin           #+#    #+#             */
-/*   Updated: 2022/08/16 12:59:12 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/08/16 14:46:39 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static void	main_helper(t_info *info, char **env, char *line, t_new *cmd)
 			excute (cmd, env);
 		}
 	}
+	else if (info->q_flag)
+		errno = print_error("wrong syntax", "", 258);
 }
 
 static void	main_loop(t_info *info, char **env)
