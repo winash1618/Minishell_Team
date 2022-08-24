@@ -6,7 +6,7 @@
 /*   By: mkaruvan <mkaruvan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:55:44 by mkaruvan          #+#    #+#             */
-/*   Updated: 2022/08/06 12:53:58 by mkaruvan         ###   ########.fr       */
+/*   Updated: 2022/08/16 14:38:05 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,7 @@ int	syntax_error(t_new *cmd)
 		}
 		cmd = cmd->next;
 	}
+	if (flag)
+		errno = 258;
 	return (flag);
 }

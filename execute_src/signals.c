@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayassin <ayassin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkaruvan <mkaruvan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:00:21 by ayassin           #+#    #+#             */
-/*   Updated: 2022/08/10 10:43:55 by ayassin          ###   ########.fr       */
+/*   Updated: 2022/08/16 12:53:58 by mkaruvan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,16 @@ int	ft_exit(char **args, int child)
 		++i;
 	if (args[1] && args[1][i])
 		x = print_error("exit: ", "numeric argument required", 2);
-	else if (args[2] != NULL)
+	else if (args[1] && args[2] != NULL)
 		x = print_error("exit: ", "too many arguments", 1);
 	if (x == 0 && args[1] != NULL)
 		x = ft_atoi(args[1]);
-	free (args);
+	if (args)
+		free (args);
 	if (!child)
+	{
+		ft_putstr_fd("exit\n", 2);
 		cleanexit(NULL, NULL, x, NULL);
+	}
 	return (x);
 }
